@@ -1,0 +1,28 @@
+name: SPEAR-M0 validation
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "models/SPEAR/**"
+      - "validation/**"
+      - ".github/workflows/spear-validation.yml"
+  workflow_dispatch:
+
+jobs:
+  modal:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libblas3 liblapack3
+      - name: Install OpenSeesPy
+        run: python -m pip install openseespy
+      - name: Run SPEAR modal gate
+        run: python models/SPEAR/spear_m0.py
