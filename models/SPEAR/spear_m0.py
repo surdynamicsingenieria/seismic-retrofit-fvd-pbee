@@ -42,11 +42,19 @@ def rect_props(b,h):
     J=aa*bb**3*(1/3-0.21*(bb/aa)*(1-bb**4/(12*aa**4)))
     return A,Iy,Iz,J
 
-def build_spear_m0_elastic():
+def build_spear_m0_elastic(rigid_offsets=False):
     ops.wipe(); ops.model("basic","-ndm",3,"-ndf",6)
     E=30.0e9; nu=0.20; G=E/(2*(1+nu))
     # transformations: column local x vertical; beam local x horizontal
-    ops.geomTransf("Linear",1,1,0,0)
+    if rigid_offsets:
+        # Sensitivity only: joint-end offsets approximate finite joint dimensions.
+        # Columns: +/-0.25 m vertically (half of nominal 0.50 m beam depth).
+        # Beams: +/-0.125 m along member axes (half of nominal 0.25 m column width).
+        # C6-specific larger in-plane offset is intentionally NOT introduced here:
+        # this run isolates the generic rigid-joint effect.
+        ops.geomTransf("Linear",1,1,0,0,"-jntOffset",0,0,0.25,0,0,-0.25)
+    else:
+        ops.geomTransf("Linear",1,1,0,0)
     ops.geomTransf("Linear",2,0,0,1)
 
     names=list(PLAN)
@@ -93,8 +101,8 @@ def build_spear_m0_elastic():
         ops.rigidDiaphragm(3,master,*[ntag(lev,n) for n in names])
     return True
 
-def run_modal(n_modes=6):
-    build_spear_m0_elastic()
+def run_modal(n_modes=6, rigid_offsets=False):
+    build_spear_m0_elastic(rigid_offsets=rigid_offsets)
     vals=ops.eigen("-fullGenLapack",n_modes)
     periods=[2*math.pi/math.sqrt(v) for v in vals]
     return periods
@@ -109,11 +117,22 @@ def write_results(periods,path="results/modal_results.csv"):
             w.writerow([i,f"{t:.8f}",target,f"{err:.3f}" if i<=3 else "","DIAGNOSTIC_NOT_VALIDATED"])
 
 if __name__=="__main__":
-    ps=run_modal(); write_results(ps)
+    ps=run_modal(rigid_offsets=False); write_results(ps)
+    ps_off=run_modal(rigid_offsets=True)
+    print("BASELINE / GENERIC JOINT-OFFSET SENSITIVITY")
     for i,t in enumerate(ps,1):
         if i<=3:
             e=100*(t-EFCP_TARGETS[i-1])/EFCP_TARGETS[i-1]
             print(f"Mode {i}: T={t:.6f} s; EFCP={EFCP_TARGETS[i-1]:.3f} s; error={e:+.2f}%")
         else: print(f"Mode {i}: T={t:.6f} s")
-    print("STATUS: ELASTIC DIAGNOSTIC ONLY - SPEAR-M0 NOT VALIDATED")
+    print("WITH COLUMN-END RIGID OFFSETS (+/-0.25 m):")
+    for i,t in enumerate(ps_off,1):
+        if i<=3:
+            e=100*(t-EFCP_TARGETS[i-1])/EFCP_TARGETS[i-1]
+            delta=100*(t-ps[i-1])/ps[i-1]
+            print(f"Mode {i}: T={t:.6f} s; EFCP={EFCP_TARGETS[i-1]:.3f} s; error={e:+.2f}%; vs baseline={delta:+.2f}%")
+        else:
+            delta=100*(t-ps[i-1])/ps[i-1]
+            print(f"Mode {i}: T={t:.6f} s; vs baseline={delta:+.2f}%")
+    print("STATUS: SENSITIVITY ONLY - SPEAR-M0 NOT VALIDATED")
     ops.wipe()
