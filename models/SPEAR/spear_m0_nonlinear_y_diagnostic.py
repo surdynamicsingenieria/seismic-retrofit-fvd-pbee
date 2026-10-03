@@ -20,18 +20,28 @@ OUT.mkdir(parents=True,exist_ok=True)
 def modal_y_pattern(masters,nmodes=3):
     vals=ops.eigen("-fullGenLapack",nmodes)
     candidates=[]
+    mtot=sum(base.MASSES)
+    jtot=sum(base.POLAR)
     for mode in range(1,nmodes+1):
-        ph=[ops.nodeEigenvector(m,mode,2) for m in masters]
-        modal_mass=sum(base.MASSES[i]*ph[i]*ph[i] for i in range(3))
-        part=(sum(base.MASSES[i]*ph[i] for i in range(3))**2/modal_mass) if modal_mass else 0.0
-        candidates.append((part,mode,ph))
-    _,mode,ph=max(candidates,key=lambda x:x[0])
+        phix=[ops.nodeEigenvector(m,mode,1) for m in masters]
+        phiy=[ops.nodeEigenvector(m,mode,2) for m in masters]
+        phir=[ops.nodeEigenvector(m,mode,6) for m in masters]
+        Mn=sum(base.MASSES[i]*(phix[i]**2+phiy[i]**2)+base.POLAR[i]*phir[i]**2 for i in range(3))
+        Lx=sum(base.MASSES[i]*phix[i] for i in range(3))
+        Ly=sum(base.MASSES[i]*phiy[i] for i in range(3))
+        Lr=sum(base.POLAR[i]*phir[i] for i in range(3))
+        fx=(Lx*Lx/Mn)/mtot if Mn else 0.0
+        fy=(Ly*Ly/Mn)/mtot if Mn else 0.0
+        fr=(Lr*Lr/Mn)/jtot if Mn else 0.0
+        candidates.append((fy,mode,phiy,fx,fr))
+    fy,mode,ph,fx,fr=max(candidates,key=lambda x:x[0])
     if sum(base.MASSES[i]*ph[i] for i in range(3))<0:
         ph=[-x for x in ph]
     f=[base.MASSES[i]*ph[i] for i in range(3)]
     s=sum(abs(x) for x in f)
     f=[x/s for x in f]
-    return vals,mode,ph,f,[(m,p) for p,m,_ in candidates]
+    report=[{"mode":m,"X_pct":100*x,"Y_pct":100*y,"Rz_pct":100*r} for y,m,_,x,r in candidates]
+    return vals,mode,ph,f,report
 
 def run_pushover_y(target=0.20,du=0.00025):
     names,idx,nt,masters,Ec=base.build()
@@ -42,7 +52,7 @@ def run_pushover_y(target=0.20,du=0.00025):
 
     vals,mode,phi,forces,parts=modal_y_pattern(masters)
     periods=[2*math.pi/math.sqrt(v) for v in vals]
-    print("PUSHY_SELECTED_MODE",mode,"Y_PARTICIPATION_RANK",parts)
+    print("PUSHY_SELECTED_MODE",mode,"MODAL_PARTICIPATION",json.dumps(parts))
 
     ops.timeSeries("Linear",30); ops.pattern("Plain",30,30)
     for m,f in zip(masters,forces):
