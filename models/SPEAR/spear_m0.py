@@ -42,9 +42,14 @@ def rect_props(b,h):
     J=aa*bb**3*(1/3-0.21*(bb/aa)*(1-bb**4/(12*aa**4)))
     return A,Iy,Iz,J
 
-def build_spear_m0_elastic(rigid_offsets=False):
+def build_spear_m0_elastic(rigid_offsets=False, efcp_pretest=False):
     ops.wipe(); ops.model("basic","-ndm",3,"-ndf",6)
-    E=30.0e9; nu=0.20; G=E/(2*(1+nu))
+    # Expected concrete strength used by the pre-test best-estimate model: 37.5 MPa.
+    # For this modal diagnostic use EC2 secant modulus from fcm=fc+8 MPa.
+    fc=37.5e6 if efcp_pretest else 25.0e6
+    fcm=fc+8.0e6
+    E=22.0e9*(fcm/10.0e6)**0.3 if efcp_pretest else 30.0e9
+    nu=0.20; G=E/(2*(1+nu))
     # transformations: column local x vertical; beam local x horizontal
     if rigid_offsets:
         # Sensitivity only: joint-end offsets approximate finite joint dimensions.
@@ -122,8 +127,8 @@ def build_spear_m0_elastic(rigid_offsets=False):
         ops.rigidDiaphragm(3,master,*[ntag(lev,n) for n in names])
     return True
 
-def run_modal(n_modes=6, rigid_offsets=False):
-    build_spear_m0_elastic(rigid_offsets=rigid_offsets)
+def run_modal(n_modes=6, rigid_offsets=False, efcp_pretest=False):
+    build_spear_m0_elastic(rigid_offsets=rigid_offsets, efcp_pretest=efcp_pretest)
     vals=ops.eigen("-fullGenLapack",n_modes)
     periods=[2*math.pi/math.sqrt(v) for v in vals]
     return periods
@@ -140,6 +145,7 @@ def write_results(periods,path="results/modal_results.csv"):
 if __name__=="__main__":
     ps=run_modal(rigid_offsets=False); write_results(ps)
     ps_off=run_modal(rigid_offsets=True)
+    ps_efcp=run_modal(rigid_offsets=False,efcp_pretest=True)
     print("BASELINE / GENERIC JOINT-OFFSET SENSITIVITY")
     for i,t in enumerate(ps,1):
         if i<=3:
@@ -155,5 +161,12 @@ if __name__=="__main__":
         else:
             delta=100*(t-ps[i-1])/ps[i-1]
             print(f"Mode {i}: T={t:.6f} s; vs baseline={delta:+.2f}%")
+    print("EFCP PRE-TEST MATERIAL / CENTRELINE DIAGNOSTIC (no general rigid offsets):")
+    for i,t in enumerate(ps_efcp,1):
+        if i<=3:
+            e=100*(t-EFCP_TARGETS[i-1])/EFCP_TARGETS[i-1]
+            print(f"EFCPdiag Mode {i}: T={t:.6f} s; EFCP={EFCP_TARGETS[i-1]:.3f} s; error={e:+.2f}%")
+        else:
+            print(f"EFCPdiag Mode {i}: T={t:.6f} s")
     print("STATUS: SENSITIVITY ONLY - SPEAR-M0 NOT VALIDATED")
     ops.wipe()
