@@ -43,20 +43,33 @@ CM=[(4.53,5.29),(4.53,5.29),(4.57,5.33)]
 Z=[0.0,3.0,6.0,9.0]
 GACC=9.81
 
-# Published Table 4-4: theta_y(+,-), theta_u(+,-), My(+,-) [N m]
-BH={
-"B1": (0.0010,0.0024,0.021,0.014,24.7e3,151.5e3),
-"B2": (0.0014,0.0041,0.029,0.018,25.3e3,171.7e3),
-"B3": (0.0008,0.0023,0.021,0.018,25.6e3,120.1e3),
-"B4": (0.0014,0.0045,0.039,0.041,63.0e3,152.7e3),
-"B5": (0.0010,0.0022,0.021,0.022,24.7e3,82.1e3),
-"B6": (0.0016,0.0047,0.033,0.025,25.7e3,142.3e3),
-"B7": (0.0010,0.0054,0.038,0.020,27.3e3,214.1e3),
-"B8": (0.0011,0.0030,0.025,0.025,25.4e3,105.0e3),
-"B9": (0.0038,0.0048,0.040,0.024,101.2e3,183.1e3),
-"B10":(0.0021,0.0036,0.026,0.013,37.3e3,209.4e3),
-"B11":(0.0015,0.0039,0.031,0.034,25.5e3,74.4e3),
-"B12":(0.0016,0.0040,0.029,0.020,24.7e3,159.2e3),
+# Published Table 4-4: end-specific theta_y(+,-), theta_u(+,-), My(+,-)
+# [rad, rad, rad, rad, N m, N m]
+BH_END={
+("B1","i"):(0.0010,0.0022,0.021,0.022,24.7e3,82.1e3),
+("B1","j"):(0.0010,0.0024,0.021,0.014,24.7e3,151.5e3),
+("B2","i"):(0.0014,0.0041,0.029,0.017,25.3e3,187.0e3),
+("B2","j"):(0.0014,0.0041,0.029,0.018,25.3e3,171.7e3),
+("B3","i"):(0.0008,0.0023,0.021,0.018,25.6e3,120.1e3),
+("B3","j"):(0.0008,0.0023,0.021,0.018,25.6e3,120.1e3),
+("B4","i"):(0.0014,0.0056,0.039,0.016,63.0e3,310.5e3),
+("B4","j"):(0.0042,0.0045,0.036,0.041,248.2e3,152.7e3),
+("B5","i"):(0.0010,0.0022,0.021,0.022,24.7e3,82.1e3),
+("B5","j"):(0.0010,0.0022,0.021,0.022,24.7e3,82.1e3),
+("B6","i"):(0.0016,0.0047,0.033,0.025,25.7e3,142.3e3),
+("B6","j"):(0.0016,0.0047,0.033,0.025,25.7e3,142.3e3),
+("B7","i"):(0.0010,0.0059,0.038,0.014,27.3e3,336.6e3),
+("B7","j"):(0.0016,0.0054,0.039,0.020,25.6e3,214.1e3),
+("B8","i"):(0.0011,0.0030,0.025,0.025,25.4e3,105.0e3),
+("B8","j"):(0.0011,0.0030,0.025,0.025,25.4e3,105.0e3),
+("B9","i"):(0.0038,0.0050,0.040,0.027,101.2e3,212.1e3),
+("B9","j"):(0.0012,0.0048,0.039,0.024,44.9e3,183.1e3),
+("B10","i"):(0.0021,0.0030,0.026,0.023,37.3e3,115.6e3),
+("B10","j"):(0.0011,0.0036,0.025,0.013,25.3e3,209.4e3),
+("B11","i"):(0.0015,0.0044,0.031,0.021,25.5e3,159.5e3),
+("B11","j"):(0.0018,0.0039,0.031,0.034,24.7e3,74.4e3),
+("B12","i"):(0.0016,0.0036,0.029,0.032,24.7e3,74.4e3),
+("B12","j"):(0.0014,0.0040,0.029,0.020,25.3e3,159.2e3),
 }
 
 def rect_props(by,bz):
@@ -139,9 +152,9 @@ def build():
             # duplicate nodes at joints for beam element
             ni=10000+l*1000+ib*2; nj=ni+1
             ops.node(ni,xa,ya,Z[l]); ops.node(nj,xb,yb,Z[l])
-            hp=BH[bn]
+            hpi=BH_END[(bn,"i")]; hpj=BH_END[(bn,"j")]
             mi=20000+l*1000+ib*2; mj=mi+1
-            hinge_mat(mi,*hp); hinge_mat(mj,*hp)
+            hinge_mat(mi,*hpi); hinge_mat(mj,*hpj)
             # local x along beam; local y = global Z => local z horizontal transverse.
             # Vertical-plane beam flexure is rotation about local z => dir 6.
             si=30000+l*1000+ib*2; sj=si+1
@@ -247,7 +260,7 @@ def run_pushover_x(target=0.20,du=0.00025):
       "target_m":target,"reached_m":rows[-1][0],"peak_base_shear_kN":peak/1e3,
       "modal_periods_s":T,"modal_shape_x":phi,"modal_pattern":forces,
       "gravity":"G+approx seismic floor weight from published masses, equally distributed to 9 joints",
-      "beam_hinges":"Table 4-4 B1-B12; elastic member + concentrated plastic-rotation springs; plastic capacity theta_u-theta_y",
+      "beam_hinges":"Table 4-4 end-specific B1-B12; elastic member + concentrated plastic-rotation springs; plastic capacity theta_u-theta_y",
       "columns":"dispBeamColumn fiber Concrete02/Steel02, 5 Lobatto; 4x12 regular, 10x12 C6",
       "warning":"B13/B14 topology not represented in frozen modal topology; nonlinear gate remains provisional until reconciled."
     }
