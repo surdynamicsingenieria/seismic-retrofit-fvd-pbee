@@ -42,7 +42,7 @@ def rect_props(b,h):
     J=aa*bb**3*(1/3-0.21*(bb/aa)*(1-bb**4/(12*aa**4)))
     return A,Iy,Iz,J
 
-def build_spear_m0_elastic(rigid_offsets=False, efcp_pretest=False):
+def build_spear_m0_elastic(rigid_offsets=False, efcp_pretest=False, c6_rigid_arms=False):
     ops.wipe(); ops.model("basic","-ndm",3,"-ndf",6)
     # Expected concrete strength used by the pre-test best-estimate model: 37.5 MPa.
     # For this modal diagnostic use EC2 secant modulus from fcm=fc+8 MPa.
@@ -105,7 +105,14 @@ def build_spear_m0_elastic(rigid_offsets=False, efcp_pretest=False):
     for lev in range(1,4):
         for _,a,b in BEAMS:
             transf=2
-            if rigid_offsets:
+            if c6_rigid_arms and (a=="C6" or b=="C6"):
+                xa,ya=PLAN[a]; xb,yb=PLAN[b]
+                L=math.hypot(xb-xa,yb-ya); ux=(xb-xa)/L; uy=(yb-ya)/L
+                da=col_half_extent(a,ux,uy) if a=="C6" else 0.0
+                db=col_half_extent(b,ux,uy) if b=="C6" else 0.0
+                transf=2000+tag
+                ops.geomTransf("Linear",transf,0,0,1,"-jntOffset",ux*da,uy*da,0,-ux*db,-uy*db,0)
+            elif rigid_offsets:
                 xa,ya=PLAN[a]; xb,yb=PLAN[b]
                 L=math.hypot(xb-xa,yb-ya); ux=(xb-xa)/L; uy=(yb-ya)/L
                 da=col_half_extent(a,ux,uy); db=col_half_extent(b,ux,uy)
@@ -127,8 +134,8 @@ def build_spear_m0_elastic(rigid_offsets=False, efcp_pretest=False):
         ops.rigidDiaphragm(3,master,*[ntag(lev,n) for n in names])
     return True
 
-def run_modal(n_modes=6, rigid_offsets=False, efcp_pretest=False):
-    build_spear_m0_elastic(rigid_offsets=rigid_offsets, efcp_pretest=efcp_pretest)
+def run_modal(n_modes=6, rigid_offsets=False, efcp_pretest=False, c6_rigid_arms=False):
+    build_spear_m0_elastic(rigid_offsets=rigid_offsets, efcp_pretest=efcp_pretest, c6_rigid_arms=c6_rigid_arms)
     vals=ops.eigen("-fullGenLapack",n_modes)
     periods=[2*math.pi/math.sqrt(v) for v in vals]
     return periods
@@ -146,6 +153,7 @@ if __name__=="__main__":
     ps=run_modal(rigid_offsets=False); write_results(ps)
     ps_off=run_modal(rigid_offsets=True)
     ps_efcp=run_modal(rigid_offsets=False,efcp_pretest=True)
+    ps_c6=run_modal(rigid_offsets=False,efcp_pretest=True,c6_rigid_arms=True)
     print("BASELINE / GENERIC JOINT-OFFSET SENSITIVITY")
     for i,t in enumerate(ps,1):
         if i<=3:
@@ -168,5 +176,14 @@ if __name__=="__main__":
             print(f"EFCPdiag Mode {i}: T={t:.6f} s; EFCP={EFCP_TARGETS[i-1]:.3f} s; error={e:+.2f}%")
         else:
             print(f"EFCPdiag Mode {i}: T={t:.6f} s")
+    print("EFCP DIAGNOSTIC + C6-ONLY RIGID ARMS:")
+    for i,t in enumerate(ps_c6,1):
+        if i<=3:
+            e=100*(t-EFCP_TARGETS[i-1])/EFCP_TARGETS[i-1]
+            delta=100*(t-ps_efcp[i-1])/ps_efcp[i-1]
+            print(f"C6diag Mode {i}: T={t:.6f} s; EFCP={EFCP_TARGETS[i-1]:.3f} s; error={e:+.2f}%; vs EFCPdiag={delta:+.2f}%")
+        else:
+            delta=100*(t-ps_efcp[i-1])/ps_efcp[i-1]
+            print(f"C6diag Mode {i}: T={t:.6f} s; vs EFCPdiag={delta:+.2f}%")
     print("STATUS: SENSITIVITY ONLY - SPEAR-M0 NOT VALIDATED")
     ops.wipe()
