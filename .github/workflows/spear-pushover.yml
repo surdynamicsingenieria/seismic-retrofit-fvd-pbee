@@ -30,6 +30,7 @@ jobs:
           python validation/diagnose_column_stiffness.py
           python validation/diagnose_beam_hinge_stiffness.py
           python validation/diagnose_beam_formulations.py
+          python validation/diagnose_zeroLength_constraints.py
           python models/SPEAR/spear_m0_nonlinear_efcp_cp.py validation/results/pushover_x_cp_candidate.csv
           python models/SPEAR/spear_m0_nonlinear_efcp.py validation/results/pushover_x_candidate.csv
       - name: Show candidate output
