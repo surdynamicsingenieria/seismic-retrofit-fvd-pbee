@@ -39,8 +39,8 @@ jobs:
           python models/SPEAR/spear_m0_nonlinear_efcp_cp.py validation/results/pushover_x_cp_candidate.csv
       - name: Run principal nonlinear EFCP +X pushover (gating)
         run: |
-          python models/SPEAR/spear_m0_nonlinear_efcp.py validation/results/pushover_x_candidate.csv
+          python models/SPEAR/spear_m0_nonlinear.py
       - name: Show candidate output
         if: always()
         run: |
-          test -f validation/results/pushover_x_candidate.csv && tail -20 validation/results/pushover_x_candidate.csv || true
+          test -f validation/results/pushover_x.csv && tail -20 validation/results/pushover_x.csv || true\n          test -f validation/results/pushover_x_summary.json && cat validation/results/pushover_x_summary.json || true
