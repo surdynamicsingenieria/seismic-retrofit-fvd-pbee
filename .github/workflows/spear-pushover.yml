@@ -9,6 +9,7 @@ on:
       - ".github/workflows/spear-pushover.yml"
   workflow_dispatch:
 
+# Manual diagnostic rerun after published B7-B12 mapping correction.
 jobs:
   pushover-x:
     runs-on: ubuntu-latest
