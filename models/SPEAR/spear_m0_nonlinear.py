@@ -147,7 +147,10 @@ def build():
                         "-orient",ux,uy,0,0,0,1)
             tr=40000+l*1000+ib
             ops.geomTransf("Linear",tr,0,0,1)
-            ops.element("elasticBeamColumn",50000+l*1000+ib,ni,nj,Ab,Ec,G,Jb,Iyb,Izb,tr)
+            # Table 4-4 moment-rotation is the one-component member response; do not
+            # add the elastic flexural deformation of that same strong bending component
+            # a second time in series. Keep axial/torsion/minor-axis elastic.
+            ops.element("elasticBeamColumn",50000+l*1000+ib,ni,nj,Ab,Ec,G,Jb,Iyb*1.0e6,Izb,tr)
 
     # Rigid diaphragms and published masses.
     masters=[]
@@ -203,11 +206,25 @@ def run_pushover_x(target=0.20,du=0.0005):
     for step in range(1,nsteps+1):
         ok=ops.analyze(1)
         if ok!=0:
-            # convergence recovery
-            ops.test("NormDispIncr",1e-6,100)
-            ops.algorithm("NewtonLineSearch",0.8)
-            ok=ops.analyze(1)
+            recovered=False
+            # progressively smaller displacement increments and alternate algorithms
+            for fac,alg in [(0.5,"NewtonLineSearch"),(0.25,"KrylovNewton"),(0.10,"ModifiedNewton")]:
+                ops.integrator("DisplacementControl",masters[-1],1,du*fac)
+                ops.test("NormDispIncr",1e-6,120)
+                if alg=="NewtonLineSearch": ops.algorithm("NewtonLineSearch",0.8)
+                elif alg=="KrylovNewton": ops.algorithm("KrylovNewton")
+                else: ops.algorithm("ModifiedNewton","-initial")
+                if ops.analyze(1)==0:
+                    recovered=True
+                    # complete the remaining fraction of the nominal step using small increments
+                    rem=du*(1.0-fac); nsub=max(1,round(rem/(du*fac)))
+                    ops.integrator("DisplacementControl",masters[-1],1,rem/nsub)
+                    for _ in range(nsub):
+                        if ops.analyze(1)!=0: break
+                    break
             ops.algorithm("Newton"); ops.test("NormDispIncr",1e-7,50)
+            ops.integrator("DisplacementControl",masters[-1],1,du)
+            ok=0 if recovered else -1
         if ok!=0:
             print(f"NONCONVERGENCE step={step} roof={ops.nodeDisp(masters[-1],1):.6f}")
             break
