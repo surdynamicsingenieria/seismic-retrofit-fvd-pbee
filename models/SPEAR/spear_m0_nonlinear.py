@@ -42,6 +42,14 @@ POLAR=[1254e3,1254e3,1196e3]
 CM=[(4.53,5.29),(4.53,5.29),(4.57,5.33)]
 Z=[0.0,3.0,6.0,9.0]
 GACC=9.81
+# Reconstructed tributary areas [m2] from the published irregular floor polygon,
+# Voronoi-partitioned about column centrelines. Sum = 92.5 m2.
+TRIB_AREA={
+ "C8":3.7500,"C6":11.2500,"C7":7.3292636364,
+ "C9":7.8750,"C3":24.8572168831,"C4":13.4856298701,
+ "C5":4.0546875,"C1":9.8129367236,"C2":10.0852653868,
+}
+TRIB_TOTAL=sum(TRIB_AREA.values())
 
 # Published Table 4-4: end-specific theta_y(+,-), theta_u(+,-), My(+,-)
 # [rad, rad, rad, rad, N m, N m]
@@ -184,7 +192,8 @@ def gravity(names,nt):
     ops.timeSeries("Linear",10); ops.pattern("Plain",10,10)
     for l in range(1,4):
         W=MASSES[l-1]*GACC
-        for n in names: ops.load(nt(l,n),0,0,-W/len(names),0,0,0)
+        for n in names:
+            ops.load(nt(l,n),0,0,-W*TRIB_AREA[n]/TRIB_TOTAL,0,0,0)
     ops.constraints("Transformation"); ops.numberer("RCM"); ops.system("UmfPack")
     ops.test("NormDispIncr",1e-8,30); ops.algorithm("Newton")
     ops.integrator("LoadControl",0.1); ops.analysis("Static")
@@ -259,7 +268,7 @@ def run_pushover_x(target=0.20,du=0.00025):
       "status":"success" if ok==0 and rows[-1][0]>=target-du*1.5 else "partial",
       "target_m":target,"reached_m":rows[-1][0],"peak_base_shear_kN":peak/1e3,
       "modal_periods_s":T,"modal_shape_x":phi,"modal_pattern":forces,
-      "gravity":"G+approx seismic floor weight from published masses, equally distributed to 9 joints",
+      "gravity":"published floor seismic weights distributed by reconstructed tributary areas (Voronoi on published plan polygon)",
       "beam_hinges":"Table 4-4 end-specific B1-B12; elastic member + concentrated plastic-rotation springs; plastic capacity theta_u-theta_y",
       "columns":"dispBeamColumn fiber Concrete02/Steel02, 5 Lobatto; 4x12 regular, 10x12 C6",
       "warning":"B13/B14 topology not represented in frozen modal topology; nonlinear gate remains provisional until reconciled."
