@@ -46,19 +46,28 @@ def build(mode):
             elif mode=="forceElastic":
                 integ+=1; ops.beamIntegration("Lobatto",integ,400,5)
                 ops.element("forceBeamColumn",tag,nt(l,a),nt(l,b),tr,integ)
-            elif mode=="CP":
-                # near-rigid plastic end sections; elastic response should come from section 400.
-                mat+=1; ops.uniaxialMaterial("Elastic",mat,1e15)
-                sec+=1; si=sec; ops.section("Uniaxial",si,mat,"My")
-                mat+=1; ops.uniaxialMaterial("Elastic",mat,1e15)
-                sec+=1; sj=sec; ops.section("Uniaxial",sj,mat,"My")
+            elif mode in ("CP","CP2"):
+                # CP2 explicitly defines both bending plastic-deformation modes, as in the
+                # OpenSees 3D ConcentratedPlasticity example.
+                mat+=1; myi=mat; ops.uniaxialMaterial("Elastic",myi,1e15)
+                if mode=="CP":
+                    sec+=1; si=sec; ops.section("Uniaxial",si,myi,"My")
+                else:
+                    mat+=1; mzi=mat; ops.uniaxialMaterial("Elastic",mzi,1e15)
+                    sec+=1; si=sec; ops.section("Aggregator",si,mzi,"Mz",myi,"My")
+                mat+=1; myj=mat; ops.uniaxialMaterial("Elastic",myj,1e15)
+                if mode=="CP":
+                    sec+=1; sj=sec; ops.section("Uniaxial",sj,myj,"My")
+                else:
+                    mat+=1; mzj=mat; ops.uniaxialMaterial("Elastic",mzj,1e15)
+                    sec+=1; sj=sec; ops.section("Aggregator",sj,mzj,"Mz",myj,"My")
                 integ+=1; ops.beamIntegration("ConcentratedPlasticity",integ,si,sj,400)
                 ops.element("forceBeamColumn",tag,nt(l,a),nt(l,b),tr,integ)
             tag+=1
     vals=ops.eigen("-fullGenLapack",6)
     return [2*math.pi/math.sqrt(v) for v in vals]
 
-for mode in ("elasticBeamColumn","forceElastic","CP"):
+for mode in ("elasticBeamColumn","forceElastic","CP","CP2"):
     try:
         p=build(mode)
         print("BEAMFORM",mode,",".join(f"{x:.6f}" for x in p))
