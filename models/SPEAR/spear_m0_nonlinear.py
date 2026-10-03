@@ -87,11 +87,17 @@ def make_fiber_section(sec, by, bz, nbar):
                 ops.fiber(y,z,As,steel)
 
 def hinge_mat(tag, ty_pos,ty_neg,tu_pos,tu_neg,my_pos,my_neg):
-    # Trilinear approximation: cracking point + yield + near-flat post-yield branch.
-    # Positive and negative capacities are asymmetric per Table 4-4.
+    # Plastic-rotation spring decomposition.
+    # The elastic beam carries the member rotation up to yield; this zeroLength
+    # spring carries only plastic rotation. Published theta_u-theta_y therefore
+    # defines the available plastic-rotation capacity.
+    k0=1.0e11
+    eyp=my_pos/k0; eyn=my_neg/k0
+    pup=max(tu_pos-ty_pos,20*eyp)
+    pun=max(tu_neg-ty_neg,20*eyn)
     ops.uniaxialMaterial("Hysteretic",tag,
-        0.30*my_pos,0.30*ty_pos, my_pos,ty_pos,1.03*my_pos,tu_pos,
-        -0.30*my_neg,-0.30*ty_neg,-my_neg,-ty_neg,-1.03*my_neg,-tu_neg,
+        0.99*my_pos,0.99*eyp, my_pos,eyp,1.03*my_pos,eyp+pup,
+        -0.99*my_neg,-0.99*eyn,-my_neg,-eyn,-1.03*my_neg,-eyn-pun,
         0.2,0.2,0.0,0.0,0.0)
 
 def build():
@@ -147,10 +153,9 @@ def build():
                         "-orient",ux,uy,0,0,0,1)
             tr=40000+l*1000+ib
             ops.geomTransf("Linear",tr,0,0,1)
-            # Table 4-4 moment-rotation is the one-component member response; do not
-            # add the elastic flexural deformation of that same strong bending component
-            # a second time in series. Keep axial/torsion/minor-axis elastic.
-            ops.element("elasticBeamColumn",50000+l*1000+ib,ni,nj,Ab,Ec,G,Jb,Iyb*1.0e6,Izb,tr)
+            # Elastic member response remains in the beam; the zeroLength spring above
+            # represents plastic rotation only.
+            ops.element("elasticBeamColumn",50000+l*1000+ib,ni,nj,Ab,Ec,G,Jb,Iyb,Izb,tr)
 
     # Rigid diaphragms and published masses.
     masters=[]
@@ -242,7 +247,7 @@ def run_pushover_x(target=0.20,du=0.0005):
       "target_m":target,"reached_m":rows[-1][0],"peak_base_shear_kN":peak/1e3,
       "modal_periods_s":T,"modal_shape_x":phi,"modal_pattern":forces,
       "gravity":"G+approx seismic floor weight from published masses, equally distributed to 9 joints",
-      "beam_hinges":"Table 4-4 B1-B12; trilinear reconstructed with cracking=0.3My and postyield=1.03My",
+      "beam_hinges":"Table 4-4 B1-B12; elastic member + concentrated plastic-rotation springs; plastic capacity theta_u-theta_y",
       "columns":"fiber Concrete02/Steel02, 5 Lobatto; 4x12 regular, 10x12 C6",
       "warning":"B13/B14 topology not represented in frozen modal topology; nonlinear gate remains provisional until reconciled."
     }
