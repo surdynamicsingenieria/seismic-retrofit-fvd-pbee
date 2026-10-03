@@ -34,8 +34,12 @@ PLAN={
 # Published beam numbering reconstructed from Fig. 4-5.
 BEAMS=[
  ("B1","C5","C1"),("B2","C1","C2"),("B3","C9","C3"),("B4","C3","C4"),
- ("B5","C8","C6"),("B6","C6","C7"),("B7","C1","C3"),("B8","C2","C4"),
- ("B9","C5","C9"),("B10","C3","C6"),("B11","C9","C8"),("B12","C4","C7"),
+ ("B5","C8","C6"),("B6","C6","C7"),
+ # Published physical beam labels (Fig. 1 / Fig. 4-5):
+ # upper vertical legs: B11 (left), B9 (centre), B7 (right)
+ # lower vertical legs: B12 (left), B10 (centre), B8 (right)
+ ("B7","C2","C4"),("B8","C4","C7"),("B9","C1","C3"),
+ ("B10","C3","C6"),("B11","C5","C9"),("B12","C9","C8"),
 ]
 MASSES=[65.5e3,65.5e3,64.1e3]
 POLAR=[1254e3,1254e3,1196e3]
@@ -282,7 +286,7 @@ def run_pushover_x(target=0.20,du=0.00025):
       "gravity":"published floor seismic weights distributed by reconstructed tributary areas (Voronoi on published plan polygon)",
       "beam_hinges":"Table 4-4 end-specific B1-B12; elastic member + concentrated plastic-rotation springs; plastic capacity theta_u-theta_y",
       "columns":"dispBeamColumn fiber Concrete02/Steel02, 5 Lobatto; 4x12 regular, 10x12 C6",
-      "warning":"B13/B14 topology not represented in frozen modal topology; nonlinear gate remains provisional until reconciled."
+      "warning":"Physical B1-B12 mapping corrected to published plan. Analytical B13/B14 split segments still pending; nonlinear gate remains provisional until reconciled."
     }
     (OUT/"pushover_x_summary.json").write_text(json.dumps(summary,indent=2))
     print("PUSHOVER_X_SUMMARY",json.dumps(summary))
