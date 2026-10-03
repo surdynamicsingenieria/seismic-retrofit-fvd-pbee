@@ -34,3 +34,4 @@ jobs:
           python validation/spear_modal_characterization.py
           python models/SPEAR/spear_m0_nonlinear.py || true
           python models/SPEAR/spear_m0_etcp_diagnostic.py
+          python models/SPEAR/spear_m0_efcp_endfibers.py || true
