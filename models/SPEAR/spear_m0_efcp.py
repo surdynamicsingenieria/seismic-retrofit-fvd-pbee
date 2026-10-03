@@ -46,9 +46,9 @@ def build_spear_m0_efcp():
     ops.wipe(); ops.model("basic","-ndm",3,"-ndf",6)
     # Expected concrete strength used by the pre-test best-estimate model: 37.5 MPa.
     # For this modal diagnostic use EC2 secant modulus from fcm=fc+8 MPa.
-    fc=37.5e6 if efcp_pretest else 25.0e6
+    fc=37.5e6
     fcm=fc+8.0e6
-    E=22.0e9*(fcm/10.0e6)**0.3 if efcp_pretest else 30.0e9
+    E=22.0e9*(fcm/10.0e6)**0.3
     nu=0.20; G=E/(2*(1+nu))
     # transformations: column local x vertical; beam local x horizontal
     ops.geomTransf("Linear",1,1,0,0)
