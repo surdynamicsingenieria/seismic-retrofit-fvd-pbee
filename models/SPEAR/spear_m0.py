@@ -56,6 +56,8 @@ def build_spear_m0_elastic(rigid_offsets=False):
     else:
         ops.geomTransf("Linear",1,1,0,0)
     ops.geomTransf("Linear",2,0,0,1)
+    # Geometric rigid-end offsets for beams are represented with member-specific
+    # transformations below because C6 is rectangular and beams are skewed.
 
     names=list(PLAN)
     idx={n:i+1 for i,n in enumerate(names)}
@@ -83,12 +85,31 @@ def build_spear_m0_elastic(rigid_offsets=False):
                         A,E,G,J,Iy,Iz,1)
             tag+=1
 
-    # Beams: published 0.25 x 0.50 web, gross rectangular diagnostic stiffness.
+    # Beams: 0.25 x 0.50 m. With rigid_offsets=True, each end offset is
+    # derived from the actual column footprint projected along the beam axis.
+    # Square columns: 0.125 m. C6 footprint: 0.75 m in X and 0.25 m in Y
+    # (consistent with its strong bending axis in global Y).
     Ab,Iyb,Izb,Jb=rect_props(0.25,0.50)
+    def col_half_extent(name, ux, uy):
+        if name != "C6":
+            return 0.125
+        # distance from centre of an axis-aligned 0.75(X) x 0.25(Y)
+        # rectangle to its boundary along beam direction u
+        return 1.0/(abs(ux)/0.375 + abs(uy)/0.125)
+
     for lev in range(1,4):
         for _,a,b in BEAMS:
+            transf=2
+            if rigid_offsets:
+                xa,ya=PLAN[a]; xb,yb=PLAN[b]
+                L=math.hypot(xb-xa,yb-ya); ux=(xb-xa)/L; uy=(yb-ya)/L
+                da=col_half_extent(a,ux,uy); db=col_half_extent(b,ux,uy)
+                # jntOffset is global XYZ from node to deformable member end.
+                transf=1000+tag
+                ops.geomTransf("Linear",transf,0,0,1,"-jntOffset",
+                              ux*da,uy*da,0,-ux*db,-uy*db,0)
             ops.element("elasticBeamColumn",tag,ntag(lev,a),ntag(lev,b),
-                        Ab,E,G,Jb,Iyb,Izb,2)
+                        Ab,E,G,Jb,Iyb,Izb,transf)
             tag+=1
 
     # Published rigid-diaphragm masses at CM.
@@ -125,7 +146,7 @@ if __name__=="__main__":
             e=100*(t-EFCP_TARGETS[i-1])/EFCP_TARGETS[i-1]
             print(f"Mode {i}: T={t:.6f} s; EFCP={EFCP_TARGETS[i-1]:.3f} s; error={e:+.2f}%")
         else: print(f"Mode {i}: T={t:.6f} s")
-    print("WITH COLUMN-END RIGID OFFSETS (+/-0.25 m):")
+    print("WITH GEOMETRIC RIGID-END OFFSETS (beam depth + actual column footprints):")
     for i,t in enumerate(ps_off,1):
         if i<=3:
             e=100*(t-EFCP_TARGETS[i-1])/EFCP_TARGETS[i-1]
