@@ -32,3 +32,4 @@ jobs:
           python models/SPEAR/spear_m0_efcp_plan_fajfar.py
           python models/SPEAR/spear_m0_efcp_plan_fajfar_c6.py
           python validation/spear_modal_characterization.py
+          python models/SPEAR/spear_m0_nonlinear.py
