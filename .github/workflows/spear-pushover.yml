@@ -1,0 +1,32 @@
+name: SPEAR nonlinear pushover
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "models/SPEAR/spear_m0_nonlinear_efcp.py"
+      - ".github/workflows/spear-pushover.yml"
+  workflow_dispatch:
+
+jobs:
+  pushover-x:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libblas3 liblapack3
+      - name: Install OpenSeesPy
+        run: python -m pip install openseespy
+      - name: Run nonlinear EFCP +X pushover
+        run: |
+          python models/SPEAR/spear_m0_nonlinear_efcp.py validation/results/pushover_x_candidate.csv
+      - name: Show candidate output
+        if: always()
+        run: |
+          test -f validation/results/pushover_x_candidate.csv && tail -20 validation/results/pushover_x_candidate.csv || true
