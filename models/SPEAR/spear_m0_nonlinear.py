@@ -124,7 +124,7 @@ def build():
     for l in range(1,4):
         for n in names:
             integ=302 if n=="C6" else 301
-            ops.element("forceBeamColumn",etag,nt(l-1,n),nt(l,n),1,integ)
+            ops.element("dispBeamColumn",etag,nt(l-1,n),nt(l,n),1,integ)
             etag+=1
 
     # Beam elastic interior + zeroLength end hinges.
@@ -189,7 +189,7 @@ def modal_x_pattern(masters):
     f=[x/s for x in f]
     return vals,ph,f
 
-def run_pushover_x(target=0.20,du=0.0005):
+def run_pushover_x(target=0.20,du=0.00025):
     names,idx,nt,masters,Ec=build()
     gok=gravity(names,nt)
     if gok!=0:
@@ -248,7 +248,7 @@ def run_pushover_x(target=0.20,du=0.0005):
       "modal_periods_s":T,"modal_shape_x":phi,"modal_pattern":forces,
       "gravity":"G+approx seismic floor weight from published masses, equally distributed to 9 joints",
       "beam_hinges":"Table 4-4 B1-B12; elastic member + concentrated plastic-rotation springs; plastic capacity theta_u-theta_y",
-      "columns":"fiber Concrete02/Steel02, 5 Lobatto; 4x12 regular, 10x12 C6",
+      "columns":"dispBeamColumn fiber Concrete02/Steel02, 5 Lobatto; 4x12 regular, 10x12 C6",
       "warning":"B13/B14 topology not represented in frozen modal topology; nonlinear gate remains provisional until reconciled."
     }
     (OUT/"pushover_x_summary.json").write_text(json.dumps(summary,indent=2))
