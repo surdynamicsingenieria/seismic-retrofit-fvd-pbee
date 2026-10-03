@@ -28,4 +28,4 @@ jobs:
         run: |
           python models/SPEAR/spear_m0.py
           python models/SPEAR/spear_m0_efcp.py
-          python models/SPEAR/spear_m0_efcp_h1_275_geometry_sensitivity.py
+          python models/SPEAR/spear_m0_efcp_h1_275_geometry_sensitivity.py\n          python validation/spear_modal_characterization.py
