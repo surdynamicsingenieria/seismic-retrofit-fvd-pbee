@@ -259,7 +259,18 @@ def run_pushover_x(target=0.20,du=0.00025):
         vb=-sum(ops.nodeReaction(n,1) for n in base_nodes)
         u=ops.nodeDisp(masters[-1],1)
         rows.append((u,vb))
-        if step%20==0: print(f"PUSHX step={step} u={u:.5f} Vb={vb/1e3:.2f} kN")
+        if step%20==0:
+            print(f"PUSHX step={step} u={u:.5f} Vb={vb/1e3:.2f} kN")
+        # Column force audit at representative roof displacements.
+        if any(abs(u-x)<du*0.75 for x in (0.02,0.05,0.10,0.15,0.18)):
+            audit=[]
+            # First-storey tags follow PLAN insertion order.
+            for et,n in enumerate(names,1):
+                ef=ops.eleForce(et)
+                # local end forces: P,Vy,Vz,T,My,Mz at i-end.
+                p=ef[0]/1e3; my=ef[4]/1e3; mz=ef[5]/1e3
+                audit.append(f"{n}:P={p:.1f},My={my:.1f},Mz={mz:.1f}")
+            print(f"COLAUDIT u={u:.5f} " + " | ".join(audit))
 
     csv=OUT/"pushover_x.csv"
     csv.write_text("roof_disp_m,base_shear_N\n"+"\n".join(f"{u:.8f},{v:.6f}" for u,v in rows)+"\n")
