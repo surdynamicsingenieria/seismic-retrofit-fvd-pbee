@@ -187,3 +187,5 @@ if __name__=="__main__":
             print(f"C6diag Mode {i}: T={t:.6f} s; vs EFCPdiag={delta:+.2f}%")
     print("STATUS: SENSITIVITY ONLY - SPEAR-M0 NOT VALIDATED")
     ops.wipe()
+
+# rerun marker: EFCP-consistent C6 diagnostic; no cross-model beam assumptions
