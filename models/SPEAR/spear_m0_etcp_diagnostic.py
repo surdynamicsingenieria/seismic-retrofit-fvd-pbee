@@ -199,7 +199,7 @@ def build():
 
             # Local x vertical; local y global Y; local z global -X.
             mats=[701,702,703,704,mymat,mzmat]
-            ei=62000+l*1000+ic*2; ej=ei+1
+            ei=620000+l*1000+ic*2; ej=ei+1
             ops.element("zeroLength",ei,nt(l-1,n),ni,"-mat",*mats,"-dir",1,2,3,4,5,6,
                         "-orient",0,0,1,0,1,0)
             ops.element("zeroLength",ej,nj,nt(l,n),"-mat",*mats,"-dir",1,2,3,4,5,6,
@@ -211,7 +211,7 @@ def build():
                 by,bz=.25,.25
             A,Iy,Iz,J=rect_props(by,bz)
             # Table 4-5 springs supply flexural compliance.
-            ops.element("elasticBeamColumn",63000+l*1000+ic,ni,nj,A,Ec,G,J,
+            ops.element("elasticBeamColumn",630000+l*1000+ic,ni,nj,A,Ec,G,J,
                         Iy*1.0e6,Iz*1.0e6,1)
             etag+=1
 
