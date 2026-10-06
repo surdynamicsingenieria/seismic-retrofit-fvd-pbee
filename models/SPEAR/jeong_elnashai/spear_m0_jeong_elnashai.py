@@ -36,15 +36,20 @@ def build():
         for n,(x,y) in PLAN.items():
             ops.node(nt(k,n), x, y, z)
             if k == 0: ops.fix(nt(k,n), 1,1,1,1,1,1)
-    ops.geomTransf("PDelta", 1, 1,0,0)
-    rect(101,1,0.25,0.25)
+        rect(101,1,0.25,0.25)
     rect(102,1,0.75,0.25)
     ops.beamIntegration("Lobatto",201,101,5)
     ops.beamIntegration("Lobatto",202,102,5)
+    # Fig. 2.4 / Table 2.8: rigid joint zones at column ends.
+    # First-storey deformable height is 2.75 m: no footing offset, 0.25 m top offset.
     et=1
     for k in range(1,4):
         for n in names:
-            ops.element("dispBeamColumn",et,nt(k-1,n),nt(k,n),1,202 if n=="C6" else 201)
+            trc=3000+k*100+ix[n]
+            bot=0.0 if k==1 else 0.25
+            top=0.25
+            ops.geomTransf("PDelta",trc,1,0,0,"-jntOffset",0,0,bot,0,0,-top)
+            ops.element("dispBeamColumn",et,nt(k-1,n),nt(k,n),trc,202 if n=="C6" else 201)
             et += 1
     for k in range(1,4):
         for j,(bn,a,b) in enumerate(BEAMS):
@@ -55,8 +60,14 @@ def build():
             zbar=(Af*zf+Aw*zw)/(Af+Aw)
             I=beff*SLAB_THICKNESS**3/12+Af*(zf-zbar)**2+0.25*(0.50-SLAB_THICKNESS)**3/12+Aw*(zw-zbar)**2
             Iz=0.50*0.25**3/12; J=0.25*0.50**3/3
+            # Beam deformable length starts at column faces. All column dimensions
+            # normal to these beam axes are 0.25 m, including C6 in its x direction.
+            xa,ya=PLAN[a]; xb,yb=PLAN[b]
+            L=math.hypot(xb-xa,yb-ya); ux=(xb-xa)/L; uy=(yb-ya)/L
+            oi=(0.125*ux,0.125*uy,0.0)
+            oj=(-0.125*ux,-0.125*uy,0.0)
             tr=1000+k*100+j
-            ops.geomTransf("Linear",tr,0,0,1)
+            ops.geomTransf("Linear",tr,0,0,1,"-jntOffset",*oi,*oj)
             ops.element("elasticBeamColumn",10000+k*100+j,nt(k,a),nt(k,b),A,Ec,Ec/(2*1.2),J,I,Iz,tr)
     poly=[PLAN[x] for x in ("C8","C7","C4","C2","C5")]
     area=polygon_area(poly)
@@ -83,7 +94,7 @@ def modal():
     T=[2*math.pi/math.sqrt(v) for v in vals]
     target=[0.51,0.46,0.40,0.18]
     err=[100*(a-b)/b for a,b in zip(T,target)]
-    out={"status":"diagnostic_not_validated","periods_s":T,"targets_s":target,"errors_pct":err,"pending":["explicit rigid end offsets","C6 rigid arms/eccentricity","member reinforcement","Fig 2.6 exact tributary nodal masses","full nonlinear T-beam fibres"]}
+    out={"status":"diagnostic_rigid_offsets_not_validated","periods_s":T,"targets_s":target,"errors_pct":err,"pending":["C6 rigid arms/eccentricity","member reinforcement","Fig 2.6 exact tributary nodal masses","full nonlinear T-beam fibres"]}
     (OUT/"modal_baseline.json").write_text(json.dumps(out,indent=2))
     print("JEONG_ELNASHAI_MODAL",json.dumps(out))
     ops.wipe()
