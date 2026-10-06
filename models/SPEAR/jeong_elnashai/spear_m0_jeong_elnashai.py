@@ -64,8 +64,12 @@ def build():
             # normal to these beam axes are 0.25 m, including C6 in its x direction.
             xa,ya=PLAN[a]; xb,yb=PLAN[b]
             L=math.hypot(xb-xa,yb-ya); ux=(xb-xa)/L; uy=(yb-ya)/L
-            oi=(0.125*ux,0.125*uy,0.0)
-            oj=(-0.125*ux,-0.125*uy,0.0)
+            # Source geometry: C6 is 0.75 m in global Y. B10 approaches C6 along Y,
+            # therefore its C6-end rigid offset is 0.375 m; regular column faces are 0.125 m.
+            off_i=0.125
+            off_j=0.375 if (bn=="B10" and b=="C6") else 0.125
+            oi=(off_i*ux,off_i*uy,0.0)
+            oj=(-off_j*ux,-off_j*uy,0.0)
             tr=7000+k*100+j
             ops.geomTransf("Linear",tr,0,0,1,"-jntOffset",*oi,*oj)
             ops.element("elasticBeamColumn",10000+k*100+j,nt(k,a),nt(k,b),A,Ec,Ec/(2*1.2),J,I,Iz,tr)
