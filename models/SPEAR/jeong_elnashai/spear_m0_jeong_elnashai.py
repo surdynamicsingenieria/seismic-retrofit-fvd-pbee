@@ -1,5 +1,5 @@
 """Independent SPEAR M0 reconstruction following Jeong & Elnashai (2004), MAE 04-03.
-First executable baseline. No Stratan-Fajfar hinge data and no calibration.
+First executable baseline. No Stratan-Fajfar hinge data and no calibration.\nMass-unit diagnostic rerun marker: kg-consistent.
 """
 import math, json
 from pathlib import Path
