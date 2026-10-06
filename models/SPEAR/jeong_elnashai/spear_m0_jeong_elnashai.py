@@ -78,19 +78,20 @@ def build():
     beamW=sum(math.hypot(PLAN[b][0]-PLAN[a][0],PLAN[b][1]-PLAN[a][1])*0.25*(0.50-SLAB_THICKNESS)*GAMMA_RC for _,a,b in BEAMS)
     colW=(8*0.25*0.25+0.75*0.25)*3.0*GAMMA_RC
     W=area*SLAB_THICKNESS*GAMMA_RC + area*(0.5+0.6) + beamW + colW
-    mf_t=W/G
-    mf=1000.0*mf_t
-    mn=mf/len(names)
-    cx=sum(PLAN[n][0] for n in names)/len(names)
-    cy=sum(PLAN[n][1] for n in names)/len(names)
-    Jm=mn*sum((PLAN[n][0]-cx)**2+(PLAN[n][1]-cy)**2 for n in names)
+    floor_mass_t={1:65.5,2:65.5,3:64.1}
+    floor_cm={1:(4.53,5.29),2:(4.53,5.29),3:(4.57,5.33)}
     for k in range(1,4):
+        mf_t=floor_mass_t[k]
+        mf=1000.0*mf_t
+        cx,cy=floor_cm[k]
+        mn=mf/len(names)
+        Jm=mn*sum((PLAN[n][0]-cx)**2+(PLAN[n][1]-cy)**2 for n in names)
         m=900+k
         ops.node(m,cx,cy,Z[k])
         ops.fix(m,0,0,1,1,1,0)
         ops.mass(m,mf,mf,0,0,0,Jm)
         ops.rigidDiaphragm(3,m,*[nt(k,n) for n in names])
-    print("PHYSICAL_MASS_DIAGNOSTIC",json.dumps({"mass_t_floor":mf_t,"mass_kg_floor":mf,"cm_equal_nodal":[cx,cy],"Jm_kg_m2":Jm}))
+    print("PHYSICAL_MASS_DIAGNOSTIC",json.dumps({"source":"Bhatt 2007 Table 6.2","floor_mass_t":floor_mass_t,"floor_cm":floor_cm}))
 
 def modal():
     build()
