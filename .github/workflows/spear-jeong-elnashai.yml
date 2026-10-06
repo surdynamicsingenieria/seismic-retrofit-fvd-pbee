@@ -1,0 +1,20 @@
+name: SPEAR Jeong-Elnashai M0
+on:
+  push:
+    branches: [spear-jeong-elnashai-m0]
+    paths:
+      - "models/SPEAR/jeong_elnashai/**"
+      - ".github/workflows/spear-jeong-elnashai.yml"
+  workflow_dispatch:
+jobs:
+  modal-baseline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - run: sudo apt-get update && sudo apt-get install -y libblas3 liblapack3
+      - run: python -m pip install openseespy
+      - name: Run independent Jeong-Elnashai modal baseline
+        run: python models/SPEAR/jeong_elnashai/spear_m0_jeong_elnashai.py
