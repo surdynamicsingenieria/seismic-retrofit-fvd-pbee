@@ -67,8 +67,7 @@ def build():
     A=0.5*abs(sum(poly[i][0]*poly[(i+1)%len(poly)][1]-poly[(i+1)%len(poly)][0]*poly[i][1] for i in range(len(poly))))
     beamW=sum(math.hypot(PLAN[b][0]-PLAN[a][0],PLAN[b][1]-PLAN[a][1])*.25*(.50-SLAB)*gamma for _,a,b in BEAMS)
     colW=(8*.25*.25+.75*.25)*3.0*gamma
-    W=A*SLAB*gamma+A*(.5+.6)+beamW+colW
-    mf=W/g; mn=mf/len(names)
+    W=A*SLAB*gamma+A*(.5+.6)+beamW+colW\n    # W[kN]/g[m/s2] = tonnes; OpenSees N-m-s model requires kg.\n    mf_t=W/g; mf=1000.0*mf_t; mn=mf/len(names)
     masters=[]
     cx=sum(PLAN[n][0] for n in names)/len(names); cy=sum(PLAN[n][1] for n in names)/len(names)
     Jm=mn*sum((PLAN[n][0]-cx)**2+(PLAN[n][1]-cy)**2 for n in names)
@@ -78,7 +77,7 @@ def build():
         # polar mass moment of the diagnostic nodal allocation.
         ops.mass(m,mf,mf,0,0,0,Jm)
         ops.rigidDiaphragm(3,m,*[nt(k,n) for n in names]); masters.append(m)
-    print("PHYSICAL_MASS_DIAGNOSTIC",json.dumps({"mass_t_floor":mf,"cm_equal_nodal":[cx,cy],"Jm_t_m2":Jm}))
+    print("PHYSICAL_MASS_DIAGNOSTIC",json.dumps({"mass_t_floor":mf_t,"mass_kg_floor":mf,"cm_equal_nodal":[cx,cy],"Jm_kg_m2":Jm}))
     return masters
 
 def modal():
