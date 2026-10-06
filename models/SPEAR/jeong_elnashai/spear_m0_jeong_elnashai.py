@@ -1,3 +1,4 @@
+# CI rerun trigger: syntax-fixed C6 modal
 """Jeong-Elnashai MAE 04-03 SPEAR M0 diagnostic modal model.
 No Stratan-Fajfar hinge data. No modal calibration.
 """
