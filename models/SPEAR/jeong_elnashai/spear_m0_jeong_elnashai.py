@@ -103,7 +103,7 @@ def modal():
     T=[2*math.pi/math.sqrt(v) for v in vals]
     target=[0.51,0.46,0.40,0.18]
     err=[100*(a-b)/b for a,b in zip(T,target)]
-    out={"status":"diagnostic_fig2p2_geometry_c6_arms","periods_s":T,"targets_s":target,"errors_pct":err,pending":["member reinforcement/fibre beams","Fig 2.6 exact nodal mass condensation"]}
+    out={"status":"diagnostic_fig2p2_geometry_c6_arms","periods_s":T,"targets_s":target,"errors_pct":err,"pending":["member reinforcement/fibre beams","Fig 2.6 exact nodal mass condensation"]}
     (OUT/"modal_baseline.json").write_text(json.dumps(out,indent=2))
     print("JEONG_ELNASHAI_MODAL",json.dumps(out))
     ops.wipe()
