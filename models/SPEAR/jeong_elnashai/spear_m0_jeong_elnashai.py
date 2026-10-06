@@ -36,7 +36,7 @@ def build():
         for n,(x,y) in PLAN.items():
             ops.node(nt(k,n), x, y, z)
             if k == 0: ops.fix(nt(k,n), 1,1,1,1,1,1)
-        rect(101,1,0.25,0.25)
+    rect(101,1,0.25,0.25)
     rect(102,1,0.75,0.25)
     ops.beamIntegration("Lobatto",201,101,5)
     ops.beamIntegration("Lobatto",202,102,5)
