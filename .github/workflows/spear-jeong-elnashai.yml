@@ -19,5 +19,7 @@ jobs:
       - run: python -m pip install openseespy
       - name: Audit source-locked mass ledger
         run: cd models/SPEAR/jeong_elnashai && python mass_gravity_audit.py
+      - name: Compile-check Jeong-Elnashai modal source
+        run: python -m py_compile models/SPEAR/jeong_elnashai/spear_m0_jeong_elnashai.py
       - name: Run independent Jeong-Elnashai modal baseline
         run: python models/SPEAR/jeong_elnashai/spear_m0_jeong_elnashai.py
