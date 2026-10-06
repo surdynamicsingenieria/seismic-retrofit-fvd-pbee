@@ -80,18 +80,18 @@ def build():
     W=area*SLAB_THICKNESS*GAMMA_RC + area*(0.5+0.6) + beamW + colW
     floor_mass_t={1:65.5,2:65.5,3:64.1}
     floor_cm={1:(4.53,5.29),2:(4.53,5.29),3:(4.57,5.33)}
+    floor_Jm_tm2={1:1254.0,2:1254.0,3:1196.0}
     for k in range(1,4):
         mf_t=floor_mass_t[k]
         mf=1000.0*mf_t
         cx,cy=floor_cm[k]
-        mn=mf/len(names)
-        Jm=mn*sum((PLAN[n][0]-cx)**2+(PLAN[n][1]-cy)**2 for n in names)
+        Jm=1000.0*floor_Jm_tm2[k]
         m=900+k
         ops.node(m,cx,cy,Z[k])
         ops.fix(m,0,0,1,1,1,0)
         ops.mass(m,mf,mf,0,0,0,Jm)
         ops.rigidDiaphragm(3,m,*[nt(k,n) for n in names])
-    print("PHYSICAL_MASS_DIAGNOSTIC",json.dumps({"source":"Bhatt 2007 Table 6.2","floor_mass_t":floor_mass_t,"floor_cm":floor_cm}))
+    print("PHYSICAL_MASS_DIAGNOSTIC",json.dumps({"source":"published SPEAR mass properties","floor_mass_t":floor_mass_t,"floor_cm":floor_cm,"floor_Jm_tm2":floor_Jm_tm2}))
 
 def modal():
     build()
