@@ -50,7 +50,7 @@ def build():
             bot=0.0 if k==1 else 0.25
             top=0.25
             ops.geomTransf("PDelta",trc,1,0,0,"-jntOffset",0,0,bot,0,0,-top)
-            ops.element("dispBeamColumn",et,nt(k-1,n),nt(k,n),trc,202 if n=="C6" else 201)
+            ops.element("forceBeamColumn",et,nt(k-1,n),nt(k,n),trc,202 if n=="C6" else 201)
             et += 1
     for k in range(1,4):
         for j,(bn,a,b) in enumerate(BEAMS):
