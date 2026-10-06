@@ -4,10 +4,10 @@ No modal calibration is embedded here.
 """
 JOINTS = {
     "C8": (0.0, 0.0), "C6": (3.0, 0.0), "C7": (9.0, 0.0),
-    "C9": (0.0, 5.0), "C3": (3.0, 5.0), "C4": (9.7, 4.0),
+    "C9": (0.0, 5.0), "C3": (3.0, 4.0), "C4": (9.0, 4.0),
     "C5": (0.0,10.5), "C1": (3.0,10.5), "C2": (8.0,10.0),
 }
-# Fig. 2.2: x chain 3 + 5 + 1 + 0.7 m; y chains left 5+5.5, right 4+6 m.
+# Fig. 2.2: x chain 3 + 5 + 1 + 0.7 m; y chains left 5+5.5, right 4+6 m.\n# C3=(3,4) and C4=(9,4) are the Frame X2 intersections shown explicitly in Fig. 2.2.\n# Earlier diagnostic coordinates C3=(3,5), C4=(9.7,4) were a transcription error.
 STORY_CENTERLINES = (0.0, 3.0, 6.0, 9.0)
 SLAB_THICKNESS = 0.150
 COLUMN = {"regular":(.250,.250), "C6":(.750,.250)}
