@@ -45,7 +45,7 @@ def build():
     et=1
     for k in range(1,4):
         for n in names:
-            trc=3000+k*100+ix[n]
+            trc=5000+k*100+ix[n]
             bot=0.0 if k==1 else 0.25
             top=0.25
             ops.geomTransf("PDelta",trc,1,0,0,"-jntOffset",0,0,bot,0,0,-top)
@@ -66,7 +66,7 @@ def build():
             L=math.hypot(xb-xa,yb-ya); ux=(xb-xa)/L; uy=(yb-ya)/L
             oi=(0.125*ux,0.125*uy,0.0)
             oj=(-0.125*ux,-0.125*uy,0.0)
-            tr=1000+k*100+j
+            tr=7000+k*100+j
             ops.geomTransf("Linear",tr,0,0,1,"-jntOffset",*oi,*oj)
             ops.element("elasticBeamColumn",10000+k*100+j,nt(k,a),nt(k,b),A,Ec,Ec/(2*1.2),J,I,Iz,tr)
     poly=[PLAN[x] for x in ("C8","C7","C4","C2","C5")]
