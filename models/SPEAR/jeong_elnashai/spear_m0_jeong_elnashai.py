@@ -4,10 +4,9 @@ First executable baseline. No Stratan-Fajfar hinge data and no calibration.
 import math, json
 from pathlib import Path
 import openseespy.opensees as ops
+from geometry_source import JOINTS as PLAN
 
 OUT=Path("results/SPEAR/jeong_elnashai"); OUT.mkdir(parents=True,exist_ok=True)
-PLAN={"C8":(0.,0.),"C6":(3.,0.),"C7":(9.,0.),"C9":(0.,5.),"C3":(3.,5.),
-      "C4":(9.7,4.),"C5":(0.,10.5),"C1":(3.,10.5),"C2":(8.,10.)}
 BEAMS=[("B1","C5","C1"),("B2","C1","C2"),("B3","C9","C3"),("B4","C3","C4"),
        ("B5","C8","C6"),("B6","C6","C7"),("B7","C2","C4"),("B8","C4","C7"),
        ("B9","C1","C3"),("B10","C3","C6"),("B11","C5","C9"),("B12","C9","C8")]
@@ -60,15 +59,26 @@ def build():
             Iz=.50*.25**3/12; J=.25*.50**3/3
             tr=1000+k*100+j; ops.geomTransf("Linear",tr,0,0,1)
             ops.element("elasticBeamColumn",10000+k*100+j,nt(k,a),nt(k,b),A,Ec,Ec/(2*1.2),J,I,Iz,tr)
-    # Rigid diaphragms. Mass includes slab + finishing + 0.3LL; member self-mass to be
-    # replaced by exact source nodal mass reconstruction before validation.
+    # Diagnostic physical-mass modal: complete ledger distributed to physical joints.
+    # Equal nodal allocation is used ONLY for this requested sensitivity run; Fig 2.6
+    # tributary allocation remains required before validation.
+    gamma=24.518; g=9.807
+    poly=[PLAN[x] for x in ("C8","C7","C4","C2","C5")]
+    A=0.5*abs(sum(poly[i][0]*poly[(i+1)%len(poly)][1]-poly[(i+1)%len(poly)][0]*poly[i][1] for i in range(len(poly))))
+    beamW=sum(math.hypot(PLAN[b][0]-PLAN[a][0],PLAN[b][1]-PLAN[a][1])*.25*(.50-SLAB)*gamma for _,a,b in BEAMS)
+    colW=(8*.25*.25+.75*.25)*3.0*gamma
+    W=A*SLAB*gamma+A*(.5+.6)+beamW+colW
+    mf=W/g; mn=mf/len(names)
     masters=[]
-    area_mass=RHO_RC*SLAB+(0.5e3+0.3*2.0e3)/G
-    mf=area_mass*FLOOR_AREA
+    cx=sum(PLAN[n][0] for n in names)/len(names); cy=sum(PLAN[n][1] for n in names)/len(names)
+    Jm=mn*sum((PLAN[n][0]-cx)**2+(PLAN[n][1]-cy)**2 for n in names)
     for k in range(1,4):
-        m=900+k; ops.node(m,4.53,5.29,Z[k]); ops.fix(m,0,0,1,1,1,0)
-        ops.mass(m,mf,mf,0,0,0,mf*20.0)
+        m=900+k; ops.node(m,cx,cy,Z[k]); ops.fix(m,0,0,1,1,1,0)
+        # Equivalent diaphragm master mass preserves total translational mass and
+        # polar mass moment of the diagnostic nodal allocation.
+        ops.mass(m,mf,mf,0,0,0,Jm)
         ops.rigidDiaphragm(3,m,*[nt(k,n) for n in names]); masters.append(m)
+    print("PHYSICAL_MASS_DIAGNOSTIC",json.dumps({"mass_t_floor":mf,"cm_equal_nodal":[cx,cy],"Jm_t_m2":Jm}))
     return masters
 
 def modal():
@@ -78,7 +88,7 @@ def modal():
     err=[100*(a-b)/b for a,b in zip(T,target)]
     out={"status":"diagnostic_not_validated","periods_s":T,"targets_s":target,"errors_pct":err,
          "pending":["explicit rigid end offsets","C6 rigid arms/eccentricity","member reinforcement",
-                    "exact source nodal masses","full nonlinear T-beam fibres"]}
+                    "Fig 2.6 exact tributary nodal masses","full nonlinear T-beam fibres"]}
     (OUT/"modal_baseline.json").write_text(json.dumps(out,indent=2))
     print("JEONG_ELNASHAI_MODAL",json.dumps(out)); ops.wipe()
     return 0
