@@ -94,3 +94,31 @@ Quantitative digitization of Fig. 2.8 must be stored separately before declaring
 6. only after all gates pass may this model be considered a candidate SPEAR-M0 benchmark.
 
 No FVD, optimization, NLTHA/MSA or FEMA P-58 before benchmark validation.
+
+
+## Geometry/mass audit — exact-reconstruction gate (2026-10-06)
+
+The first executable baseline is **not** the Jeong-Elnashai validation model. It intentionally remains diagnostic.
+
+Verified directly from MAE 04-03:
+- Figure 2.2 is the governing source for centerline geometry. Dimension strings include 3 m, 5 m, 1 m and 0.7 m in plan, with the irregular transverse dimensions 5.5 m, 5 m, 6 m and 4 m. Storey centerline spacing is 3 m and slab thickness is 0.15 m.
+- Figure 2.4 requires rigid offsets at BOTH beam and column ends.
+- B5 and B6 centerlines are not aligned with the C6 centerline. C6 therefore requires explicit rigid arms; a single coincident C6/B5/B6 joint is prohibited.
+- Section 2.2.4: gravity = DL + 0.3LL; finishing = 0.5 kN/m2; design LL = 2.0 kN/m2; RC unit weight = 24.518 kN/m3.
+- Slab gravity/self-weight is distributed to nearest beams (Fig. 2.6), then represented by multiple loading points/short beam elements.
+- Seismic mass is gravity load divided by g=9807 mm/s2 and lumped at BEAM-COLUMN CONNECTIONS, not at one floor center.
+- Table 2.3 explicitly states P-delta considered, distributed plasticity, centerline dimensions, rigid offsets, M-M-N interaction, no viscous damping.
+
+### Prohibited carry-over from the diagnostic baseline
+The provisional `PLAN` coordinates and single floor-center mass used in commit ce1b2e7 are not source-locked Jeong-Elnashai data and SHALL NOT be used for acceptance.
+
+### Next executable gate
+Before the next modal acceptance run:
+1. reconstruct every joint centerline coordinate from Fig. 2.2;
+2. create physical joint-face rigid offsets;
+3. create separate B5/C6/B6 connection nodes and C6 rigid arms from Fig. 2.4;
+4. distribute slab/member gravity according to Fig. 2.6;
+5. condense the resulting seismic masses to the beam-column connections while retaining the rigid diaphragm kinematics;
+6. report total floor mass, center of mass and polar mass moment for each floor before eigenanalysis.
+
+No stiffness/mass scaling or period-target calibration is permitted.
