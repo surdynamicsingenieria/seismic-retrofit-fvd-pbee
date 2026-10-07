@@ -37,7 +37,17 @@ def build():
         for n,(x,y) in PLAN.items():
             ops.node(nt(k,n), x, y, z)
             if k == 0: ops.fix(nt(k,n), 1,1,1,1,1,1)
-    # Fig. 2.4(b): B5 and B6 axes straddle the 0.75-m C6 depth.\n    # With 0.25-m beams flush to opposite C6 faces, their centreline gaps are +/-0.25 m.\n    # Create explicit connection axes and rigid arms to the C6 column centreline.\n    c6_arm_nodes = {}\n    for k in range(1,4):\n        z=Z[k]; x6,y6=PLAN["C6"]\n        ni=8000+k*10+1; no=8000+k*10+2\n        ops.node(ni,x6,y6-0.25,z); ops.node(no,x6,y6+0.25,z)\n        ops.rigidLink("beam",nt(k,"C6"),ni); ops.rigidLink("beam",nt(k,"C6"),no)\n        c6_arm_nodes[k]={"B5":ni,"B6":no}\n    rect(101,1,0.25,0.25)
+    # Fig. 2.4(b): B5 and B6 axes straddle the 0.75-m C6 depth.
+    # With 0.25-m beams flush to opposite C6 faces, their centreline gaps are +/-0.25 m.
+    # Create explicit connection axes and rigid arms to the C6 column centreline.
+    c6_arm_nodes = {}
+    for k in range(1,4):
+        z=Z[k]; x6,y6=PLAN["C6"]
+        ni=8000+k*10+1; no=8000+k*10+2
+        ops.node(ni,x6,y6-0.25,z); ops.node(no,x6,y6+0.25,z)
+        ops.rigidLink("beam",nt(k,"C6"),ni); ops.rigidLink("beam",nt(k,"C6"),no)
+        c6_arm_nodes[k]={"B5":ni,"B6":no}
+    rect(101,1,0.25,0.25)
     rect(102,1,0.75,0.25)
     ops.beamIntegration("Lobatto",201,101,5)
     ops.beamIntegration("Lobatto",202,102,5)
