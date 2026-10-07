@@ -44,9 +44,9 @@ def build():
         if k == 0:
             ops.fix(8000+k*10+5,1,1,1,1,1,1); ops.fix(8000+k*10+6,1,1,1,1,1,1)
 
-    # Explicit rigid arms C6 -> B5/B6 connection axes (L=0.25 m).\n    # Large but finite section stiffness approximates a rigid joint arm without MP chaining.\n    Er=Ec*1.0e4; Gr=Er/(2*1.2); Ar=1.0; Ir=1.0; Jr=1.0\n    for k in range(1,4):\n        trr=6000+k\n        ops.geomTransf("Linear",trr,0,0,1)\n        ops.element("elasticBeamColumn",60000+k*10+5,nt(k,"C6"),8000+k*10+5,Ar,Er,Gr,Jr,Ir,Ir,trr)\n        ops.element("elasticBeamColumn",60000+k*10+6,nt(k,"C6"),8000+k*10+6,Ar,Er,Gr,Jr,Ir,Ir,trr)\n        rect(101,1,0.25,0.25)
+    rect(101,1,0.25,0.25)
     rect(102,1,0.75,0.25)
-    ops.beamIntegration("Lobatto",201,101,5)
+    # Explicit rigid arms C6 -> B5/B6 connection axes (L=0.25 m).\n    # Large but finite section stiffness approximates a rigid joint arm without MP chaining.\n    Er=Ec*1.0e4; Gr=Er/(2*1.2); Ar=1.0; Ir=1.0; Jr=1.0\n    for k in range(1,4):\n        trr=6000+k\n        ops.geomTransf("Linear",trr,0,0,1)\n        ops.element("elasticBeamColumn",60000+k*10+5,nt(k,"C6"),8000+k*10+5,Ar,Er,Gr,Jr,Ir,Ir,trr)\n        ops.element("elasticBeamColumn",60000+k*10+6,nt(k,"C6"),8000+k*10+6,Ar,Er,Gr,Jr,Ir,Ir,trr)\n        ops.beamIntegration("Lobatto",201,101,5)
     ops.beamIntegration("Lobatto",202,102,5)
     # Fig. 2.4 / Table 2.8: rigid joint zones at column ends.
     # First-storey deformable height is 2.75 m: no footing offset, 0.25 m top offset.
