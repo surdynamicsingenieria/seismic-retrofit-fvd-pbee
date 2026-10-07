@@ -3,7 +3,7 @@ Coordinates are reconstructed directly from Fig. 2.2 dimension chains (metres).
 No modal calibration is embedded here.
 """
 JOINTS = {
-    "C8": (0.0, 0.0), "C6": (3.0, 0.0), "C7": (9.0, 0.0),
+    "C8": (0.0, 0.0), "C6": (3.0, 0.275), "C7": (9.0, 0.0),
     "C9": (0.0, 5.0), "C3": (3.0, 4.5), "C4": (9.0, 4.5),
     "C5": (0.0,10.5), "C1": (3.0,10.5), "C2": (8.0,10.5),
 }
