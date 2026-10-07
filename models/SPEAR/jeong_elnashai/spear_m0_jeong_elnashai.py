@@ -1,4 +1,3 @@
-# CI rerun trigger: syntax-fixed C6 modal
 """Jeong-Elnashai MAE 04-03 SPEAR M0 diagnostic modal model.
 No Stratan-Fajfar hinge data. No modal calibration.
 """
@@ -37,7 +36,7 @@ def build():
         for n,(x,y) in PLAN.items():
             ops.node(nt(k,n), x, y, z)
             if k == 0: ops.fix(nt(k,n), 1,1,1,1,1,1)
-    # A/B audit: C6 rigid arms temporarily removed to isolate stiffness jump.\n    # workflow trigger\n    rect(101,1,0.25,0.25)
+    rect(101,1,0.25,0.25)
     rect(102,1,0.75,0.25)
     ops.beamIntegration("Lobatto",201,101,5)
     ops.beamIntegration("Lobatto",202,102,5)
@@ -63,7 +62,7 @@ def build():
             Iz=0.50*0.25**3/12; J=0.25*0.50**3/3
             # Beam deformable length starts at column faces. All column dimensions
             # normal to these beam axes are 0.25 m, including C6 in its x direction.
-            node_a=nt(k,a); node_b=nt(k,b)\n            xa,ya=PLAN[a]; xb,yb=PLAN[b]
+            xa,ya=PLAN[a]; xb,yb=PLAN[b]
             L=math.hypot(xb-xa,yb-ya); ux=(xb-xa)/L; uy=(yb-ya)/L
             # Source geometry: C6 is 0.75 m in global Y. B10 approaches C6 along Y,
             # therefore its C6-end rigid offset is 0.375 m; regular column faces are 0.125 m.
@@ -73,7 +72,7 @@ def build():
             oj=(-off_j*ux,-off_j*uy,0.0)
             tr=7000+k*100+j
             ops.geomTransf("Linear",tr,0,0,1,"-jntOffset",*oi,*oj)
-            ops.element("elasticBeamColumn",10000+k*100+j,node_a,node_b,A,Ec,Ec/(2*1.2),J,I,Iz,tr)
+            ops.element("elasticBeamColumn",10000+k*100+j,nt(k,a),nt(k,b),A,Ec,Ec/(2*1.2),J,I,Iz,tr)
     poly=[PLAN[x] for x in ("C8","C7","C4","C2","C5")]
     area=polygon_area(poly)
     beamW=sum(math.hypot(PLAN[b][0]-PLAN[a][0],PLAN[b][1]-PLAN[a][1])*0.25*(0.50-SLAB_THICKNESS)*GAMMA_RC for _,a,b in BEAMS)
@@ -100,7 +99,7 @@ def modal():
     T=[2*math.pi/math.sqrt(v) for v in vals]
     target=[0.51,0.46,0.40,0.18]
     err=[100*(a-b)/b for a,b in zip(T,target)]
-    out={"status":"diagnostic_fig2p2_geometry_c6_arms","periods_s":T,"targets_s":target,"errors_pct":err,"pending":["member reinforcement/fibre beams","Fig 2.6 exact nodal mass condensation"]}
+    out={"status":"audit_no_c6_rigid_arms_corrected_geometry","periods_s":T,"targets_s":target,"errors_pct":err,"pending":["C6 rigid arms/eccentricity","member reinforcement","Fig 2.6 exact tributary nodal masses","full nonlinear T-beam fibres"]}
     (OUT/"modal_baseline.json").write_text(json.dumps(out,indent=2))
     print("JEONG_ELNASHAI_MODAL",json.dumps(out))
     ops.wipe()
