@@ -51,6 +51,12 @@ def build():
             ops.geomTransf("PDelta",trc,1,0,0,"-jntOffset",0,0,bot,0,0,-top)
             ops.element("dispBeamColumn",et,nt(k-1,n),nt(k,n),trc,202 if n=="C6" else 201)
             et += 1
+    c6_ecc = {}
+    for k in range(1,4):
+        x6,y6=PLAN["C6"]
+        n5=8000+k*10+1; n6=8000+k*10+2
+        ops.node(n5,x6,y6-0.25,Z[k]); ops.node(n6,x6,y6+0.25,Z[k])
+        c6_ecc[k]={"B5":n5,"B6":n6}
     for k in range(1,4):
         for j,(bn,a,b) in enumerate(BEAMS):
             beff = BEFF_MM[bn]/1000.0
