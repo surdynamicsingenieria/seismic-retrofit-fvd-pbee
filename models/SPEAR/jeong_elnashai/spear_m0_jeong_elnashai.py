@@ -62,7 +62,12 @@ def build():
             Iz=0.50*0.25**3/12; J=0.25*0.50**3/3
             # Beam deformable length starts at column faces. All column dimensions
             # normal to these beam axes are 0.25 m, including C6 in its x direction.
+            node_a=nt(k,a); node_b=nt(k,b)
             xa,ya=PLAN[a]; xb,yb=PLAN[b]
+            if bn=="B5":
+                node_b=c6_ecc[k]["B5"]; xb,yb=(PLAN["C6"][0],PLAN["C6"][1]-0.25)
+            if bn=="B6":
+                node_a=c6_ecc[k]["B6"]; xa,ya=(PLAN["C6"][0],PLAN["C6"][1]+0.25)
             L=math.hypot(xb-xa,yb-ya); ux=(xb-xa)/L; uy=(yb-ya)/L
             # Source geometry: C6 is 0.75 m in global Y. B10 approaches C6 along Y,
             # therefore its C6-end rigid offset is 0.375 m; regular column faces are 0.125 m.
