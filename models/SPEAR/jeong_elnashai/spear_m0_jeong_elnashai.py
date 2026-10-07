@@ -51,12 +51,6 @@ def build():
             ops.geomTransf("PDelta",trc,1,0,0,"-jntOffset",0,0,bot,0,0,-top)
             ops.element("dispBeamColumn",et,nt(k-1,n),nt(k,n),trc,202 if n=="C6" else 201)
             et += 1
-    c6_ecc = {}
-    for k in range(1,4):
-        x6,y6=PLAN["C6"]
-        n5=8000+k*10+1; n6=8000+k*10+2
-        ops.node(n5,x6,y6-0.25,Z[k]); ops.node(n6,x6,y6+0.25,Z[k])
-        c6_ecc[k]={"B5":n5,"B6":n6}
     for k in range(1,4):
         for j,(bn,a,b) in enumerate(BEAMS):
             beff = BEFF_MM[bn]/1000.0
@@ -68,12 +62,7 @@ def build():
             Iz=0.50*0.25**3/12; J=0.25*0.50**3/3
             # Beam deformable length starts at column faces. All column dimensions
             # normal to these beam axes are 0.25 m, including C6 in its x direction.
-            node_a=nt(k,a); node_b=nt(k,b)
             xa,ya=PLAN[a]; xb,yb=PLAN[b]
-            if bn=="B5":
-                node_b=c6_ecc[k]["B5"]; xb,yb=(PLAN["C6"][0],PLAN["C6"][1]-0.25)
-            if bn=="B6":
-                node_a=c6_ecc[k]["B6"]; xa,ya=(PLAN["C6"][0],PLAN["C6"][1]+0.25)
             L=math.hypot(xb-xa,yb-ya); ux=(xb-xa)/L; uy=(yb-ya)/L
             # Source geometry: C6 is 0.75 m in global Y. B10 approaches C6 along Y,
             # therefore its C6-end rigid offset is 0.375 m; regular column faces are 0.125 m.
@@ -83,7 +72,7 @@ def build():
             oj=(-off_j*ux,-off_j*uy,0.0)
             tr=7000+k*100+j
             ops.geomTransf("Linear",tr,0,0,1,"-jntOffset",*oi,*oj)
-            ops.element("elasticBeamColumn",10000+k*100+j,node_a,node_b,A,Ec,Ec/(2*1.2),J,I,Iz,tr)
+            ops.element("elasticBeamColumn",10000+k*100+j,nt(k,a),nt(k,b),A,Ec,Ec/(2*1.2),J,I,Iz,tr)
     poly=[PLAN[x] for x in ("C8","C7","C4","C2","C5")]
     area=polygon_area(poly)
     beamW=sum(math.hypot(PLAN[b][0]-PLAN[a][0],PLAN[b][1]-PLAN[a][1])*0.25*(0.50-SLAB_THICKNESS)*GAMMA_RC for _,a,b in BEAMS)
@@ -101,7 +90,7 @@ def build():
         ops.node(m,cx,cy,Z[k])
         ops.fix(m,0,0,1,1,1,0)
         ops.mass(m,mf,mf,0,0,0,Jm)
-        ops.rigidDiaphragm(3,m,*([nt(k,n) for n in names]+[c6_ecc[k]["B5"],c6_ecc[k]["B6"]]))
+        ops.rigidDiaphragm(3,m,*[nt(k,n) for n in names])
     print("PHYSICAL_MASS_DIAGNOSTIC",json.dumps({"source":"published SPEAR mass properties","floor_mass_t":floor_mass_t,"floor_cm":floor_cm,"floor_Jm_tm2":floor_Jm_tm2}))
 
 def modal():
@@ -110,7 +99,7 @@ def modal():
     T=[2*math.pi/math.sqrt(v) for v in vals]
     target=[0.51,0.46,0.40,0.18]
     err=[100*(a-b)/b for a,b in zip(T,target)]
-    out={"status":"audit_c6_ecc_nodes_direct_to_diaph","periods_s":T,"targets_s":target,"errors_pct":err,"pending":["C6 eccentricity validation","member reinforcement","Fig 2.6 exact tributary nodal masses","full nonlinear T-beam fibres"]}
+    out={"status":"audit_c6_centroid_y_0p275_no_ecc_nodes","periods_s":T,"targets_s":target,"errors_pct":err,"pending":["C6 rigid arms/eccentricity","member reinforcement","Fig 2.6 exact tributary nodal masses","full nonlinear T-beam fibres"]}
     (OUT/"modal_baseline.json").write_text(json.dumps(out,indent=2))
     print("JEONG_ELNASHAI_MODAL",json.dumps(out))
     ops.wipe()
