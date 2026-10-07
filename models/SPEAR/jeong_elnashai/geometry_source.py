@@ -3,15 +3,15 @@ Coordinates are reconstructed directly from Fig. 2.2 dimension chains (metres).
 No modal calibration is embedded here.
 """
 JOINTS = {
-    "C8": (0.0, 0.0), "C6": (3.0, 0.275), "C7": (9.0, 0.0),
+    "C8": (0.0, 0.0), "C6": (3.0, 0.25), "C7": (9.0, 0.5),
     "C9": (0.0, 5.0), "C3": (3.0, 4.5), "C4": (9.0, 4.5),
     "C5": (0.0,10.5), "C1": (3.0,10.5), "C2": (8.0,10.5),
 }
-# Fig. 2.2: x chain 3 + 5 + 1 + 0.7 m; y chains left 5+5.5, right 4+6 m.\n# C3=(3,4) and C4=(9,4) are the Frame X2 intersections shown explicitly in Fig. 2.2.\n# Earlier diagnostic coordinates C3=(3,5), C4=(9.7,4) were a transcription error.
+# Fig. 2.2 geometry audit: C3=(3,4.5), C4=(9,4.5), C2=(8,10.5).\n# C6 centroid lies midway between the B5 and B6 axes: B5 y=0.0, C6 y=0.25, B6 y=0.50.
 STORY_CENTERLINES = (0.0, 3.0, 6.0, 9.0)
 SLAB_THICKNESS = 0.150
 COLUMN = {"regular":(.250,.250), "C6":(.750,.250)}
-# C6 long dimension is y; Fig. 2.4 requires distinct B5/C6/B6 axes and rigid arms.
+# C6 long dimension is global y. B5 and B6 axes are offset +/-0.25 m from the C6 centroid.
 BEAMS = [
  ("B1","C5","C1"),("B2","C1","C2"),("B3","C9","C3"),("B4","C3","C4"),
  ("B5","C8","C6"),("B6","C6","C7"),("B7","C2","C4"),("B8","C4","C7"),
