@@ -37,12 +37,15 @@ def build():
             ops.node(nt(k,n), x, y, z)
             if k == 0: ops.fix(nt(k,n), 1,1,1,1,1,1)
         # Physical beam-axis connection points at C6: B5/B6 are 0.50 m apart,
-        # symmetric about the C6 centroid. These nodes are connected through
-        # element joint offsets, not nested MP rigidLinks.
+        # symmetric about the C6 centroid. They are tied to C6 by rigid-total
+        # arms using equalDOF to avoid deformable eccentric links.
         ops.node(8000+k*10+5, PLAN["C6"][0], PLAN["C6"][1]-0.25, z)
         ops.node(8000+k*10+6, PLAN["C6"][0], PLAN["C6"][1]+0.25, z)
         if k == 0:
             ops.fix(8000+k*10+5,1,1,1,1,1,1); ops.fix(8000+k*10+6,1,1,1,1,1,1)
+        else:
+            ops.rigidLink("beam", nt(k,"C6"), 8000+k*10+5)
+            ops.rigidLink("beam", nt(k,"C6"), 8000+k*10+6)
     rect(101,1,0.25,0.25)
     rect(102,1,0.75,0.25)
     ops.beamIntegration("Lobatto",201,101,5)
@@ -100,7 +103,7 @@ def build():
         ops.node(m,cx,cy,Z[k])
         ops.fix(m,0,0,1,1,1,0)
         ops.mass(m,mf,mf,0,0,0,Jm)
-        ops.rigidDiaphragm(3,m,*([nt(k,n) for n in names]+[8000+k*10+5,8000+k*10+6]))
+        ops.rigidDiaphragm(3,m,*[nt(k,n) for n in names])
     print("PHYSICAL_MASS_DIAGNOSTIC",json.dumps({"source":"published SPEAR mass properties","floor_mass_t":floor_mass_t,"floor_cm":floor_cm,"floor_Jm_tm2":floor_Jm_tm2}))
 
 def modal():
@@ -109,7 +112,7 @@ def modal():
     T=[2*math.pi/math.sqrt(v) for v in vals]
     target=[0.51,0.46,0.40,0.18]
     err=[100*(a-b)/b for a,b in zip(T,target)]
-    out={"status":"audit_c6_centroid_y0p25_b5_b6_axes_pm0p25","periods_s":T,"targets_s":target,"errors_pct":err,"pending":["C6 rigid arms/eccentricity","member reinforcement","Fig 2.6 exact tributary nodal masses","full nonlinear T-beam fibres"]}
+    out={"status":"audit_c6_rigid_total_arms_pm0p25","periods_s":T,"targets_s":target,"errors_pct":err,"pending":["C6 rigid arms/eccentricity","member reinforcement","Fig 2.6 exact tributary nodal masses","full nonlinear T-beam fibres"]}
     (OUT/"modal_baseline.json").write_text(json.dumps(out,indent=2))
     print("JEONG_ELNASHAI_MODAL",json.dumps(out))
     ops.wipe()
