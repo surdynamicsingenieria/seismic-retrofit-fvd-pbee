@@ -72,7 +72,7 @@ def build():
             oj=(-off_j*ux,-off_j*uy,0.0)
             tr=7000+k*100+j
             ops.geomTransf("Linear",tr,0,0,1,"-jntOffset",*oi,*oj)
-            ops.element("elasticBeamColumn",10000+k*100+j,nt(k,a),nt(k,b),A,Ec,Ec/(2*1.2),J,I,Iz,tr)
+            ops.element("elasticBeamColumn",10000+k*100+j,node_a,node_b,A,Ec,Ec/(2*1.2),J,I,Iz,tr)
     poly=[PLAN[x] for x in ("C8","C7","C4","C2","C5")]
     area=polygon_area(poly)
     beamW=sum(math.hypot(PLAN[b][0]-PLAN[a][0],PLAN[b][1]-PLAN[a][1])*0.25*(0.50-SLAB_THICKNESS)*GAMMA_RC for _,a,b in BEAMS)
@@ -90,7 +90,7 @@ def build():
         ops.node(m,cx,cy,Z[k])
         ops.fix(m,0,0,1,1,1,0)
         ops.mass(m,mf,mf,0,0,0,Jm)
-        ops.rigidDiaphragm(3,m,*[nt(k,n) for n in names])
+        ops.rigidDiaphragm(3,m,*([nt(k,n) for n in names]+[c6_ecc[k]["B5"],c6_ecc[k]["B6"]]))
     print("PHYSICAL_MASS_DIAGNOSTIC",json.dumps({"source":"published SPEAR mass properties","floor_mass_t":floor_mass_t,"floor_cm":floor_cm,"floor_Jm_tm2":floor_Jm_tm2}))
 
 def modal():
@@ -99,7 +99,7 @@ def modal():
     T=[2*math.pi/math.sqrt(v) for v in vals]
     target=[0.51,0.46,0.40,0.18]
     err=[100*(a-b)/b for a,b in zip(T,target)]
-    out={"status":"audit_no_c6_rigid_arms_corrected_geometry","periods_s":T,"targets_s":target,"errors_pct":err,"pending":["C6 rigid arms/eccentricity","member reinforcement","Fig 2.6 exact tributary nodal masses","full nonlinear T-beam fibres"]}
+    out={"status":"audit_c6_ecc_nodes_direct_to_diaph","periods_s":T,"targets_s":target,"errors_pct":err,"pending":["C6 eccentricity validation","member reinforcement","Fig 2.6 exact tributary nodal masses","full nonlinear T-beam fibres"]}
     (OUT/"modal_baseline.json").write_text(json.dumps(out,indent=2))
     print("JEONG_ELNASHAI_MODAL",json.dumps(out))
     ops.wipe()
