@@ -37,17 +37,7 @@ def build():
         for n,(x,y) in PLAN.items():
             ops.node(nt(k,n), x, y, z)
             if k == 0: ops.fix(nt(k,n), 1,1,1,1,1,1)
-    # Fig. 2.4(b): B5 and B6 axes straddle the 0.75-m C6 depth.
-    # With 0.25-m beams flush to opposite C6 faces, their centreline gaps are +/-0.25 m.
-    # Create explicit connection axes and rigid arms to the C6 column centreline.
-    c6_arm_nodes = {}
-    for k in range(1,4):
-        z=Z[k]; x6,y6=PLAN["C6"]
-        ni=8000+k*10+1; no=8000+k*10+2
-        ops.node(ni,x6,y6-0.25,z); ops.node(no,x6,y6+0.25,z)
-        ops.rigidLink("beam",nt(k,"C6"),ni); ops.rigidLink("beam",nt(k,"C6"),no)
-        c6_arm_nodes[k]={"B5":ni,"B6":no}
-    rect(101,1,0.25,0.25)
+    # A/B audit: C6 rigid arms temporarily removed to isolate stiffness jump.\n    rect(101,1,0.25,0.25)
     rect(102,1,0.75,0.25)
     ops.beamIntegration("Lobatto",201,101,5)
     ops.beamIntegration("Lobatto",202,102,5)
@@ -73,11 +63,7 @@ def build():
             Iz=0.50*0.25**3/12; J=0.25*0.50**3/3
             # Beam deformable length starts at column faces. All column dimensions
             # normal to these beam axes are 0.25 m, including C6 in its x direction.
-            node_a=nt(k,a); node_b=nt(k,b)
-            if bn=="B5": node_b=c6_arm_nodes[k]["B5"]
-            if bn=="B6": node_a=c6_arm_nodes[k]["B6"]
-            xa,ya=(PLAN[a] if bn!="B6" else (PLAN["C6"][0],PLAN["C6"][1]+0.25))
-            xb,yb=(PLAN[b] if bn!="B5" else (PLAN["C6"][0],PLAN["C6"][1]-0.25))
+            node_a=nt(k,a); node_b=nt(k,b)\n            xa,ya=PLAN[a]; xb,yb=PLAN[b]
             L=math.hypot(xb-xa,yb-ya); ux=(xb-xa)/L; uy=(yb-ya)/L
             # Source geometry: C6 is 0.75 m in global Y. B10 approaches C6 along Y,
             # therefore its C6-end rigid offset is 0.375 m; regular column faces are 0.125 m.
