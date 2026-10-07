@@ -23,3 +23,7 @@ jobs:
         run: python -m py_compile models/SPEAR/jeong_elnashai/spear_m0_jeong_elnashai.py
       - name: Run independent Jeong-Elnashai modal baseline
         run: python models/SPEAR/jeong_elnashai/spear_m0_jeong_elnashai.py
+      - name: Compile-check independent nonlinear model
+        run: python -m py_compile models/SPEAR/jeong_elnashai/spear_m0_jeong_elnashai_nonlinear.py
+      - name: Run +X nonlinear diagnostic
+        run: python models/SPEAR/jeong_elnashai/spear_m0_jeong_elnashai_nonlinear.py
