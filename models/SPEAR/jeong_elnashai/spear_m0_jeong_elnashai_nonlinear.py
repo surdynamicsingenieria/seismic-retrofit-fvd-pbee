@@ -118,16 +118,19 @@ def run(direction="+X",target=.12,du=.00025):
     f=[MASSES[i]*phi[i] for i in range(3)]; s=sum(abs(v) for v in f); f=[v/s for v in f]
     ops.timeSeries("Linear",20); ops.pattern("Plain",20,20)
     for m,q in zip(masters,f): ops.load(m,q if dof==1 else 0,q if dof==2 else 0,0,0,0,0)
+    # Reset gravity analysis objects before changing constraint handler and integrator.
+    ops.wipeAnalysis()
     ops.constraints("Transformation"); ops.numberer("RCM"); ops.system("UmfPack")
     ops.test("NormDispIncr",1e-7,80); ops.algorithm("Newton")
     ops.integrator("DisplacementControl",masters[-1],dof,sign*abs(du)); ops.analysis("Static")
-    rows=[(0.,0.)]; base=[nt(0,n) for n in names]; ok=0
+    rows=[(0.,0.)]; base=[nt(0,n) for n in names]; ok=0; retries=0
     for step in range(int(abs(target/du))):
         ok=ops.analyze(1)
         if ok!=0:
+            retries+=1
             ops.test("NormDispIncr",1e-6,160); ops.algorithm("NewtonLineSearch",.8)
             ops.integrator("DisplacementControl",masters[-1],dof,sign*abs(du)/4)
-            ok=ops.analyze(1)
+            ok=ops.analyze(4)  # Four quarter-increments recover the entire nominal increment.
             ops.algorithm("Newton"); ops.test("NormDispIncr",1e-7,80)
             ops.integrator("DisplacementControl",masters[-1],dof,sign*abs(du))
         if ok!=0: break
@@ -135,7 +138,7 @@ def run(direction="+X",target=.12,du=.00025):
         rows.append((u,vb))
     key=direction.lower().replace("+","p").replace("-","n")
     (OUT/f"pushover_{key}.csv").write_text("roof_disp_m,base_shear_N\n"+"\n".join(f"{u:.8f},{v:.6f}" for u,v in rows)+"\n")
-    summary={"status":"DIAGNOSTIC_ONLY","direction":direction,"periods_s":periods,"reached_m":rows[-1][0],"peak_abs_base_shear_kN":max(abs(v) for _,v in rows)/1e3,"pending_source_data":PENDING_SOURCE_DATA,"acceptance":"PROHIBITED until reinforcement and Fig 2.6 allocation are source-locked"}
+    summary={"status":"DIAGNOSTIC_ONLY","direction":direction,"periods_s":periods,"reached_m":rows[-1][0],"completed_steps":len(rows)-1,"requested_steps":int(abs(target/du)),"fallback_attempts":retries,"analysis_exit_code":ok,"peak_abs_base_shear_kN":max(abs(v) for _,v in rows)/1e3,"pending_source_data":PENDING_SOURCE_DATA,"acceptance":"PROHIBITED until reinforcement and Fig 2.6 allocation are source-locked"}
     (OUT/f"pushover_{key}_summary.json").write_text(json.dumps(summary,indent=2))
     print("JEONG_ELNASHAI_PUSHOVER",json.dumps(summary)); ops.wipe()
     return 0 if ok==0 else 3
