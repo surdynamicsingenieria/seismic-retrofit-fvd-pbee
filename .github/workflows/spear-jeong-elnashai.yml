@@ -27,6 +27,18 @@ jobs:
         run: python -m py_compile models/SPEAR/jeong_elnashai/spear_m0_jeong_elnashai_nonlinear.py
       - name: Run +X nonlinear diagnostic
         run: python models/SPEAR/jeong_elnashai/spear_m0_jeong_elnashai_nonlinear.py
+      - name: Run four directional nonlinear diagnostics
+        run: |
+          python - <<'PY'
+          import sys
+          sys.path.insert(0, "models/SPEAR/jeong_elnashai")
+          from spear_m0_jeong_elnashai_nonlinear import run
+          for direction in ("-X", "+Y", "-Y"):
+              print("DIRECTIONAL_DIAGNOSTIC_START", direction, flush=True)
+              code = run(direction)
+              if code:
+                  raise SystemExit(f"{direction} diagnostic exited with code {code}")
+          PY
       - name: Preserve diagnostic CSV and JSON artifacts
         if: always()
         uses: actions/upload-artifact@v4
