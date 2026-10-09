@@ -113,8 +113,17 @@ def run(direction="+X",target=.12,du=.00025):
     if gravity(names,nt)!=0: raise RuntimeError("gravity analysis failed")
     vals=ops.eigen("-fullGenLapack",4); periods=[2*math.pi/math.sqrt(v) for v in vals]
     dof=1 if direction[-1]=="X" else 2; sign=1 if direction[0]=="+" else -1
-    phi=[ops.nodeEigenvector(m,1,dof) for m in masters]
-    if sum(MASSES[i]*phi[i] for i in range(3))*sign<0: phi=[-v for v in phi]
+    # Select the strongest effective translational participation among the first four modes.
+    # This avoids blindly using mode 1 for both horizontal directions in a torsionally coupled frame.
+    participation=[]
+    for mode in range(1,5):
+        vec=[ops.nodeEigenvector(m,mode,dof) for m in masters]
+        numer=sum(MASSES[i]*vec[i] for i in range(3))
+        denom=sum(MASSES[i]*vec[i]**2 for i in range(3))
+        eff=(numer*numer/denom) if denom>0 else 0.0
+        participation.append((eff,mode,vec))
+    _,selected_mode,phi=max(participation,key=lambda item:item[0])
+    if sum(MASSES[i]*phi[i] for i in range(3))<0: phi=[-v for v in phi]
     f=[MASSES[i]*phi[i] for i in range(3)]; s=sum(abs(v) for v in f); f=[v/s for v in f]
     ops.timeSeries("Linear",20); ops.pattern("Plain",20,20)
     for m,q in zip(masters,f): ops.load(m,q if dof==1 else 0,q if dof==2 else 0,0,0,0,0)
@@ -138,7 +147,7 @@ def run(direction="+X",target=.12,du=.00025):
         rows.append((u,vb))
     key=direction.lower().replace("+","p").replace("-","n")
     (OUT/f"pushover_{key}.csv").write_text("roof_disp_m,base_shear_N\n"+"\n".join(f"{u:.8f},{v:.6f}" for u,v in rows)+"\n")
-    summary={"status":"DIAGNOSTIC_ONLY","direction":direction,"periods_s":periods,"reached_m":rows[-1][0],"completed_steps":len(rows)-1,"requested_steps":int(abs(target/du)),"fallback_attempts":retries,"analysis_exit_code":ok,"peak_abs_base_shear_kN":max(abs(v) for _,v in rows)/1e3,"pending_source_data":PENDING_SOURCE_DATA,"acceptance":"PROHIBITED until reinforcement and Fig 2.6 allocation are source-locked"}
+    summary={"status":"DIAGNOSTIC_ONLY","direction":direction,"periods_s":periods,"selected_lateral_mode":selected_mode,"directional_effective_modal_mass_kg":[round(x[0],3) for x in participation],"reached_m":rows[-1][0],"completed_steps":len(rows)-1,"requested_steps":int(abs(target/du)),"fallback_attempts":retries,"analysis_exit_code":ok,"peak_abs_base_shear_kN":max(abs(v) for _,v in rows)/1e3,"pending_source_data":PENDING_SOURCE_DATA,"acceptance":"PROHIBITED until reinforcement and Fig 2.6 allocation are source-locked"}
     (OUT/f"pushover_{key}_summary.json").write_text(json.dumps(summary,indent=2))
     print("JEONG_ELNASHAI_PUSHOVER",json.dumps(summary)); ops.wipe()
     return 0 if ok==0 else 3
