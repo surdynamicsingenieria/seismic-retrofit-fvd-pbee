@@ -9,7 +9,7 @@ on:
 jobs:
   modal-baseline:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -27,3 +27,10 @@ jobs:
         run: python -m py_compile models/SPEAR/jeong_elnashai/spear_m0_jeong_elnashai_nonlinear.py
       - name: Run +X nonlinear diagnostic
         run: python models/SPEAR/jeong_elnashai/spear_m0_jeong_elnashai_nonlinear.py
+      - name: Preserve diagnostic CSV and JSON artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: jeong-elnashai-pushover-diagnostics
+          path: results/SPEAR/jeong_elnashai/pushover/
+          if-no-files-found: warn
