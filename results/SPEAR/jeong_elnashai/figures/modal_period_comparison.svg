@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="420" viewBox="0 0 720 420">
+  <rect width="720" height="420" fill="white"/>
+  <text x="360" y="28" text-anchor="middle" font-family="Arial" font-size="18">SPEAR-M0 modal periods vs MAE 04-03</text>
+  <line x1="70" y1="350" x2="660" y2="350" stroke="#222"/>
+  <line x1="70" y1="60" x2="70" y2="350" stroke="#222"/>
+  <text x="360" y="395" text-anchor="middle" font-family="Arial" font-size="14">Mode</text>
+  <text x="20" y="205" text-anchor="middle" font-family="Arial" font-size="14" transform="rotate(-90 20 205)">Period (s)</text>
+  <g font-family="Arial" font-size="12" fill="#333">
+    <text x="70" y="370" text-anchor="middle">1</text>
+    <text x="267" y="370" text-anchor="middle">2</text>
+    <text x="463" y="370" text-anchor="middle">3</text>
+    <text x="660" y="370" text-anchor="middle">4</text>
+    <text x="62" y="354" text-anchor="end">0.0</text>
+    <text x="62" y="257" text-anchor="end">0.2</text>
+    <text x="62" y="160" text-anchor="end">0.4</text>
+    <text x="62" y="64" text-anchor="end">0.6</text>
+  </g>
+  <g stroke="#ddd">
+    <line x1="70" y1="253" x2="660" y2="253"/>
+    <line x1="70" y1="157" x2="660" y2="157"/>
+    <line x1="70" y1="60" x2="660" y2="60"/>
+  </g>
+  <polyline fill="none" stroke="#1f77b4" stroke-width="3" points="70,103.5 267,127.7 463,156.7 660,263.0"/>
+  <polyline fill="none" stroke="#d62728" stroke-width="3" points="70,87.3 267,124.7 463,177.8 660,261.7"/>
+  <g fill="#1f77b4">
+    <circle cx="70" cy="103.5" r="5"/><circle cx="267" cy="127.7" r="5"/><circle cx="463" cy="156.7" r="5"/><circle cx="660" cy="263.0" r="5"/>
+  </g>
+  <g fill="#d62728">
+    <rect x="65" y="82.3" width="10" height="10"/><rect x="262" y="119.7" width="10" height="10"/><rect x="458" y="172.8" width="10" height="10"/><rect x="655" y="256.7" width="10" height="10"/>
+  </g>
+  <g font-family="Arial" font-size="13">
+    <rect x="410" y="55" width="230" height="56" fill="white" stroke="#ddd"/>
+    <line x1="425" y1="75" x2="455" y2="75" stroke="#1f77b4" stroke-width="3"/><text x="465" y="79">MAE 04-03 target</text>
+    <line x1="425" y1="96" x2="455" y2="96" stroke="#d62728" stroke-width="3"/><text x="465" y="100">OpenSeesPy M0</text>
+  </g>
+</svg>
