@@ -1,0 +1,31 @@
+{
+  "timestamp_utc": "2026-10-13T23:48:07.302373Z",
+  "branch": "spear-jeong-elnashai-m0",
+  "modal_periods_s": [
+    0.5435225685610744,
+    0.4661142676460105,
+    0.3562724084407028,
+    0.18257494347144673
+  ],
+  "modal_targets_s": [
+    0.51,
+    0.46,
+    0.4,
+    0.18
+  ],
+  "modal_errors_pct": [
+    6.573052659034193,
+    1.3291886186979291,
+    -10.931897889824306,
+    1.4305241508037438
+  ],
+  "pushover_status": "blocked_before_analysis",
+  "blocking_missing_source_data": [
+    "Exact Fig. 2.8 lateral load vectors xp100, xn100, yp100, yn100 or textual definition from MAE 04-03",
+    "Digitized Fig. 2.8 reference curves for quantitative curve error",
+    "Complete beam reinforcement by member/storey",
+    "Complete column reinforcement by member/storey",
+    "Fig. 2.6 exact nodal gravity and seismic mass allocation at beam-column connections"
+  ],
+  "decision": "Removed/forbid automatic modal-effective-mass mode selection for pushover acceptance; no replacement pattern is assumed."
+}
