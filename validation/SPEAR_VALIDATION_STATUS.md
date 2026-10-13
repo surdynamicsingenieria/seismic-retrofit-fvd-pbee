@@ -3,7 +3,7 @@
 Date: 2026-10-13
 Branch: `spear-jeong-elnashai-m0`
 
-## Current state: MODAL CHECK RUN; PUSHOVER BLOCKED BY SOURCE DATA
+## Current state: MODAL CHECK RUN; PUSHOVER PATTERN SOURCE-LOCKED; NONLINEAR INPUTS PENDING
 
 SPEAR-M0 is not physically validated and must not be used for FVD, optimization,
 NLTHA/MSA or FEMA P-58.
@@ -12,9 +12,12 @@ NLTHA/MSA or FEMA P-58.
 
 - Audited the Jeong-Elnashai pushover driver and identified an inadmissible
   automatic selection of the lateral pushover mode by effective modal mass.
-- Removed that selection from the validation workflow: pushover acceptance must
-  use the four published study patterns `xp100`, `xn100`, `yp100`, `yn100`, not a
-  post-hoc modal participation rule.
+- Removed that selection from the validation workflow. MAE 04-03 Section 2.3.1
+  requires lateral force distribution proportional to first mode shape and mass
+  distribution, followed by the Fig. 2.7 plan redistribution.
+- Implemented the source-locked unidirectional cases `xp100`, `xn100`, `yp100`,
+  `yn100` using Fig. 2.7 fractions.
+- Digitized the supplied Fig. 2.8 image as a machine-readable reference curve.
 - Re-ran the executable modal model without stiffness or mass calibration.
 - Wrote reproducible run outputs under `results/SPEAR/jeong_elnashai/`.
 
@@ -32,14 +35,18 @@ NLTHA/MSA or FEMA P-58.
 Not executed for acceptance in this pass.
 
 The previous implementation selected a lateral mode automatically from modal
-effective mass. That is not a source-locked Jeong-Elnashai pushover pattern and
-can hide modeling errors in an irregular torsionally coupled frame.
+effective mass. That is not the MAE 04-03 procedure and can hide modeling errors
+in an irregular torsionally coupled frame.
 
-Required source data before running acceptance pushover:
+Source-locked pattern rule now used:
 
-- Exact lateral load vectors or textual definition for `xp100`, `xn100`, `yp100`,
-  `yn100` from MAE 04-03.
-- Digitized Fig. 2.8 curves, stored as machine-readable reference data.
+- Floor distribution: `Fi = V * phi_i * m_i / sum(phi_i * m_i)`, using the first
+  mode shape as stated in MAE 04-03 Eq. 2.5.
+- X plan redistribution from Fig. 2.7: `0.24 Vx`, `0.50 Vx`, `0.26 Vx`.
+- Y plan redistribution from Fig. 2.7: `0.15 Vy`, `0.44 Vy`, `0.41 Vy`.
+
+Required source data before running nonlinear acceptance pushover:
+
 - Complete beam reinforcement by member and storey.
 - Complete column reinforcement by member and storey.
 - Exact Fig. 2.6 nodal gravity and seismic mass allocation at beam-column
@@ -52,12 +59,13 @@ Required source data before running acceptance pushover:
 - [ ] Mode-shape comparison documented quantitatively
 - [ ] Source-locked gravity and nodal mass allocation
 - [ ] Source-locked member reinforcement
-- [ ] Published lateral pushover patterns implemented
+- [x] Published lateral pushover patterns implemented
 - [ ] Pushover +X (`xp100`)
 - [ ] Pushover -X (`xn100`)
 - [ ] Pushover +Y (`yp100`)
 - [ ] Pushover -Y (`yn100`)
-- [ ] Quantitative Fig. 2.8 curve comparison
+- [x] Fig. 2.8 reference curve digitized
+- [ ] Quantitative Fig. 2.8 curve comparison against OpenSees results
 
 ## Reproducibility note
 
