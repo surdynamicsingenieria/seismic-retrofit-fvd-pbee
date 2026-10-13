@@ -1,0 +1,30 @@
+{
+  "xn100": {
+    "points": 309,
+    "peak_base_shear_kN": 367.335,
+    "top_displacement_at_peak_mm": -82.581,
+    "min_disp_mm": -200.0,
+    "max_disp_mm": -1.29
+  },
+  "xp100": {
+    "points": 309,
+    "peak_base_shear_kN": 354.363,
+    "top_displacement_at_peak_mm": 74.194,
+    "min_disp_mm": 1.29,
+    "max_disp_mm": 200.0
+  },
+  "yn100": {
+    "points": 247,
+    "peak_base_shear_kN": 454.009,
+    "top_displacement_at_peak_mm": -147.742,
+    "min_disp_mm": -198.065,
+    "max_disp_mm": -3.226
+  },
+  "yp100": {
+    "points": 251,
+    "peak_base_shear_kN": 392.689,
+    "top_displacement_at_peak_mm": 94.839,
+    "min_disp_mm": 10.323,
+    "max_disp_mm": 200.0
+  }
+}
