@@ -1,33 +1,71 @@
 # SPEAR VALIDATION STATUS
 
-## Current state: MODAL GATE CLOSED; NONLINEAR VALIDATION PENDING
+Date: 2026-10-13
+Branch: `spear-jeong-elnashai-m0`
 
-SPEAR-M0 v1.0 must not be described as physically validated.
+## Current state: MODAL CHECK RUN; PUSHOVER BLOCKED BY SOURCE DATA
 
-### Required gates
+SPEAR-M0 is not physically validated and must not be used for FVD, optimization,
+NLTHA/MSA or FEMA P-58.
 
-- [x] Executable full 3D modal SPEAR-M0 model
-- [x] Modal analysis completed
-- [x] Quantitative modal comparison with EFCP targets
-- [ ] Pushover +X
-- [ ] Pushover -X
-- [ ] Pushover +Y
-- [ ] Pushover -Y
-- [ ] Quantitative comparison with published pushover references
-- [ ] Directional asymmetry checked
+## Actions completed in this pass
 
-### Modal targets
+- Audited the Jeong-Elnashai pushover driver and identified an inadmissible
+  automatic selection of the lateral pushover mode by effective modal mass.
+- Removed that selection from the validation workflow: pushover acceptance must
+  use the four published study patterns `xp100`, `xn100`, `yp100`, `yn100`, not a
+  post-hoc modal participation rule.
+- Re-ran the executable modal model without stiffness or mass calibration.
+- Wrote reproducible run outputs under `results/SPEAR/jeong_elnashai/`.
 
-| Mode | EFCP target (s) | ETCP reference (s) | OpenSees M0 (s) | Error vs EFCP |
-|---|---:|---:|---:|---:|
-| 1 | 0.559 | 0.570 | 0.567297 | +1.48% |
-| 2 | 0.476 | 0.484 | 0.494985 | +3.99% |
-| 3 | 0.385 | 0.392 | 0.386447 | +0.38% |
+## Modal comparison
 
-### Current nonlinear blockers
+| Mode | MAE 04-03 target (s) | OpenSeesPy M0 (s) | Error |
+|---:|---:|---:|---:|
+| 1 | 0.510 | 0.543523 | +6.57% |
+| 2 | 0.460 | 0.466114 | +1.33% |
+| 3 | 0.400 | 0.356272 | -10.93% |
+| 4 | 0.180 | 0.182575 | +1.43% |
 
-1. Nonlinear beam macroelements must reproduce the published one-component moment-rotation formulation.
-2. Distributed-plasticity fibre columns must be implemented with the published expected material characteristics and reinforcement.
-3. First nonlinear validation target is pushover +X; modal parameters are frozen and must not be re-tuned.
+## Pushover gate
 
-No FVD, optimization, NLTHA/MSA or FEMA P-58 work is permitted until the validation gates above are passed.
+Not executed for acceptance in this pass.
+
+The previous implementation selected a lateral mode automatically from modal
+effective mass. That is not a source-locked Jeong-Elnashai pushover pattern and
+can hide modeling errors in an irregular torsionally coupled frame.
+
+Required source data before running acceptance pushover:
+
+- Exact lateral load vectors or textual definition for `xp100`, `xn100`, `yp100`,
+  `yn100` from MAE 04-03.
+- Digitized Fig. 2.8 curves, stored as machine-readable reference data.
+- Complete beam reinforcement by member and storey.
+- Complete column reinforcement by member and storey.
+- Exact Fig. 2.6 nodal gravity and seismic mass allocation at beam-column
+  connections.
+
+## Required gates
+
+- [x] Executable 3D modal model
+- [x] Modal periods computed against MAE 04-03 targets
+- [ ] Mode-shape comparison documented quantitatively
+- [ ] Source-locked gravity and nodal mass allocation
+- [ ] Source-locked member reinforcement
+- [ ] Published lateral pushover patterns implemented
+- [ ] Pushover +X (`xp100`)
+- [ ] Pushover -X (`xn100`)
+- [ ] Pushover +Y (`yp100`)
+- [ ] Pushover -Y (`yn100`)
+- [ ] Quantitative Fig. 2.8 curve comparison
+
+## Reproducibility note
+
+In this runtime, OpenSeesPy 3.8.0.0 requires:
+
+```bash
+MPICH_INTERFACE_HOSTNAME=127.0.0.1 python models/SPEAR/jeong_elnashai/spear_m0_jeong_elnashai.py
+```
+
+Without that environment variable, MPI initialization fails before model
+construction.
