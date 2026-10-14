@@ -1,0 +1,50 @@
+[
+  {
+    "case": "xp100",
+    "common_points": 308,
+    "reference_peak_kN": 354.363,
+    "reference_peak_disp_mm": 74.194,
+    "sim_peak_kN": 483.764757,
+    "sim_peak_disp_mm": 89.89658,
+    "peak_error_pct": 36.51672352926236,
+    "mae_kN": 116.45957638107507,
+    "rmse_kN": 119.96844559055234,
+    "max_abs_error_kN": 152.64934942463998
+  },
+  {
+    "case": "xn100",
+    "common_points": 309,
+    "reference_peak_kN": 367.335,
+    "reference_peak_disp_mm": -82.581,
+    "sim_peak_kN": 480.306474,
+    "sim_peak_disp_mm": -91.10342,
+    "peak_error_pct": 30.75434521621953,
+    "mae_kN": 96.51285776613929,
+    "rmse_kN": 98.60402162440317,
+    "max_abs_error_kN": 125.21890746736
+  },
+  {
+    "case": "yp100",
+    "common_points": 251,
+    "reference_peak_kN": 392.689,
+    "reference_peak_disp_mm": 94.839,
+    "sim_peak_kN": 673.063639,
+    "sim_peak_disp_mm": 91.691287,
+    "peak_error_pct": 71.39864854885163,
+    "mae_kN": 170.45974455626862,
+    "rmse_kN": 188.9988466745315,
+    "max_abs_error_kN": 281.552916372852
+  },
+  {
+    "case": "yn100",
+    "common_points": 247,
+    "reference_peak_kN": 454.009,
+    "reference_peak_disp_mm": -147.742,
+    "sim_peak_kN": 715.346187,
+    "sim_peak_disp_mm": -79.308713,
+    "peak_error_pct": 57.56211594924329,
+    "mae_kN": 128.93212640730303,
+    "rmse_kN": 155.61994526327535,
+    "max_abs_error_kN": 285.70948136031797
+  }
+]
