@@ -20,6 +20,7 @@ import openseespy.opensees as ops
 
 from geometry_source import BEAMS, BEFF_MM, JOINTS as PLAN, SLAB_THICKNESS, STORY_CENTERLINES
 from pushover_patterns import get_pattern
+from reinforcement_source import COVER_M
 
 OUT = Path("results/SPEAR/jeong_elnashai/pushover")
 OUT.mkdir(parents=True, exist_ok=True)
@@ -29,8 +30,7 @@ MASSES = [65.5e3, 65.5e3, 64.1e3]
 POLAR = [1254e3, 1254e3, 1196e3]
 CM = [(4.53, 5.29), (4.53, 5.29), (4.57, 5.33)]
 PENDING_SOURCE_DATA = [
-    "complete beam reinforcement by member/storey",
-    "complete column reinforcement by member/storey",
+    "fiber T-beam implementation of the Fig. 2.3 bent-bar layout",
     "Fig 2.6 exact nodal gravity allocation",
 ]
 
@@ -38,7 +38,7 @@ PENDING_SOURCE_DATA = [
 def fiber_rect(sec, conc, steel, b, h, nbar=4, bar_d=0.012):
     ops.section("Fiber", sec, "-GJ", 1e8)
     ops.patch("rect", conc, 14, 14, -b / 2, -h / 2, b / 2, h / 2)
-    cover = 0.031
+    cover = COVER_M
     area_bar = math.pi * bar_d**2 / 4
     if nbar == 4:
         for y in (-b / 2 + cover, b / 2 - cover):
