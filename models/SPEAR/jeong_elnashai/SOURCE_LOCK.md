@@ -122,3 +122,17 @@ Before the next modal acceptance run:
 6. report total floor mass, center of mass and polar mass moment for each floor before eigenanalysis.
 
 No stiffness/mass scaling or period-target calibration is permitted.
+
+
+## Reinforcement audit - 2026-10-14
+
+Verified from MAE 04-03 Fig. 2.3 and Sec. 2.2.2:
+
+- cover concrete is 15 mm for all members;
+- typical beam section is a 250 x 500 mm T-section with 150 mm slab, 2Phi12 top bars and 4Phi12 bottom bars at section A-A';
+- the typical beam longitudinal layout bends 2Phi12 bars upward near the beam ends; this must be represented in fibre beam modelling before acceptance;
+- beam stirrups are Phi8/0.20 m;
+- regular columns C1-C5 and C7-C9 are 250 x 250 mm with 4Phi12 and Phi8/0.25 m stirrups;
+- C6 is 750 x 250 mm with 10Phi12 and Phi8/0.25 m stirrups.
+
+The diagnostic OpenSeesPy column fibre sections now use 15 mm cover. Beams remain elastic in the current diagnostic model, so the nonlinear pushover gate is still blocked until the published bent-bar T-beam layout and Fig. 2.6 nodal gravity/mass allocation are implemented without invented member-specific reinforcement variants.
