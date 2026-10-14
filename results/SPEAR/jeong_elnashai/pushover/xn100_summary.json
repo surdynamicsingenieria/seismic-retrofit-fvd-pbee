@@ -1,0 +1,15 @@
+{
+  "status": "DIAGNOSTIC_ONLY",
+  "case": "xn100",
+  "periods_s": [0.5361946920055158, 0.45973746405433297, 0.3518191327593679, 0.17856697330981502],
+  "first_mode_shape_used_for_eq_2_5": [0.0013038861854842846, 0.002228222800194252, 0.002748640579428677],
+  "fig_2_7_pattern_rows": [[-0.050294549139188995, -0.10478031070664375, -0.05448576156745475], [-0.08594880624171, -0.1790600130035625, -0.0931112067618525], [-0.10375664461910102, -0.2161596762897938, -0.11240303167069278]],
+  "reached_top_displacement_mm": -200.10341953520265,
+  "completed_steps": 400,
+  "requested_steps": 400,
+  "fallback_attempts": 0,
+  "analysis_exit_code": 0,
+  "peak_abs_base_shear_kN": 480.3064739906044,
+  "pending_source_data": ["complete beam reinforcement by member/storey", "complete column reinforcement by member/storey", "Fig 2.6 exact nodal gravity allocation"],
+  "acceptance": "PROHIBITED until reinforcement and Fig 2.6 allocation are source-locked"
+}
