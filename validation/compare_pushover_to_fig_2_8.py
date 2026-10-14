@@ -1,0 +1,83 @@
+"""Compare OpenSees pushover curves against digitized MAE 04-03 Fig. 2.8."""
+
+from __future__ import annotations
+
+import csv
+import json
+import math
+from pathlib import Path
+
+
+ROOT = Path("results/SPEAR/jeong_elnashai")
+REF = ROOT / "reference" / "fig_2_8_digitized.csv"
+PUSH = ROOT / "pushover"
+OUT = ROOT / "comparison"
+
+
+def read_curve(path: Path, x_name: str, y_name: str) -> list[tuple[float, float]]:
+    with path.open() as f:
+        rows = csv.DictReader(f)
+        return [(float(row[x_name]), float(row[y_name])) for row in rows]
+
+
+def interp(points: list[tuple[float, float]], x: float) -> float | None:
+    pts = sorted(points)
+    if x < pts[0][0] or x > pts[-1][0]:
+        return None
+    for (x0, y0), (x1, y1) in zip(pts, pts[1:]):
+        if x0 <= x <= x1:
+            if x1 == x0:
+                return y0
+            return y0 + (y1 - y0) * (x - x0) / (x1 - x0)
+    return pts[-1][1]
+
+
+def load_reference() -> dict[str, list[tuple[float, float]]]:
+    curves: dict[str, list[tuple[float, float]]] = {}
+    with REF.open() as f:
+        for row in csv.DictReader(f):
+            curves.setdefault(row["curve"], []).append((float(row["top_displacement_mm"]), float(row["base_shear_kN"])))
+    return curves
+
+
+def compare_case(case: str, ref: list[tuple[float, float]]) -> dict[str, float | int | str]:
+    sim_path = PUSH / f"{case}.csv"
+    sim = read_curve(sim_path, "top_displacement_mm", "base_shear_kN")
+    common = []
+    for x, y_ref in ref:
+        y_sim = interp(sim, x)
+        if y_sim is not None:
+            common.append((x, abs(y_ref), abs(y_sim)))
+    errors = [y_sim - y_ref for _, y_ref, y_sim in common]
+    abs_errors = [abs(value) for value in errors]
+    ref_peak = max(ref, key=lambda item: abs(item[1]))
+    sim_peak = max(sim, key=lambda item: abs(item[1]))
+    return {
+        "case": case,
+        "common_points": len(common),
+        "reference_peak_kN": abs(ref_peak[1]),
+        "reference_peak_disp_mm": ref_peak[0],
+        "sim_peak_kN": abs(sim_peak[1]),
+        "sim_peak_disp_mm": sim_peak[0],
+        "peak_error_pct": 100.0 * (abs(sim_peak[1]) - abs(ref_peak[1])) / abs(ref_peak[1]),
+        "mae_kN": sum(abs_errors) / len(abs_errors),
+        "rmse_kN": math.sqrt(sum(value * value for value in errors) / len(errors)),
+        "max_abs_error_kN": max(abs_errors),
+    }
+
+
+def main() -> int:
+    OUT.mkdir(parents=True, exist_ok=True)
+    ref = load_reference()
+    summaries = [compare_case(case, ref[case]) for case in ("xp100", "xn100", "yp100", "yn100")]
+    (OUT / "fig_2_8_comparison_summary.json").write_text(json.dumps(summaries, indent=2) + "\n")
+    with (OUT / "fig_2_8_comparison_summary.csv").open("w", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=list(summaries[0]))
+        writer.writeheader()
+        writer.writerows(summaries)
+    print(json.dumps(summaries, indent=2))
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
