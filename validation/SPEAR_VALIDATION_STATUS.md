@@ -3,7 +3,7 @@
 Date: 2026-10-13
 Branch: `spear-jeong-elnashai-m0`
 
-## Current state: MODAL CHECK RUN; PUSHOVER PATTERN SOURCE-LOCKED; NONLINEAR INPUTS PENDING
+## Current state: DIAGNOSTIC PUSHOVER RUN; NONLINEAR INPUTS PENDING
 
 SPEAR-M0 is not physically validated and must not be used for FVD, optimization,
 NLTHA/MSA or FEMA P-58.
@@ -18,6 +18,8 @@ NLTHA/MSA or FEMA P-58.
 - Implemented the source-locked unidirectional cases `xp100`, `xn100`, `yp100`,
   `yn100` using Fig. 2.7 fractions.
 - Digitized the supplied Fig. 2.8 image as a machine-readable reference curve.
+- Ran diagnostic pushover in all four directions to +/-200 mm.
+- Compared the diagnostic curves against the digitized Fig. 2.8 reference.
 - Re-ran the executable modal model without stiffness or mass calibration.
 - Wrote reproducible run outputs under `results/SPEAR/jeong_elnashai/`.
 
@@ -32,7 +34,7 @@ NLTHA/MSA or FEMA P-58.
 
 ## Pushover gate
 
-Not executed for acceptance in this pass.
+Executed only as a diagnostic run, not an acceptance run.
 
 The previous implementation selected a lateral mode automatically from modal
 effective mass. That is not the MAE 04-03 procedure and can hide modeling errors
@@ -52,6 +54,20 @@ Required source data before running nonlinear acceptance pushover:
 - Exact Fig. 2.6 nodal gravity and seismic mass allocation at beam-column
   connections.
 
+## Diagnostic pushover comparison
+
+The four diagnostic runs completed to +/-200 mm without convergence fallback.
+They are too strong relative to Fig. 2.8, which confirms that the remaining
+problem is not the lateral pattern definition but the incomplete nonlinear
+member model and lumped gravity/mass allocation.
+
+| Case | Fig. 2.8 Vmax (kN) | Diagnostic Vmax (kN) | Peak error |
+|---|---:|---:|---:|
+| `xp100` | 354.363 | 483.765 | +36.52% |
+| `xn100` | 367.335 | 480.306 | +30.75% |
+| `yp100` | 392.689 | 673.064 | +71.40% |
+| `yn100` | 454.009 | 715.346 | +57.56% |
+
 ## Required gates
 
 - [x] Executable 3D modal model
@@ -60,12 +76,13 @@ Required source data before running nonlinear acceptance pushover:
 - [ ] Source-locked gravity and nodal mass allocation
 - [ ] Source-locked member reinforcement
 - [x] Published lateral pushover patterns implemented
-- [ ] Pushover +X (`xp100`)
-- [ ] Pushover -X (`xn100`)
-- [ ] Pushover +Y (`yp100`)
-- [ ] Pushover -Y (`yn100`)
+- [x] Diagnostic pushover +X (`xp100`)
+- [x] Diagnostic pushover -X (`xn100`)
+- [x] Diagnostic pushover +Y (`yp100`)
+- [x] Diagnostic pushover -Y (`yn100`)
 - [x] Fig. 2.8 reference curve digitized
-- [ ] Quantitative Fig. 2.8 curve comparison against OpenSees results
+- [x] Quantitative Fig. 2.8 curve comparison against diagnostic OpenSees results
+- [ ] Acceptance pushover with source-locked reinforcement and Fig. 2.6 mass/loading
 
 ## Reproducibility note
 
