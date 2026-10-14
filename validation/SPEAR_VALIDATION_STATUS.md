@@ -1,6 +1,6 @@
 # SPEAR VALIDATION STATUS
 
-Date: 2026-10-13
+Date: 2026-10-14
 Branch: `spear-jeong-elnashai-m0`
 
 ## Current state: DIAGNOSTIC PUSHOVER RUN; NONLINEAR INPUTS PENDING
@@ -21,6 +21,11 @@ NLTHA/MSA or FEMA P-58.
 - Ran diagnostic pushover in all four directions to +/-200 mm.
 - Compared the diagnostic curves against the digitized Fig. 2.8 reference.
 - Re-ran the executable modal model without stiffness or mass calibration.
+- Source-locked the Fig. 2.3 reinforcement data in code and corrected the
+  diagnostic column cover from 31 mm to the published 15 mm.
+- Added the full digitized Fig. 2.8 CSV to the repository, so the comparison
+  script no longer depends on an untracked local reference file.
+- Extended the Fig. 2.8 comparison utility to emit an SVG plot.
 - Wrote reproducible run outputs under `results/SPEAR/jeong_elnashai/`.
 
 ## Modal comparison
@@ -47,10 +52,10 @@ Source-locked pattern rule now used:
 - X plan redistribution from Fig. 2.7: `0.24 Vx`, `0.50 Vx`, `0.26 Vx`.
 - Y plan redistribution from Fig. 2.7: `0.15 Vy`, `0.44 Vy`, `0.41 Vy`.
 
-Required source data before running nonlinear acceptance pushover:
+Required implementation work before running nonlinear acceptance pushover:
 
-- Complete beam reinforcement by member and storey.
-- Complete column reinforcement by member and storey.
+- Implement the Fig. 2.3 typical RC T-beam as fibre sections with the published
+  bent-bar longitudinal layout. Keeping beams elastic is diagnostic only.
 - Exact Fig. 2.6 nodal gravity and seismic mass allocation at beam-column
   connections.
 
@@ -63,10 +68,15 @@ member model and lumped gravity/mass allocation.
 
 | Case | Fig. 2.8 Vmax (kN) | Diagnostic Vmax (kN) | Peak error |
 |---|---:|---:|---:|
-| `xp100` | 354.363 | 483.765 | +36.52% |
-| `xn100` | 367.335 | 480.306 | +30.75% |
-| `yp100` | 392.689 | 673.064 | +71.40% |
-| `yn100` | 454.009 | 715.346 | +57.56% |
+| `xp100` | 354.363 | 518.273 | +46.25% |
+| `xn100` | 367.335 | 514.301 | +40.01% |
+| `yp100` | 392.689 | 703.743 | +79.21% |
+| `yn100` | 454.009 | 746.955 | +64.52% |
+
+The source-locked 15 mm cover increased diagnostic strength. That is a valid
+physics consequence of the published section geometry, not a calibration step.
+The acceptance blocker remains the elastic-beam idealization and simplified
+mass/gravity distribution.
 
 ## Required gates
 
@@ -74,7 +84,8 @@ member model and lumped gravity/mass allocation.
 - [x] Modal periods computed against MAE 04-03 targets
 - [ ] Mode-shape comparison documented quantitatively
 - [ ] Source-locked gravity and nodal mass allocation
-- [ ] Source-locked member reinforcement
+- [x] Source-locked member reinforcement data from Fig. 2.3
+- [ ] Fibre implementation of the Fig. 2.3 bent-bar beam layout
 - [x] Published lateral pushover patterns implemented
 - [x] Diagnostic pushover +X (`xp100`)
 - [x] Diagnostic pushover -X (`xn100`)
@@ -90,6 +101,8 @@ In this runtime, OpenSeesPy 3.8.0.0 requires:
 
 ```bash
 MPICH_INTERFACE_HOSTNAME=127.0.0.1 python models/SPEAR/jeong_elnashai/spear_m0_jeong_elnashai.py
+MPICH_INTERFACE_HOSTNAME=127.0.0.1 python models/SPEAR/jeong_elnashai/spear_m0_jeong_elnashai_nonlinear.py
+python validation/compare_pushover_to_fig_2_8.py
 ```
 
 Without that environment variable, MPI initialization fails before model
