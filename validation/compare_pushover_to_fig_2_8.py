@@ -7,6 +7,11 @@ import json
 import math
 from pathlib import Path
 
+try:
+    import matplotlib.pyplot as plt
+except ImportError:  # pragma: no cover - plotting is optional for headless audits
+    plt = None
+
 
 ROOT = Path("results/SPEAR/jeong_elnashai")
 REF = ROOT / "reference" / "fig_2_8_digitized.csv"
@@ -66,6 +71,26 @@ def compare_case(case: str, ref: list[tuple[float, float]]) -> dict[str, float |
     }
 
 
+def write_plot(reference: dict[str, list[tuple[float, float]]]) -> None:
+    if plt is None:
+        return
+
+    fig, axes = plt.subplots(2, 2, figsize=(9.0, 6.5), sharex=True, sharey=True)
+    for ax, case in zip(axes.ravel(), ("xp100", "xn100", "yp100", "yn100")):
+        ref = reference[case]
+        sim = read_curve(PUSH / f"{case}.csv", "top_displacement_mm", "base_shear_kN")
+        ax.plot([x for x, _ in ref], [abs(y) for _, y in ref], label="Fig. 2.8 digitized", lw=2)
+        ax.plot([x for x, _ in sim], [abs(y) for _, y in sim], label="OpenSees diagnostic", lw=1.5)
+        ax.set_title(case)
+        ax.grid(True, alpha=0.3)
+        ax.set_xlabel("top displacement (mm)")
+        ax.set_ylabel("|base shear| (kN)")
+    handles, labels = axes[0, 0].get_legend_handles_labels()
+    fig.legend(handles, labels, loc="upper center", ncol=2, frameon=False)
+    fig.tight_layout(rect=(0, 0, 1, 0.94))
+    fig.savefig(OUT / "fig_2_8_vs_diagnostic_pushover.svg")
+
+
 def main() -> int:
     OUT.mkdir(parents=True, exist_ok=True)
     ref = load_reference()
@@ -75,6 +100,7 @@ def main() -> int:
         writer = csv.DictWriter(f, fieldnames=list(summaries[0]))
         writer.writeheader()
         writer.writerows(summaries)
+    write_plot(ref)
     print(json.dumps(summaries, indent=2))
     return 0
 
