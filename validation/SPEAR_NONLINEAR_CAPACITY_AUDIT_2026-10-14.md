@@ -45,4 +45,15 @@ the available common range and must not be interpreted as validation.
 3. Audit published concrete constitutive inputs and the exact bent-bar transition detail; do not tune them.
 4. Resolve the `yn100` compatibility failure and re-run the four pushover cases and Fig. 2.8 comparison.
 
+## Additional material-model blocker
+
+The modal-state audit demonstrates that gravity changes the four fibre-model
+periods by +12.36%, +14.09%, +10.81% and +8.82%. MAE 04-03 describes the
+concrete law as a modified Mander model defined in part by tensile strength,
+but Section 2.2.3 supplies no numerical tensile-strength value. The present
+OpenSees `Concrete02` mapping uses `ft=0`, which is not source-locked and causes
+immediate loss of tensile tangent stiffness under gravity. This input must be
+recovered from a primary SPEAR/ZeusNL source or retained as an explicit blocker;
+it must not be calibrated from Fig. 2.8.
+
 No FVD, optimization, NLTHA/MSA, or FEMA P-58 work is permitted until those gates pass.

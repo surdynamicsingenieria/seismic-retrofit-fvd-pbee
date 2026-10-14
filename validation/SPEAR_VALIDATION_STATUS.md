@@ -86,11 +86,36 @@ baseline shows that nonlinear section initial stiffness/material assumptions
 must be audited together with the unresolved nodal mass ledger; they are not
 to be calibrated.
 
+## Fibre modal-state audit
+
+The discrepancy was separated into initial-section and gravity-state effects:
+
+| Mode | Published (s) | Elastic baseline (s) | Fibre pre-gravity (s) | Fibre post-gravity (s) |
+|---:|---:|---:|---:|---:|
+| 1 | 0.510 | 0.543523 | 0.511168 | 0.574370 |
+| 2 | 0.460 | 0.466114 | 0.443895 | 0.506429 |
+| 3 | 0.400 | 0.356272 | 0.341330 | 0.378234 |
+| 4 | 0.180 | 0.182575 | 0.171646 | 0.186778 |
+
+Gravity increases the fibre-model periods by 12.36%, 14.09%, 10.81% and
+8.82%, respectively. This is not solver noise. The current `Concrete02`
+definition has zero tensile strength and its compression-envelope initial
+tangent is 25 GPa, while the elastic beams use 23.5 GPa. Reinforcing steel is
+also present in the nonlinear fibre sections but not in the concrete-only
+column sections of the modal baseline. Therefore the two implementations are
+not stiffness-equivalent.
+
+MAE 04-03 specifies a modified Mander model, concrete strength of 25 MPa and a
+confinement factor of 1.01, but does not state the numerical concrete tensile
+strength in Section 2.2.3. The current zero-tension `Concrete02` mapping is not
+source-locked and must not be adjusted merely to force a period match.
+
 ## Required gates
 
 - [x] Executable 3D modal model
 - [x] Modal periods computed against MAE 04-03 targets
 - [ ] Mode-shape comparison documented quantitatively
+- [x] Fibre periods separated into pre- and post-gravity states
 - [ ] Source-locked gravity and nodal mass allocation
 - [x] Source-locked member reinforcement data from Fig. 2.3
 - [x] Diagnostic fibre implementation of the Fig. 2.3 bent-bar beam layout

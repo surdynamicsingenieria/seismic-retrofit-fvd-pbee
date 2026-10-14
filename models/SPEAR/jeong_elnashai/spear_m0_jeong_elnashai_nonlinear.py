@@ -236,12 +236,13 @@ def apply_pushover_loads(case_name, masters):
 
 def run(case_name="xp100", target_mm=200.0, du_mm=0.5):
     names, nt, masters = build()
+    dof = 1 if case_name[0] == "x" else 2
+    periods_pre_gravity, _phi_pre_gravity = first_mode_for_direction(masters, dof)
     if gravity(names, nt) != 0:
         raise RuntimeError("gravity analysis failed")
 
-    dof = 1 if case_name[0] == "x" else 2
     sign = -1 if case_name[1] == "n" else 1
-    periods, phi, pattern_rows = apply_pushover_loads(case_name, masters)
+    periods_post_gravity, phi, pattern_rows = apply_pushover_loads(case_name, masters)
 
     ops.wipeAnalysis()
     ops.constraints("Transformation")
@@ -284,7 +285,9 @@ def run(case_name="xp100", target_mm=200.0, du_mm=0.5):
     summary = {
         "status": "DIAGNOSTIC_ONLY",
         "case": case_name,
-        "periods_s": periods,
+        "periods_s": periods_post_gravity,
+        "periods_pre_gravity_s": periods_pre_gravity,
+        "periods_post_gravity_s": periods_post_gravity,
         "first_mode_shape_used_for_eq_2_5": phi,
         "fig_2_7_pattern_rows": pattern_rows,
         "reached_top_displacement_mm": output[-1][0],
