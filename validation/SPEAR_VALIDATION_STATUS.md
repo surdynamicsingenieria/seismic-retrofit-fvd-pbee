@@ -3,7 +3,7 @@
 Date: 2026-10-14
 Branch: `spear-jeong-elnashai-m0`
 
-## Current state: DIAGNOSTIC PUSHOVER RUN; NONLINEAR INPUTS PENDING
+## Current state: FIBRE T-BEAM DIAGNOSTIC RUN; GRAVITY/MASS INPUTS PENDING
 
 SPEAR-M0 is not physically validated and must not be used for FVD, optimization,
 NLTHA/MSA or FEMA P-58.
@@ -27,6 +27,11 @@ NLTHA/MSA or FEMA P-58.
   script no longer depends on an untracked local reference file.
 - Extended the Fig. 2.8 comparison utility to emit an SVG plot.
 - Wrote reproducible run outputs under `results/SPEAR/jeong_elnashai/`.
+- Replaced the elastic beams with source-locked 250 x 500 mm fibre T-sections,
+  individual published effective flange widths, and the Fig. 2.3 typical
+  bent-bar layout using five Gauss-Lobatto integration points.
+- Re-ran all four pushover cases. Three reached 200 mm; `yn100` reached
+  -53.33 mm and then failed force-based element compatibility convergence.
 
 ## Modal comparison
 
@@ -54,29 +59,32 @@ Source-locked pattern rule now used:
 
 Required implementation work before running nonlinear acceptance pushover:
 
-- Implement the Fig. 2.3 typical RC T-beam as fibre sections with the published
-  bent-bar longitudinal layout. Keeping beams elastic is diagnostic only.
 - Exact Fig. 2.6 nodal gravity and seismic mass allocation at beam-column
   connections.
+- Resolve the source-consistent `yn100` post-peak convergence failure without
+  modifying physical parameters.
 
 ## Diagnostic pushover comparison
 
-The four diagnostic runs completed to +/-200 mm without convergence fallback.
-They are too strong relative to Fig. 2.8, which confirms that the remaining
-problem is not the lateral pattern definition but the incomplete nonlinear
-member model and lumped gravity/mass allocation.
+The fibre T-beam diagnostic materially reduced Y-direction capacity. The X
+cases remain too strong; `yp100` remains too strong; and `yn100` is incomplete,
+so its apparent peak error is not an acceptance metric.
 
 | Case | Fig. 2.8 Vmax (kN) | Diagnostic Vmax (kN) | Peak error |
 |---|---:|---:|---:|
-| `xp100` | 354.363 | 518.273 | +46.25% |
-| `xn100` | 367.335 | 514.301 | +40.01% |
-| `yp100` | 392.689 | 703.743 | +79.21% |
-| `yn100` | 454.009 | 746.955 | +64.52% |
+| `xp100` | 354.363 | 515.176 | +45.38% |
+| `xn100` | 367.335 | 509.977 | +38.83% |
+| `yp100` | 392.689 | 639.248 | +62.79% |
+| `yn100` | 454.009 | 509.052* | +12.12%* |
 
-The source-locked 15 mm cover increased diagnostic strength. That is a valid
-physics consequence of the published section geometry, not a calibration step.
-The acceptance blocker remains the elastic-beam idealization and simplified
-mass/gravity distribution.
+`* yn100` stopped at -53.33 mm, before the reference peak at -147.74 mm.
+The comparison has only 55 common digitized points and is incomplete.
+
+The current fibre model periods are 0.57437, 0.50643, 0.37823 and 0.18678 s.
+Their deviation from both the published periods and the separate elastic modal
+baseline shows that nonlinear section initial stiffness/material assumptions
+must be audited together with the unresolved nodal mass ledger; they are not
+to be calibrated.
 
 ## Required gates
 
@@ -85,12 +93,12 @@ mass/gravity distribution.
 - [ ] Mode-shape comparison documented quantitatively
 - [ ] Source-locked gravity and nodal mass allocation
 - [x] Source-locked member reinforcement data from Fig. 2.3
-- [ ] Fibre implementation of the Fig. 2.3 bent-bar beam layout
+- [x] Diagnostic fibre implementation of the Fig. 2.3 bent-bar beam layout
 - [x] Published lateral pushover patterns implemented
 - [x] Diagnostic pushover +X (`xp100`)
 - [x] Diagnostic pushover -X (`xn100`)
 - [x] Diagnostic pushover +Y (`yp100`)
-- [x] Diagnostic pushover -Y (`yn100`)
+- [ ] Diagnostic pushover -Y (`yn100`) to full target (currently -53.33 mm)
 - [x] Fig. 2.8 reference curve digitized
 - [x] Quantitative Fig. 2.8 curve comparison against diagnostic OpenSees results
 - [ ] Acceptance pushover with source-locked reinforcement and Fig. 2.6 mass/loading

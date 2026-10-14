@@ -2,42 +2,42 @@
   "status": "DIAGNOSTIC_ONLY",
   "case": "xp100",
   "periods_s": [
-    0.5287635936870201,
-    0.45522448179229896,
-    0.34811488246224437,
-    0.17599663669206586
+    0.5743698185227278,
+    0.50642914418059,
+    0.3782337170173586,
+    0.18677848895124274
   ],
   "first_mode_shape_used_for_eq_2_5": [
-    0.0012997082315730662,
-    0.0022268439138564433,
-    0.0027499584820726355
+    0.001240812522643228,
+    0.00224926251038957,
+    0.002819674791975401
   ],
   "fig_2_7_pattern_rows": [
     [
-      0.05016779928447682,
-      0.10451624850932673,
-      0.0543484492248499
+      0.04765115044952147,
+      0.09927323010316974,
+      0.05162207965364827
     ],
     [
-      0.08595456718235647,
-      0.17907201496324265,
-      0.09311744778088618
+      0.08637883993524084,
+      0.17995591653175175,
+      0.0935770765965109
     ],
     [
-      0.10387763353316669,
-      0.21641173652743062,
-      0.11253410299426393
+      0.10597000961523767,
+      0.22077085336507848,
+      0.11480084374984081
     ]
   ],
-  "reached_top_displacement_mm": 199.89671924233016,
+  "reached_top_displacement_mm": 199.8841474405282,
   "completed_steps": 400,
   "requested_steps": 400,
   "fallback_attempts": 0,
   "analysis_exit_code": 0,
-  "peak_abs_base_shear_kN": 518.2727412410546,
+  "peak_abs_base_shear_kN": 515.1756978974093,
   "pending_source_data": [
-    "fiber T-beam implementation of the Fig. 2.3 bent-bar layout",
+    "dimensioned longitudinal transition location of the Fig 2.3 bent bars",
     "Fig 2.6 exact nodal gravity allocation"
   ],
-  "acceptance": "PROHIBITED until reinforcement and Fig 2.6 allocation are source-locked"
+  "acceptance": "PROHIBITED until Fig 2.6 gravity/mass allocation is source-locked and modal/capacity errors close"
 }

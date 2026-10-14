@@ -6,8 +6,7 @@ No Stratan-Fajfar hinges and no modal/capacity calibration.
 Gate status:
 - modal geometry/mass properties inherited from spear_m0_jeong_elnashai.py;
 - distributed-plasticity fibre columns, P-Delta, rigid joint offsets/C6 arms;
-- beams keep elastic source-derived T-section stiffness until the exact
-  reinforcement schedule is locked;
+- source-locked fibre T beams with the Fig. 2.3 typical bent-bar layout;
 - pushover patterns follow MAE 04-03 Eq. 2.5 and Fig. 2.7.
 """
 from __future__ import annotations
@@ -20,7 +19,7 @@ import openseespy.opensees as ops
 
 from geometry_source import BEAMS, BEFF_MM, JOINTS as PLAN, SLAB_THICKNESS, STORY_CENTERLINES
 from pushover_patterns import get_pattern
-from reinforcement_source import COVER_M
+from reinforcement_source import BAR_DIAMETER_M, COVER_M
 
 OUT = Path("results/SPEAR/jeong_elnashai/pushover")
 OUT.mkdir(parents=True, exist_ok=True)
@@ -30,7 +29,7 @@ MASSES = [65.5e3, 65.5e3, 64.1e3]
 POLAR = [1254e3, 1254e3, 1196e3]
 CM = [(4.53, 5.29), (4.53, 5.29), (4.57, 5.33)]
 PENDING_SOURCE_DATA = [
-    "fiber T-beam implementation of the Fig. 2.3 bent-bar layout",
+    "dimensioned longitudinal transition location of the Fig 2.3 bent bars",
     "Fig 2.6 exact nodal gravity allocation",
 ]
 
@@ -49,6 +48,40 @@ def fiber_rect(sec, conc, steel, b, h, nbar=4, bar_d=0.012):
             for i in range(nbar // 2):
                 y = -b / 2 + cover + (b - 2 * cover) * i / (nbar // 2 - 1)
                 ops.fiber(y, z, area_bar, steel)
+
+
+def fiber_t_beam(sec, conc, steel, beff, top_bars, bottom_bars, gj):
+    """Fig. 2.3 T beam, with the published typical longitudinal bars.
+
+    The section datum is the 500 mm total-depth beam centreline.  The 150 mm
+    slab forms the upper flange.  Published 15 mm cover is treated as clear
+    cover to the outside of the Phi8 stirrup; longitudinal-bar centroids are
+    consequently cover + stirrup diameter + half a Phi12 from the surface.
+    """
+    web = 0.25
+    depth = 0.50
+    slab = SLAB_THICKNESS
+    stirrup_d = BAR_DIAMETER_M["phi8"]
+    bar_d = BAR_DIAMETER_M["phi12"]
+    bar_area = math.pi * bar_d**2 / 4.0
+    centroid_cover = COVER_M + stirrup_d + bar_d / 2.0
+
+    ops.section("Fiber", sec, "-GJ", gj)
+    # Local section z is vertical for the horizontal-member transformations.
+    ops.patch("rect", conc, 10, 6, -web / 2, -depth / 2, web / 2, depth / 2 - slab)
+    ops.patch("rect", conc, 16, 4, -beff / 2, depth / 2 - slab, beff / 2, depth / 2)
+
+    def bar_row(number, z):
+        if number == 1:
+            ys = (0.0,)
+        else:
+            edge = web / 2 - centroid_cover
+            ys = tuple(-edge + 2 * edge * i / (number - 1) for i in range(number))
+        for y in ys:
+            ops.fiber(y, z, bar_area, steel)
+
+    bar_row(top_bars, depth / 2 - centroid_cover)
+    bar_row(bottom_bars, -depth / 2 + centroid_cover)
 
 
 def build():
@@ -83,6 +116,30 @@ def build():
     ops.beamIntegration("Lobatto", 201, 101, 5)
     ops.beamIntegration("Lobatto", 202, 102, 5)
 
+    # Five-point Gauss-Lobatto integration, matching the published University
+    # of Rome OpenSees formulation.  Fig. 2.3 shows two of the four bottom
+    # bars bent to the top at both ends: use 4-top/2-bottom at the two end
+    # integration points and the A-A' 2-top/4-bottom section internally.
+    lobatto_x = (0.0, 0.1726731646460114, 0.5, 0.8273268353539886, 1.0)
+    lobatto_w = (0.05, 49.0 / 180.0, 16.0 / 45.0, 49.0 / 180.0, 0.05)
+    beam_integrations = {}
+    for j, (bn, _a, _b) in enumerate(BEAMS):
+        beff = BEFF_MM[bn] / 1000.0
+        # Saint-Venant thin-rectangle sum for the web and flange; this is a
+        # geometric property, not a fitted stiffness parameter.
+        jtors = (0.35 * 0.25**3 + beff * SLAB_THICKNESS**3) / 3.0
+        sec_end = 3000 + 2 * j
+        sec_mid = sec_end + 1
+        fiber_t_beam(sec_end, 1, 2, beff, top_bars=4, bottom_bars=2, gj=gmod * jtors)
+        fiber_t_beam(sec_mid, 1, 2, beff, top_bars=2, bottom_bars=4, gj=gmod * jtors)
+        integ = 300 + j
+        ops.beamIntegration(
+            "UserDefined", integ, 5,
+            sec_end, sec_mid, sec_mid, sec_mid, sec_end,
+            *lobatto_x, *lobatto_w,
+        )
+        beam_integrations[bn] = integ
+
     er = ec * 1e4
     gr = er / (2 * 1.2)
     for k in range(1, 4):
@@ -102,16 +159,6 @@ def build():
 
     for k in range(1, 4):
         for j, (bn, a, b) in enumerate(BEAMS):
-            beff = BEFF_MM[bn] / 1000.0
-            area = 0.25 * 0.50 + (beff - 0.25) * SLAB_THICKNESS
-            af = beff * SLAB_THICKNESS
-            aw = 0.25 * (0.50 - SLAB_THICKNESS)
-            zf = 0.50 - SLAB_THICKNESS / 2
-            zw = (0.50 - SLAB_THICKNESS) / 2
-            zb = (af * zf + aw * zw) / (af + aw)
-            iy = beff * SLAB_THICKNESS**3 / 12 + af * (zf - zb) ** 2 + 0.25 * (0.50 - SLAB_THICKNESS) ** 3 / 12 + aw * (zw - zb) ** 2
-            iz = 0.50 * 0.25**3 / 12
-            jtors = 0.25 * 0.50**3 / 3
             xa, ya = PLAN[a]
             xb, yb = PLAN[b]
             ni, nj = nt(k, a), nt(k, b)
@@ -127,7 +174,10 @@ def build():
             off_j = 0.375 if bn == "B10" and b == "C6" else 0.125
             tr = 7000 + k * 100 + j
             ops.geomTransf("Linear", tr, 0, 0, 1, "-jntOffset", off_i * ux, off_i * uy, 0, -off_j * ux, -off_j * uy, 0)
-            ops.element("elasticBeamColumn", 10000 + k * 100 + j, ni, nj, area, ec, gmod, jtors, iy, iz, tr)
+            ops.element(
+                "forceBeamColumn", 10000 + k * 100 + j, ni, nj, tr,
+                beam_integrations[bn], "-iter", 50, 1e-10,
+            )
 
     masters = []
     for k in range(1, 4):
@@ -244,7 +294,7 @@ def run(case_name="xp100", target_mm=200.0, du_mm=0.5):
         "analysis_exit_code": ok,
         "peak_abs_base_shear_kN": max(abs(v) for _, v in output),
         "pending_source_data": PENDING_SOURCE_DATA,
-        "acceptance": "PROHIBITED until reinforcement and Fig 2.6 allocation are source-locked",
+        "acceptance": "PROHIBITED until Fig 2.6 gravity/mass allocation is source-locked and modal/capacity errors close",
     }
     (OUT / f"{case_name}_summary.json").write_text(json.dumps(summary, indent=2))
     print("JEONG_ELNASHAI_PUSHOVER", json.dumps(summary))
