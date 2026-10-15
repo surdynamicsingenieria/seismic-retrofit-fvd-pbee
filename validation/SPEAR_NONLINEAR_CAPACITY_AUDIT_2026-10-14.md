@@ -29,21 +29,21 @@ than an acceptance-level reconstruction.
 
 | Case | Fig. 2.8 Vmax (kN) | Diagnostic Vmax (kN) | Peak error | MAE (kN) |
 |---|---:|---:|---:|---:|
-| `xp100` | 354.363 | 515.176 | +45.38% | 144.574 |
-| `xn100` | 367.335 | 509.977 | +38.83% | 123.112 |
-| `yp100` | 392.689 | 639.248 | +62.79% | 202.797 |
-| `yn100` | 454.009 | 509.052* | +12.12%* | 81.570* |
+| `xp100` | 354.363 | 515.432 | +45.45% | 144.880 |
+| `xn100` | 367.335 | 510.330 | +38.93% | 123.436 |
+| `yp100` | 392.689 | 640.686 | +63.15% | 203.639 |
+| `yn100` | 454.009 | 649.376 | +43.03% | 145.043 |
 
-`yn100` is incomplete: convergence stopped at -53.33 mm versus the -200 mm
-target and the reference peak occurs at -147.74 mm. Its error values cover only
-the available common range and must not be interpreted as validation.
+All four analyses reached approximately +/-200 mm. The prior `yn100` stop was
+removed by using the source-consistent pre-gravity first mode for Eq. 2.5,
+rather than a mode recomputed after the gravity analysis.
 
 ## Blocking items before acceptance
 
 1. Convert Fig. 2.6 gravity distribution into nodal loads and seismic masses at beam-column connections.
 2. Recompute floor mass, center of mass, and polar mass moment from the nodal ledger before modal acceptance.
 3. Audit published concrete constitutive inputs and the exact bent-bar transition detail; do not tune them.
-4. Resolve the `yn100` compatibility failure and re-run the four pushover cases and Fig. 2.8 comparison.
+4. Re-run the four pushover cases and Fig. 2.8 comparison after the material and mass ledgers are source-locked.
 
 ## Additional material-model blocker
 

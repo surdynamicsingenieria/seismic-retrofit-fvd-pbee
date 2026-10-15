@@ -30,8 +30,9 @@ NLTHA/MSA or FEMA P-58.
 - Replaced the elastic beams with source-locked 250 x 500 mm fibre T-sections,
   individual published effective flange widths, and the Fig. 2.3 typical
   bent-bar layout using five Gauss-Lobatto integration points.
-- Re-ran all four pushover cases. Three reached 200 mm; `yn100` reached
-  -53.33 mm and then failed force-based element compatibility convergence.
+- Separated pre- and post-gravity eigenvalue states and source-locked the
+  Eq. 2.5 pushover pattern to the pre-gravity mode used by ZeusNL eigenvalue
+  analysis. All four cases now reach approximately +/-200 mm.
 
 ## Modal comparison
 
@@ -61,24 +62,21 @@ Required implementation work before running nonlinear acceptance pushover:
 
 - Exact Fig. 2.6 nodal gravity and seismic mass allocation at beam-column
   connections.
-- Resolve the source-consistent `yn100` post-peak convergence failure without
-  modifying physical parameters.
+- Recover the concrete tensile strength used in the original SPEAR ZeusNL
+  `con2` material definition.
 
 ## Diagnostic pushover comparison
 
-The fibre T-beam diagnostic materially reduced Y-direction capacity. The X
-cases remain too strong; `yp100` remains too strong; and `yn100` is incomplete,
-so its apparent peak error is not an acceptance metric.
+The fibre T-beam diagnostic remains too strong in all four directions. The
+correct pre-gravity first mode removes the previous `yn100` convergence stop,
+but does not close the physical capacity discrepancy.
 
 | Case | Fig. 2.8 Vmax (kN) | Diagnostic Vmax (kN) | Peak error |
 |---|---:|---:|---:|
-| `xp100` | 354.363 | 515.176 | +45.38% |
-| `xn100` | 367.335 | 509.977 | +38.83% |
-| `yp100` | 392.689 | 639.248 | +62.79% |
-| `yn100` | 454.009 | 509.052* | +12.12%* |
-
-`* yn100` stopped at -53.33 mm, before the reference peak at -147.74 mm.
-The comparison has only 55 common digitized points and is incomplete.
+| `xp100` | 354.363 | 515.432 | +45.45% |
+| `xn100` | 367.335 | 510.330 | +38.93% |
+| `yp100` | 392.689 | 640.686 | +63.15% |
+| `yn100` | 454.009 | 649.376 | +43.03% |
 
 The current fibre model periods are 0.57437, 0.50643, 0.37823 and 0.18678 s.
 Their deviation from both the published periods and the separate elastic modal
@@ -107,7 +105,10 @@ not stiffness-equivalent.
 
 MAE 04-03 specifies a modified Mander model, concrete strength of 25 MPa and a
 confinement factor of 1.01, but does not state the numerical concrete tensile
-strength in Section 2.2.3. The current zero-tension `Concrete02` mapping is not
+strength in Section 2.2.3. The ZeusNL manual confirms that the `con2` model
+requires `fc`, `ft`, crushing strain and confinement factor and lists 2.2 MPa
+only as a typical example for 20 MPa concrete. It is not evidence that SPEAR
+used 2.2 MPa. The current zero-tension `Concrete02` mapping is therefore not
 source-locked and must not be adjusted merely to force a period match.
 
 ## Required gates
@@ -123,7 +124,7 @@ source-locked and must not be adjusted merely to force a period match.
 - [x] Diagnostic pushover +X (`xp100`)
 - [x] Diagnostic pushover -X (`xn100`)
 - [x] Diagnostic pushover +Y (`yp100`)
-- [ ] Diagnostic pushover -Y (`yn100`) to full target (currently -53.33 mm)
+- [x] Diagnostic pushover -Y (`yn100`) to full target
 - [x] Fig. 2.8 reference curve digitized
 - [x] Quantitative Fig. 2.8 curve comparison against diagnostic OpenSees results
 - [ ] Acceptance pushover with source-locked reinforcement and Fig. 2.6 mass/loading

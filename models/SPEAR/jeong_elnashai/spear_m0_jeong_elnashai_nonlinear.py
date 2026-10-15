@@ -220,9 +220,8 @@ def first_mode_for_direction(masters, dof):
     return periods, phi
 
 
-def apply_pushover_loads(case_name, masters):
+def apply_pushover_loads(case_name, masters, periods, phi):
     dof = 1 if case_name[0] == "x" else 2
-    periods, phi = first_mode_for_direction(masters, dof)
     rows = get_pattern(case_name, phi, MASSES)
     ops.timeSeries("Linear", 20)
     ops.pattern("Plain", 20, 20)
@@ -237,12 +236,17 @@ def apply_pushover_loads(case_name, masters):
 def run(case_name="xp100", target_mm=200.0, du_mm=0.5):
     names, nt, masters = build()
     dof = 1 if case_name[0] == "x" else 2
-    periods_pre_gravity, _phi_pre_gravity = first_mode_for_direction(masters, dof)
+    periods_pre_gravity, phi_pre_gravity = first_mode_for_direction(masters, dof)
     if gravity(names, nt) != 0:
         raise RuntimeError("gravity analysis failed")
 
     sign = -1 if case_name[1] == "n" else 1
-    periods_post_gravity, phi, pattern_rows = apply_pushover_loads(case_name, masters)
+    periods_post_gravity, _phi_post_gravity = first_mode_for_direction(masters, dof)
+    phi = phi_pre_gravity
+    periods_for_pattern = periods_pre_gravity
+    _periods, _phi, pattern_rows = apply_pushover_loads(
+        case_name, masters, periods_for_pattern, phi
+    )
 
     ops.wipeAnalysis()
     ops.constraints("Transformation")
@@ -288,6 +292,7 @@ def run(case_name="xp100", target_mm=200.0, du_mm=0.5):
         "periods_s": periods_post_gravity,
         "periods_pre_gravity_s": periods_pre_gravity,
         "periods_post_gravity_s": periods_post_gravity,
+        "modal_state_used_for_eq_2_5": "pre-gravity eigenvalue state",
         "first_mode_shape_used_for_eq_2_5": phi,
         "fig_2_7_pattern_rows": pattern_rows,
         "reached_top_displacement_mm": output[-1][0],
