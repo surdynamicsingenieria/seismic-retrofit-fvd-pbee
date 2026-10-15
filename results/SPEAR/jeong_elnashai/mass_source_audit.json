@@ -1,0 +1,12 @@
+{
+  "status": "DIAGNOSTIC_ONLY",
+  "current_tuple_source": "Stratan-Fajfar SPEAR partner model",
+  "current_floor_masses_t": [65.5, 65.5, 64.1],
+  "current_total_mass_t": 195.1,
+  "current_total_weight_kN_at_9_807": 1913.3457,
+  "mae_04_03_reported_total_weight_kN": 1957.0,
+  "mae_04_03_implied_total_mass_t": 199.551340878964,
+  "current_mass_difference_t": -4.451340878964,
+  "current_weight_error_pct": -2.230674501788452,
+  "acceptance": "PROHIBITED until the Jeong-Elnashai nodal mass ledger is reconstructed"
+}

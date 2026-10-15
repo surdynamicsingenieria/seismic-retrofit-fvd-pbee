@@ -111,6 +111,19 @@ only as a typical example for 20 MPa concrete. It is not evidence that SPEAR
 used 2.2 MPa. The current zero-tension `Concrete02` mapping is therefore not
 source-locked and must not be adjusted merely to force a period match.
 
+## Mass-source audit
+
+The current floor tuples (65.5, 65.5 and 64.1 t; centers 4.53/5.29 and
+4.57/5.33 m; polar masses 1254, 1254 and 1196 tm2) were traced to the
+Stratan-Fajfar SPEAR assessment. They are not a recovered Jeong-Elnashai
+ZeusNL nodal mass ledger. Their total is 195.1 t, corresponding to 1913.35 kN
+with the report's 9.807 m/s2 gravity, whereas MAE 04-03 states a total building
+weight of 1957 kN (199.55 t). The discrepancy is -2.23%.
+
+Consequently, all modal and pushover results using these tuples remain
+diagnostic. Substituting a different published partner-model mass set would mix
+model assumptions and is prohibited.
+
 ## Required gates
 
 - [x] Executable 3D modal model

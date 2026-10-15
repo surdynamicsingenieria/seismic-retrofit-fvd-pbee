@@ -25,12 +25,14 @@ OUT = Path("results/SPEAR/jeong_elnashai/pushover")
 OUT.mkdir(parents=True, exist_ok=True)
 Z = list(STORY_CENTERLINES)
 GACC = 9.807
+# DIAGNOSTIC ONLY: floor tuples originate in the Stratan-Fajfar SPEAR model,
+# not in a recovered Jeong-Elnashai ZeusNL nodal mass input deck.
 MASSES = [65.5e3, 65.5e3, 64.1e3]
 POLAR = [1254e3, 1254e3, 1196e3]
 CM = [(4.53, 5.29), (4.53, 5.29), (4.57, 5.33)]
 PENDING_SOURCE_DATA = [
     "dimensioned longitudinal transition location of the Fig 2.3 bent bars",
-    "Fig 2.6 exact nodal gravity allocation",
+    "Jeong-Elnashai Fig 2.6 nodal gravity and mass ledger; current floor tuples are Stratan-Fajfar inputs",
 ]
 
 
