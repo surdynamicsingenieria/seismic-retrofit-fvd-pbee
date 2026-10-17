@@ -154,3 +154,20 @@ python validation/compare_pushover_to_fig_2_8.py
 
 Without that environment variable, MPI initialization fails before model
 construction.
+
+
+## Web-source search update — 2026-10-17
+
+A targeted primary-source search was completed and recorded in
+`validation/SPEAR_WEB_SOURCE_INVENTORY_2026-10-17.md`.
+
+The 2005 SPEAR workshop proceedings provide an independent post-test CASTEM
+mass set of 67.264, 67.264 and 62.804 t (197.332 t total), but this is not the
+UIUC/ZeusNL nodal ledger and its weight is 1.112% below the MAE 04-03 total.
+It is retained as a cross-check only. The same proceedings distinguish the
+1.1 kN/m2 water-tank gravity load from analytically assigned seismic mass.
+
+No primary source recovered in this pass disclosed either the original ZeusNL
+input deck, the UIUC node-by-node mass table, or the numerical `con2` tensile
+strength. The two acceptance blockers therefore remain unchanged and no
+partner-model value has been substituted.
