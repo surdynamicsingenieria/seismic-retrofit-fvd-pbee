@@ -183,3 +183,27 @@ The global Fig. 2.6 gravity/mass reconstruction now closes without calibration:
 including cantilever strips outside the framing axes, the Table 2.1 clear beam
 spans and full 3.0 m column storey heights. The exact nearest-beam node ledger
 remains pending; global mass is no longer the unresolved part of that blocker.
+
+
+## Table 3.1 nodal mass recovery — 2026-10-17
+
+The Fig. 2.6 node-by-node ledger was recovered from the gravity axial forces in
+Table 3.1: floor load at each column is the difference between axial forces
+below and above the floor, with the third-storey force used at the roof. This
+produces floor weights of 659.63, 659.66 and 615.95 kN, or masses of 67.261,
+67.264 and 62.807 t. The 1935.24 kN total agrees with the independent workshop
+mass set and exposes an internal 21.76 kN (1.11%) inconsistency with the
+report's isolated 1957 kN scalar.
+
+The model now places translational mass at all nine beam-column connections and
+no longer imports Stratan-Fajfar floor polar inertias. Gravity loads use the
+same recovered nodal ledger. With the source-required 2.50 m deformable column
+heights, elastic periods are 0.51446, 0.44775, 0.37304 and 0.17797 s (errors
++0.87%, -2.66%, -6.74% and -1.13%).
+
+Updated nonlinear peaks are 544.24, 577.60, 661.28 and 681.03 kN for xp, xn,
+yp and yn. The yn analysis reaches -158.56 mm before its documented stop.
+Capacity remains 50-68% above Fig. 2.8. Consequently mass provenance is closed
+as a principal cause; the active blockers are the unrecovered ZeusNL `con2`
+tensile input, exact bent-bar transition representation and section-level
+moment-curvature verification.
