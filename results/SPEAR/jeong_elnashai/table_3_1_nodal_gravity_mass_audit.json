@@ -1,0 +1,78 @@
+{
+  "method": "floor load = axial force below - axial force above; roof load = storey-3 axial force",
+  "column_axial_forces_kN": {
+    "C1": [
+      234.22,
+      154.46,
+      74.98
+    ],
+    "C2": [
+      252.67,
+      166.54,
+      80.13
+    ],
+    "C3": [
+      407.26,
+      272.34,
+      139.62
+    ],
+    "C4": [
+      328.72,
+      217.96,
+      107.89
+    ],
+    "C5": [
+      89.56,
+      57.42,
+      25.43
+    ],
+    "C6": [
+      216.44,
+      141.29,
+      64.29
+    ],
+    "C7": [
+      150.45,
+      98.51,
+      45.9
+    ],
+    "C8": [
+      73.66,
+      45.72,
+      18.66
+    ],
+    "C9": [
+      182.26,
+      121.37,
+      59.05
+    ]
+  },
+  "floor_weights_kN": [
+    659.63,
+    659.66,
+    615.95
+  ],
+  "floor_masses_kg": [
+    67261.14000203936,
+    67264.19904150096,
+    62807.17854593657
+  ],
+  "floor_centres_of_mass_m": [
+    [
+      4.582614496005336,
+      5.357673999060079
+    ],
+    [
+      4.582663796501228,
+      5.347375920928964
+    ],
+    [
+      4.646188814027112,
+      5.4285859241821575
+    ]
+  ],
+  "sum_table_3_1_base_axial_kN": 1935.24,
+  "mae_report_scalar_weight_kN": 1957.0,
+  "internal_report_difference_kN": -21.75999999999999,
+  "cross_check": "Matches the independent 67.264, 67.264, 62.804 t workshop mass set within table rounding."
+}

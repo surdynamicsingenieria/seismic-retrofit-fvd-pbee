@@ -1,50 +1,50 @@
 [
   {
     "case": "xp100",
-    "common_points": 308,
+    "common_points": 309,
     "reference_peak_kN": 354.363,
     "reference_peak_disp_mm": 74.194,
-    "sim_peak_kN": 516.039614,
-    "sim_peak_disp_mm": 94.384147,
-    "peak_error_pct": 45.62457536480954,
-    "mae_kN": 145.19885760846026,
-    "rmse_kN": 152.5023000045722,
-    "max_abs_error_kN": 194.76973967087804
+    "sim_peak_kN": 544.241604,
+    "sim_peak_disp_mm": 87.883756,
+    "peak_error_pct": 53.58307836879134,
+    "mae_kN": 155.94080356460896,
+    "rmse_kN": 163.76364123544113,
+    "max_abs_error_kN": 201.20836939266394
   },
   {
     "case": "xn100",
-    "common_points": 309,
+    "common_points": 308,
     "reference_peak_kN": 367.335,
     "reference_peak_disp_mm": -82.581,
-    "sim_peak_kN": 511.258915,
-    "sim_peak_disp_mm": -96.615853,
-    "peak_error_pct": 39.18056134046579,
-    "mae_kN": 124.16790853820743,
-    "rmse_kN": 129.91526272802176,
-    "max_abs_error_kN": 161.45505346196597
+    "sim_peak_kN": 577.600543,
+    "sim_peak_disp_mm": -95.616244,
+    "peak_error_pct": 57.240813698667445,
+    "mae_kN": 150.73976933098862,
+    "rmse_kN": 157.841908899003,
+    "max_abs_error_kN": 221.67294900622403
   },
   {
     "case": "yp100",
     "common_points": 251,
     "reference_peak_kN": 392.689,
     "reference_peak_disp_mm": 94.839,
-    "sim_peak_kN": 635.683032,
-    "sim_peak_disp_mm": 111.169176,
-    "peak_error_pct": 61.8795107578771,
-    "mae_kN": 200.34330337922881,
-    "rmse_kN": 208.12291644240008,
-    "max_abs_error_kN": 246.06090397432
+    "sim_peak_kN": 661.282835,
+    "sim_peak_disp_mm": 107.444768,
+    "peak_error_pct": 68.39861442515577,
+    "mae_kN": 217.0902668536083,
+    "rmse_kN": 224.2907189099295,
+    "max_abs_error_kN": 268.584233217472
   },
   {
     "case": "yn100",
-    "common_points": 55,
+    "common_points": 197,
     "reference_peak_kN": 454.009,
     "reference_peak_disp_mm": -147.742,
-    "sim_peak_kN": 510.691614,
-    "sim_peak_disp_mm": -52.830824,
-    "peak_error_pct": 12.484909770511157,
-    "mae_kN": 82.83832184481135,
-    "rmse_kN": 89.85461893374071,
-    "max_abs_error_kN": 136.26342392057603
+    "sim_peak_kN": 681.028219,
+    "sim_peak_disp_mm": -147.555232,
+    "peak_error_pct": 50.003242006215736,
+    "mae_kN": 182.06179288436888,
+    "rmse_kN": 189.11667306731573,
+    "max_abs_error_kN": 228.17596482713594
   }
 ]

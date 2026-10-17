@@ -18,21 +18,18 @@ from pathlib import Path
 import openseespy.opensees as ops
 
 from geometry_source import BEAMS, BEFF_MM, JOINTS as PLAN, SLAB_THICKNESS, STORY_CENTERLINES
+from gravity_mass_source import FLOOR_CM as CM
+from gravity_mass_source import FLOOR_MASSES_KG as MASSES
+from gravity_mass_source import GACC, NODE_WEIGHTS_KN
 from pushover_patterns import get_pattern
 from reinforcement_source import BAR_DIAMETER_M, COVER_M
 
 OUT = Path("results/SPEAR/jeong_elnashai/pushover")
 OUT.mkdir(parents=True, exist_ok=True)
 Z = list(STORY_CENTERLINES)
-GACC = 9.807
-# DIAGNOSTIC ONLY: floor tuples originate in the Stratan-Fajfar SPEAR model,
-# not in a recovered Jeong-Elnashai ZeusNL nodal mass input deck.
-MASSES = [65.5e3, 65.5e3, 64.1e3]
-POLAR = [1254e3, 1254e3, 1196e3]
-CM = [(4.53, 5.29), (4.53, 5.29), (4.57, 5.33)]
 PENDING_SOURCE_DATA = [
     "dimensioned longitudinal transition location of the Fig 2.3 bent bars",
-    "Jeong-Elnashai Fig 2.6 nodal gravity and mass ledger; current floor tuples are Stratan-Fajfar inputs",
+    "numerical concrete tensile strength used in the original ZeusNL con2 input",
 ]
 
 
@@ -154,7 +151,9 @@ def build():
     for k in range(1, 4):
         for n in names:
             tr = 5000 + k * 100 + ix[n]
-            bot = 0 if k == 1 else 0.25
+            # Fig. 2.2/Fig. 2.4: 2.50 m deformable height in every storey and
+            # rigid regions at both column ends, including at the foundation.
+            bot = 0.25
             ops.geomTransf("PDelta", tr, 1, 0, 0, "-jntOffset", 0, 0, bot, 0, 0, -0.25)
             ops.element("dispBeamColumn", et, nt(k - 1, n), nt(k, n), tr, 202 if n == "C6" else 201)
             et += 1
@@ -187,7 +186,9 @@ def build():
         cx, cy = CM[k - 1]
         ops.node(master, cx, cy, Z[k])
         ops.fix(master, 0, 0, 1, 1, 1, 0)
-        ops.mass(master, MASSES[k - 1], MASSES[k - 1], 0, 0, 0, POLAR[k - 1])
+        for n in names:
+            mass = 1000.0 * NODE_WEIGHTS_KN[n][k - 1] / GACC
+            ops.mass(nt(k, n), mass, mass, 0, 0, 0, 0)
         ops.rigidDiaphragm(3, master, *([nt(k, n) for n in names] + [8000 + k * 10 + 5, 8000 + k * 10 + 6]))
         masters.append(master)
     return names, nt, masters
@@ -197,9 +198,8 @@ def gravity(names, nt):
     ops.timeSeries("Linear", 10)
     ops.pattern("Plain", 10, 10)
     for k in range(1, 4):
-        weight = MASSES[k - 1] * GACC / len(names)
         for n in names:
-            ops.load(nt(k, n), 0, 0, -weight, 0, 0, 0)
+            ops.load(nt(k, n), 0, 0, -1000.0 * NODE_WEIGHTS_KN[n][k - 1], 0, 0, 0)
     ops.constraints("Transformation")
     ops.numberer("RCM")
     ops.system("UmfPack")
@@ -314,7 +314,7 @@ def run(case_name="xp100", target_mm=200.0, du_mm=0.5):
         "analysis_exit_code": ok,
         "peak_abs_base_shear_kN": max(abs(v) for _, v in output),
         "pending_source_data": PENDING_SOURCE_DATA,
-        "acceptance": "PROHIBITED until Fig 2.6 gravity/mass allocation is source-locked and modal/capacity errors close",
+        "acceptance": "PROHIBITED until concrete/bent-bar inputs are source-locked and modal/capacity errors close",
     }
     (OUT / f"{case_name}_summary.json").write_text(json.dumps(summary, indent=2))
     print("JEONG_ELNASHAI_PUSHOVER", json.dumps(summary))

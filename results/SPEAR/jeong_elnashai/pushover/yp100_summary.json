@@ -2,56 +2,56 @@
   "status": "DIAGNOSTIC_ONLY",
   "case": "yp100",
   "periods_s": [
-    0.5743698185227278,
-    0.50642914418059,
-    0.3782337170173586,
-    0.18677848895124274
+    0.538202308173545,
+    0.4831486866386008,
+    0.3982115327239048,
+    0.180518758605629
   ],
   "periods_pre_gravity_s": [
-    0.5111684263769576,
-    0.4438952941595188,
-    0.34132986384235087,
-    0.17164580512808592
+    0.4844933556353218,
+    0.4256389427711754,
+    0.35731538236356736,
+    0.1675044193635262
   ],
   "periods_post_gravity_s": [
-    0.5743698185227278,
-    0.50642914418059,
-    0.3782337170173586,
-    0.18677848895124274
+    0.538202308173545,
+    0.4831486866386008,
+    0.3982115327239048,
+    0.180518758605629
   ],
   "modal_state_used_for_eq_2_5": "pre-gravity eigenvalue state",
   "first_mode_shape_used_for_eq_2_5": [
-    0.00022298998160112874,
-    0.00042305828963982425,
-    0.0005480943686315656
+    0.0002873388392843766,
+    0.0006060852451265147,
+    0.0008137886930909527
   ],
   "fig_2_7_pattern_rows": [
     [
-      0.028287986466529857,
-      0.08297809363515425,
-      0.07732049634184827
+      0.02606875175121816,
+      0.07646833847023994,
+      0.07125458811999631
     ],
     [
-      0.05366818314417064,
-      0.15742667055623388,
-      0.14669303392739974
+      0.05498944874315674,
+      0.16130238297992644,
+      0.15030449323129508
     ],
     [
-      0.0680438303892995,
-      0.19959523580861185,
-      0.18598646973075195
+      0.0689417995056251,
+      0.2022292785498336,
+      0.18844091864870857
     ]
   ],
   "fig_2_7_load_application": "three perimeter frame points per floor, not floor CM",
-  "reached_top_displacement_mm": 200.16917625922844,
+  "reached_top_displacement_mm": 200.44476771192404,
   "completed_steps": 400,
   "requested_steps": 400,
   "fallback_attempts": 0,
   "analysis_exit_code": 0,
-  "peak_abs_base_shear_kN": 635.6830316402923,
+  "peak_abs_base_shear_kN": 661.2828351759209,
   "pending_source_data": [
     "dimensioned longitudinal transition location of the Fig 2.3 bent bars",
-    "Jeong-Elnashai Fig 2.6 nodal gravity and mass ledger; current floor tuples are Stratan-Fajfar inputs"
+    "numerical concrete tensile strength used in the original ZeusNL con2 input"
   ],
   "acceptance": "PROHIBITED until Fig 2.6 gravity/mass allocation is source-locked and modal/capacity errors close"
 }

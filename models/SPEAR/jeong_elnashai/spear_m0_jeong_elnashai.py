@@ -9,6 +9,7 @@ from pathlib import Path
 import openseespy.opensees as ops
 
 from geometry_source import BEAMS, BEFF_MM, JOINTS as PLAN, SLAB_THICKNESS, STORY_CENTERLINES
+from gravity_mass_source import FLOOR_CM, GACC, NODE_WEIGHTS_KN
 
 OUT = Path("results/SPEAR/jeong_elnashai")
 OUT.mkdir(parents=True, exist_ok=True)
@@ -71,7 +72,9 @@ def build():
     for k in range(1, 4):
         for n in names:
             trc = 5000 + k * 100 + ix[n]
-            bot = 0.0 if k == 1 else 0.25
+            # Fig. 2.2/Fig. 2.4: 2.50 m deformable height in every storey and
+            # rigid regions at both column ends, including at the foundation.
+            bot = 0.25
             ops.geomTransf("PDelta", trc, 1, 0, 0, "-jntOffset", 0, 0, bot, 0, 0, -0.25)
             ops.element("dispBeamColumn", et, nt(k - 1, n), nt(k, n), trc, 202 if n == "C6" else 201)
             et += 1
@@ -104,18 +107,14 @@ def build():
             ops.geomTransf("Linear", tr, 0, 0, 1, "-jntOffset", 0.125 * ux, 0.125 * uy, 0.0, -off_j * ux, -off_j * uy, 0.0)
             ops.element("elasticBeamColumn", 10000 + k * 100 + j, ni, nj, area, Ec, Ec / (2 * 1.2), jtors, iy, iz, tr)
 
-    # DIAGNOSTIC ONLY: these tuples are documented in the Stratan-Fajfar
-    # SPEAR model, not as the Jeong-Elnashai nodal mass ledger in MAE 04-03.
-    # They must not be accepted as source-equivalent UIUC/ZeusNL inputs.
-    floor_mass_t = {1: 65.5, 2: 65.5, 3: 64.1}
-    floor_cm = {1: (4.53, 5.29), 2: (4.53, 5.29), 3: (4.57, 5.33)}
-    floor_jm_tm2 = {1: 1254.0, 2: 1254.0, 3: 1196.0}
     masters = []
     for k in range(1, 4):
         master = 900 + k
-        ops.node(master, *floor_cm[k], Z[k])
+        ops.node(master, *FLOOR_CM[k - 1], Z[k])
         ops.fix(master, 0, 0, 1, 1, 1, 0)
-        ops.mass(master, 1000.0 * floor_mass_t[k], 1000.0 * floor_mass_t[k], 0, 0, 0, 1000.0 * floor_jm_tm2[k])
+        for n in names:
+            mass = 1000.0 * NODE_WEIGHTS_KN[n][k - 1] / GACC
+            ops.mass(nt(k, n), mass, mass, 0, 0, 0, 0)
         ops.rigidDiaphragm(3, master, *([nt(k, n) for n in names] + [8000 + k * 10 + 5, 8000 + k * 10 + 6]))
         masters.append(master)
     return names, nt, masters

@@ -81,3 +81,31 @@ recovered from a primary SPEAR/ZeusNL source or retained as an explicit blocker;
 it must not be calibrated from Fig. 2.8.
 
 No FVD, optimization, NLTHA/MSA, or FEMA P-58 work is permitted until those gates pass.
+
+## Table 3.1 nodal-ledger reconstruction - 2026-10-17
+
+The exact nodal gravity pattern was recovered from the published column axial
+forces.  At floors 1 and 2, the load entering each column is the difference
+between axial force below and above the floor; at the roof it is the third
+storey axial force.  The derived floor weights are 659.63, 659.66 and 615.95
+kN (67.261, 67.264 and 62.807 t).  Their 1935.24 kN total independently agrees
+with the workshop mass set, exposing an internal 21.76 kN (1.11%) discrepancy
+with the isolated 1957 kN scalar in MAE 04-03.
+
+Masses are now assigned to the nine beam-column connections, as required by
+Sec. 2.2.4, with no assumed floor polar inertia.  With the source-required
+2.50 m deformable column heights, the elastic periods become 0.51446, 0.44775,
+0.37304 and 0.17797 s: errors +0.87%, -2.66%, -6.74% and -1.13%.
+
+The corresponding nonlinear pre-gravity periods are 0.48449, 0.42564, 0.35732
+and 0.16750 s, while post-gravity periods are 0.53820, 0.48315, 0.39821 and
+0.18052 s.  The post-gravity values are very close to the published third and
+fourth periods, but the report/manual evidence still indicates that the
+published eigenproblem is pre-gravity.  This contrast reinforces the remaining
+need to recover the ZeusNL `con2` tensile input rather than selecting a modal
+state merely because it fits.
+
+Updated source-ledger diagnostic peaks are 544.24, 577.60, 661.28 and 681.03
+kN for xp, xn, yp and yn.  The first three reach 200 mm; yn stops at -158.56
+mm.  Capacity remains 50-68% above Fig. 2.8, so mass provenance is no longer a
+credible explanation for the strength discrepancy.
