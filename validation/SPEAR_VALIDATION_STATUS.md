@@ -154,3 +154,32 @@ python validation/compare_pushover_to_fig_2_8.py
 
 Without that environment variable, MPI initialization fails before model
 construction.
+
+
+## Spatial Fig. 2.7 correction and global mass closure — 2026-10-17
+
+The pushover implementation previously computed the three Fig. 2.7 frame
+fractions but summed them and applied the resultant at the floor centre of
+mass. That preserved storey shear but removed the published torsional moment.
+Loads are now applied at the three perimeter frame points shown in Fig. 2.7.
+
+Updated diagnostic results are:
+
+| Case | Fig. 2.8 peak (kN) | OpenSees peak (kN) | Peak error | Reached displacement |
+|---|---:|---:|---:|---:|
+| `xp100` | 354.363 | 516.040 | +45.62% | +199.88 mm |
+| `xn100` | 367.335 | 511.259 | +39.18% | -200.12 mm |
+| `yp100` | 392.689 | 635.683 | +61.88% | +200.17 mm |
+| `yn100` | 454.009 | 510.692* | +12.48%* | -52.83 mm |
+
+The `yn100` result is truncated after a documented convergence failure and is
+not an acceptance peak comparison. The return of this directional stop after
+restoring the spatial load torque confirms that collapsing Fig. 2.7 to a CM
+force was physically consequential.
+
+The global Fig. 2.6 gravity/mass reconstruction now closes without calibration:
+`1955.856 kN` reconstructed versus `1957.000 kN` published, a residual of
+`-1.144 kN (-0.0585%)`. The balance uses the full 9.70 x 10.50 m slab plan,
+including cantilever strips outside the framing axes, the Table 2.1 clear beam
+spans and full 3.0 m column storey heights. The exact nearest-beam node ledger
+remains pending; global mass is no longer the unresolved part of that blocker.
