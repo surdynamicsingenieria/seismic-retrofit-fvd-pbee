@@ -222,16 +222,25 @@ def first_mode_for_direction(masters, dof):
     return periods, phi
 
 
-def apply_pushover_loads(case_name, masters, periods, phi):
+def apply_pushover_loads(case_name, masters, nt, periods, phi):
     dof = 1 if case_name[0] == "x" else 2
     rows = get_pattern(case_name, phi, MASSES)
     ops.timeSeries("Linear", 20)
     ops.pattern("Plain", 20, 20)
-    # Current diagnostic model has one rigid-diaphragm master per floor. Apply
-    # the floor-summed Eq. 2.5 force there, while storing Fig. 2.7 frame rows.
-    for master, frame_row in zip(masters, rows):
-        q = sum(frame_row)
-        ops.load(master, q if dof == 1 else 0, q if dof == 2 else 0, 0, 0, 0, 0)
+    # Fig. 2.7 does not apply the floor resultant at the centre of mass.  Its
+    # three frame forces deliberately create the published floor torque.  With
+    # a rigid diaphragm the forces may be placed at the shown perimeter joints
+    # and the Transformation constraint handler transfers both resultant and
+    # moment to the master node.
+    loading_points = {
+        "xp100": ("C8", "C9", "C5"),   # bottom, middle, top; left edge
+        "xn100": ("C7", "C4", "C2"),   # bottom, middle, top; right edge
+        "yp100": ("C8", "C6", "C7"),   # left, middle, right; bottom edge
+        "yn100": ("C5", "C1", "C2"),   # left, middle, right; top edge
+    }[case_name]
+    for k, frame_row in enumerate(rows, start=1):
+        for joint, q in zip(loading_points, frame_row):
+            ops.load(nt(k, joint), q if dof == 1 else 0, q if dof == 2 else 0, 0, 0, 0, 0)
     return periods, phi, rows
 
 
@@ -247,7 +256,7 @@ def run(case_name="xp100", target_mm=200.0, du_mm=0.5):
     phi = phi_pre_gravity
     periods_for_pattern = periods_pre_gravity
     _periods, _phi, pattern_rows = apply_pushover_loads(
-        case_name, masters, periods_for_pattern, phi
+        case_name, masters, nt, periods_for_pattern, phi
     )
 
     ops.wipeAnalysis()
@@ -297,6 +306,7 @@ def run(case_name="xp100", target_mm=200.0, du_mm=0.5):
         "modal_state_used_for_eq_2_5": "pre-gravity eigenvalue state",
         "first_mode_shape_used_for_eq_2_5": phi,
         "fig_2_7_pattern_rows": pattern_rows,
+        "fig_2_7_load_application": "three perimeter frame points per floor, not floor CM",
         "reached_top_displacement_mm": output[-1][0],
         "completed_steps": len(output) - 1,
         "requested_steps": requested_steps,

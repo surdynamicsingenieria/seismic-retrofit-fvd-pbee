@@ -42,15 +42,16 @@
       0.11295037628093083
     ]
   ],
+  "fig_2_7_load_application": "three perimeter frame points per floor, not floor CM",
   "reached_top_displacement_mm": 199.8841474405282,
   "completed_steps": 400,
   "requested_steps": 400,
   "fallback_attempts": 0,
   "analysis_exit_code": 0,
-  "peak_abs_base_shear_kN": 515.4322612438697,
+  "peak_abs_base_shear_kN": 516.0396144533024,
   "pending_source_data": [
     "dimensioned longitudinal transition location of the Fig 2.3 bent bars",
-    "Fig 2.6 exact nodal gravity allocation"
+    "Jeong-Elnashai Fig 2.6 nodal gravity and mass ledger; current floor tuples are Stratan-Fajfar inputs"
   ],
   "acceptance": "PROHIBITED until Fig 2.6 gravity/mass allocation is source-locked and modal/capacity errors close"
 }

@@ -89,6 +89,8 @@ def write_plot(reference: dict[str, list[tuple[float, float]]]) -> None:
     fig.legend(handles, labels, loc="upper center", ncol=2, frameon=False)
     fig.tight_layout(rect=(0, 0, 1, 0.94))
     fig.savefig(OUT / "fig_2_8_vs_diagnostic_pushover.svg")
+    fig.savefig(OUT / "fig_2_8_vs_diagnostic_pushover.png", dpi=180)
+    plt.close(fig)
 
 
 def main() -> int:

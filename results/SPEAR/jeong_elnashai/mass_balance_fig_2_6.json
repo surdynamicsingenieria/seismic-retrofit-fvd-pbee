@@ -1,0 +1,30 @@
+{
+  "status": "GLOBAL_BALANCE_SOURCE_LOCKED__NODAL_LEDGER_PENDING",
+  "published_weight_kN": 1957.0,
+  "reconstructed_weight_kN": 1955.8560224999994,
+  "residual_kN": -1.1439775000005739,
+  "residual_pct": -0.05845567194688676,
+  "reconstructed_mass_t": 199.43469180177416,
+  "published_mass_t": 199.551340878964,
+  "components_kN": {
+    "three_slabs_plus_finish_plus_0_3_live": 1459.8262349999995,
+    "three_floors_beam_drops_using_table_2_1_clear_spans": 344.3246625,
+    "three_storeys_columns_using_centerline_height": 151.705125
+  },
+  "source_inputs": {
+    "slab_plan_m": [
+      9.7,
+      10.5
+    ],
+    "slab_area_m2": 101.85,
+    "slab_thickness_m": 0.15,
+    "rc_unit_weight_kN_m3": 24.518,
+    "finish_kN_m2": 0.5,
+    "effective_live_kN_m2": 0.6,
+    "sum_clear_beam_spans_m": 53.5,
+    "beam_web_m": 0.25,
+    "beam_drop_below_slab_m": 0.35,
+    "story_height_m": 3.0
+  },
+  "acceptance_note": "The 0.0585% closure verifies the global load reconstruction; it does not recover the unpublished ZeusNL node-by-node allocation."
+}

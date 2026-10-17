@@ -29,14 +29,38 @@ than an acceptance-level reconstruction.
 
 | Case | Fig. 2.8 Vmax (kN) | Diagnostic Vmax (kN) | Peak error | MAE (kN) |
 |---|---:|---:|---:|---:|
-| `xp100` | 354.363 | 515.432 | +45.45% | 144.880 |
-| `xn100` | 367.335 | 510.330 | +38.93% | 123.436 |
-| `yp100` | 392.689 | 640.686 | +63.15% | 203.639 |
-| `yn100` | 454.009 | 649.376 | +43.03% | 145.043 |
+| `xp100` | 354.363 | 516.040 | +45.62% | 145.199 |
+| `xn100` | 367.335 | 511.259 | +39.18% | 124.168 |
+| `yp100` | 392.689 | 635.683 | +61.88% | 200.343 |
+| `yn100` | 454.009 | 510.692* | +12.48%* | 82.838* |
 
-All four analyses reached approximately +/-200 mm. The prior `yn100` stop was
-removed by using the source-consistent pre-gravity first mode for Eq. 2.5,
-rather than a mode recomputed after the gravity analysis.
+The 2026-10-17 audit found that the code computed the Fig. 2.7 three-frame
+fractions but summed each row and applied the resultant at the floor centre of
+mass.  That preserved storey shear but discarded the prescribed torsional
+moment.  The loads are now applied at the three perimeter frame points shown in
+Fig. 2.7.  Cases `xp100`, `xn100` and `yp100` reach approximately 200 mm.
+`yn100` now stops at -52.83 mm after one documented fallback attempt; values
+marked with an asterisk are therefore truncated diagnostics, not peak-capacity
+acceptance comparisons.  This directional failure is evidence that the Fig.
+2.7 torque is structurally active and must not be collapsed to a CM force.
+
+## Fig. 2.6 global mass balance
+
+A source-only reconstruction from Fig. 2.2, Table 2.1 and Sec. 2.2.4 gives:
+
+| Component | Weight (kN) |
+|---|---:|
+| Three 9.70 x 10.50 x 0.15 m slabs + 0.5 kN/m2 finish + 0.6 kN/m2 live load | 1459.826 |
+| Beam drops below the slab, using the 53.5 m sum of published clear spans | 344.325 |
+| Three storeys of columns using the 3.0 m centreline height | 151.705 |
+| **Reconstructed total** | **1955.856** |
+| **MAE 04-03 total** | **1957.000** |
+
+The residual is -1.144 kN (-0.0585%), consistent with published-dimension
+rounding and without fitted input.  This closes the global mass reconstruction
+and shows that the full rectangular slab, including cantilever strips outside
+the framing axes, is required.  The node-by-node nearest-beam allocation is
+still pending and remains an acceptance gate.
 
 ## Blocking items before acceptance
 
