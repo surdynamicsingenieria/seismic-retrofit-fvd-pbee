@@ -140,3 +140,33 @@ errors +0.87%, -2.66%, -6.74% and -1.13%; the swapped model gives +2.41%,
 +3.72%, -21.66% and +0.12%.  In particular, mode 3 is severely degraded.
 The published plan orientation is therefore retained.  Rotating C6 to improve
 the pushover would violate both Fig. 2.3 and the modal evidence.
+
+## Table 3.1 first-yield strain-compatibility audit - 2026-10-18
+
+`validation/audit_table_3_1_yield_curvature.py` now reproduces Eq. 3.2 with
+the published 25 MPa Mander compression envelope, measured Phi12 steel
+properties, Fig. 2.3 reinforcement and the source-consistent 29 mm bar-centroid
+cover. Concrete tension is omitted explicitly because the SPEAR `con2`
+tensile-strength input remains unrecovered. Where the nonlinear equilibrium
+equation has two roots, the script selects the first monotonic pre-peak root;
+the second is a nonphysical post-peak branch for first-yield assessment.
+
+Across the 24 regular-column/story entries, the calculated yield curvatures
+have an 8.13% mean absolute error and a 12.17% maximum absolute error. They
+are consistently somewhat below the published values, which is compatible
+with the still-missing tensile/tension-stiffening law but is not evidence for
+choosing one by curve fitting.
+
+For C6, the direct 250 mm-depth weak-axis calculations are 13.90, 13.51 and
+13.11 x10^-6 rad/mm, of the same order as the first unlabelled Table 3.1
+subcolumn (14.74, 13.79 and 13.43). The direct 750 mm-depth strong-axis
+calculations are 4.16, 4.05 and 3.93 x10^-6 rad/mm; neither published
+subcolumn contains values of that order. The anomaly is therefore in the
+published C6 curvature table/convention, not a reason to rotate the structural
+section. The full machine-readable ledger is retained under `results/`.
+
+The ZeusNL manual confirms that `con2` requires compressive strength, tensile
+strength, crushing strain and confinement factor. A later SPEAR case-study
+paper repeats the 25 MPa and 1.01 inputs, but does not recover the missing
+SPEAR tensile strength in machine-readable text; its material figure uses a
+generic 30 MPa/3 MPa/0.006/1.1 illustration and must not be substituted.
