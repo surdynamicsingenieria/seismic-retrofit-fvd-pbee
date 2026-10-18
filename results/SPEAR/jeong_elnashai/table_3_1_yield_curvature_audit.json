@@ -1,0 +1,334 @@
+{
+  "status": "SOURCE_CONSISTENCY_AUDIT_NOT_CALIBRATION",
+  "assumptions": {
+    "concrete": "Mander compression envelope, fc=25 MPa, Ec=4700*sqrt(fc); tension omitted pending ZeusNL con2 input",
+    "steel": "elastic-perfectly-plastic at first yield, fy=458.67 MPa, Es=206000 MPa",
+    "bar_centroid_cover_mm": 29.0,
+    "root_selection": "first monotonic pre-peak equilibrium root"
+  },
+  "regular_columns": {
+    "C1": [
+      {
+        "story": 1,
+        "axial_kn": 234.22,
+        "published": 17.5,
+        "calculated": 16.398572115812154,
+        "error_pct": -6.293873623930546,
+        "neutral_axis_mm": 85.2227273000604,
+        "yield_curvature_rad_per_mm_x1e6": 16.398572115812154,
+        "number_of_mathematical_roots": 2
+      },
+      {
+        "story": 2,
+        "axial_kn": 154.46,
+        "published": 16.16,
+        "calculated": 15.267950683605784,
+        "error_pct": -5.520107155904796,
+        "neutral_axis_mm": 75.16815627725,
+        "yield_curvature_rad_per_mm_x1e6": 15.267950683605784,
+        "number_of_mathematical_roots": 2
+      },
+      {
+        "story": 3,
+        "axial_kn": 74.98,
+        "published": 15.53,
+        "calculated": 14.139991692277471,
+        "error_pct": -8.950472039423873,
+        "neutral_axis_mm": 63.53502784769806,
+        "yield_curvature_rad_per_mm_x1e6": 14.139991692277471,
+        "number_of_mathematical_roots": 2
+      }
+    ],
+    "C2": [
+      {
+        "story": 1,
+        "axial_kn": 252.67,
+        "published": 18.73,
+        "calculated": 16.665573452212485,
+        "error_pct": -11.022031755405848,
+        "neutral_axis_mm": 87.39803278040453,
+        "yield_curvature_rad_per_mm_x1e6": 16.665573452212485,
+        "number_of_mathematical_roots": 2
+      },
+      {
+        "story": 2,
+        "axial_kn": 166.54,
+        "published": 16.2,
+        "calculated": 15.437852084882298,
+        "error_pct": -4.7046167599858135,
+        "neutral_axis_mm": 76.7731097683834,
+        "yield_curvature_rad_per_mm_x1e6": 15.437852084882298,
+        "number_of_mathematical_roots": 2
+      },
+      {
+        "story": 3,
+        "axial_kn": 80.13,
+        "published": 15.59,
+        "calculated": 14.214393715308887,
+        "error_pct": -8.823645187242546,
+        "neutral_axis_mm": 64.35924256408791,
+        "yield_curvature_rad_per_mm_x1e6": 14.214393715308887,
+        "number_of_mathematical_roots": 2
+      }
+    ],
+    "C3": [
+      {
+        "story": 1,
+        "axial_kn": 407.26,
+        "published": 21.53,
+        "calculated": 19.08991783747203,
+        "error_pct": -11.333405306678923,
+        "neutral_axis_mm": 104.3649564647313,
+        "yield_curvature_rad_per_mm_x1e6": 19.08991783747203,
+        "number_of_mathematical_roots": 2
+      },
+      {
+        "story": 2,
+        "axial_kn": 272.34,
+        "published": 18.76,
+        "calculated": 16.9538569609828,
+        "error_pct": -9.627628139750533,
+        "neutral_axis_mm": 89.66980161609308,
+        "yield_curvature_rad_per_mm_x1e6": 16.9538569609828,
+        "number_of_mathematical_roots": 2
+      },
+      {
+        "story": 3,
+        "axial_kn": 139.62,
+        "published": 16.09,
+        "calculated": 15.059225638811592,
+        "error_pct": -6.406304295763876,
+        "neutral_axis_mm": 73.14688646939203,
+        "yield_curvature_rad_per_mm_x1e6": 15.059225638811592,
+        "number_of_mathematical_roots": 2
+      }
+    ],
+    "C4": [
+      {
+        "story": 1,
+        "axial_kn": 328.72,
+        "published": 17.79,
+        "calculated": 17.807147733153197,
+        "error_pct": 0.09638973104664217,
+        "neutral_axis_mm": 95.96294008316254,
+        "yield_curvature_rad_per_mm_x1e6": 17.807147733153197,
+        "number_of_mathematical_roots": 2
+      },
+      {
+        "story": 2,
+        "axial_kn": 217.96,
+        "published": 17.49,
+        "calculated": 16.16552730371109,
+        "error_pct": -7.572742688901702,
+        "neutral_axis_mm": 83.2653405467877,
+        "yield_curvature_rad_per_mm_x1e6": 16.16552730371109,
+        "number_of_mathematical_roots": 2
+      },
+      {
+        "story": 3,
+        "axial_kn": 107.89,
+        "published": 15.87,
+        "calculated": 14.611184459863535,
+        "error_pct": -7.932044991408094,
+        "neutral_axis_mm": 68.61307995429631,
+        "yield_curvature_rad_per_mm_x1e6": 14.611184459863535,
+        "number_of_mathematical_roots": 2
+      }
+    ],
+    "C5": [
+      {
+        "story": 1,
+        "axial_kn": 89.56,
+        "published": 15.68,
+        "calculated": 14.349911948054107,
+        "error_pct": -8.482704412920238,
+        "neutral_axis_mm": 65.83853238136554,
+        "yield_curvature_rad_per_mm_x1e6": 14.349911948054107,
+        "number_of_mathematical_roots": 2
+      },
+      {
+        "story": 2,
+        "axial_kn": 57.42,
+        "published": 15.34,
+        "calculated": 13.883786351329851,
+        "error_pct": -9.492918179075282,
+        "neutral_axis_mm": 60.62923789554114,
+        "yield_curvature_rad_per_mm_x1e6": 13.883786351329851,
+        "number_of_mathematical_roots": 2
+      },
+      {
+        "story": 3,
+        "axial_kn": 25.43,
+        "published": 15.26,
+        "calculated": 13.403438899723207,
+        "error_pct": -12.166193317672292,
+        "neutral_axis_mm": 54.88193024819676,
+        "yield_curvature_rad_per_mm_x1e6": 13.403438899723207,
+        "number_of_mathematical_roots": 2
+      }
+    ],
+    "C7": [
+      {
+        "story": 1,
+        "axial_kn": 150.45,
+        "published": 16.14,
+        "calculated": 15.211564099308315,
+        "error_pct": -5.752390958436715,
+        "neutral_axis_mm": 74.62758336208856,
+        "yield_curvature_rad_per_mm_x1e6": 15.211564099308315,
+        "number_of_mathematical_roots": 2
+      },
+      {
+        "story": 2,
+        "axial_kn": 98.51,
+        "published": 15.77,
+        "calculated": 14.477794008768019,
+        "error_pct": -8.19407730648054,
+        "neutral_axis_mm": 67.20907047649585,
+        "yield_curvature_rad_per_mm_x1e6": 14.477794008768019,
+        "number_of_mathematical_roots": 2
+      },
+      {
+        "story": 3,
+        "axial_kn": 45.9,
+        "published": 15.31,
+        "calculated": 13.713147221313676,
+        "error_pct": -10.430129188023018,
+        "neutral_axis_mm": 58.63366919902753,
+        "yield_curvature_rad_per_mm_x1e6": 13.713147221313676,
+        "number_of_mathematical_roots": 2
+      }
+    ],
+    "C8": [
+      {
+        "story": 1,
+        "axial_kn": 73.66,
+        "published": 15.51,
+        "calculated": 14.120873020828835,
+        "error_pct": -8.956331264804419,
+        "neutral_axis_mm": 63.321831322043614,
+        "yield_curvature_rad_per_mm_x1e6": 14.120873020828835,
+        "number_of_mathematical_roots": 2
+      },
+      {
+        "story": 2,
+        "axial_kn": 45.72,
+        "published": 15.31,
+        "calculated": 13.710461986583839,
+        "error_pct": -10.44766827835507,
+        "neutral_axis_mm": 58.601869270560535,
+        "yield_curvature_rad_per_mm_x1e6": 13.710461986583839,
+        "number_of_mathematical_roots": 2
+      },
+      {
+        "story": 3,
+        "axial_kn": 18.66,
+        "published": 14.16,
+        "calculated": 13.29877883832676,
+        "error_pct": -6.082070350799718,
+        "neutral_axis_mm": 53.57459762836425,
+        "yield_curvature_rad_per_mm_x1e6": 13.29877883832676,
+        "number_of_mathematical_roots": 2
+      }
+    ],
+    "C9": [
+      {
+        "story": 1,
+        "axial_kn": 182.26,
+        "published": 17.4,
+        "calculated": 15.659283690501933,
+        "error_pct": -10.004116721253254,
+        "neutral_axis_mm": 78.81256396748478,
+        "yield_curvature_rad_per_mm_x1e6": 15.659283690501933,
+        "number_of_mathematical_roots": 2
+      },
+      {
+        "story": 2,
+        "axial_kn": 121.37,
+        "published": 15.98,
+        "calculated": 14.801995147612145,
+        "error_pct": -7.37174500868496,
+        "neutral_axis_mm": 70.57748088321459,
+        "yield_curvature_rad_per_mm_x1e6": 14.801995147612145,
+        "number_of_mathematical_roots": 2
+      },
+      {
+        "story": 3,
+        "axial_kn": 59.05,
+        "published": 15.35,
+        "calculated": 13.90775236806267,
+        "error_pct": -9.39575004519433,
+        "neutral_axis_mm": 60.90559084361897,
+        "yield_curvature_rad_per_mm_x1e6": 13.90775236806267,
+        "number_of_mathematical_roots": 2
+      }
+    ]
+  },
+  "c6": {
+    "published_unlabelled": {
+      "unlabelled_subcolumn_1": [
+        14.74,
+        13.79,
+        13.43
+      ],
+      "unlabelled_subcolumn_2": [
+        17.25,
+        16.61,
+        16.02
+      ]
+    },
+    "calculated_axes": {
+      "weak_axis_250_mm_depth": [
+        {
+          "story": 1,
+          "axial_kn": 216.44,
+          "neutral_axis_mm": 60.77598137558081,
+          "yield_curvature_rad_per_mm_x1e6": 13.896502017450405,
+          "number_of_mathematical_roots": 2
+        },
+        {
+          "story": 2,
+          "axial_kn": 141.29,
+          "neutral_axis_mm": 56.24056409956844,
+          "yield_curvature_rad_per_mm_x1e6": 13.513965897551488,
+          "number_of_mathematical_roots": 2
+        },
+        {
+          "story": 3,
+          "axial_kn": 64.29,
+          "neutral_axis_mm": 51.10687650467198,
+          "yield_curvature_rad_per_mm_x1e6": 13.105612235797654,
+          "number_of_mathematical_roots": 2
+        }
+      ],
+      "strong_axis_750_mm_depth": [
+        {
+          "story": 1,
+          "axial_kn": 216.44,
+          "neutral_axis_mm": 185.7713000840211,
+          "yield_curvature_rad_per_mm_x1e6": 4.160003748692438,
+          "number_of_mathematical_roots": 1
+        },
+        {
+          "story": 2,
+          "axial_kn": 141.29,
+          "neutral_axis_mm": 171.09067800630183,
+          "yield_curvature_rad_per_mm_x1e6": 4.048946451727487,
+          "number_of_mathematical_roots": 1
+        },
+        {
+          "story": 3,
+          "axial_kn": 64.29,
+          "neutral_axis_mm": 154.3614457932641,
+          "yield_curvature_rad_per_mm_x1e6": 3.929406817676411,
+          "number_of_mathematical_roots": 1
+        }
+      ]
+    }
+  },
+  "summary": {
+    "regular_column_mean_absolute_error_pct": 8.127473196130959,
+    "regular_column_max_absolute_error_pct": 12.166193317672292,
+    "finding": "C6 weak-axis values have the published order of magnitude; the strong-axis values do not. Neither unlabelled published subcolumn represents the direct 750 mm-depth first-yield curvature."
+  }
+}
