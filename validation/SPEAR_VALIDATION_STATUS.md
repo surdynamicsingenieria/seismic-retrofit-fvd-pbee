@@ -224,3 +224,24 @@ correction improves capacity but does not validate the model. C6 Table 3.1
 curvature values remain inconsistent with a direct strong-axis interpretation
 of the published 750 x 250 mm section and are retained as an explicit source
 blocker rather than forcing an axis convention.
+
+
+## Table 3.1 section-level audit — 2026-10-18
+
+An independent Eq. 3.2 strain-compatibility calculation now covers all 24
+regular-column/story yield curvatures and both C6 bending axes. With the
+published compression model and no invented tensile law, regular-column yield
+curvatures have 8.13% mean absolute error and 12.17% maximum absolute error.
+
+C6 weak-axis calculations are 13.90, 13.51 and 13.11 x10^-6 rad/mm, close in
+order to the first unlabelled published subcolumn. The corresponding direct
+strong-axis values are 4.16, 4.05 and 3.93 x10^-6 rad/mm; no Table 3.1 C6
+subcolumn has that order of magnitude. Together with the modal falsification
+of an axis swap, this isolates a source/convention anomaly in Table 3.1 and
+closes C6 rotation as an admissible corrective action.
+
+The remaining material blocker is narrower: the numerical SPEAR tensile input
+and exact tensile branch of ZeusNL `con2`. The manual and later literature
+confirm that tensile strength is a required input, but the only newly located
+figure is a generic 30 MPa concrete example and is not valid evidence for the
+25 MPa SPEAR model. No material value has been calibrated or substituted.
