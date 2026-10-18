@@ -2,56 +2,56 @@
   "status": "DIAGNOSTIC_ONLY",
   "case": "yp100",
   "periods_s": [
-    0.538202308173545,
-    0.4831486866386008,
-    0.3982115327239048,
-    0.180518758605629
+    0.5439738320257511,
+    0.486938061057074,
+    0.40130135632284886,
+    0.18278809407565086
   ],
   "periods_pre_gravity_s": [
-    0.4844933556353218,
-    0.4256389427711754,
-    0.35731538236356736,
-    0.1675044193635262
+    0.49008292429884126,
+    0.42950648273653497,
+    0.3604230546121419,
+    0.1695822072070397
   ],
   "periods_post_gravity_s": [
-    0.538202308173545,
-    0.4831486866386008,
-    0.3982115327239048,
-    0.180518758605629
+    0.5439738320257511,
+    0.486938061057074,
+    0.40130135632284886,
+    0.18278809407565086
   ],
   "modal_state_used_for_eq_2_5": "pre-gravity eigenvalue state",
   "first_mode_shape_used_for_eq_2_5": [
-    0.0002873388392843766,
-    0.0006060852451265147,
-    0.0008137886930909527
+    0.0002843609411572266,
+    0.0005991423210786524,
+    0.0008043903537188326
   ],
   "fig_2_7_pattern_rows": [
     [
-      0.02606875175121816,
-      0.07646833847023994,
-      0.07125458811999631
+      0.026093665939009147,
+      0.07654142008776017,
+      0.07132268689995833
     ],
     [
-      0.05498944874315674,
-      0.16130238297992644,
-      0.15030449323129508
+      0.05498128730089152,
+      0.16127844274928177,
+      0.15028218528910348
     ],
     [
-      0.0689417995056251,
-      0.2022292785498336,
-      0.18844091864870857
+      0.06892504676009933,
+      0.20218013716295805,
+      0.18839512781093817
     ]
   ],
   "fig_2_7_load_application": "three perimeter frame points per floor, not floor CM",
-  "reached_top_displacement_mm": 200.44476771192404,
+  "reached_top_displacement_mm": 200.44859159340186,
   "completed_steps": 400,
   "requested_steps": 400,
   "fallback_attempts": 0,
   "analysis_exit_code": 0,
-  "peak_abs_base_shear_kN": 661.2828351759209,
+  "peak_abs_base_shear_kN": 633.6531196854017,
   "pending_source_data": [
     "dimensioned longitudinal transition location of the Fig 2.3 bent bars",
     "numerical concrete tensile strength used in the original ZeusNL con2 input"
   ],
-  "acceptance": "PROHIBITED until Fig 2.6 gravity/mass allocation is source-locked and modal/capacity errors close"
+  "acceptance": "PROHIBITED until concrete/bent-bar inputs are source-locked and modal/capacity errors close"
 }

@@ -36,7 +36,9 @@ PENDING_SOURCE_DATA = [
 def fiber_rect(sec, conc, steel, b, h, nbar=4, bar_d=0.012):
     ops.section("Fiber", sec, "-GJ", 1e8)
     ops.patch("rect", conc, 14, 14, -b / 2, -h / 2, b / 2, h / 2)
-    cover = COVER_M
+    # Fig. 2.3/Sec. 2.2.2 gives 15 mm concrete cover.  Longitudinal-bar
+    # centroids are one stirrup diameter plus half a bar farther inward.
+    cover = COVER_M + BAR_DIAMETER_M["phi8"] + bar_d / 2.0
     area_bar = math.pi * bar_d**2 / 4
     if nbar == 4:
         for y in (-b / 2 + cover, b / 2 - cover):

@@ -109,3 +109,25 @@ Updated source-ledger diagnostic peaks are 544.24, 577.60, 661.28 and 681.03
 kN for xp, xn, yp and yn.  The first three reach 200 mm; yn stops at -158.56
 mm.  Capacity remains 50-68% above Fig. 2.8, so mass provenance is no longer a
 credible explanation for the strength discrepancy.
+
+## Column bar-centroid correction - 2026-10-18
+
+The earlier column fibres interpreted the published 15 mm concrete cover as a
+bar-centroid distance.  Fig. 2.3 also specifies Phi8 stirrups and Phi12
+longitudinal bars, so the source-consistent centroid distance is
+`15 + 8 + 12/2 = 29 mm`.  Section equilibrium checks against Table 3.1 show
+that 29 mm produces materially closer regular-column yield curvatures than
+15 mm.  This is a detailing correction, not a capacity calibration.
+
+After correction, pre-gravity fibre periods are 0.49008, 0.42951, 0.36042 and
+0.16958 s; post-gravity periods are 0.54397, 0.48694, 0.40130 and 0.18279 s.
+Diagnostic peaks decrease to 513.98, 543.62, 633.65 and 651.79 kN.  Errors
+against Fig. 2.8 remain +45.04%, +47.99%, +61.36% and +43.56%; yn stops at
+-166.05 mm.  The correction is physically required but does not close the
+capacity discrepancy.
+
+The C6 entries in Table 3.1 remain anomalous under a direct strong-axis
+interpretation of the published 750 x 250 mm section: their listed yield
+curvatures are of the same order as the weak-axis/regular-column values.  No
+axis reinterpretation is applied until this is resolved from a primary source
+or a verified ZeusNL section convention.
