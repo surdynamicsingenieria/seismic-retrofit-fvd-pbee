@@ -207,3 +207,20 @@ Capacity remains 50-68% above Fig. 2.8. Consequently mass provenance is closed
 as a principal cause; the active blockers are the unrecovered ZeusNL `con2`
 tensile input, exact bent-bar transition representation and section-level
 moment-curvature verification.
+
+
+## Column bar-centroid audit — 2026-10-18
+
+Column longitudinal bars were corrected from a 15 mm centroid offset to the
+published-detail centroid distance `15 + 8 + 6 = 29 mm` (clear cover, Phi8
+stirrup and half Phi12). This source-required correction reduces diagnostic
+peaks to 513.98, 543.62, 633.65 and 651.79 kN for xp, xn, yp and yn. Peak
+errors remain +45.04%, +47.99%, +61.36% and +43.56%; yn is truncated at
+-166.05 mm.
+
+Pre-gravity fibre periods are now 0.49008, 0.42951, 0.36042 and 0.16958 s;
+post-gravity values are 0.54397, 0.48694, 0.40130 and 0.18279 s. The detailing
+correction improves capacity but does not validate the model. C6 Table 3.1
+curvature values remain inconsistent with a direct strong-axis interpretation
+of the published 750 x 250 mm section and are retained as an explicit source
+blocker rather than forcing an axis convention.
