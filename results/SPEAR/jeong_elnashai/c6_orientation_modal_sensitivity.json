@@ -1,0 +1,13 @@
+{
+  "status": "DIAGNOSTIC_SENSITIVITY_NOT_CALIBRATION",
+  "published_periods_s": [0.51, 0.46, 0.40, 0.18],
+  "source_geometry_c6_750_along_global_y_250_along_global_x": {
+    "periods_s": [0.5144593563, 0.4477538855, 0.3730390012, 0.1779685739],
+    "errors_pct": [0.8743836, -2.6621988, -6.7402497, -1.1285700]
+  },
+  "axes_swapped_counterfactual": {
+    "periods_s": [0.5222861260, 0.4771231903, 0.3133490181, 0.1802177249],
+    "errors_pct": [2.4090443, 3.7224327, -21.6627455, 0.1209583]
+  },
+  "decision": "Retain published plan orientation. Swapping C6 axes worsens mode 3 from -6.74% to -21.66% and is physically inadmissible as a pushover fit."
+}

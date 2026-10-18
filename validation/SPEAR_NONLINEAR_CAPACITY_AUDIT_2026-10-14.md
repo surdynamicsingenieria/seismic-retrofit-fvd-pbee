@@ -131,3 +131,12 @@ interpretation of the published 750 x 250 mm section: their listed yield
 curvatures are of the same order as the weak-axis/regular-column values.  No
 axis reinterpretation is applied until this is resolved from a primary source
 or a verified ZeusNL section convention.
+
+### C6 orientation modal falsification
+
+A counterfactual modal run interchanged the 750 and 250 mm C6 section axes
+without changing any other input.  The source-plan orientation gives period
+errors +0.87%, -2.66%, -6.74% and -1.13%; the swapped model gives +2.41%,
++3.72%, -21.66% and +0.12%.  In particular, mode 3 is severely degraded.
+The published plan orientation is therefore retained.  Rotating C6 to improve
+the pushover would violate both Fig. 2.3 and the modal evidence.
