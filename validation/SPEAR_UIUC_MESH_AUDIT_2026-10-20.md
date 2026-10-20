@@ -67,6 +67,24 @@ SPEAR-M0 is still **not physically validated**:
 - the current OpenSees compression tail (`0.2fc` at strain 0.006) has not
   been demonstrated equivalent to the original `con2` law.
 
+## Source-envelope sensitivity
+
+MAE 04-03 Sec. 3.5.1 supplies a previously omitted quantitative constraint:
+for `K=1.01`, the Mander/ZeusNL curve reaches `0.85 f'cc` at
+`eps_cu=0.00456`. This proves that the current `0.20fc` at 0.006
+`Concrete02` tail is too degradative and is not an acceptable final mapping.
+
+A non-calibrated diagnostic substituted the published point
+(`f'cc=1.01*25 MPa`, peak strain 0.0021, `0.85f'cc` at 0.00456) while
+retaining zero tension. Fibre pre-gravity periods became 0.49873, 0.43734,
+0.36641 and 0.17253 s, closer to all four published periods than the
+placeholder envelope. The static solution, however, encountered a limit-point
+singularity under roof-displacement control and could not be traced reliably
+with the existing algorithm sequence. The sensitivity was therefore **not
+accepted into the production model and no capacity result was committed**.
+The next implementation must reproduce the full Mander/`con2` envelope
+rather than force one published point into a bilinear `Concrete02` tail.
+
 No FVD, optimization, NLTHA/MSA or FEMA P-58 work is permitted until the curve
 shape and modal-shape gates are closed.
 
