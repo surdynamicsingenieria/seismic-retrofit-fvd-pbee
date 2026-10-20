@@ -2,53 +2,55 @@
   "status": "DIAGNOSTIC_ONLY",
   "case": "xn100",
   "periods_s": [
-    0.5439738320257511,
-    0.486938061057074,
-    0.40130135632284886,
-    0.18278809407565086
+    0.5444795134599798,
+    0.48682894599379833,
+    0.40138609160457617,
+    0.1832604245564278
   ],
   "periods_pre_gravity_s": [
-    0.49008292429884126,
-    0.42950648273653497,
-    0.3604230546121419,
-    0.1695822072070397
+    0.4903477646126978,
+    0.4298942900869989,
+    0.36069194862597825,
+    0.16964104189480697
   ],
   "periods_post_gravity_s": [
-    0.5439738320257511,
-    0.486938061057074,
-    0.40130135632284886,
-    0.18278809407565086
+    0.5444795134599798,
+    0.48682894599379833,
+    0.40138609160457617,
+    0.1832604245564278
   ],
   "modal_state_used_for_eq_2_5": "pre-gravity eigenvalue state",
   "first_mode_shape_used_for_eq_2_5": [
-    0.0010556539676460455,
-    0.0020450236252456187,
-    0.0026246452128950368
+    0.0010553052533060058,
+    0.002045067573856284,
+    0.002624961781578121
   ],
   "fig_2_7_pattern_rows": [
     [
-      -0.04563662485085323,
-      -0.0950763017726109,
-      -0.049439676921757665
+      -0.045621624954434226,
+      -0.09504505198840464,
+      -0.049423427033970416
     ],
     [
-      -0.08841175557255443,
-      -0.18419115744282175,
-      -0.09577940187026732
+      -0.08841380143326671,
+      -0.184195419652639,
+      -0.09578161821937228
     ],
     [
-      -0.10595161957659231,
-      -0.22073254078456733,
-      -0.11478092120797502
+      -0.10596457361229904,
+      -0.22075952835895635,
+      -0.11479495474665731
     ]
   ],
   "fig_2_7_load_application": "three perimeter frame points per floor, not floor CM",
-  "reached_top_displacement_mm": -199.61709197348148,
+  "reached_top_displacement_mm": -200.0,
   "completed_steps": 400,
   "requested_steps": 400,
-  "fallback_attempts": 0,
+  "fallback_attempts": 2,
+  "minimum_adaptive_step_mm": 0.005,
+  "initial_gravity_lateral_drift_mm_removed": 0.3817612975963999,
   "analysis_exit_code": 0,
-  "peak_abs_base_shear_kN": 543.6248628596802,
+  "peak_abs_base_shear_kN": 357.94989213258026,
   "pending_source_data": [
     "dimensioned longitudinal transition location of the Fig 2.3 bent bars",
     "numerical concrete tensile strength used in the original ZeusNL con2 input"
