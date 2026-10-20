@@ -245,3 +245,31 @@ and exact tensile branch of ZeusNL `con2`. The manual and later literature
 confirm that tensile strength is a required input, but the only newly located
 figure is a generic 30 MPa concrete example and is not valid evidence for the
 25 MPa SPEAR model. No material value has been calibrated or substituted.
+
+
+## UIUC longitudinal-mesh correction — 2026-10-20
+
+The nonlinear model previously used a single five-point Lobatto member, which
+MAE 04-03 Table 2.8 associates with the University of Rome OpenSees model
+rather than the target UIUC ZeusNL model. The reconstruction now uses four
+subelements per member (0.15L/0.35L/0.35L/0.15L), each with second-order
+Gaussian integration, consistent with the UIUC element formulation and the
+later documented ZeusNL SPEAR mesh.
+
+The correction leaves fibre pre-gravity periods nearly unchanged
+(0.49035, 0.42989, 0.36069 and 0.16964 s) but changes plastic localization and
+resolves the dominant peak-strength discrepancy. Adaptive displacement control
+now reaches +/-200 mm in every direction without changing structural inputs.
+
+| Case | Fig. 2.8 peak (kN) | OpenSees peak (kN) | Peak error | Curve MAE (kN) |
+|---|---:|---:|---:|---:|
+| xp100 | 354.363 | 349.132 | -1.48% | 51.18 |
+| xn100 | 367.335 | 357.950 | -2.55% | 65.67 |
+| yp100 | 392.689 | 435.569 | +10.92% | 50.86 |
+| yn100 | 454.009 | 464.394 | +2.29% | 57.34 |
+
+This is a major improvement from the previous +45% to +61% peak errors, but it
+does not complete validation. Initial stiffness remains excessive, peaks occur
+too early and post-peak degradation is too strong. The exact ZeusNL `con2`
+tensile/compression-tail equivalence and the dimensioned bent-bar transition
+remain open source-data gates. FVD and all downstream work remain blocked.
