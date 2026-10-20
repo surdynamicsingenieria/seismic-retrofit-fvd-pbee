@@ -5,7 +5,8 @@ No Stratan-Fajfar hinges and no modal/capacity calibration.
 
 Gate status:
 - modal geometry/mass properties inherited from spear_m0_jeong_elnashai.py;
-- distributed-plasticity fibre columns, P-Delta, rigid joint offsets/C6 arms;
+- UIUC four-element-per-member distributed-plasticity mesh, P-Delta,
+  rigid joint offsets/C6 arms;
 - source-locked fibre T beams with the Fig. 2.3 typical bent-bar layout;
 - pushover patterns follow MAE 04-03 Eq. 2.5 and Fig. 2.7.
 """
@@ -114,15 +115,12 @@ def build():
 
     fiber_rect(101, 1, 2, 0.25, 0.25, 4)
     fiber_rect(102, 1, 2, 0.75, 0.25, 10)
-    ops.beamIntegration("Lobatto", 201, 101, 5)
-    ops.beamIntegration("Lobatto", 202, 102, 5)
+    # MAE 04-03 Sec. 2.1.2 and Fig. 2.4: every physical member is divided
+    # 0.15L/0.35L/0.35L/0.15L and each subelement uses second-order Gaussian
+    # quadrature.  A two-point Legendre rule is the OpenSees equivalent.
+    ops.beamIntegration("Legendre", 201, 101, 2)
+    ops.beamIntegration("Legendre", 202, 102, 2)
 
-    # Five-point Gauss-Lobatto integration, matching the published University
-    # of Rome OpenSees formulation.  Fig. 2.3 shows two of the four bottom
-    # bars bent to the top at both ends: use 4-top/2-bottom at the two end
-    # integration points and the A-A' 2-top/4-bottom section internally.
-    lobatto_x = (0.0, 0.1726731646460114, 0.5, 0.8273268353539886, 1.0)
-    lobatto_w = (0.05, 49.0 / 180.0, 16.0 / 45.0, 49.0 / 180.0, 0.05)
     beam_integrations = {}
     for j, (bn, _a, _b) in enumerate(BEAMS):
         beff = BEFF_MM[bn] / 1000.0
@@ -133,13 +131,11 @@ def build():
         sec_mid = sec_end + 1
         fiber_t_beam(sec_end, 1, 2, beff, top_bars=4, bottom_bars=2, gj=gmod * jtors)
         fiber_t_beam(sec_mid, 1, 2, beff, top_bars=2, bottom_bars=4, gj=gmod * jtors)
-        integ = 300 + j
-        ops.beamIntegration(
-            "UserDefined", integ, 5,
-            sec_end, sec_mid, sec_mid, sec_mid, sec_end,
-            *lobatto_x, *lobatto_w,
-        )
-        beam_integrations[bn] = integ
+        integ_end = 300 + 2 * j
+        integ_mid = integ_end + 1
+        ops.beamIntegration("Legendre", integ_end, sec_end, 2)
+        ops.beamIntegration("Legendre", integ_mid, sec_mid, 2)
+        beam_integrations[bn] = (integ_end, integ_mid)
 
     er = ec * 1e4
     gr = er / (2 * 1.2)
@@ -150,15 +146,32 @@ def build():
             ops.element("elasticBeamColumn", 60000 + k * 10 + q, nt(k, "C6"), 8000 + k * 10 + q, 1.0, er, gr, 1.0, 1.0, 1.0, tr)
 
     et = 1
+    mesh_fractions = (0.15, 0.35, 0.35, 0.15)
     for k in range(1, 4):
         for n in names:
-            tr = 5000 + k * 100 + ix[n]
-            # Fig. 2.2/Fig. 2.4: 2.50 m deformable height in every storey and
-            # rigid regions at both column ends, including at the foundation.
-            bot = 0.25
-            ops.geomTransf("PDelta", tr, 1, 0, 0, "-jntOffset", 0, 0, bot, 0, 0, -0.25)
-            ops.element("dispBeamColumn", et, nt(k - 1, n), nt(k, n), tr, 202 if n == "C6" else 201)
-            et += 1
+            # Fig. 2.2/Fig. 2.4: 2.50 m deformable height, split into four
+            # UIUC elements. Rigid offsets occur only at the physical ends.
+            z0 = Z[k - 1]
+            clear0 = z0 + 0.25
+            clear_length = 2.50
+            cumulative = (mesh_fractions[0], sum(mesh_fractions[:2]), sum(mesh_fractions[:3]))
+            internal = []
+            for q, fraction in enumerate(cumulative, start=1):
+                tag = 200000 + k * 1000 + ix[n] * 10 + q
+                x, y = PLAN[n]
+                ops.node(tag, x, y, clear0 + fraction * clear_length)
+                internal.append(tag)
+            chain = [nt(k - 1, n), *internal, nt(k, n)]
+            for q, (ni, nj) in enumerate(zip(chain[:-1], chain[1:])):
+                tr = 50000 + k * 1000 + ix[n] * 10 + q
+                if q == 0:
+                    ops.geomTransf("PDelta", tr, 1, 0, 0, "-jntOffset", 0, 0, 0.25, 0, 0, 0)
+                elif q == 3:
+                    ops.geomTransf("PDelta", tr, 1, 0, 0, "-jntOffset", 0, 0, 0, 0, 0, -0.25)
+                else:
+                    ops.geomTransf("PDelta", tr, 1, 0, 0)
+                ops.element("dispBeamColumn", et, ni, nj, tr, 202 if n == "C6" else 201)
+                et += 1
 
     for k in range(1, 4):
         for j, (bn, a, b) in enumerate(BEAMS):
@@ -175,12 +188,26 @@ def build():
             ux, uy = (xb - xa) / length, (yb - ya) / length
             off_i = 0.125
             off_j = 0.375 if bn == "B10" and b == "C6" else 0.125
-            tr = 7000 + k * 100 + j
-            ops.geomTransf("Linear", tr, 0, 0, 1, "-jntOffset", off_i * ux, off_i * uy, 0, -off_j * ux, -off_j * uy, 0)
-            ops.element(
-                "forceBeamColumn", 10000 + k * 100 + j, ni, nj, tr,
-                beam_integrations[bn], "-iter", 50, 1e-10,
-            )
+            clear_length = length - off_i - off_j
+            clear_xa, clear_ya = xa + off_i * ux, ya + off_i * uy
+            cumulative = (mesh_fractions[0], sum(mesh_fractions[:2]), sum(mesh_fractions[:3]))
+            internal = []
+            for q, fraction in enumerate(cumulative, start=1):
+                tag = 300000 + k * 10000 + j * 10 + q
+                ops.node(tag, clear_xa + fraction * clear_length * ux, clear_ya + fraction * clear_length * uy, Z[k])
+                internal.append(tag)
+            chain = [ni, *internal, nj]
+            integ_end, integ_mid = beam_integrations[bn]
+            for q, (seg_i, seg_j) in enumerate(zip(chain[:-1], chain[1:])):
+                tr = 70000 + k * 10000 + j * 10 + q
+                args = []
+                if q == 0:
+                    args = ["-jntOffset", off_i * ux, off_i * uy, 0, 0, 0, 0]
+                elif q == 3:
+                    args = ["-jntOffset", 0, 0, 0, -off_j * ux, -off_j * uy, 0]
+                ops.geomTransf("Linear", tr, 0, 0, 1, *args)
+                integration = integ_end if q in (0, 3) else integ_mid
+                ops.element("dispBeamColumn", 100000 + k * 10000 + j * 10 + q, seg_i, seg_j, tr, integration)
 
     masters = []
     for k in range(1, 4):
@@ -265,32 +292,53 @@ def run(case_name="xp100", target_mm=200.0, du_mm=0.5):
     ops.constraints("Transformation")
     ops.numberer("RCM")
     ops.system("UmfPack")
-    ops.test("NormDispIncr", 1e-7, 80)
+    ops.test("NormDispIncr", 1e-7, 120)
     ops.algorithm("Newton")
     ops.integrator("DisplacementControl", masters[-1], dof, sign * abs(du_mm) / 1000.0)
     ops.analysis("Static")
 
     output = [(0.0, 0.0)]
     base_nodes = [nt(0, n) for n in names]
+    initial_disp = ops.nodeDisp(masters[-1], dof)
+    ops.reactions()
+    initial_base_shear = -sum(ops.nodeReaction(n, dof) for n in base_nodes) / 1000.0
     ok = 0
     retries = 0
-    requested_steps = int(abs(target_mm / du_mm))
-    for _ in range(requested_steps):
-        ok = ops.analyze(1)
-        if ok != 0:
+    min_step_mm = 0.005
+    current_step_mm = abs(du_mm)
+    consecutive_successes = 0
+    requested_steps = int(math.ceil(abs(target_mm) / abs(du_mm)))
+    algorithms = (
+        ("Newton", ()),
+        ("KrylovNewton", ()),
+        ("NewtonLineSearch", (0.8,)),
+        ("ModifiedNewton", ("-initial",)),
+    )
+    while abs(output[-1][0]) + 1e-9 < abs(target_mm):
+        remaining_mm = abs(target_mm) - abs(output[-1][0])
+        trial_step_mm = min(current_step_mm, remaining_mm)
+        ok = -3
+        for algorithm, args in algorithms:
+            ops.test("NormDispIncr", 1e-7 if algorithm == "Newton" else 1e-6, 120 if algorithm == "Newton" else 240)
+            ops.algorithm(algorithm, *args)
+            ops.integrator("DisplacementControl", masters[-1], dof, sign * trial_step_mm / 1000.0)
+            ok = ops.analyze(1)
+            if ok == 0:
+                break
             retries += 1
-            ops.test("NormDispIncr", 1e-6, 160)
-            ops.algorithm("NewtonLineSearch", 0.8)
-            ops.integrator("DisplacementControl", masters[-1], dof, sign * abs(du_mm) / 4000.0)
-            ok = ops.analyze(4)
-            ops.algorithm("Newton")
-            ops.test("NormDispIncr", 1e-7, 80)
-            ops.integrator("DisplacementControl", masters[-1], dof, sign * abs(du_mm) / 1000.0)
         if ok != 0:
-            break
+            current_step_mm /= 2.0
+            consecutive_successes = 0
+            if current_step_mm < min_step_mm:
+                break
+            continue
+        consecutive_successes += 1
+        if consecutive_successes >= 5 and current_step_mm < abs(du_mm):
+            current_step_mm = min(abs(du_mm), 2.0 * current_step_mm)
+            consecutive_successes = 0
         ops.reactions()
-        disp_mm = 1000.0 * ops.nodeDisp(masters[-1], dof)
-        base_shear_kn = -sum(ops.nodeReaction(n, dof) for n in base_nodes) / 1000.0
+        disp_mm = 1000.0 * (ops.nodeDisp(masters[-1], dof) - initial_disp)
+        base_shear_kn = -sum(ops.nodeReaction(n, dof) for n in base_nodes) / 1000.0 - initial_base_shear
         output.append((disp_mm, base_shear_kn))
 
     out_csv = OUT / f"{case_name}.csv"
@@ -313,6 +361,8 @@ def run(case_name="xp100", target_mm=200.0, du_mm=0.5):
         "completed_steps": len(output) - 1,
         "requested_steps": requested_steps,
         "fallback_attempts": retries,
+        "minimum_adaptive_step_mm": min_step_mm,
+        "initial_gravity_lateral_drift_mm_removed": 1000.0 * initial_disp,
         "analysis_exit_code": ok,
         "peak_abs_base_shear_kN": max(abs(v) for _, v in output),
         "pending_source_data": PENDING_SOURCE_DATA,
@@ -333,3 +383,4 @@ def run_all():
 
 if __name__ == "__main__":
     raise SystemExit(run_all())
+
