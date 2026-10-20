@@ -1,0 +1,34 @@
+name: ZEUS-NL con2 source audit
+
+on:
+  push:
+    branches: [spear-jeong-elnashai-m0]
+    paths:
+      - '.github/workflows/zeusnl-con2-source-audit.yml'
+  workflow_dispatch:
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download official Google Code source archive
+        run: |
+          set -euo pipefail
+          url="https://storage.googleapis.com/google-code-archive-source/v2/code.google.com/zeus-nl/source-archive.zip"
+          curl --fail --location --retry 3 "$url" --output /tmp/zeus-nl-source.zip
+          mkdir -p /tmp/zeus-nl-source
+          unzip -q /tmp/zeus-nl-source.zip -d /tmp/zeus-nl-source
+      - name: Extract con2 implementation evidence
+        run: |
+          set -euo pipefail
+          mkdir -p validation/zeusnl_source_audit
+          find /tmp/zeus-nl-source -type f | sort > validation/zeusnl_source_audit/file_manifest.txt
+          grep -RniE --include='*.[fF]' --include='*.[fF]90' --include='*.cpp' --include='*.c' --include='*.h' --include='*.txt' 'con2|Mander|Martinez.Rueda' /tmp/zeus-nl-source             > validation/zeusnl_source_audit/con2_hits.txt || true
+          head -n 400 validation/zeusnl_source_audit/con2_hits.txt
+      - name: Package source evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: zeusnl-con2-source-audit
+          path: validation/zeusnl_source_audit
+          if-no-files-found: error
