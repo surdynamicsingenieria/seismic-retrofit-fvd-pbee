@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Download official Google Code source archive
+      - name: Download official Google Code archive
         run: |
           set -euo pipefail
           url="https://storage.googleapis.com/google-code-archive-source/v2/code.google.com/zeus-nl/source-archive.zip"
@@ -22,10 +22,17 @@ jobs:
       - name: Extract con2 implementation evidence
         run: |
           set -euo pipefail
-          mkdir -p validation/zeusnl_source_audit
-          find /tmp/zeus-nl-source -type f | sort > validation/zeusnl_source_audit/file_manifest.txt
-          grep -RniE --include='*.[fF]' --include='*.[fF]90' --include='*.cpp' --include='*.c' --include='*.h' --include='*.txt' 'con2|Mander|Martinez.Rueda' /tmp/zeus-nl-source             > validation/zeusnl_source_audit/con2_hits.txt || true
-          head -n 400 validation/zeusnl_source_audit/con2_hits.txt
+          out=validation/zeusnl_source_audit
+          mkdir -p "$out/archive_documents"
+          find /tmp/zeus-nl-source -type f | sort > "$out/file_manifest.txt"
+          grep -RniaI -E 'con2|Mander|Martinez.Rueda|Martinez-Rueda|confinement' /tmp/zeus-nl-source             > "$out/con2_hits.txt" || true
+          find /tmp/zeus-nl-source -type f \( -iname '*material*' -o -iname '*.wiki' -o -iname '*.html' \)             -exec cp --parents '{}' "$out/archive_documents" \;
+          {
+            echo "archive_file_count=$(wc -l < "$out/file_manifest.txt")"
+            echo "con2_hit_count=$(wc -l < "$out/con2_hits.txt")"
+            echo "non_svn_trunk_files=$(find /tmp/zeus-nl-source/zeus-nl/trunk -type f ! -path '*/.svn/*' | wc -l)"
+          } | tee "$out/audit_summary.txt"
+          sed -n '1,400p' "$out/con2_hits.txt"
       - name: Package source evidence
         uses: actions/upload-artifact@v4
         with:
