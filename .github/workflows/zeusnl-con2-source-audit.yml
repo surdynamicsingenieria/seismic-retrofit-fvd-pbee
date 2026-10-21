@@ -26,7 +26,7 @@ jobs:
           mkdir -p "$out/archive_documents"
           find /tmp/zeus-nl-source -type f | sort > "$out/file_manifest.txt"
           grep -RniaI -E 'con2|Mander|Martinez.Rueda|Martinez-Rueda|confinement' /tmp/zeus-nl-source             > "$out/con2_hits.txt" || true
-          find /tmp/zeus-nl-source -type f \( -iname '*material*' -o -iname '*.wiki' -o -iname '*.html' \)             -exec cp --parents '{}' "$out/archive_documents" \;
+          find /tmp/zeus-nl-source -type f \( -iname '*material*' -o -iname '*.wiki' -o -iname '*.html' -o -iname '*.htm' \)             -exec cp --parents '{}' "$out/archive_documents" \;
           {
             echo "archive_file_count=$(wc -l < "$out/file_manifest.txt")"
             echo "con2_hit_count=$(wc -l < "$out/con2_hits.txt")"
