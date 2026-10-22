@@ -1,0 +1,93 @@
+name: SPEAR ConcreteCM source-envelope sensitivity
+
+on:
+  push:
+    branches: [spear-jeong-elnashai-m0]
+    paths:
+      - '.github/workflows/spear-concretecm-sensitivity.yml'
+      - 'validation/run_concretecm_source_envelope_sensitivity.py'
+  workflow_dispatch:
+
+jobs:
+  sensitivity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      MPICH_INTERFACE_HOSTNAME: 127.0.0.1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install solver and plotting dependencies
+        run: python -m pip install openseespy==3.8.0.0 matplotlib
+      - name: Run four source-envelope sensitivity pushovers
+        run: |
+          python validation/run_concretecm_source_envelope_sensitivity.py xp100 xn100 yp100 yn100
+      - name: Compare sensitivity curves with Fig. 2.8
+        run: |
+          python - <<'PY'
+          import csv
+          import json
+          import math
+          from pathlib import Path
+
+          root = Path("results/SPEAR/jeong_elnashai")
+          ref_path = root / "reference/fig_2_8_digitized.csv"
+          push = root / "sensitivity/concretecm_zero_tension/pushover"
+          out = root / "sensitivity/concretecm_zero_tension/comparison"
+          out.mkdir(parents=True, exist_ok=True)
+
+          refs = {}
+          with ref_path.open() as f:
+              for row in csv.DictReader(f):
+                  refs.setdefault(row["curve"], []).append(
+                      (float(row["top_displacement_mm"]), float(row["base_shear_kN"]))
+                  )
+
+          def read(path):
+              with path.open() as f:
+                  return [
+                      (float(r["top_displacement_mm"]), float(r["base_shear_kN"]))
+                      for r in csv.DictReader(f)
+                  ]
+
+          def interp(points, x):
+              points = sorted(points)
+              for (x0, y0), (x1, y1) in zip(points, points[1:]):
+                  if x0 <= x <= x1:
+                      return y0 if x1 == x0 else y0 + (y1-y0)*(x-x0)/(x1-x0)
+              return None
+
+          rows = []
+          for case in ("xp100", "xn100", "yp100", "yn100"):
+              ref = refs[case]
+              sim = read(push / f"{case}.csv")
+              common = [(abs(yr), abs(interp(sim, x))) for x, yr in ref if interp(sim, x) is not None]
+              errors = [ys-yr for yr, ys in common]
+              rp = max(ref, key=lambda p: abs(p[1]))
+              sp = max(sim, key=lambda p: abs(p[1]))
+              rows.append({
+                  "case": case,
+                  "reference_peak_kN": abs(rp[1]),
+                  "reference_peak_disp_mm": rp[0],
+                  "sim_peak_kN": abs(sp[1]),
+                  "sim_peak_disp_mm": sp[0],
+                  "peak_error_pct": 100*(abs(sp[1])-abs(rp[1]))/abs(rp[1]),
+                  "mae_kN": sum(map(abs, errors))/len(errors),
+                  "rmse_kN": math.sqrt(sum(e*e for e in errors)/len(errors)),
+                  "max_abs_error_kN": max(map(abs, errors)),
+              })
+          (out / "summary.json").write_text(json.dumps(rows, indent=2) + "\n")
+          with (out / "summary.csv").open("w", newline="") as f:
+              w = csv.DictWriter(f, fieldnames=rows[0].keys())
+              w.writeheader()
+              w.writerows(rows)
+          print(json.dumps(rows, indent=2))
+          PY
+      - name: Upload persistent sensitivity evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: spear-concretecm-source-envelope-sensitivity
+          path: results/SPEAR/jeong_elnashai/sensitivity/concretecm_zero_tension
+          if-no-files-found: error
