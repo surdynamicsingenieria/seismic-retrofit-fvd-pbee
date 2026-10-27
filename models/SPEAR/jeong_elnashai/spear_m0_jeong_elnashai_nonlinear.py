@@ -31,6 +31,7 @@ Z = list(STORY_CENTERLINES)
 PENDING_SOURCE_DATA = [
     "dimensioned longitudinal transition location of the Fig 2.3 bent bars",
     "numerical concrete tensile strength used in the original ZeusNL con2 input",
+    "exact Fig 2.6 beam gravity loading-point coordinates and magnitudes",
 ]
 
 

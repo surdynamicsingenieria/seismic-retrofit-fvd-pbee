@@ -394,3 +394,27 @@ independently of its peak stress and strain.  Replacing it by a different law
 without recovering the full ZeusNL `con2` tensile and compression branches
 would still be an unverified material substitution, so production remains
 unchanged.
+
+## Gravity-state application audit — 2026-10-27
+
+The nodal mass ledger and the nonlinear gravity-loading pattern must be treated
+as different objects. MAE 04-03 Section 2.2.4 explicitly states that slab and
+slab self-weight are distributed to the nearest beams according to Fig. 2.6,
+using several loading points along each beam. Only the dynamic masses are
+subsequently condensed to beam-column connections.
+
+The current OpenSees nonlinear `gravity()` function instead applies the full
+recovered Table 3.1 floor weight vertically at the nine beam-column joints.
+This reproduces column axial totals but gives the beams no distributed gravity
+bending before lateral loading. Consequently it cannot reproduce the original
+beam moment, cracking and tangent-stiffness state at the start of pushover.
+This is a physical-model discrepancy and a plausible contributor to the
+systematic 18%--27% pre-peak secant-stiffness excess.
+
+Fig. 2.6 defines the tributary geometry but does not tabulate the exact ZeusNL
+loading-point coordinates or magnitudes; the text only says that their number
+depends on beam length. A geometrically reconstructed distributed-load
+sensitivity may quantify the effect, but cannot be promoted to the production
+source lock without recovering or independently verifying that discretization.
+The acceptance gate now explicitly includes the original beam gravity
+loading-point ledger.
