@@ -1,0 +1,85 @@
+{
+  "status": "PASS",
+  "cases": {
+    "xp100": {
+      "global_resultant": 1.0,
+      "floors": [
+        {
+          "floor": 1,
+          "normalized_resultant": 0.16113840766944726,
+          "normalized_torque_about_cm": 0.020573184909331715
+        },
+        {
+          "floor": 2,
+          "normalized_resultant": 0.35348096984083816,
+          "normalized_torque_about_cm": 0.041490154365931564
+        },
+        {
+          "floor": 3,
+          "normalized_resultant": 0.48538062248971453,
+          "normalized_torque_about_cm": 0.09638975949723072
+        }
+      ]
+    },
+    "xn100": {
+      "global_resultant": -1.0,
+      "floors": [
+        {
+          "floor": 1,
+          "normalized_resultant": -0.16113840766944726,
+          "normalized_torque_about_cm": -0.04152117790635981
+        },
+        {
+          "floor": 2,
+          "normalized_resultant": -0.35348096984083816,
+          "normalized_torque_about_cm": -0.08744268044524056
+        },
+        {
+          "floor": 3,
+          "normalized_resultant": -0.48538062248971453,
+          "normalized_torque_about_cm": -0.15948924042089363
+        }
+      ]
+    },
+    "yp100": {
+      "global_resultant": 0.9999999999999999,
+      "floors": [
+        {
+          "floor": 1,
+          "normalized_resultant": 0.16113840766944726,
+          "normalized_torque_about_cm": 0.06886821957470435
+        },
+        {
+          "floor": 2,
+          "normalized_resultant": 0.35348096984083816,
+          "normalized_torque_about_cm": 0.15105521566084773
+        },
+        {
+          "floor": 3,
+          "normalized_resultant": 0.4853806224897145,
+          "normalized_torque_about_cm": 0.17658689991624177
+        }
+      ]
+    },
+    "yn100": {
+      "global_resultant": -0.9999999999999999,
+      "floors": [
+        {
+          "floor": 1,
+          "normalized_resultant": -0.16113840766944726,
+          "normalized_torque_about_cm": -0.0028014724302309613
+        },
+        {
+          "floor": 2,
+          "normalized_resultant": -0.35348096984083816,
+          "normalized_torque_about_cm": -0.006128018026104076
+        },
+        {
+          "floor": 3,
+          "normalized_resultant": -0.4853806224897145,
+          "normalized_torque_about_cm": 0.022419155304541194
+        }
+      ]
+    }
+  }
+}

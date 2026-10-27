@@ -4,6 +4,8 @@ on:
     branches: [spear-jeong-elnashai-m0]
     paths:
       - "models/SPEAR/jeong_elnashai/**"
+      - "validation/audit_fibre_modal_state.py"
+      - "validation/audit_jeong_elnashai_pushover_patterns.py"
       - ".github/workflows/spear-jeong-elnashai.yml"
   workflow_dispatch:
 jobs:
@@ -16,29 +18,21 @@ jobs:
         with:
           python-version: "3.11"
       - run: sudo apt-get update && sudo apt-get install -y libblas3 liblapack3
-      - run: python -m pip install openseespy
+      - run: python -m pip install openseespy==3.8.0.0
       - name: Audit source-locked mass ledger
         run: cd models/SPEAR/jeong_elnashai && python mass_gravity_audit.py
       - name: Compile-check Jeong-Elnashai modal source
         run: python -m py_compile models/SPEAR/jeong_elnashai/spear_m0_jeong_elnashai.py
       - name: Run independent Jeong-Elnashai modal baseline
         run: python models/SPEAR/jeong_elnashai/spear_m0_jeong_elnashai.py
+      - name: Audit Eq. 2.5 and spatial Fig. 2.7 patterns
+        run: python validation/audit_jeong_elnashai_pushover_patterns.py
+      - name: Audit fibre modal states against current elastic baseline
+        run: python validation/audit_fibre_modal_state.py
       - name: Compile-check independent nonlinear model
         run: python -m py_compile models/SPEAR/jeong_elnashai/spear_m0_jeong_elnashai_nonlinear.py
-      - name: Run +X nonlinear diagnostic
-        run: python models/SPEAR/jeong_elnashai/spear_m0_jeong_elnashai_nonlinear.py
       - name: Run four directional nonlinear diagnostics
-        run: |
-          python - <<'PY'
-          import sys
-          sys.path.insert(0, "models/SPEAR/jeong_elnashai")
-          from spear_m0_jeong_elnashai_nonlinear import run
-          for direction in ("-X", "+Y", "-Y"):
-              print("DIRECTIONAL_DIAGNOSTIC_START", direction, flush=True)
-              code = run(direction)
-              if code:
-                  raise SystemExit(f"{direction} diagnostic exited with code {code}")
-          PY
+        run: python models/SPEAR/jeong_elnashai/spear_m0_jeong_elnashai_nonlinear.py
       - name: Preserve diagnostic CSV and JSON artifacts
         if: always()
         uses: actions/upload-artifact@v4

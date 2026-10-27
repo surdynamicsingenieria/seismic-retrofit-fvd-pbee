@@ -323,3 +323,29 @@ transition or numerical mode-shape ordinates.
 The full search ledger and source boundaries are recorded in
 `validation/SPEAR_SOURCE_RECOVERY_LOG_2026-10-27.md`.  Missing parameters will
 not be back-fitted from Fig. 2.8.
+
+## Reproducibility and pushover-pattern CI audit — 2026-10-27
+
+The modal audit previously contained a stale copied elastic period vector.
+It now rebuilds the current source-ledger elastic model before the fibre model,
+so geometry or mass corrections propagate automatically.  Reproduced values
+with OpenSeesPy 3.8.0.0 are:
+
+| State | T1 (s) | T2 (s) | T3 (s) | T4 (s) |
+|---|---:|---:|---:|---:|
+| Published | 0.51000 | 0.46000 | 0.40000 | 0.18000 |
+| Current elastic | 0.51446 | 0.44775 | 0.37304 | 0.17797 |
+| Fibre pre-gravity | 0.49035 | 0.42989 | 0.36069 | 0.16964 |
+| Fibre post-gravity | 0.54448 | 0.48683 | 0.40139 | 0.18326 |
+
+The fibre pre-gravity periods are 3.31% to 4.69% below the corresponding
+current elastic periods.  Gravity then increases them by 8.03% to 13.24%.
+Therefore the fibre and elastic modal analyses are not exactly equivalent:
+material tangents, reinforcement and the gravity equilibrium state matter.
+
+A new solver-independent gate verifies all four `xp100/xn100/yp100/yn100`
+patterns.  Each global normalized resultant is exactly +1 or -1, every floor
+resultant follows Eq. 2.5, and the three spatial Fig. 2.7 forces retain a
+nonzero torsional moment about that floor's centre of mass.  The workflow now
+runs this gate, pins OpenSeesPy 3.8.0.0, and invokes the four-direction driver
+only once with its valid case names.

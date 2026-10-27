@@ -11,11 +11,11 @@ MODEL_DIR = Path("models/SPEAR/jeong_elnashai")
 sys.path.insert(0, str(MODEL_DIR))
 
 import spear_m0_jeong_elnashai_nonlinear as model  # noqa: E402
+import spear_m0_jeong_elnashai as elastic_model  # noqa: E402
 
 
 OUT = Path("results/SPEAR/jeong_elnashai/modal_fibre_state_audit.json")
 TARGET = [0.51, 0.46, 0.40, 0.18]
-ELASTIC_BASELINE = [0.543523, 0.466114, 0.356272, 0.182575]
 
 
 def periods() -> list[float]:
@@ -28,6 +28,13 @@ def errors(values: list[float], reference: list[float]) -> list[float]:
 
 
 def main() -> int:
+    # Rebuild the current source-ledger elastic model.  Do not retain a copied
+    # period vector here: geometry/mass corrections must propagate into this
+    # comparison automatically.
+    elastic_model.build()
+    elastic_baseline = periods()
+    model.ops.wipe()
+
     names, nt, _masters = model.build()
     pre = periods()
     gravity_exit_code = model.gravity(names, nt)
@@ -35,12 +42,12 @@ def main() -> int:
     result = {
         "status": "DIAGNOSTIC_ONLY",
         "published_periods_s": TARGET,
-        "elastic_baseline_periods_s": ELASTIC_BASELINE,
+        "elastic_baseline_periods_s": elastic_baseline,
         "fibre_pre_gravity_periods_s": pre,
         "fibre_post_gravity_periods_s": post,
         "pre_vs_published_error_pct": errors(pre, TARGET),
         "post_vs_published_error_pct": errors(post, TARGET),
-        "pre_vs_elastic_baseline_error_pct": errors(pre, ELASTIC_BASELINE),
+        "pre_vs_elastic_baseline_error_pct": errors(pre, elastic_baseline),
         "gravity_period_shift_pct": errors(post, pre),
         "gravity_exit_code": gravity_exit_code,
         "interpretation": (
