@@ -5,6 +5,7 @@ on:
     paths:
       - "models/SPEAR/jeong_elnashai/**"
       - "validation/audit_fibre_modal_state.py"
+      - "validation/audit_beam_section_initial_stiffness.py"
       - "validation/audit_jeong_elnashai_pushover_patterns.py"
       - ".github/workflows/spear-jeong-elnashai.yml"
   workflow_dispatch:
@@ -27,6 +28,8 @@ jobs:
         run: python models/SPEAR/jeong_elnashai/spear_m0_jeong_elnashai.py
       - name: Audit Eq. 2.5 and spatial Fig. 2.7 patterns
         run: python validation/audit_jeong_elnashai_pushover_patterns.py
+      - name: Audit elastic-to-fibre beam initial stiffness
+        run: python validation/audit_beam_section_initial_stiffness.py
       - name: Audit fibre modal states against current elastic baseline
         run: python validation/audit_fibre_modal_state.py
       - name: Compile-check independent nonlinear model

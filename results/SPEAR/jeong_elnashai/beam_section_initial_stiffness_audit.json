@@ -1,0 +1,117 @@
+{
+  "status": "AUDIT_ONLY",
+  "elastic_concrete_modulus_Pa": 23500000000.0,
+  "Concrete02_initial_tangent_Pa": 25000000000.0,
+  "material_tangent_difference_pct": 6.382978723404253,
+  "steel_fibres_overlay_concrete": true,
+  "sections": [
+    {
+      "beam": "B1",
+      "beff_mm": 442.5,
+      "elastic_EI_Nm2": 79351599.55278566,
+      "fibre_end_EI_Nm2": 90710236.71061787,
+      "fibre_mid_EI_Nm2": 92015482.63515435,
+      "end_vs_elastic_pct": 14.314314042625309,
+      "mid_vs_elastic_pct": 15.959203284798962
+    },
+    {
+      "beam": "B2",
+      "beff_mm": 582.5,
+      "elastic_EI_Nm2": 89052727.60863413,
+      "fibre_end_EI_Nm2": 100882189.88313155,
+      "fibre_mid_EI_Nm2": 102874358.70338246,
+      "end_vs_elastic_pct": 13.283660806533781,
+      "mid_vs_elastic_pct": 15.520727400390433
+    },
+    {
+      "beam": "B3",
+      "beff_mm": 635.0,
+      "elastic_EI_Nm2": 92170674.55397855,
+      "fibre_end_EI_Nm2": 104168460.38942337,
+      "fibre_mid_EI_Nm2": 106378732.74769118,
+      "end_vs_elastic_pct": 13.0169231086819,
+      "mid_vs_elastic_pct": 15.414944354553771
+    },
+    {
+      "beam": "B4",
+      "beff_mm": 1055.0,
+      "elastic_EI_Nm2": 110721040.15662088,
+      "fibre_end_EI_Nm2": 123877886.95573121,
+      "fibre_mid_EI_Nm2": 127340969.02916725,
+      "end_vs_elastic_pct": 11.882878611417723,
+      "mid_vs_elastic_pct": 15.010632892390262
+    },
+    {
+      "beam": "B5",
+      "beff_mm": 442.5,
+      "elastic_EI_Nm2": 79351599.55278566,
+      "fibre_end_EI_Nm2": 90710236.71061787,
+      "fibre_mid_EI_Nm2": 92015482.63515435,
+      "end_vs_elastic_pct": 14.314314042625309,
+      "mid_vs_elastic_pct": 15.959203284798962
+    },
+    {
+      "beam": "B6",
+      "beff_mm": 652.5,
+      "elastic_EI_Nm2": 93157672.78285849,
+      "fibre_end_EI_Nm2": 105210419.26364458,
+      "fibre_mid_EI_Nm2": 107489395.43912727,
+      "end_vs_elastic_pct": 12.93800727383978,
+      "mid_vs_elastic_pct": 15.384371708892552
+    },
+    {
+      "beam": "B7",
+      "beff_mm": 1055.0,
+      "elastic_EI_Nm2": 110721040.15662088,
+      "fibre_end_EI_Nm2": 123877886.95573121,
+      "fibre_mid_EI_Nm2": 127340969.02916725,
+      "end_vs_elastic_pct": 11.882878611417723,
+      "mid_vs_elastic_pct": 15.010632892390262
+    },
+    {
+      "beam": "B8",
+      "beff_mm": 775.0,
+      "elastic_EI_Nm2": 99438016.83921266,
+      "fibre_end_EI_Nm2": 111858869.7266947,
+      "fibre_mid_EI_Nm2": 114570528.67882031,
+      "end_vs_elastic_pct": 12.491050487829103,
+      "mid_vs_elastic_pct": 15.218034631640265
+    },
+    {
+      "beam": "B9",
+      "beff_mm": 1055.0,
+      "elastic_EI_Nm2": 110721040.15662088,
+      "fibre_end_EI_Nm2": 123877886.95573121,
+      "fibre_mid_EI_Nm2": 127340969.02916725,
+      "end_vs_elastic_pct": 11.882878611417723,
+      "mid_vs_elastic_pct": 15.010632892390262
+    },
+    {
+      "beam": "B10",
+      "beff_mm": 775.0,
+      "elastic_EI_Nm2": 99438016.83921266,
+      "fibre_end_EI_Nm2": 111858869.7266947,
+      "fibre_mid_EI_Nm2": 114570528.67882031,
+      "end_vs_elastic_pct": 12.491050487829103,
+      "mid_vs_elastic_pct": 15.218034631640265
+    },
+    {
+      "beam": "B11",
+      "beff_mm": 617.5,
+      "elastic_EI_Nm2": 91158280.04821594,
+      "fibre_end_EI_Nm2": 103100524.89407435,
+      "fibre_mid_EI_Nm2": 105240151.25455795,
+      "end_vs_elastic_pct": 13.100559641473986,
+      "mid_vs_elastic_pct": 15.447714896434817
+    },
+    {
+      "beam": "B12",
+      "beff_mm": 582.5,
+      "elastic_EI_Nm2": 89052727.60863413,
+      "fibre_end_EI_Nm2": 100882189.88313155,
+      "fibre_mid_EI_Nm2": 102874358.70338246,
+      "end_vs_elastic_pct": 13.283660806533781,
+      "mid_vs_elastic_pct": 15.520727400390433
+    }
+  ]
+}

@@ -368,3 +368,29 @@ The excess is systematic in all four directions and precedes the capacity
 peak.  Matching peak resistance alone is therefore insufficient: the current
 production fibre model remains too stiff over the common pre-peak range.  No
 material or geometric input was changed to reduce this error.
+
+## Beam-section initial-stiffness audit — 2026-10-27
+
+An independent transformed-section audit now compares every B1--B12 T-section
+used by the elastic and production fibre models.  It exposes a constitutive
+equivalence issue rather than a geometry or mass discrepancy:
+
+- the source-ledger elastic modulus is 23.5 GPa;
+- the initial tangent implied by the production `Concrete02` inputs is
+  `2*fpc/epsc0 = 25.0 GPa`, 6.38% higher;
+- including the published Phi12 steel fibres gives initial fibre-section EI
+  values 11.88% to 14.31% above the corresponding concrete-only elastic EI at
+  beam ends, and 15.01% to 15.96% above it in the interior sections.
+
+The direction and magnitude are consistent with the fibre pre-gravity periods
+being 3.31% to 4.69% shorter than the current elastic periods.  Thus the two
+models should not be expected to have identical modal results: their material
+tangents and steel contribution are not stiffness-equivalent.
+
+This finding also narrows the nonlinear discrepancy.  The section-level
+initial mismatch can explain part, but not all, of the 18%--27% pre-peak global
+secant excess.  `Concrete02` cannot prescribe the published elastic modulus
+independently of its peak stress and strain.  Replacing it by a different law
+without recovering the full ZeusNL `con2` tensile and compression branches
+would still be an unverified material substitution, so production remains
+unchanged.
