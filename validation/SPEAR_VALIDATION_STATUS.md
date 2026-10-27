@@ -418,3 +418,24 @@ sensitivity may quantify the effect, but cannot be promoted to the production
 source lock without recovering or independently verifying that discretization.
 The acceptance gate now explicitly includes the original beam gravity
 loading-point ledger.
+
+### Fig. 2.6 beam-gravity sensitivity
+
+A non-accepted numerical reconstruction assigns each slab cell to its nearest
+B1--B12 centreline, condenses that tributary load to the existing four-element
+beam stations, retains column self-weight at joints and scales only to close
+the exact Table 3.1 floor totals. Equilibrium closes to machine precision at
+659.63, 659.66 and 615.95 kN.
+
+| Case | Reached (mm) | Peak error | Secant error 20 mm | Secant error 40 mm |
+|---|---:|---:|---:|---:|
+| xp100 | 200 | -3.98% | +17.82% | +17.23% |
+| xn100 | 200 | -5.60% | +17.33% | +15.72% |
+| yp100 | 120 | +6.53% | +22.67% | +21.39% |
+| yn100 | 180 | +0.87% | +20.84% | +22.07% |
+
+Compared with joint-only gravity, distributing gravity to beams improves most
+peak errors and the X-direction pre-peak stiffness. It does not remove the
+systematic stiffness excess. The hypothesis that gravity-state application
+alone explains Fig. 2.8 is therefore rejected. Production remains unchanged
+because Fig. 2.6 does not publish the original ZeusNL loading-point ledger.
