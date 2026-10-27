@@ -349,3 +349,22 @@ resultant follows Eq. 2.5, and the three spatial Fig. 2.7 forces retain a
 nonzero torsional moment about that floor's centre of mass.  The workflow now
 runs this gate, pins OpenSeesPy 3.8.0.0, and invokes the four-direction driver
 only once with its valid case names.
+
+## Pre-peak secant-stiffness comparison — 2026-10-27
+
+The Fig. 2.8 digitization does not contain a reliable origin point in every
+panel, so no pixel-derived tangent stiffness is claimed.  The comparison tool
+now reports reproducible secant stiffness at common 20 and 40 mm roof
+displacements:
+
+| Case | Error at 20 mm | Error at 40 mm |
+|---|---:|---:|
+| xp100 | +20.94% | +18.48% |
+| xn100 | +24.76% | +18.35% |
+| yp100 | +22.99% | +21.94% |
+| yn100 | +26.77% | +24.19% |
+
+The excess is systematic in all four directions and precedes the capacity
+peak.  Matching peak resistance alone is therefore insufficient: the current
+production fibre model remains too stiff over the common pre-peak range.  No
+material or geometric input was changed to reduce this error.

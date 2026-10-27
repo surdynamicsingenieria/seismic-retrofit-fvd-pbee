@@ -9,7 +9,13 @@
     "peak_error_pct": -1.4761611680677769,
     "mae_kN": 51.183895452459545,
     "rmse_kN": 55.479906414426196,
-    "max_abs_error_kN": 90.38378346000002
+    "max_abs_error_kN": 90.38378346000002,
+    "reference_secant_kN_per_mm_at_20mm": 8.4611,
+    "sim_secant_kN_per_mm_at_20mm": 10.23320915,
+    "secant_error_pct_at_20mm": 20.94419342638664,
+    "reference_secant_kN_per_mm_at_40mm": 6.5890249999999995,
+    "sim_secant_kN_per_mm_at_40mm": 7.80674755,
+    "secant_error_pct_at_40mm": 18.48107345168672
   },
   {
     "case": "xn100",
@@ -21,7 +27,13 @@
     "peak_error_pct": -2.554917990390244,
     "mae_kN": 65.66549779,
     "rmse_kN": 72.7299724242243,
-    "max_abs_error_kN": 107.88266640999998
+    "max_abs_error_kN": 107.88266640999998,
+    "reference_secant_kN_per_mm_at_20mm": 8.4021,
+    "sim_secant_kN_per_mm_at_20mm": 10.48274545,
+    "secant_error_pct_at_20mm": 24.763397841015937,
+    "reference_secant_kN_per_mm_at_40mm": 6.795399999999999,
+    "sim_secant_kN_per_mm_at_40mm": 8.0421294,
+    "secant_error_pct_at_40mm": 18.346666862877846
   },
   {
     "case": "yp100",
@@ -33,7 +45,13 @@
     "peak_error_pct": 10.919587256072873,
     "mae_kN": 50.86001526356175,
     "rmse_kN": 54.474233229884895,
-    "max_abs_error_kN": 79.067849416
+    "max_abs_error_kN": 79.067849416,
+    "reference_secant_kN_per_mm_at_20mm": 9.4045,
+    "sim_secant_kN_per_mm_at_20mm": 11.566710500000001,
+    "secant_error_pct_at_20mm": 22.991232920410447,
+    "reference_secant_kN_per_mm_at_40mm": 7.31131875,
+    "sim_secant_kN_per_mm_at_40mm": 8.915487225,
+    "secant_error_pct_at_40mm": 21.94089096443785
   },
   {
     "case": "yn100",
@@ -45,6 +63,12 @@
     "peak_error_pct": 2.287431526687789,
     "mae_kN": 57.34115229969231,
     "rmse_kN": 70.04408074646962,
-    "max_abs_error_kN": 147.36138837000004
+    "max_abs_error_kN": 147.36138837000004,
+    "reference_secant_kN_per_mm_at_20mm": 10.20045,
+    "sim_secant_kN_per_mm_at_20mm": 12.93089135,
+    "secant_error_pct_at_20mm": 26.76785190849423,
+    "reference_secant_kN_per_mm_at_40mm": 8.048350000000001,
+    "sim_secant_kN_per_mm_at_40mm": 9.994999775,
+    "secant_error_pct_at_40mm": 24.186942354644103
   }
 ]

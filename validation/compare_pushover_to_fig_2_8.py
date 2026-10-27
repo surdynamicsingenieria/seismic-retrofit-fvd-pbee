@@ -57,7 +57,7 @@ def compare_case(case: str, ref: list[tuple[float, float]]) -> dict[str, float |
     abs_errors = [abs(value) for value in errors]
     ref_peak = max(ref, key=lambda item: abs(item[1]))
     sim_peak = max(sim, key=lambda item: abs(item[1]))
-    return {
+    summary = {
         "case": case,
         "common_points": len(common),
         "reference_peak_kN": abs(ref_peak[1]),
@@ -69,6 +69,21 @@ def compare_case(case: str, ref: list[tuple[float, float]]) -> dict[str, float |
         "rmse_kN": math.sqrt(sum(value * value for value in errors) / len(errors)),
         "max_abs_error_kN": max(abs_errors),
     }
+    # Fig. 2.8 digitization does not resolve the origin consistently in all
+    # four panels.  Report common 20 and 40 mm secant stiffnesses instead of
+    # claiming an origin tangent from pixels that are not present.
+    ref_abs = [(abs(x), abs(y)) for x, y in ref]
+    sim_abs = [(abs(x), abs(y)) for x, y in sim]
+    for displacement_mm in (20.0, 40.0):
+        ref_force = interp(ref_abs, displacement_mm)
+        sim_force = interp(sim_abs, displacement_mm)
+        if ref_force is None or sim_force is None:
+            continue
+        label = int(displacement_mm)
+        summary[f"reference_secant_kN_per_mm_at_{label}mm"] = ref_force / displacement_mm
+        summary[f"sim_secant_kN_per_mm_at_{label}mm"] = sim_force / displacement_mm
+        summary[f"secant_error_pct_at_{label}mm"] = 100.0 * (sim_force - ref_force) / ref_force
+    return summary
 
 
 def write_plot(reference: dict[str, list[tuple[float, float]]]) -> None:
@@ -99,7 +114,7 @@ def main() -> int:
     summaries = [compare_case(case, ref[case]) for case in ("xp100", "xn100", "yp100", "yn100")]
     (OUT / "fig_2_8_comparison_summary.json").write_text(json.dumps(summaries, indent=2) + "\n")
     with (OUT / "fig_2_8_comparison_summary.csv").open("w", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=list(summaries[0]))
+        writer = csv.DictWriter(f, fieldnames=list(summaries[0]), lineterminator="\n")
         writer.writeheader()
         writer.writerows(summaries)
     write_plot(ref)
