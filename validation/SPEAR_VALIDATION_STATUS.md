@@ -303,3 +303,23 @@ The active acceptance blockers are the unrecovered SPEAR `con2` tensile input
 and tensile branch, the undimensioned Fig. 2.3 bent-bar transition, and the lack
 of published quantitative mode-shape ordinates.  SPEAR-M0 remains **NOT
 VALIDATED**; FVD, optimization, NLTHA/MSA and FEMA P-58 remain blocked.
+
+## External source-recovery audit — 2026-10-27
+
+The search was extended beyond MAE 04-03 and the ZeusNL archive.  JRC 52127
+states that the SPEAR database missed the experimental `Config Master`
+input/test/library files and raw-result package later retained for other ELSA
+projects.  This establishes an incomplete ELSA archive, but does not establish
+that every partner's analytical input deck was destroyed.
+
+The 2005 SPEAR workshop paper by Fajfar et al. identifies a separate Ljubljana
+post-test report that included an OpenSees input file.  That concentrated-
+plasticity model is not the target UIUC ZeusNL fibre model and its parameters
+cannot be substituted.  It remains a legitimate recovery lead for common
+geometry, mass and test metadata.  No public search recovered the UIUC ZeusNL
+`.dat`, the SPEAR-specific `con2` tensile input, a dimensioned bent-bar
+transition or numerical mode-shape ordinates.
+
+The full search ledger and source boundaries are recorded in
+`validation/SPEAR_SOURCE_RECOVERY_LOG_2026-10-27.md`.  Missing parameters will
+not be back-fitted from Fig. 2.8.
