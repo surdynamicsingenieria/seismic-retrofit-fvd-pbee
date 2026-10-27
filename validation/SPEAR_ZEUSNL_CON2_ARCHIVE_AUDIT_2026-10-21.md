@@ -48,9 +48,12 @@ capacity calibration, and it does not replace the production model.
 | 3 | 0.400 | 0.369815 | -7.55% | 0.399328 |
 | 4 | 0.180 | 0.174258 | -3.19% | 0.180929 |
 
-### +X pushover result
+### Four-direction pushover result
 
-The diagnostic reached +200 mm with six solver fallbacks.
+GitHub Actions run `39705499820` completed all four cases to +/-200 mm
+(400 nominal 0.5 mm steps per case).  The complete CSV curves, summaries and
+comparison plot are versioned under
+`results/SPEAR/jeong_elnashai/sensitivity/concretecm_zero_tension/`.
 
 | Metric | Fig. 2.8 | Production placeholder | Continuous envelope |
 |---|---:|---:|---:|
@@ -66,6 +69,19 @@ removes much of the excessive post-peak degradation. It does not fix the early
 peak displacement. The remaining discrepancy is therefore not admissibly
 solved by compression-tail replacement alone.
 
+| Case | Reference peak (kN) | Sensitivity peak (kN) | Peak error | Reference/model peak displacement (mm) | Curve MAE (kN) |
+|---|---:|---:|---:|---:|---:|
+| xp100 | 354.363 | 352.955 | -0.40% | 74.19 / 56.50 | 26.40 |
+| xn100 | 367.335 | 359.942 | -2.01% | -82.58 / -56.50 | 27.13 |
+| yp100 | 392.689 | 468.647 | +19.34% | 94.84 / 110.50 | 74.81 |
+| yn100 | 454.009 | 496.827 | +9.43% | -147.74 / -78.50 | 51.27 |
+
+The result is directionally inconsistent: the continuous zero-tension
+envelope substantially improves both X curves but worsens both Y peak errors,
+especially +Y.  It is therefore rejected as a production replacement.  This
+also falsifies the hypothesis that the compression tail alone explains the
+remaining four-direction discrepancy.
+
 ## Acceptance status
 
 SPEAR-M0 remains **NOT VALIDATED**. Production `Concrete02` remains unchanged.
@@ -73,7 +89,6 @@ Acceptance still requires:
 
 1. the numerical `ft` and tensile branch actually used for SPEAR `con2`;
 2. a dimensioned or otherwise verifiable bent-bar transition;
-3. all four directional sensitivity curves;
-4. quantitative mode-shape comparison, not periods alone.
+3. quantitative mode-shape comparison, not periods alone.
 
 No FVD, optimization, NLTHA/MSA or FEMA P-58 work is authorized.

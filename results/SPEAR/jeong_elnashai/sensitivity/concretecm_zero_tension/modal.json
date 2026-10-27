@@ -1,0 +1,23 @@
+{
+  "status": "SENSITIVITY_ONLY_NOT_ACCEPTED",
+  "material": "ConcreteCM continuous compression envelope; zero tension",
+  "fpcc_Pa": -25250000.0,
+  "epcc": -0.0021,
+  "Ec_Pa": 23500000000.0,
+  "rc_from_MAE_0.85_point": 1.3321247029575265,
+  "xcrn_non_active": 100.0,
+  "pre_gravity_periods_s": [
+    0.5037553239099168,
+    0.44180855618349507,
+    0.36981519704221155,
+    0.17425805387179294
+  ],
+  "post_gravity_periods_s": [
+    0.5365448291176456,
+    0.4827755885377389,
+    0.39932839148009003,
+    0.18092923498891503
+  ],
+  "gravity_exit_code": 0,
+  "blocker": "The numerical SPEAR ZeusNL con2 tensile strength remains unrecovered."
+}

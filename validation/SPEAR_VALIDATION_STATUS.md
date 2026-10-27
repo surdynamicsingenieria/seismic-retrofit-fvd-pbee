@@ -273,3 +273,33 @@ does not complete validation. Initial stiffness remains excessive, peaks occur
 too early and post-peak degradation is too strong. The exact ZeusNL `con2`
 tensile/compression-tail equivalence and the dimensioned bent-bar transition
 remain open source-data gates. FVD and all downstream work remain blocked.
+
+
+## ZEUS-NL `con2` archive and continuous-envelope sensitivity — 2026-10-21
+
+The official Google Code archive was audited reproducibly.  It contains the
+ZEUS-NL manual and SVN metadata but zero non-SVN files in the public `trunk`;
+the `con2` source subroutine is therefore not recoverable from that archive.
+The manual confirms four inputs (`fc`, `ft`, `eco`, `K`) but does not supply the
+SPEAR-specific numerical `ft`.
+
+A non-accepted `ConcreteCM` sensitivity used only the published compression
+constraints and retained zero tension.  Run `39705499820` completed all four
+directions to +/-200 mm.  Results are now versioned separately from production:
+
+| Case | Fig. 2.8 peak (kN) | Sensitivity peak (kN) | Peak error | Curve MAE (kN) |
+|---|---:|---:|---:|---:|
+| xp100 | 354.363 | 352.955 | -0.40% | 26.40 |
+| xn100 | 367.335 | 359.942 | -2.01% | 27.13 |
+| yp100 | 392.689 | 468.647 | +19.34% | 74.81 |
+| yn100 | 454.009 | 496.827 | +9.43% | 51.27 |
+
+Pre-gravity periods are 0.50376, 0.44181, 0.36982 and 0.17426 s;
+post-gravity periods are 0.53654, 0.48278, 0.39933 and 0.18093 s.  The
+sensitivity improves the X curve shape but worsens Y, and therefore is not a
+valid global material replacement.  The production model remains unchanged.
+
+The active acceptance blockers are the unrecovered SPEAR `con2` tensile input
+and tensile branch, the undimensioned Fig. 2.3 bent-bar transition, and the lack
+of published quantitative mode-shape ordinates.  SPEAR-M0 remains **NOT
+VALIDATED**; FVD, optimization, NLTHA/MSA and FEMA P-58 remain blocked.

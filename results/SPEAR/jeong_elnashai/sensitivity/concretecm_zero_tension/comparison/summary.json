@@ -1,0 +1,46 @@
+[
+  {
+    "case": "xp100",
+    "reference_peak_kN": 354.363,
+    "reference_peak_disp_mm": 74.194,
+    "sim_peak_kN": 352.954526,
+    "sim_peak_disp_mm": 56.5,
+    "peak_error_pct": -0.3974664397806804,
+    "mae_kN": 26.40405868617476,
+    "rmse_kN": 30.943951945882684,
+    "max_abs_error_kN": 56.910538849999966
+  },
+  {
+    "case": "xn100",
+    "reference_peak_kN": 367.335,
+    "reference_peak_disp_mm": -82.581,
+    "sim_peak_kN": 359.942309,
+    "sim_peak_disp_mm": -56.5,
+    "peak_error_pct": -2.0125201791280323,
+    "mae_kN": 27.134140750822006,
+    "rmse_kN": 31.80504780137045,
+    "max_abs_error_kN": 58.64178876
+  },
+  {
+    "case": "yp100",
+    "reference_peak_kN": 392.689,
+    "reference_peak_disp_mm": 94.839,
+    "sim_peak_kN": 468.64742,
+    "sim_peak_disp_mm": 110.5,
+    "peak_error_pct": 19.343149413403477,
+    "mae_kN": 74.81011573533864,
+    "rmse_kN": 75.3002872204073,
+    "max_abs_error_kN": 84.40281799000002
+  },
+  {
+    "case": "yn100",
+    "reference_peak_kN": 454.009,
+    "reference_peak_disp_mm": -147.742,
+    "sim_peak_kN": 496.827159,
+    "sim_peak_disp_mm": -78.5,
+    "peak_error_pct": 9.431125594426536,
+    "mae_kN": 51.27023704681781,
+    "rmse_kN": 54.960305145368274,
+    "max_abs_error_kN": 92.64844204600001
+  }
+]
