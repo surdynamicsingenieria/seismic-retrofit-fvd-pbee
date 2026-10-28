@@ -27,6 +27,7 @@ from reinforcement_source import BAR_DIAMETER_M, COVER_M
 
 OUT = Path("results/SPEAR/jeong_elnashai/pushover")
 OUT.mkdir(parents=True, exist_ok=True)
+RIGID_DIAPHRAGM = True
 Z = list(STORY_CENTERLINES)
 PENDING_SOURCE_DATA = [
     "dimensioned longitudinal transition location of the Fig 2.3 bent bars",
@@ -212,15 +213,21 @@ def build():
 
     masters = []
     for k in range(1, 4):
-        master = 900 + k
-        cx, cy = CM[k - 1]
-        ops.node(master, cx, cy, Z[k])
-        ops.fix(master, 0, 0, 1, 1, 1, 0)
         for n in names:
             mass = 1000.0 * NODE_WEIGHTS_KN[n][k - 1] / GACC
             ops.mass(nt(k, n), mass, mass, 0, 0, 0, 0)
-        ops.rigidDiaphragm(3, master, *([nt(k, n) for n in names] + [8000 + k * 10 + 5, 8000 + k * 10 + 6]))
-        masters.append(master)
+        if RIGID_DIAPHRAGM:
+            master = 900 + k
+            cx, cy = CM[k - 1]
+            ops.node(master, cx, cy, Z[k])
+            ops.fix(master, 0, 0, 1, 1, 1, 0)
+            ops.rigidDiaphragm(3, master, *([nt(k, n) for n in names] + [8000 + k * 10 + 5, 8000 + k * 10 + 6]))
+            masters.append(master)
+        else:
+            # MAE 04-03 Sec. 2.2 omits the slabs; Sec. 5.2 explicitly says
+            # the rigid diaphragm was a later refinement.  C3 is the roof
+            # displacement location reported by the study (Figs. 2.17/4.3).
+            masters.append(nt(k, "C3"))
     return names, nt, masters
 
 

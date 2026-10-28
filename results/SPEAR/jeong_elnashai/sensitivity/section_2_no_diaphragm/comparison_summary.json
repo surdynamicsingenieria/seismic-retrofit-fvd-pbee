@@ -1,0 +1,38 @@
+[
+  {
+    "case": "xp100",
+    "reference_peak_kN": 354.363,
+    "sim_peak_kN": 323.906206,
+    "peak_error_pct": -8.594800811597148,
+    "reached_mm": 200.0,
+    "secant_error_pct_at_20mm": -8.419798253182215,
+    "secant_error_pct_at_40mm": -6.128037152689501
+  },
+  {
+    "case": "xn100",
+    "reference_peak_kN": 367.335,
+    "sim_peak_kN": 332.263553,
+    "peak_error_pct": -9.547537533858735,
+    "reached_mm": 100.0,
+    "secant_error_pct_at_20mm": -2.5494096713916705,
+    "secant_error_pct_at_40mm": -4.567039835771241
+  },
+  {
+    "case": "yp100",
+    "reference_peak_kN": 392.689,
+    "sim_peak_kN": 345.813788,
+    "peak_error_pct": -11.936981173396767,
+    "reached_mm": 80.0,
+    "secant_error_pct_at_20mm": -9.259240788983996,
+    "secant_error_pct_at_40mm": -9.012326264670097
+  },
+  {
+    "case": "yn100",
+    "reference_peak_kN": 454.009,
+    "sim_peak_kN": 377.444865,
+    "peak_error_pct": -16.864012607679587,
+    "reached_mm": 80.0,
+    "secant_error_pct_at_20mm": -10.45555490198961,
+    "secant_error_pct_at_40mm": -9.572990426609183
+  }
+]

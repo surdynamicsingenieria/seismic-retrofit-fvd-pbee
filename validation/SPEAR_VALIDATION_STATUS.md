@@ -439,3 +439,50 @@ peak errors and the X-direction pre-peak stiffness. It does not remove the
 systematic stiffness excess. The hypothesis that gravity-state application
 alone explains Fig. 2.8 is therefore rejected. Production remains unchanged
 because Fig. 2.6 does not publish the original ZeusNL loading-point ledger.
+
+## Section 2 diaphragm-definition audit — 2026-10-27
+
+The target and the current OpenSees model did not use the same floor
+idealization. MAE 04-03 Section 2.2.2 states that slabs are omitted and only
+their T-beam effective width is retained. Section 5.2 then says explicitly
+that the rigid diaphragm was introduced later as a refinement to the Section 2
+model. Figure 2.8 belongs to the Section 2 pre-test analysis, whereas the
+current production reconstruction constrains every floor as rigid in plane.
+
+A non-accepted source-bounded sensitivity removes only the rigid-diaphragm
+constraints, keeps masses at the published beam-column connections, and uses
+C3 as roof control point. C3 is the roof-displacement location identified in
+Figs. 2.17 and 4.3. No stiffness or strength parameter is fitted.
+
+| Case | Reached (mm) | Peak error | Secant error 20 mm | Secant error 40 mm |
+|---|---:|---:|---:|---:|
+| xp100 | 200 | -8.59% | -8.42% | -6.13% |
+| xn100 | 100 | -9.55% | -2.55% | -4.57% |
+| yp100 | 80 | -11.94% | -9.26% | -9.01% |
+| yn100 | 80 | -16.86% | -10.46% | -9.57% |
+
+Removing the diaphragm reverses the production model's +18% to +27% pre-peak
+stiffness excess, but underpredicts all four peak strengths. The pre-gravity
+periods are 0.49138, 0.43410, 0.36266 and 0.17218 s. After the existing
+joint-only gravity load they lengthen to 0.71220, 0.67839, 0.51642 and 0.37794
+s. This excessive shift shows that diaphragm removal cannot be assessed
+independently from the missing Fig. 2.6 beam-gravity state.
+
+### Combined no-diaphragm plus reconstructed Fig. 2.6 gravity
+
+The combined sensitivity was run to 100 mm in all four directions:
+
+| Case | Peak error | Secant error 20 mm | Secant error 40 mm |
+|---|---:|---:|---:|
+| xp100 | -9.82% | -12.61% | -5.77% |
+| xn100 | -13.48% | -17.33% | -11.09% |
+| yp100 | -12.20% | -7.42% | -4.78% |
+| yn100 | -20.26% | -16.36% | -12.69% |
+
+The combined change softens the response further and is not accepted. Its
+post-gravity periods are 0.76557, 0.74261, 0.55825 and 0.47322 s, incompatible
+with the published elastic periods. The source evidence nevertheless requires
+the final Fig. 2.8 reconstruction to omit a rigid diaphragm; the remaining
+underprediction must be resolved through the exact ZeusNL concrete tensile
+law and original beam-gravity loading ledger, not by restoring an incompatible
+constraint or fitting strength. Production remains unchanged.

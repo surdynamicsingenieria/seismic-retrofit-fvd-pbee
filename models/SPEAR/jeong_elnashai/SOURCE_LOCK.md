@@ -106,6 +106,7 @@ Verified directly from MAE 04-03:
 - B5 and B6 centerlines are not aligned with the C6 centerline. C6 therefore requires explicit rigid arms; a single coincident C6/B5/B6 joint is prohibited.
 - Section 2.2.4: gravity = DL + 0.3LL; finishing = 0.5 kN/m2; design LL = 2.0 kN/m2; RC unit weight = 24.518 kN/m3.
 - Slab gravity/self-weight is distributed to nearest beams (Fig. 2.6), then represented by multiple loading points/short beam elements.
+- Section 2.2.2 omits explicit slabs; the rigid diaphragm is a later Section 5.2 refinement and is not part of the Fig. 2.8 pre-test target.
 - Seismic mass is gravity load divided by g=9807 mm/s2 and lumped at BEAM-COLUMN CONNECTIONS, not at one floor center.
 - Table 2.3 explicitly states P-delta considered, distributed plasticity, centerline dimensions, rigid offsets, M-M-N interaction, no viscous damping.
 
