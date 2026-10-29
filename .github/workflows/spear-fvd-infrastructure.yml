@@ -1,0 +1,44 @@
+name: SPEAR FVD infrastructure
+
+on:
+  push:
+    branches: [spear-jeong-elnashai-m0]
+    paths:
+      - "models/SPEAR/fvd/**"
+      - "models/SPEAR/jeong_elnashai/**"
+      - "validation/test_spear_fvd_infrastructure.py"
+      - "validation/fixtures/**"
+      - ".github/workflows/spear-fvd-infrastructure.yml"
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      MPIR_CVAR_CH3_INTERFACE_HOSTNAME: 127.0.0.1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install openseespy==3.8.0.0
+      - name: Validate inputs and damping formulation
+        run: python validation/test_spear_fvd_infrastructure.py
+      - name: Run zero-motion NLTHA smoke test
+        run: |
+          python models/SPEAR/fvd/run_baseline_nltha.py \
+            validation/fixtures/synthetic_zero_accel_g.txt \
+            --record-dt 0.01 --record-unit g --scale 1.0 \
+            --direction 1 --damping-ratio 0.02 \
+            --output results/SPEAR/nltha/smoke/m0_zero_x.csv
+      - name: Assert completed smoke test
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data = json.loads(Path("results/SPEAR/nltha/smoke/m0_zero_x.json").read_text())
+          assert data["status"] == "COMPLETE"
+          assert data["completed_steps"] == data["requested_steps"]
+          assert data["peak_abs_roof_displacement_m"] < 1e-12
+          PY
