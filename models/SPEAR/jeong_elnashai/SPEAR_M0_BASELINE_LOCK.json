@@ -1,0 +1,14 @@
+{
+  "baseline": "SPEAR-M0-engineering-accepted-2026-10-29",
+  "acceptance": "validation/SPEAR_M0_ENGINEERING_ACCEPTANCE.md",
+  "runtime": "OpenSeesPy 3.8.0.0",
+  "files_sha256": {
+    "spear_m0_jeong_elnashai.py": "485c0fd6f6b9020088dec0d1cfaad92afda207af728f622f4fd1f40427d1a230",
+    "spear_m0_jeong_elnashai_nonlinear.py": "7b4c61ea24561023b8c7c16ce48042eb3c526ab38d624073cdfd703df95cc646",
+    "geometry_source.py": "e832e548aa5e69aea4755430d33d7836dfc3002a760a3c6873b96ec70a55bc75",
+    "gravity_mass_source.py": "a4706dc8f03c2d6876601942b0d2673b8809055ae5eaa6dac6689a872cb934a9",
+    "pushover_patterns.py": "62534262e770dc2f60a3952be13fcde37ba9b46d9afa3aedce21f7f358761437",
+    "reinforcement_source.py": "847c014dc0bae70b7211982f9f3c15a28c61b6d15a4ca82d4876eab563194344"
+  },
+  "change_policy": "Any change to a locked file requires rerunning the modal, four-direction pushover and engineering acceptance gates."
+}

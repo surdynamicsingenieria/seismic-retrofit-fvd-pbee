@@ -1,0 +1,60 @@
+{
+  "status": "PASS",
+  "scope": "engineering benchmark validation for FVD/PBEE research",
+  "limitations": [
+    "not an exact reconstruction of the unavailable UIUC ZeusNL input deck",
+    "Fig. 2.8 pointwise curve shape and post-peak response are not acceptance gates",
+    "pre-peak secant stiffness is overestimated by approximately 18-27 percent"
+  ],
+  "criteria": {
+    "modal_period_absolute_error_limit_pct": 10.0,
+    "pushover_peak_absolute_error_limit_pct": 15.0,
+    "qualitative_response_checks_required": true
+  },
+  "modal": {
+    "targets_s": [
+      0.51,
+      0.46,
+      0.4,
+      0.18
+    ],
+    "model_s": [
+      0.5144593563262534,
+      0.4477538855073795,
+      0.37303900115748984,
+      0.17796857392352722
+    ],
+    "errors_pct": [
+      0.8743835933830163,
+      -2.6621988027435934,
+      -6.740249710627546,
+      -1.1285700424848752
+    ],
+    "checks": [
+      true,
+      true,
+      true,
+      true
+    ]
+  },
+  "pushover_peak_checks": {
+    "xp100": true,
+    "xn100": true,
+    "yp100": true,
+    "yn100": true
+  },
+  "qualitative_checks": {
+    "yn_stronger_than_yp": true,
+    "mean_y_stronger_than_mean_x": true,
+    "four_spatial_patterns_pass": true
+  },
+  "baseline_file_hash_checks": {
+    "spear_m0_jeong_elnashai.py": true,
+    "spear_m0_jeong_elnashai_nonlinear.py": true,
+    "geometry_source.py": true,
+    "gravity_mass_source.py": true,
+    "pushover_patterns.py": true,
+    "reinforcement_source.py": true
+  },
+  "downstream_authorization": "FVD model development and baseline NLTHA authorized"
+}

@@ -374,7 +374,7 @@ def run(case_name="xp100", target_mm=200.0, du_mm=0.5):
         "analysis_exit_code": ok,
         "peak_abs_base_shear_kN": max(abs(v) for _, v in output),
         "pending_source_data": PENDING_SOURCE_DATA,
-        "acceptance": "PROHIBITED until concrete/bent-bar inputs are source-locked and modal/capacity errors close",
+        "acceptance": "ENGINEERING_BASELINE; exact ZeusNL/Fig. 2.8 reproduction not claimed",
     }
     (OUT / f"{case_name}_summary.json").write_text(json.dumps(summary, indent=2))
     print("JEONG_ELNASHAI_PUSHOVER", json.dumps(summary))

@@ -1,6 +1,6 @@
 # SPEAR-M0 Jeong-Elnashai benchmark — source lock
 
-Status: **independent reconstruction in progress; not yet validated**
+Status: **engineering benchmark accepted 2026-10-29; exact ZeusNL reproduction not claimed**
 
 Primary source:
 Jeong, S.-H. & Elnashai, A.S. (2004), *Analytical Assessment of an Irregular RC Full Scale 3D Test Structure*, MAE Center Report 04-03, University of Illinois at Urbana-Champaign.
@@ -91,9 +91,11 @@ Quantitative digitization of Fig. 2.8 must be stored separately before declaring
 3. modal comparison;
 4. +X / -X / +Y / -Y pushover;
 5. quantitative comparison to digitized Fig. 2.8;
-6. only after all gates pass may this model be considered a candidate SPEAR-M0 benchmark.
+6. evaluate the engineering acceptance gate documented in
+   `validation/SPEAR_M0_ENGINEERING_ACCEPTANCE.md`.
 
-No FVD, optimization, NLTHA/MSA or FEMA P-58 before benchmark validation.
+The accepted baseline may be used for FVD development and baseline NLTHA.
+Optimization, MSA and FEMA P-58 require their own documented downstream gates.
 
 
 ## Geometry/mass audit — exact-reconstruction gate (2026-10-06)

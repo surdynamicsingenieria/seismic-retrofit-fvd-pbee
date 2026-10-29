@@ -1,12 +1,18 @@
 # SPEAR VALIDATION STATUS
 
-Date: 2026-10-14
+Date: 2026-10-29
 Branch: `spear-jeong-elnashai-m0`
 
-## Current state: FIBRE T-BEAM DIAGNOSTIC RUN; GRAVITY/MASS INPUTS PENDING
+## Current state: ENGINEERING BENCHMARK ACCEPTED
 
-SPEAR-M0 is not physically validated and must not be used for FVD, optimization,
-NLTHA/MSA or FEMA P-58.
+SPEAR-M0 is accepted for the engineering fidelity required by this FVD/PBEE
+research. Exact pointwise reproduction of Fig. 2.8 and recovery of the original
+UIUC ZeusNL deck are not claimed. FVD development and baseline NLTHA are now
+authorized; later optimization, MSA and FEMA P-58 retain separate gates.
+
+The governing decision and numerical criteria are documented in
+`validation/SPEAR_M0_ENGINEERING_ACCEPTANCE.md`. Historical diagnostic sections
+below are retained as an audit trail and do not override this current status.
 
 ## Actions completed in this pass
 
