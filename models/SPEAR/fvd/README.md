@@ -26,3 +26,4 @@ MPIR_CVAR_CH3_INTERFACE_HOSTNAME=127.0.0.1 python \
 
 The next gate is selection and provenance documentation of the ground-motion
 set, followed by a baseline M0 NLTHA convergence and energy-balance campaign.
+The staged selection decision is documented in `GROUND_MOTION_PROTOCOL.md`.

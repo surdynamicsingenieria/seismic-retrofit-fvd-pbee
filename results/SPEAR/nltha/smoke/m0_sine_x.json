@@ -1,0 +1,38 @@
+{
+  "status": "COMPLETE",
+  "model": "SPEAR-M0-engineering-accepted-2026-10-29",
+  "record": "validation/fixtures/synthetic_sine_0p05g.txt",
+  "record_dt_s": 0.02,
+  "record_unit": "g",
+  "scale_factor": 1.0,
+  "pga_m_s2": 0.4903325,
+  "direction_dof": 1,
+  "damping_ratio": 0.02,
+  "damping_modes": [
+    1,
+    3
+  ],
+  "rayleigh_alpha_m": 0.2953180778494388,
+  "rayleigh_beta_k_current": 0.0013230338146642763,
+  "completed_steps": 20,
+  "requested_steps": 20,
+  "analysis_exit_code": 0,
+  "fallback_counts": {
+    "KrylovNewton": 0,
+    "NewtonLineSearch": 0,
+    "two-half-steps": 0
+  },
+  "initial_gravity_roof_displacement_m_removed": 0.0003817612975963999,
+  "peak_abs_roof_displacement_m": 0.006173632640411096,
+  "peak_abs_story_drift_ratio": [
+    0.000671140319936518,
+    0.000790988754926326,
+    0.000627269042154629
+  ],
+  "peak_abs_floor_acceleration_m_s2": [
+    0.4629877571216874,
+    0.5046550668012546,
+    0.8962220871012494
+  ],
+  "peak_abs_base_shear_kN": 90.06473803854554
+}

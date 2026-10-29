@@ -12,6 +12,7 @@ sys.path.insert(0, str(FVD))
 
 from fvd_elements import DamperSpec, validate_unique_specs  # noqa: E402
 from ground_motion import G_M_S2, read_ground_motion  # noqa: E402
+from record_manifest import validate_manifest  # noqa: E402
 from run_baseline_nltha import rayleigh_coefficients  # noqa: E402
 
 
@@ -42,6 +43,9 @@ w1, w2 = 2 * math.pi / 0.51, 2 * math.pi / 0.40
 for omega in (w1, w2):
     recovered = 0.5 * (alpha_m / omega + beta_k * omega)
     assert math.isclose(recovered, 0.02, rel_tol=1e-12)
+
+manifest = validate_manifest(ROOT / "validation/fixtures/smoke_record_manifest.json")
+assert manifest["suite_id"] == "synthetic-smoke-only"
 
 print("SPEAR_FVD_INFRASTRUCTURE PASS")
 

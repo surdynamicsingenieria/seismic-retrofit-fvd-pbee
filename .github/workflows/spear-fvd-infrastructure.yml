@@ -42,3 +42,19 @@ jobs:
           assert data["completed_steps"] == data["requested_steps"]
           assert data["peak_abs_roof_displacement_m"] < 1e-12
           PY
+      - name: Run finite-motion EDP smoke test
+        run: |
+          python models/SPEAR/fvd/run_baseline_nltha.py \
+            validation/fixtures/synthetic_sine_0p05g.txt \
+            --record-dt 0.02 --record-unit g --scale 1.0 \
+            --direction 1 --damping-ratio 0.02 \
+            --output results/SPEAR/nltha/smoke/m0_sine_x.csv
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data = json.loads(Path("results/SPEAR/nltha/smoke/m0_sine_x.json").read_text())
+          assert data["status"] == "COMPLETE"
+          assert max(data["peak_abs_story_drift_ratio"]) > 0
+          assert max(data["peak_abs_floor_acceleration_m_s2"]) > 0
+          assert data["peak_abs_base_shear_kN"] > 0
+          PY

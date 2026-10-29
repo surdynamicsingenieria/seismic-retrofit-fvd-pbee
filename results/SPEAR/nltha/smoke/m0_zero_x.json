@@ -17,6 +17,22 @@
   "completed_steps": 20,
   "requested_steps": 20,
   "analysis_exit_code": 0,
+  "fallback_counts": {
+    "KrylovNewton": 0,
+    "NewtonLineSearch": 0,
+    "two-half-steps": 0
+  },
   "initial_gravity_roof_displacement_m_removed": 0.0003817612975963999,
-  "peak_abs_roof_displacement_m": 2.168404344971009e-19
+  "peak_abs_roof_displacement_m": 2.168404344971009e-19,
+  "peak_abs_story_drift_ratio": [
+    2.710505431213761e-20,
+    2.0328790734103208e-20,
+    1.174552353525963e-19
+  ],
+  "peak_abs_floor_acceleration_m_s2": [
+    2.5986850338211964e-17,
+    5.783271144606901e-17,
+    5.501973216746407e-17
+  ],
+  "peak_abs_base_shear_kN": 6.789235840187757e-14
 }

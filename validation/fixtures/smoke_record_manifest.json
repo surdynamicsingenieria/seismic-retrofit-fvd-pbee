@@ -1,0 +1,18 @@
+{
+  "suite_id": "synthetic-smoke-only",
+  "purpose": "software verification; prohibited for structural conclusions",
+  "records": [
+    {
+      "record_id": "synthetic-sine-x",
+      "event": "synthetic",
+      "station": "none",
+      "component": "X",
+      "path": "synthetic_sine_0p05g.txt",
+      "dt_s": 0.02,
+      "unit": "g",
+      "scale_factor": 1.0,
+      "source_url": "repository-generated verification fixture",
+      "sha256": "78cb52f2601b2a7eb6184d3c256adec071774b6b2bc767156eb6447eba3576e3"
+    }
+  ]
+}

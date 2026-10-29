@@ -30,6 +30,24 @@ def rayleigh_coefficients(zeta: float, periods_s: tuple[float, float]) -> tuple[
     return alpha_m, beta_k
 
 
+def analyze_interval(dt_s: float, tolerance: float, max_iterations: int) -> tuple[int, str]:
+    """Advance one record interval with deterministic solver fallbacks."""
+    algorithms = (("Newton", ()), ("KrylovNewton", ()), ("NewtonLineSearch", (0.8,)))
+    for name, parameters in algorithms:
+        ops.test("NormDispIncr", tolerance, max_iterations)
+        ops.algorithm(name, *parameters)
+        if ops.analyze(1, dt_s) == 0:
+            return 0, name
+    # A failed OpenSees step leaves the last committed state unchanged. Use
+    # two half-steps only after all full-step algorithms have failed.
+    ops.test("NormDispIncr", tolerance * 10.0, max_iterations * 2)
+    ops.algorithm("NewtonLineSearch", 0.8)
+    for _ in range(2):
+        if ops.analyze(1, dt_s / 2.0) != 0:
+            return -3, "half-step-failed"
+    return 0, "two-half-steps"
+
+
 def run(args) -> int:
     motion = read_ground_motion(args.record, args.record_dt, args.record_unit, args.scale)
     names, nt, masters = m0.build()
@@ -55,20 +73,39 @@ def run(args) -> int:
     out.parent.mkdir(parents=True, exist_ok=True)
     roof = masters[-1]
     initial_roof_disp = ops.nodeDisp(roof, args.direction)
-    rows = [(0.0, 0.0, 0.0)]
+    centre_nodes = [nt(k, "C3") for k in range(1, 4)]
+    initial_centre_disp = [ops.nodeDisp(node, args.direction) for node in centre_nodes]
+    base_nodes = [nt(0, name) for name in names]
+    rows = [(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)]
     ok = 0
-    for _ in range(len(motion.values_m_s2) - 1):
-        ok = ops.analyze(1, motion.dt_s)
+    fallback_counts = {"KrylovNewton": 0, "NewtonLineSearch": 0, "two-half-steps": 0}
+    for step in range(1, len(motion.values_m_s2)):
+        ok, algorithm = analyze_interval(motion.dt_s, args.tolerance, args.max_iterations)
         if ok != 0:
             break
-        rows.append((
-            ops.getTime(),
-            ops.nodeDisp(roof, args.direction) - initial_roof_disp,
-            ops.nodeAccel(roof, args.direction),
-        ))
+        if algorithm in fallback_counts:
+            fallback_counts[algorithm] += 1
+        centre_disp = [
+            ops.nodeDisp(node, args.direction) - initial
+            for node, initial in zip(centre_nodes, initial_centre_disp)
+        ]
+        drift = (
+            centre_disp[0] / 3.0,
+            (centre_disp[1] - centre_disp[0]) / 3.0,
+            (centre_disp[2] - centre_disp[1]) / 3.0,
+        )
+        ground_accel = motion.values_m_s2[step]
+        floor_abs_accel = [ops.nodeAccel(master, args.direction) + ground_accel for master in masters]
+        ops.reactions()
+        base_shear = -sum(ops.nodeReaction(node, args.direction) for node in base_nodes) / 1000.0
+        rows.append((ops.getTime(), ops.nodeDisp(roof, args.direction) - initial_roof_disp,
+                     *drift, *floor_abs_accel, base_shear))
     with out.open("w", newline="") as stream:
-        writer = csv.writer(stream)
-        writer.writerow(("time_s", "roof_displacement_m", "roof_relative_acceleration_m_s2"))
+        writer = csv.writer(stream, lineterminator="\n")
+        writer.writerow(("time_s", "roof_displacement_m", "story_1_drift_ratio",
+                         "story_2_drift_ratio", "story_3_drift_ratio",
+                         "floor_1_absolute_acceleration_m_s2", "floor_2_absolute_acceleration_m_s2",
+                         "floor_3_absolute_acceleration_m_s2", "base_shear_kN"))
         writer.writerows(rows)
     summary = {
         "status": "COMPLETE" if ok == 0 and len(rows) == len(motion.values_m_s2) else "INCOMPLETE",
@@ -86,8 +123,12 @@ def run(args) -> int:
         "completed_steps": len(rows) - 1,
         "requested_steps": len(motion.values_m_s2) - 1,
         "analysis_exit_code": ok,
+        "fallback_counts": fallback_counts,
         "initial_gravity_roof_displacement_m_removed": initial_roof_disp,
         "peak_abs_roof_displacement_m": max(abs(row[1]) for row in rows),
+        "peak_abs_story_drift_ratio": [max(abs(row[index]) for row in rows) for index in (2, 3, 4)],
+        "peak_abs_floor_acceleration_m_s2": [max(abs(row[index]) for row in rows) for index in (5, 6, 7)],
+        "peak_abs_base_shear_kN": max(abs(row[8]) for row in rows),
     }
     out.with_suffix(".json").write_text(json.dumps(summary, indent=2) + "\n")
     print(json.dumps(summary, indent=2))
