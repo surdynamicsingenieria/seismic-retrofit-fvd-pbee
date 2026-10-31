@@ -37,7 +37,9 @@ extraction only and are prohibited from physical interpretation.
 An authenticated PEER NGA-West2 search was completed on 2026-10-30. Search
 11648 explicitly submitted all 22 FEMA P-695 RSNs and requested 22 records, but
 PEER returned 21 metadata rows and 21 record pairs. RSN 829 (Cape Mendocino,
-Rio Dell Overpass, RIO270/RIO360) is the sole missing pair. A separate station
+Rio Dell Overpass) is the sole missing pair. PEER Report 2007/08 Table A.1
+confirms the historical filenames `CAPEMEND/RI0270.at2` and
+`CAPEMEND/RI0360.at2`. A separate station
 search for Rio Dell Overpass did not recover it. This is now a precisely
 identified external-data blocker, not a generic acquisition task. The 22-pair
 identity ledger is committed at

@@ -16,7 +16,7 @@ rsn,event_station,h1_filename,h2_filename,peer_search_11648_status
 1633,Manjil / Abbar,MANJIL_ABBAR--L.AT2,MANJIL_ABBAR--T.AT2,available
 721,Superstition Hills / El Centro Imp. Co. Cent,SUPER.B_B-ICC000.AT2,SUPER.B_B-ICC090.AT2,available
 725,Superstition Hills / Poe Road,SUPER.B_B-POE270.AT2,SUPER.B_B-POE360.AT2,available
-829,Cape Mendocino / Rio Dell Overpass,RIO270,RIO360,missing_from_current_peer_search
+829,Cape Mendocino / Rio Dell Overpass,CAPEMEND/RI0270.at2,CAPEMEND/RI0360.at2,missing_from_current_peer_search
 1244,Chi-Chi / CHY101,CHICHI_CHY101-E.AT2,CHICHI_CHY101-N.AT2,available
 1485,Chi-Chi / TCU045,CHICHI_TCU045-E.AT2,CHICHI_TCU045-N.AT2,available
 68,San Fernando / LA Hollywood Storage FF,SFERN_PEL090.AT2,SFERN_PEL180.AT2,available

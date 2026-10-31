@@ -19,7 +19,9 @@ FEMA P-695 Table A-4C and is an identity/provenance ledger, not an executable
 waveform manifest. On 2026-10-30 an authenticated PEER NGA-West2 query
 (spectrum 13218, search 11648) submitted all 22 RSNs and requested 22 results.
 The returned metadata contained 21 rows: RSN 829 (Cape Mendocino, Rio Dell
-Overpass; RIO270/RIO360) was absent. The query criteria preserved in PEER and
+Overpass) was absent. PEER Report 2007/08 Table A.1 identifies its historical
+files as `CAPEMEND/RI0270.at2` and `CAPEMEND/RI0360.at2` (digit zero in `RI0`).
+The query criteria preserved in PEER and
 its CSV both show that RSN 829 was submitted. No replacement record is
 permitted. The executable suite remains blocked until that exact pair is
 recovered from an authoritative distribution.
