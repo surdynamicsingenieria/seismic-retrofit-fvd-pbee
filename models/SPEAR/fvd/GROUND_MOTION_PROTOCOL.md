@@ -14,6 +14,22 @@ collapse-oriented studies. Both components must be retained as a pair, with
 event, station, time step, units, original filename and SHA-256 recorded in the
 suite manifest.
 
+The canonical 22-pair ledger is `fema_p695_far_field_suite.csv`. It follows
+FEMA P-695 Table A-4C and is an identity/provenance ledger, not an executable
+waveform manifest. On 2026-10-30 an authenticated PEER NGA-West2 query
+(spectrum 13218, search 11648) submitted all 22 RSNs and requested 22 results.
+The returned metadata contained 21 rows: RSN 829 (Cape Mendocino, Rio Dell
+Overpass; RIO270/RIO360) was absent. The query criteria preserved in PEER and
+its CSV both show that RSN 829 was submitted. No replacement record is
+permitted. The executable suite remains blocked until that exact pair is
+recovered from an authoritative distribution.
+
+The PEER time-series option states that its package contains unscaled,
+processed, as-recorded (unrotated) traces and provides scale factors in the
+accompanying CSV. Phase B uses scale factor 1.0 unless a separately documented
+intensity-scaling analysis is being run; database search scale factors must not
+be silently folded into the raw records.
+
 Primary references:
 
 - FEMA P-695, Appendix A: https://nehrpsearch.nist.gov/static/files/FEMA/fema_p695.pdf

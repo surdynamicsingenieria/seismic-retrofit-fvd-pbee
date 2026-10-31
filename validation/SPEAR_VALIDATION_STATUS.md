@@ -34,10 +34,18 @@ without solver fallbacks. Peak roof displacements were 6.013 mm in X and
 base shears were 87.39 and 108.47 kN. These values verify execution and EDP
 extraction only and are prohibited from physical interpretation.
 
-The remaining external-data gate is acquisition of the 22 FEMA P-695
-far-field pairs from an authoritative distribution with verifiable metadata.
-No third-party waveform has been admitted. Site-specific hazard definition
-remains a later, separate PBEE gate.
+An authenticated PEER NGA-West2 search was completed on 2026-10-30. Search
+11648 explicitly submitted all 22 FEMA P-695 RSNs and requested 22 records, but
+PEER returned 21 metadata rows and 21 record pairs. RSN 829 (Cape Mendocino,
+Rio Dell Overpass, RIO270/RIO360) is the sole missing pair. A separate station
+search for Rio Dell Overpass did not recover it. This is now a precisely
+identified external-data blocker, not a generic acquisition task. The 22-pair
+identity ledger is committed at
+`models/SPEAR/fvd/fema_p695_far_field_suite.csv`; no substitute waveform is
+admitted. The PEER trace-package request passed both database notices, but no
+ZIP was delivered to the browser download area, so the 21 available pairs have
+not yet been admitted to the executable manifest. Site-specific hazard
+definition remains a later, separate PBEE gate.
 
 ## Actions completed in this pass
 

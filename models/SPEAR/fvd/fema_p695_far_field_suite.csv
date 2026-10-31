@@ -1,0 +1,23 @@
+rsn,event_station,h1_filename,h2_filename,peer_search_11648_status
+953,Northridge / Beverly Hills - Mulhol,NORTHR_MUL009.AT2,NORTHR_MUL279.AT2,available
+960,Northridge / Canyon Country - W Lost Cany,NORTHR_LOS000.AT2,NORTHR_LOS270.AT2,available
+1602,Duzce / Bolu,DUZCE_BOL000.AT2,DUZCE_BOL090.AT2,available
+1787,Hector Mine / Hector,HECTOR_HEC000.AT2,HECTOR_HEC090.AT2,available
+169,Imperial Valley / Delta,IMPVALL.H_H-DLT262.AT2,IMPVALL.H_H-DLT352.AT2,available
+174,Imperial Valley / El Centro Array #11,IMPVALL.H_H-E11140.AT2,IMPVALL.H_H-E11230.AT2,available
+1111,Kobe / Nishi-Akashi,KOBE_NIS000.AT2,KOBE_NIS090.AT2,available
+1116,Kobe / Shin-Osaka,KOBE_SHI000.AT2,KOBE_SHI090.AT2,available
+1158,Kocaeli / Duzce,KOCAELI_DZC180.AT2,KOCAELI_DZC270.AT2,available
+1148,Kocaeli / Arcelik,KOCAELI_ARE000.AT2,KOCAELI_ARE090.AT2,available
+900,Landers / Yermo Fire Station,LANDERS_YER270.AT2,LANDERS_YER360.AT2,available
+848,Landers / Coolwater,LANDERS_CLW-LN.AT2,LANDERS_CLW-TR.AT2,available
+752,Loma Prieta / Capitola,LOMAP_CAP000.AT2,LOMAP_CAP090.AT2,available
+767,Loma Prieta / Gilroy Array #3,LOMAP_G03000.AT2,LOMAP_G03090.AT2,available
+1633,Manjil / Abbar,MANJIL_ABBAR--L.AT2,MANJIL_ABBAR--T.AT2,available
+721,Superstition Hills / El Centro Imp. Co. Cent,SUPER.B_B-ICC000.AT2,SUPER.B_B-ICC090.AT2,available
+725,Superstition Hills / Poe Road,SUPER.B_B-POE270.AT2,SUPER.B_B-POE360.AT2,available
+829,Cape Mendocino / Rio Dell Overpass,RIO270,RIO360,missing_from_current_peer_search
+1244,Chi-Chi / CHY101,CHICHI_CHY101-E.AT2,CHICHI_CHY101-N.AT2,available
+1485,Chi-Chi / TCU045,CHICHI_TCU045-E.AT2,CHICHI_TCU045-N.AT2,available
+68,San Fernando / LA Hollywood Storage FF,SFERN_PEL090.AT2,SFERN_PEL180.AT2,available
+125,Friuli / Tolmezzo,FRIULI.A_A-TMZ000.AT2,FRIULI.A_A-TMZ270.AT2,available
