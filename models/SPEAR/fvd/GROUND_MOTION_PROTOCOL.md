@@ -37,3 +37,7 @@ remains a separate gate because no project site/hazard has yet been fixed.
 Every component must include record ID, event, station, component, local path,
 time step, acceleration unit, scale factor, source URL and SHA-256. Analyses
 must fail before model construction if a file, unit or digest is invalid.
+Bidirectional manifests additionally require `pair_id` and
+`horizontal_axis`; a pair is rejected unless it contains exactly one X and
+one Y component with matching time steps. PEER AT2 files are cross-checked
+against their internal `NPTS` and `DT` header values.

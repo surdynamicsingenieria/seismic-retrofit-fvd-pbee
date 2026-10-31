@@ -17,6 +17,7 @@ jobs:
     timeout-minutes: 10
     env:
       MPIR_CVAR_CH3_INTERFACE_HOSTNAME: 127.0.0.1
+      MPIR_CVAR_CH3_NETWORK_IFACE: lo
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -57,4 +58,19 @@ jobs:
           assert max(data["peak_abs_story_drift_ratio"]) > 0
           assert max(data["peak_abs_floor_acceleration_m_s2"]) > 0
           assert data["peak_abs_base_shear_kN"] > 0
+          PY
+      - name: Run bidirectional paired-motion smoke test
+        run: |
+          python models/SPEAR/fvd/run_bidirectional_nltha.py \
+            validation/fixtures/smoke_record_manifest.json \
+            --pair-id synthetic-pair-01 --damping-ratio 0.02 \
+            --output results/SPEAR/nltha/smoke/m0_sine_xy.csv
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data = json.loads(Path("results/SPEAR/nltha/smoke/m0_sine_xy.json").read_text())
+          assert data["status"] == "COMPLETE"
+          assert data["record_ids"] == {"X": "synthetic-sine-x", "Y": "synthetic-peer-sine-y"}
+          assert max(data["peak_abs_story_drift_ratio"]["X"]) > 0
+          assert max(data["peak_abs_story_drift_ratio"]["Y"]) > 0
           PY

@@ -1,6 +1,6 @@
 # SPEAR VALIDATION STATUS
 
-Date: 2026-10-29
+Date: 2026-10-30
 Branch: `spear-jeong-elnashai-m0`
 
 ## Current state: ENGINEERING BENCHMARK ACCEPTED
@@ -13,6 +13,31 @@ authorized; later optimization, MSA and FEMA P-58 retain separate gates.
 The governing decision and numerical criteria are documented in
 `validation/SPEAR_M0_ENGINEERING_ACCEPTANCE.md`. Historical diagnostic sections
 below are retained as an audit trail and do not override this current status.
+
+## Bidirectional NLTHA infrastructure — 2026-10-30
+
+The engineering-accepted M0 baseline now has a simultaneous X-Y nonlinear
+response-history driver. It accepts only manifest-defined pairs containing
+exactly one X and one Y component, validates file SHA-256 values before model
+construction, cross-checks PEER AT2 `NPTS` and `DT` headers, and rejects
+component time-step mismatches. If paired components have unequal durations,
+the shorter one is zero-padded only after its original samples and the exact
+padding count is recorded in the output JSON.
+
+A solver-independent constant-average-acceleration Newmark implementation now
+computes linear pseudo-acceleration spectra. Its unit/formulation test uses an
+analytic long-duration resonant harmonic input; it is not structural evidence.
+
+The simultaneous synthetic 0.05 g X-Y smoke analysis completed 20/20 steps
+without solver fallbacks. Peak roof displacements were 6.013 mm in X and
+7.176 mm in Y; maximum storey drift ratios were 0.0841% in X and 0.0932% in Y;
+base shears were 87.39 and 108.47 kN. These values verify execution and EDP
+extraction only and are prohibited from physical interpretation.
+
+The remaining external-data gate is acquisition of the 22 FEMA P-695
+far-field pairs from an authoritative distribution with verifiable metadata.
+No third-party waveform has been admitted. Site-specific hazard definition
+remains a later, separate PBEE gate.
 
 ## Actions completed in this pass
 

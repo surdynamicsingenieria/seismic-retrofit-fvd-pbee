@@ -7,6 +7,9 @@ Implemented:
 
 - explicit ground-motion units (`g`, `m/s2`, `cm/s2`) and scale factors;
 - baseline nonlinear response-history driver;
+- strict PEER/NGA AT2 reader with `NPTS`/`DT` consistency checks;
+- simultaneous X-Y paired-record nonlinear response-history driver;
+- 5%-damped (or explicitly selected) linear pseudo-acceleration spectra;
 - explicit Rayleigh damping ratio and modal pair;
 - nonlinear viscous law `F=C|v|^alpha sign(v)` through OpenSees `Viscous`;
 - validation of FVD tags, nodes, coefficient and exponent.
@@ -27,3 +30,16 @@ MPIR_CVAR_CH3_INTERFACE_HOSTNAME=127.0.0.1 python \
 The next gate is selection and provenance documentation of the ground-motion
 set, followed by a baseline M0 NLTHA convergence and energy-balance campaign.
 The staged selection decision is documented in `GROUND_MOTION_PROTOCOL.md`.
+
+Bidirectional manifest invocation:
+
+```bash
+python models/SPEAR/fvd/run_bidirectional_nltha.py SUITE.json \
+  --pair-id PAIR_ID --damping-ratio 0.02 \
+  --output results/SPEAR/nltha/m0/PAIR_ID.csv
+```
+
+Each paired component must define the same `pair_id`, a unique
+`horizontal_axis` (`X` or `Y`) and a common time step. Different record
+lengths are preserved and the shorter component is zero-padded at its end;
+the padding count is written to the result JSON.

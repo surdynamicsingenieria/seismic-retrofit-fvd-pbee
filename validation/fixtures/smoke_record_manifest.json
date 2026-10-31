@@ -4,6 +4,8 @@
   "records": [
     {
       "record_id": "synthetic-sine-x",
+      "pair_id": "synthetic-pair-01",
+      "horizontal_axis": "X",
       "event": "synthetic",
       "station": "none",
       "component": "X",
@@ -13,6 +15,20 @@
       "scale_factor": 1.0,
       "source_url": "repository-generated verification fixture",
       "sha256": "78cb52f2601b2a7eb6184d3c256adec071774b6b2bc767156eb6447eba3576e3"
+    },
+    {
+      "record_id": "synthetic-peer-sine-y",
+      "pair_id": "synthetic-pair-01",
+      "horizontal_axis": "Y",
+      "event": "synthetic",
+      "station": "none",
+      "component": "Y",
+      "path": "synthetic_peer_sine.AT2",
+      "dt_s": 0.02,
+      "unit": "g",
+      "scale_factor": 1.0,
+      "source_url": "repository-generated verification fixture",
+      "sha256": "d80474b35a1b552092763787a939fde8f4b2c1c21735950260ac1e5ac003199d"
     }
   ]
 }
