@@ -1,3 +1,6 @@
 __pycache__/
 *.py[cod]
 .pytest_cache/
+
+# PEER waveforms are licensed source data; keep local and commit only hashes/manifests.
+ground_motions/

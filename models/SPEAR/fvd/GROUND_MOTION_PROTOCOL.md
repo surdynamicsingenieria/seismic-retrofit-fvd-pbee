@@ -32,6 +32,18 @@ accompanying CSV. Phase B uses scale factor 1.0 unless a separately documented
 intensity-scaling analysis is being run; database search scale factors must not
 be silently folded into the raw records.
 
+## Package 11683 audit — 2026-11-01
+
+The authenticated PEER package supplied by the researcher passed ZIP integrity
+testing. It contains 21 selected records, 62 acceleration files (three
+components except for RSN 725, which has no vertical component), and exactly 42
+horizontal acceleration traces. Every horizontal trace passed strict `NPTS`,
+`DT`, finite-value and pair time-step checks. The executable partial manifest
+is `manifests/fema_p695_peer_partial_21.json`; it records SHA-256, sample count,
+time step and PGA for every component. It is deliberately labelled partial and
+lists RSN 829 as missing. PEER waveform files are locally ignored and are not
+redistributed through GitHub.
+
 Primary references:
 
 - FEMA P-695, Appendix A: https://nehrpsearch.nist.gov/static/files/FEMA/fema_p695.pdf

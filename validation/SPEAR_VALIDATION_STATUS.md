@@ -49,6 +49,17 @@ ZIP was delivered to the browser download area, so the 21 available pairs have
 not yet been admitted to the executable manifest. Site-specific hazard
 definition remains a later, separate PBEE gate.
 
+On 2026-11-01 the researcher supplied PEER package
+`UnscaledAccRecord11683.zip`. Its archive integrity test passed. The package
+contains 21 FEMA pairs and 42 horizontal AT2 traces; RSN 829 remains the only
+missing pair. All 42 traces passed strict header/sample-count, finite-value,
+unit, SHA-256 and within-pair time-step validation. Their time steps range from
+0.0039 to 0.0200 s and sample counts from 1,999 to 18,000. The resulting
+manifest is `models/SPEAR/fvd/manifests/fema_p695_peer_partial_21.json`.
+Waveform bytes are retained only as licensed local inputs and are ignored by
+Git; no NLTHA result from this partial suite may be represented as the complete
+22-pair FEMA ensemble.
+
 ## Actions completed in this pass
 
 - Audited the Jeong-Elnashai pushover driver and identified an inadmissible
