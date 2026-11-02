@@ -1,0 +1,139 @@
+WARNING - the 'fullGenLapack' eigen solver is VERY SLOW. Consider using the default eigen solver.WARNING: CTestEnergyIncr::test() - failed to converge 
+after: 100 iterations
+ current EnergyIncr: 2.5236e+07 (max: 1e-08) 	Norm deltaX: 4.5451, Norm deltaR: 2.00295e+08
+NewtonRaphson::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 16.5
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestEnergyIncr::test() - failed to converge 
+after: 100 iterations
+ current EnergyIncr: 1.68659e+08 (max: 1e-08) 	Norm deltaX: 370.746, Norm deltaR: 3.48455e+08
+NewtonRaphson::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 16.52
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestEnergyIncr::test() - failed to converge 
+after: 100 iterations
+ current EnergyIncr: 5.0449e+10 (max: 1e-08) 	Norm deltaX: 7114.92, Norm deltaR: 1.00739e+09
+AcceleratedNewton::solveCurrentStep() -The ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 16.52
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestEnergyIncr::test() - failed to converge 
+after: 100 iterations
+ current EnergyIncr: 6.39201e+08 (max: 1e-08) 	Norm deltaX: 111.117, Norm deltaR: 7.89187e+08
+NewtonLineSearch::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 16.52
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestEnergyIncr::test() - failed to converge 
+after: 100 iterations
+ current EnergyIncr: 2.8589e+11 (max: 1e-08) 	Norm deltaX: 42454.8, Norm deltaR: 5.80406e+11
+NewtonRaphson::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 16.51
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestEnergyIncr::test() - failed to converge 
+after: 100 iterations
+ current EnergyIncr: 1.49745e+18 (max: 1e-08) 	Norm deltaX: 6.33922e+06, Norm deltaR: 1.05594e+13
+AcceleratedNewton::solveCurrentStep() -The ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 16.51
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestEnergyIncr::test() - failed to converge 
+after: 100 iterations
+ current EnergyIncr: 1.84259e+13 (max: 1e-08) 	Norm deltaX: 3552.5, Norm deltaR: 1.03909e+12
+NewtonLineSearch::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 16.51
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestEnergyIncr::test() - failed to converge 
+after: 100 iterations
+ current EnergyIncr: 1.88718e+15 (max: 1e-08) 	Norm deltaX: 106613, Norm deltaR: 1.93091e+13
+NewtonRaphson::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 16.505
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestEnergyIncr::test() - failed to converge 
+after: 100 iterations
+ current EnergyIncr: 4.34049e+21 (max: 1e-08) 	Norm deltaX: 7.97722e+07, Norm deltaR: 4.02189e+14
+AcceleratedNewton::solveCurrentStep() -The ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 16.505
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestEnergyIncr::test() - failed to converge 
+after: 100 iterations
+ current EnergyIncr: 5.00149e+14 (max: 1e-08) 	Norm deltaX: 165859, Norm deltaR: 1.06473e+13
+NewtonLineSearch::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 16.505
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestEnergyIncr::test() - failed to converge 
+after: 100 iterations
+ current EnergyIncr: 5.7232e+17 (max: 1e-08) 	Norm deltaX: 9.5724e+06, Norm deltaR: 1.11462e+14
+NewtonRaphson::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 16.5025
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestEnergyIncr::test() - failed to converge 
+after: 100 iterations
+ current EnergyIncr: 6.6033e+21 (max: 1e-08) 	Norm deltaX: 2.142e+09, Norm deltaR: 2.52628e+15
+AcceleratedNewton::solveCurrentStep() -The ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 16.5025
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestEnergyIncr::test() - failed to converge 
+after: 100 iterations
+ current EnergyIncr: 1.83756e+21 (max: 1e-08) 	Norm deltaX: 1.34152e+07, Norm deltaR: 1.28807e+16
+NewtonLineSearch::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 16.5025
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestEnergyIncr::test() - failed to converge 
+after: 100 iterations
+ current EnergyIncr: 7.387e+18 (max: 1e-08) 	Norm deltaX: 1.6106e+07, Norm deltaR: 2.32272e+16
+NewtonRaphson::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 16.5012
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestEnergyIncr::test() - failed to converge 
+after: 100 iterations
+ current EnergyIncr: 5.15416e+24 (max: 1e-08) 	Norm deltaX: 7.99071e+09, Norm deltaR: 5.66172e+16
+AcceleratedNewton::solveCurrentStep() -The ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 16.5012
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestEnergyIncr::test() - failed to converge 
+after: 100 iterations
+ current EnergyIncr: 1.49826e+22 (max: 1e-08) 	Norm deltaX: 2.94113e+07, Norm deltaR: 1.3177e+17
+NewtonLineSearch::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 16.5012
+OpenSees > analyze failed, returned: -3 error flag
+{
+  "status": "INCOMPLETE",
+  "model": "SPEAR-M0-engineering-accepted-2026-10-29",
+  "record": "/workspace/scratch/9f76d827d00b/repo_git/ground_motions/peer_fema_p695/RSN900_LANDERS_YER270.AT2",
+  "record_dt_s": 0.02,
+  "record_unit": "g",
+  "scale_factor": 1.0,
+  "pga_m_s2": 2.397942651965,
+  "direction_dof": 1,
+  "damping_ratio": 0.05,
+  "damping_modes": [
+    1,
+    3
+  ],
+  "rayleigh_alpha_m": 0.7382951946235972,
+  "rayleigh_beta_k_current": 0.003307584536660691,
+  "completed_steps": 825,
+  "requested_steps": 2199,
+  "analysis_exit_code": -3,
+  "convergence_test": "EnergyIncr",
+  "fallback_counts": {
+    "KrylovNewton": 1,
+    "NewtonLineSearch": 0,
+    "substep-1/2": 0,
+    "substep-1/4": 0,
+    "substep-1/8": 0,
+    "substep-1/16": 0
+  },
+  "initial_gravity_roof_displacement_m_removed": 0.0003817612975963999,
+  "peak_abs_roof_displacement_m": 0.07052365319261357,
+  "peak_abs_story_drift_ratio": [
+    0.010313334425701457,
+    0.007608148163223207,
+    0.0041820508723315565
+  ],
+  "peak_abs_floor_acceleration_m_s2": [
+    3.5508958576687286,
+    2.72477523376111,
+    3.0268014518453428
+  ],
+  "peak_abs_base_shear_kN": 350.6118678053525
+}
+Process 0 Terminating

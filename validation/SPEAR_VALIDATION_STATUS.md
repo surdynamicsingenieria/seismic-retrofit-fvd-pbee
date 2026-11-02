@@ -81,6 +81,19 @@ results, individual logs and JSON summaries are under
 `results/SPEAR/nltha/peer_partial_21/`; full CSV histories remain reproducible
 local artifacts excluded from Git.
 
+Directional and element-level audit of the two sub-2% failures is documented
+in `validation/SPEAR_NLTHA_CONVERGENCE_AUDIT_2026-11-02.md`. RSN 900 fails only
+in X; RSN 1633 fails independently in X and Y. `EnergyIncr` reproduces the same
+stopping steps as `NormDispIncr`. Last-state section scans expose extreme local
+deformation (up to 24.086 1/m curvature and -1.055 axial strain in the C4
+first-storey base segment for RSN 900-X) despite modest CM drift. This is a
+model/formulation pathology, not evidence of a valid moderate response.
+
+**Gate correction:** production NLTHA, FVD comparison, fragility and PBEE are
+blocked pending mesh/element/material objectivity checks. The earlier
+engineering acceptance remains applicable to the modal and pushover benchmark;
+it does not establish NLTHA robustness.
+
 ## Actions completed in this pass
 
 - Audited the Jeong-Elnashai pushover driver and identified an inadmissible

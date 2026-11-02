@@ -1,0 +1,122 @@
+WARNING - the 'fullGenLapack' eigen solver is VERY SLOW. Consider using the default eigen solver.WARNING: CTestNormDispIncr::test() - failed to converge 
+after: 100 iterations  current Norm: 0.249198 (max: 1e-07, Norm deltaR: 2.73801e+06)
+NewtonRaphson::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 11.96
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestNormDispIncr::test() - failed to converge 
+after: 100 iterations  current Norm: 14.5153 (max: 1e-07, Norm deltaR: 6.09403e+07)
+NewtonRaphson::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 11.98
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestNormDispIncr::test() - failed to converge 
+after: 100 iterations  current Norm: 12.9507 (max: 1e-07, Norm deltaR: 1.65876e+07)
+AcceleratedNewton::solveCurrentStep() -The ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 11.98
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestNormDispIncr::test() - failed to converge 
+after: 100 iterations  current Norm: 2.92529 (max: 1e-07, Norm deltaR: 2.11322e+07)
+NewtonLineSearch::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 11.98
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestNormDispIncr::test() - failed to converge 
+after: 100 iterations  current Norm: 15.9052 (max: 1e-07, Norm deltaR: 5.81846e+07)
+NewtonRaphson::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 11.97
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestNormDispIncr::test() - failed to converge 
+after: 100 iterations  current Norm: 2.50117 (max: 1e-07, Norm deltaR: 4.94384e+07)
+AcceleratedNewton::solveCurrentStep() -The ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 11.97
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestNormDispIncr::test() - failed to converge 
+after: 100 iterations  current Norm: 4.30116 (max: 1e-07, Norm deltaR: 4.2266e+07)
+NewtonLineSearch::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 11.97
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestNormDispIncr::test() - failed to converge 
+after: 100 iterations  current Norm: 16.9221 (max: 1e-07, Norm deltaR: 2.04237e+08)
+NewtonRaphson::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 11.965
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestNormDispIncr::test() - failed to converge 
+after: 100 iterations  current Norm: 1.75285 (max: 1e-07, Norm deltaR: 2.2453e+07)
+AcceleratedNewton::solveCurrentStep() -The ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 11.965
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestNormDispIncr::test() - failed to converge 
+after: 100 iterations  current Norm: 0.0854517 (max: 1e-07, Norm deltaR: 1.26201e+07)
+NewtonLineSearch::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 11.965
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestNormDispIncr::test() - failed to converge 
+after: 100 iterations  current Norm: 2.67977 (max: 1e-07, Norm deltaR: 2.87519e+07)
+NewtonRaphson::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 11.9625
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestNormDispIncr::test() - failed to converge 
+after: 100 iterations  current Norm: 9.68801 (max: 1e-07, Norm deltaR: 3.32822e+07)
+AcceleratedNewton::solveCurrentStep() -The ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 11.9625
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestNormDispIncr::test() - failed to converge 
+after: 100 iterations  current Norm: 0.605019 (max: 1e-07, Norm deltaR: 1.65293e+07)
+NewtonLineSearch::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 11.9625
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestNormDispIncr::test() - failed to converge 
+after: 100 iterations  current Norm: 1.75049 (max: 1e-07, Norm deltaR: 3.64527e+07)
+NewtonRaphson::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 11.9612
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestNormDispIncr::test() - failed to converge 
+after: 100 iterations  current Norm: 1.12378 (max: 1e-07, Norm deltaR: 1.12793e+07)
+AcceleratedNewton::solveCurrentStep() -The ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 11.9612
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestNormDispIncr::test() - failed to converge 
+after: 100 iterations  current Norm: 0.39535 (max: 1e-07, Norm deltaR: 8.70204e+06)
+NewtonLineSearch::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 11.9612
+OpenSees > analyze failed, returned: -3 error flag
+{
+  "status": "INCOMPLETE",
+  "model": "SPEAR-M0-engineering-accepted-2026-10-29",
+  "record": "/workspace/scratch/9f76d827d00b/repo_git/ground_motions/peer_fema_p695/RSN1633_MANJIL_ABBAR--L.AT2",
+  "record_dt_s": 0.02,
+  "record_unit": "g",
+  "scale_factor": 1.0,
+  "pga_m_s2": 5.046150031264999,
+  "direction_dof": 1,
+  "damping_ratio": 0.05,
+  "damping_modes": [
+    1,
+    3
+  ],
+  "rayleigh_alpha_m": 0.7382951946235972,
+  "rayleigh_beta_k_current": 0.003307584536660691,
+  "completed_steps": 598,
+  "requested_steps": 2675,
+  "analysis_exit_code": -3,
+  "fallback_counts": {
+    "KrylovNewton": 1,
+    "NewtonLineSearch": 0,
+    "substep-1/2": 0,
+    "substep-1/4": 0,
+    "substep-1/8": 0,
+    "substep-1/16": 0
+  },
+  "initial_gravity_roof_displacement_m_removed": 0.0003817612975963999,
+  "peak_abs_roof_displacement_m": 0.08119160920134197,
+  "peak_abs_story_drift_ratio": [
+    0.012868114282063414,
+    0.009726747577126911,
+    0.005572366204363538
+  ],
+  "peak_abs_floor_acceleration_m_s2": [
+    4.85155175248862,
+    4.231663597436151,
+    3.5487042092611043
+  ],
+  "peak_abs_base_shear_kN": 361.6559026505364
+}
+Process 0 Terminating

@@ -1,0 +1,42 @@
+{
+  "status": "INCOMPLETE",
+  "model": "SPEAR-M0-engineering-accepted-2026-10-29",
+  "record": "/workspace/scratch/9f76d827d00b/repo_git/ground_motions/peer_fema_p695/RSN900_LANDERS_YER270.AT2",
+  "record_dt_s": 0.02,
+  "record_unit": "g",
+  "scale_factor": 1.0,
+  "pga_m_s2": 2.397942651965,
+  "direction_dof": 1,
+  "damping_ratio": 0.05,
+  "damping_modes": [
+    1,
+    3
+  ],
+  "rayleigh_alpha_m": 0.7382951946235972,
+  "rayleigh_beta_k_current": 0.003307584536660691,
+  "completed_steps": 825,
+  "requested_steps": 2199,
+  "analysis_exit_code": -3,
+  "convergence_test": "EnergyIncr",
+  "fallback_counts": {
+    "KrylovNewton": 1,
+    "NewtonLineSearch": 0,
+    "substep-1/2": 0,
+    "substep-1/4": 0,
+    "substep-1/8": 0,
+    "substep-1/16": 0
+  },
+  "initial_gravity_roof_displacement_m_removed": 0.0003817612975963999,
+  "peak_abs_roof_displacement_m": 0.07052365319261357,
+  "peak_abs_story_drift_ratio": [
+    0.010313334425701457,
+    0.007608148163223207,
+    0.0041820508723315565
+  ],
+  "peak_abs_floor_acceleration_m_s2": [
+    3.5508958576687286,
+    2.72477523376111,
+    3.0268014518453428
+  ],
+  "peak_abs_base_shear_kN": 350.6118678053525
+}

@@ -18,7 +18,7 @@ sys.path.insert(0, str(MODEL_DIR))
 
 import openseespy.opensees as ops  # noqa: E402
 import spear_m0_jeong_elnashai_nonlinear as m0  # noqa: E402
-from ground_motion import read_ground_motion  # noqa: E402
+from ground_motion import read_ground_motion, read_peer_at2  # noqa: E402
 
 
 def rayleigh_coefficients(zeta: float, periods_s: tuple[float, float]) -> tuple[float, float]:
@@ -30,14 +30,43 @@ def rayleigh_coefficients(zeta: float, periods_s: tuple[float, float]) -> tuple[
     return alpha_m, beta_k
 
 
+def failure_diagnostics(limit: int = 12) -> dict:
+    """Capture generic element responses at the last committed state."""
+    basic, sections = [], []
+    for tag in ops.getEleTags():
+        try:
+            values = tuple(float(v) for v in ops.eleResponse(tag, "basicDeformation"))
+            if values:
+                basic.append({"element": tag, "max_abs": max(map(abs, values)), "values": values})
+        except Exception:
+            pass
+        for section in (1, 2):
+            try:
+                values = tuple(float(v) for v in ops.eleResponse(tag, "section", section, "deformation"))
+                if values:
+                    sections.append({"element": tag, "section": section,
+                                     "max_abs": max(map(abs, values)), "values": values})
+            except Exception:
+                pass
+    basic.sort(key=lambda item: item["max_abs"], reverse=True)
+    sections.sort(key=lambda item: item["max_abs"], reverse=True)
+    try:
+        norms = list(ops.testNorms())
+    except Exception:
+        norms = []
+    return {"test_norms": norms, "largest_basic_deformations": basic[:limit],
+            "largest_section_deformations": sections[:limit]}
+
+
 def analyze_interval(dt_s: float, tolerance: float, max_iterations: int,
-                     max_subdivision_depth: int = 4) -> tuple[int, str]:
+                     max_subdivision_depth: int = 4,
+                     test_type: str = "NormDispIncr") -> tuple[int, str]:
     """Advance one record interval with deterministic solver fallbacks."""
     algorithms = (("Newton", ()), ("KrylovNewton", ()), ("NewtonLineSearch", (0.8,)))
 
     def advance(step: float, depth: int) -> tuple[int, int, str]:
         for name, parameters in algorithms:
-            ops.test("NormDispIncr", tolerance, max_iterations)
+            ops.test(test_type, tolerance, max_iterations)
             ops.algorithm(name, *parameters)
             if ops.analyze(1, step) == 0:
                 return 0, depth, name
@@ -56,7 +85,12 @@ def analyze_interval(dt_s: float, tolerance: float, max_iterations: int,
 
 
 def run(args) -> int:
-    motion = read_ground_motion(args.record, args.record_dt, args.record_unit, args.scale)
+    if args.record.suffix.upper() == ".AT2":
+        motion = read_peer_at2(args.record, args.record_unit, args.scale)
+        if abs(motion.dt_s - args.record_dt) > 1e-12:
+            raise ValueError("command-line/header DT mismatch")
+    else:
+        motion = read_ground_motion(args.record, args.record_dt, args.record_unit, args.scale)
     names, nt, masters = m0.build()
     periods_pre, _ = m0.first_mode_for_direction(masters, args.direction)
     if m0.gravity(names, nt) != 0:
@@ -89,7 +123,8 @@ def run(args) -> int:
                        "substep-1/2": 0, "substep-1/4": 0,
                        "substep-1/8": 0, "substep-1/16": 0}
     for step in range(1, len(motion.values_m_s2)):
-        ok, algorithm = analyze_interval(motion.dt_s, args.tolerance, args.max_iterations)
+        ok, algorithm = analyze_interval(motion.dt_s, args.tolerance, args.max_iterations,
+                                         test_type=args.test_type)
         if ok != 0:
             break
         if algorithm in fallback_counts:
@@ -132,6 +167,7 @@ def run(args) -> int:
         "completed_steps": len(rows) - 1,
         "requested_steps": len(motion.values_m_s2) - 1,
         "analysis_exit_code": ok,
+        "convergence_test": args.test_type,
         "fallback_counts": fallback_counts,
         "initial_gravity_roof_displacement_m_removed": initial_roof_disp,
         "peak_abs_roof_displacement_m": max(abs(row[1]) for row in rows),
@@ -139,6 +175,8 @@ def run(args) -> int:
         "peak_abs_floor_acceleration_m_s2": [max(abs(row[index]) for row in rows) for index in (5, 6, 7)],
         "peak_abs_base_shear_kN": max(abs(row[8]) for row in rows),
     }
+    if summary["status"] == "INCOMPLETE":
+        summary["last_committed_state_diagnostics"] = failure_diagnostics()
     out.with_suffix(".json").write_text(json.dumps(summary, indent=2) + "\n")
     print(json.dumps(summary, indent=2))
     ops.wipe()
@@ -157,6 +195,8 @@ def parser() -> argparse.ArgumentParser:
     p.add_argument("--damping-mode-2", type=int, default=3)
     p.add_argument("--tolerance", type=float, default=1e-7)
     p.add_argument("--max-iterations", type=int, default=100)
+    p.add_argument("--test-type", choices=("NormDispIncr", "EnergyIncr", "NormUnbalance"),
+                   default="NormDispIncr")
     p.add_argument("--output", type=Path, required=True)
     return p
 

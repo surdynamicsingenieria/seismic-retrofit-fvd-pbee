@@ -7,3 +7,6 @@ ground_motions/
 
 # Full NLTHA histories are reproducible but too large for source control.
 results/SPEAR/nltha/peer_partial_21/RSN*.csv
+results/SPEAR/nltha/peer_partial_21/directional_audit/*.csv
+results/SPEAR/nltha/peer_partial_21/convergence_test_audit/*.csv
+results/SPEAR/nltha/peer_partial_21/failure_localization/*.csv

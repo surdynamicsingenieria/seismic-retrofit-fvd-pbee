@@ -1,0 +1,42 @@
+{
+  "status": "INCOMPLETE",
+  "model": "SPEAR-M0-engineering-accepted-2026-10-29",
+  "record": "/workspace/scratch/9f76d827d00b/repo_git/ground_motions/peer_fema_p695/RSN1633_MANJIL_ABBAR--L.AT2",
+  "record_dt_s": 0.02,
+  "record_unit": "g",
+  "scale_factor": 1.0,
+  "pga_m_s2": 5.046150031264999,
+  "direction_dof": 1,
+  "damping_ratio": 0.05,
+  "damping_modes": [
+    1,
+    3
+  ],
+  "rayleigh_alpha_m": 0.7382951946235972,
+  "rayleigh_beta_k_current": 0.003307584536660691,
+  "completed_steps": 598,
+  "requested_steps": 2675,
+  "analysis_exit_code": -3,
+  "convergence_test": "EnergyIncr",
+  "fallback_counts": {
+    "KrylovNewton": 1,
+    "NewtonLineSearch": 0,
+    "substep-1/2": 0,
+    "substep-1/4": 0,
+    "substep-1/8": 0,
+    "substep-1/16": 0
+  },
+  "initial_gravity_roof_displacement_m_removed": 0.0003817612975963999,
+  "peak_abs_roof_displacement_m": 0.08122636088154488,
+  "peak_abs_story_drift_ratio": [
+    0.012907298299136895,
+    0.009726746992435678,
+    0.005572366204372979
+  ],
+  "peak_abs_floor_acceleration_m_s2": [
+    4.851551373976154,
+    4.2316643194597585,
+    3.5487041329696885
+  ],
+  "peak_abs_base_shear_kN": 361.6559244768566
+}
