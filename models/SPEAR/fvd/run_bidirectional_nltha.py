@@ -70,7 +70,9 @@ def run(args) -> int:
     initial_centre = {dof: [ops.nodeDisp(n, dof) for n in centre_nodes] for dof in (1, 2)}
     rows = [(0.0,) + (0.0,) * 16]
     ok = 0
-    fallback_counts = {"KrylovNewton": 0, "NewtonLineSearch": 0, "two-half-steps": 0}
+    fallback_counts = {"KrylovNewton": 0, "NewtonLineSearch": 0,
+                       "substep-1/2": 0, "substep-1/4": 0,
+                       "substep-1/8": 0, "substep-1/16": 0}
     for step in range(1, sample_count):
         ok, algorithm = analyze_interval(x_motion.dt_s, args.tolerance, args.max_iterations)
         if ok != 0:

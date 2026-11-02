@@ -30,22 +30,29 @@ def rayleigh_coefficients(zeta: float, periods_s: tuple[float, float]) -> tuple[
     return alpha_m, beta_k
 
 
-def analyze_interval(dt_s: float, tolerance: float, max_iterations: int) -> tuple[int, str]:
+def analyze_interval(dt_s: float, tolerance: float, max_iterations: int,
+                     max_subdivision_depth: int = 4) -> tuple[int, str]:
     """Advance one record interval with deterministic solver fallbacks."""
     algorithms = (("Newton", ()), ("KrylovNewton", ()), ("NewtonLineSearch", (0.8,)))
-    for name, parameters in algorithms:
-        ops.test("NormDispIncr", tolerance, max_iterations)
-        ops.algorithm(name, *parameters)
-        if ops.analyze(1, dt_s) == 0:
-            return 0, name
-    # A failed OpenSees step leaves the last committed state unchanged. Use
-    # two half-steps only after all full-step algorithms have failed.
-    ops.test("NormDispIncr", tolerance * 10.0, max_iterations * 2)
-    ops.algorithm("NewtonLineSearch", 0.8)
-    for _ in range(2):
-        if ops.analyze(1, dt_s / 2.0) != 0:
-            return -3, "half-step-failed"
-    return 0, "two-half-steps"
+
+    def advance(step: float, depth: int) -> tuple[int, int, str]:
+        for name, parameters in algorithms:
+            ops.test("NormDispIncr", tolerance, max_iterations)
+            ops.algorithm(name, *parameters)
+            if ops.analyze(1, step) == 0:
+                return 0, depth, name
+        if depth >= max_subdivision_depth:
+            return -3, depth, "subdivision-limit"
+        first = advance(step / 2.0, depth + 1)
+        if first[0] != 0:
+            return first
+        second = advance(step / 2.0, depth + 1)
+        if second[0] != 0:
+            return second
+        return 0, max(first[1], second[1]), f"substep-1/{2 ** (depth + 1)}"
+
+    ok, depth, algorithm = advance(dt_s, 0)
+    return ok, algorithm if depth == 0 else f"substep-1/{2 ** depth}"
 
 
 def run(args) -> int:
@@ -78,7 +85,9 @@ def run(args) -> int:
     base_nodes = [nt(0, name) for name in names]
     rows = [(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)]
     ok = 0
-    fallback_counts = {"KrylovNewton": 0, "NewtonLineSearch": 0, "two-half-steps": 0}
+    fallback_counts = {"KrylovNewton": 0, "NewtonLineSearch": 0,
+                       "substep-1/2": 0, "substep-1/4": 0,
+                       "substep-1/8": 0, "substep-1/16": 0}
     for step in range(1, len(motion.values_m_s2)):
         ok, algorithm = analyze_interval(motion.dt_s, args.tolerance, args.max_iterations)
         if ok != 0:

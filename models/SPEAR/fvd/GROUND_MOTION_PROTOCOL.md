@@ -44,6 +44,12 @@ time step and PGA for every component. It is deliberately labelled partial and
 lists RSN 829 as missing. PEER waveform files are locally ignored and are not
 redistributed through GitHub.
 
+The 21 available records may be used as a labelled provisional ensemble after
+the researcher's 2026-11-01 decision to proceed without RSN 829. Outputs must
+say `FEMA-P695-partial-21`; they must not claim statistics for the complete
+FEMA P-695 22-pair set. The missing record may be appended later because every
+pair is executed and reported independently.
+
 Primary references:
 
 - FEMA P-695, Appendix A: https://nehrpsearch.nist.gov/static/files/FEMA/fema_p695.pdf

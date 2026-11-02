@@ -1,0 +1,10 @@
+{
+  "pair_count": 21,
+  "class_counts": {
+    "complete": 13,
+    "nonconvergence_drift_ge_10pct_instability_compatible": 2,
+    "nonconvergence_drift_lt_2pct_requires_numerical_model_audit": 2,
+    "nonconvergence_drift_2_to_10pct_severe_response": 4
+  },
+  "warning": "Incomplete-case EDPs are last-converged-state diagnostics, not final peaks."
+}

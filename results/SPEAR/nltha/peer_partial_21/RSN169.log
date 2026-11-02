@@ -1,0 +1,70 @@
+WARNING - the 'fullGenLapack' eigen solver is VERY SLOW. Consider using the default eigen solver.{
+  "status": "COMPLETE",
+  "model": "SPEAR-M0-engineering-accepted-2026-10-29",
+  "pair_id": "RSN169",
+  "record_ids": {
+    "X": "RSN169-X",
+    "Y": "RSN169-Y"
+  },
+  "record_dt_s": 0.01,
+  "component_sample_counts": {
+    "X": 10015,
+    "Y": 10015
+  },
+  "zero_padding_samples": {
+    "X": 0,
+    "Y": 0
+  },
+  "pga_m_s2": {
+    "X": 2.3113813137449997,
+    "Y": 3.42937962101
+  },
+  "damping_ratio": 0.05,
+  "damping_modes": [
+    1,
+    3
+  ],
+  "rayleigh_alpha_m": 0.7382951946235972,
+  "rayleigh_beta_k_current": 0.003307584536660691,
+  "completed_steps": 10014,
+  "requested_steps": 10014,
+  "analysis_exit_code": 0,
+  "fallback_counts": {
+    "KrylovNewton": 0,
+    "NewtonLineSearch": 0,
+    "two-half-steps": 0
+  },
+  "peak_abs_roof_displacement_m": {
+    "X": 0.07928093234646649,
+    "Y": 0.0819263170825665
+  },
+  "peak_abs_story_drift_ratio": {
+    "X": [
+      0.020990912748521395,
+      0.007286190510312977,
+      0.0039003083842372396
+    ],
+    "Y": [
+      0.016561812995636655,
+      0.006966896004895087,
+      0.0038984816578842563
+    ]
+  },
+  "peak_abs_floor_acceleration_m_s2": {
+    "X": [
+      1.774416164846338,
+      2.2901840712592816,
+      2.612814516384872
+    ],
+    "Y": [
+      2.3586076883159315,
+      3.148013253885252,
+      2.931270758660594
+    ]
+  },
+  "peak_abs_base_shear_kN": {
+    "X": 317.078100738222,
+    "Y": 399.2785251243103
+  }
+}
+Process 0 Terminating

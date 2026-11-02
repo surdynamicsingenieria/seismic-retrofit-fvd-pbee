@@ -4,3 +4,6 @@ __pycache__/
 
 # PEER waveforms are licensed source data; keep local and commit only hashes/manifests.
 ground_motions/
+
+# Full NLTHA histories are reproducible but too large for source control.
+results/SPEAR/nltha/peer_partial_21/RSN*.csv

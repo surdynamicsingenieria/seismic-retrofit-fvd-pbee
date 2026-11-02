@@ -60,6 +60,27 @@ Waveform bytes are retained only as licensed local inputs and are ignored by
 Git; no NLTHA result from this partial suite may be represented as the complete
 22-pair FEMA ensemble.
 
+## Provisional unscaled partial-21 NLTHA — 2026-11-02
+
+With explicit authorization to proceed without RSN 829, all 21 available pairs
+were analyzed simultaneously in X and Y at their unscaled, as-recorded
+intensity. Five-percent Rayleigh damping was anchored to pre-gravity modes 1
+and 3. No record or material parameter was calibrated.
+
+Thirteen cases completed every requested step. Eight stopped after Newton,
+Krylov-Newton, Newton line search and deterministic adaptive subdivision down
+to 1/16 of the record interval. The last-converged-state diagnostic separates:
+
+- 2 instability-compatible cases with maximum drift >=10%: RSN 752 and 960;
+- 4 severe-response cases with drift 2--10%: RSN 953, 1158, 1244 and 1602;
+- 2 cases below 2% requiring numerical/model audit: RSN 900 and 1633.
+
+This classification is not a formal collapse assessment. EDPs from incomplete
+analyses are truncated histories and must not be used as final peaks. Compact
+results, individual logs and JSON summaries are under
+`results/SPEAR/nltha/peer_partial_21/`; full CSV histories remain reproducible
+local artifacts excluded from Git.
+
 ## Actions completed in this pass
 
 - Audited the Jeong-Elnashai pushover driver and identified an inadmissible
