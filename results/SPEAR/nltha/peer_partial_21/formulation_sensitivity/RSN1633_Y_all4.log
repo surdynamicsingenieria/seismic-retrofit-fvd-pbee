@@ -1,0 +1,516 @@
+WARNING - the 'fullGenLapack' eigen solver is VERY SLOW. Consider using the default eigen solver.WARNING: CTestNormDispIncr::test() - failed to converge 
+after: 100 iterations  current Norm: 0.000553181 (max: 1e-07, Norm deltaR: 93118.1)
+NewtonRaphson::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 10.8
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestNormDispIncr::test() - failed to converge 
+after: 100 iterations  current Norm: 9.01169 (max: 1e-07, Norm deltaR: 3.67518e+08)
+NewtonRaphson::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 10.82
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestNormDispIncr::test() - failed to converge 
+after: 100 iterations  current Norm: 236.922 (max: 1e-07, Norm deltaR: 1.45568e+09)
+NewtonRaphson::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 10.84
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestNormDispIncr::test() - failed to converge 
+after: 100 iterations  current Norm: 520486 (max: 1e-07, Norm deltaR: 7.26534e+09)
+AcceleratedNewton::solveCurrentStep() -The ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 10.84
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestNormDispIncr::test() - failed to converge 
+after: 100 iterations  current Norm: 3898.54 (max: 1e-07, Norm deltaR: 1.45847e+11)
+NewtonLineSearch::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 10.84
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestNormDispIncr::test() - failed to converge 
+after: 100 iterations  current Norm: 9781.84 (max: 1e-07, Norm deltaR: 1.84681e+13)
+NewtonRaphson::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 10.83
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestNormDispIncr::test() - failed to converge 
+after: 100 iterations  current Norm: 2.28869e+08 (max: 1e-07, Norm deltaR: 8.79796e+12)
+AcceleratedNewton::solveCurrentStep() -The ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 10.83
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestNormDispIncr::test() - failed to converge 
+after: 100 iterations  current Norm: 14334.2 (max: 1e-07, Norm deltaR: 2.29817e+11)
+NewtonLineSearch::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 10.83
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestNormDispIncr::test() - failed to converge 
+after: 100 iterations  current Norm: 9.21797e+06 (max: 1e-07, Norm deltaR: 3.11021e+13)
+NewtonRaphson::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 10.825
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestNormDispIncr::test() - failed to converge 
+after: 100 iterations  current Norm: 6.1431e+09 (max: 1e-07, Norm deltaR: 2.06429e+16)
+AcceleratedNewton::solveCurrentStep() -The ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 10.825
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestNormDispIncr::test() - failed to converge 
+after: 100 iterations  current Norm: 4.34904e+06 (max: 1e-07, Norm deltaR: 9.96109e+14)
+NewtonLineSearch::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 10.825
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestNormDispIncr::test() - failed to converge 
+after: 100 iterations  current Norm: 4.70833e+06 (max: 1e-07, Norm deltaR: 1.762e+15)
+NewtonRaphson::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 10.8225
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestNormDispIncr::test() - failed to converge 
+after: 100 iterations  current Norm: 1.23423e+10 (max: 1e-07, Norm deltaR: 3.31696e+15)
+AcceleratedNewton::solveCurrentStep() -The ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 10.8225
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestNormDispIncr::test() - failed to converge 
+after: 100 iterations  current Norm: 936810 (max: 1e-07, Norm deltaR: 9.45938e+14)
+NewtonLineSearch::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 10.8225
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestNormDispIncr::test() - failed to converge 
+after: 100 iterations  current Norm: 1.0961e+07 (max: 1e-07, Norm deltaR: 1.00894e+16)
+NewtonRaphson::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 10.8212
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestNormDispIncr::test() - failed to converge 
+after: 100 iterations  current Norm: 1.65112e+10 (max: 1e-07, Norm deltaR: 2.5257e+17)
+AcceleratedNewton::solveCurrentStep() -The ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 10.8212
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestNormDispIncr::test() - failed to converge 
+after: 100 iterations  current Norm: 1.88754e+06 (max: 1e-07, Norm deltaR: 7.87447e+15)
+NewtonLineSearch::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 10.8212
+OpenSees > analyze failed, returned: -3 error flag
+{
+  "status": "INCOMPLETE",
+  "model": "SPEAR-M0-engineering-accepted-2026-10-29",
+  "column_element": "dispBeamColumn",
+  "column_integration_points": 4,
+  "beam_integration_points": 4,
+  "use_pdelta": true,
+  "record": "/workspace/scratch/9f76d827d00b/repo_git/ground_motions/peer_fema_p695/RSN1633_MANJIL_ABBAR--T.AT2",
+  "record_dt_s": 0.02,
+  "record_unit": "g",
+  "scale_factor": 1.0,
+  "pga_m_s2": 4.872609591534999,
+  "direction_dof": 2,
+  "damping_ratio": 0.05,
+  "damping_modes": [
+    1,
+    3
+  ],
+  "rayleigh_alpha_m": 0.738295195322947,
+  "rayleigh_beta_k_current": 0.003307584537407476,
+  "completed_steps": 541,
+  "requested_steps": 2299,
+  "analysis_exit_code": -3,
+  "convergence_test": "NormDispIncr",
+  "fallback_counts": {
+    "KrylovNewton": 2,
+    "NewtonLineSearch": 0,
+    "substep-1/2": 0,
+    "substep-1/4": 0,
+    "substep-1/8": 0,
+    "substep-1/16": 0
+  },
+  "initial_gravity_roof_displacement_m_removed": 0.0004522693985375515,
+  "peak_abs_roof_displacement_m": 0.09924430539545283,
+  "peak_abs_story_drift_ratio": [
+    0.01728785378328655,
+    0.012937380382722493,
+    0.006658600247093495
+  ],
+  "peak_abs_floor_acceleration_m_s2": [
+    17.017091849798174,
+    14.00387532497772,
+    19.238739857476073
+  ],
+  "peak_abs_base_shear_kN": 479.5039968354938,
+  "last_committed_state_diagnostics": {
+    "test_norms": [
+      1.2119701889178986,
+      2986469.655088787,
+      6033643.828736126,
+      60885409.03760046,
+      68890102.94885783,
+      74911424.32544357,
+      83298945.28036697,
+      20985400.896476656,
+      27084143.660636615,
+      4863280.0372718945,
+      4351417.965616169,
+      3832728.8160929354,
+      9843152.30781787,
+      1610245.4272349805,
+      1315611.743787241,
+      1551729.9963236074,
+      1910911.3919916025,
+      1442113.2879340108,
+      3283646.8798051747,
+      2273070.0225900295,
+      2991127.844486788,
+      1744091.7577727775,
+      3802872.0541643333,
+      16519610.476587672,
+      5036764.6607993785,
+      1833366.7289593734,
+      1815585.4798963594,
+      5575129.097551128,
+      11923017.320773188,
+      43957382.84696869,
+      5689376.0288059525,
+      4113895.9315055436,
+      7922696.6587365605,
+      6292836.657270719,
+      6312903.248520712,
+      5773127.751203461,
+      28271559.41164517,
+      23713622.304336276,
+      37555722.983615175,
+      17398383.575643472,
+      49173202.565461926,
+      6382863.060540092,
+      10120686.17682619,
+      17496936.34084903,
+      1525416.1100101199,
+      5961367.320036385,
+      4869696.458144048,
+      3524510.8181297467,
+      6555854.102003931,
+      27404427.74192218,
+      5842262.129363483,
+      7885578.942589686,
+      4446815.160743806,
+      27191384.953238454,
+      10778040.468981884,
+      25929317.67946059,
+      41813451.21202891,
+      50295188.48338317,
+      1187324.173239234,
+      3688605.9462944213,
+      4531917.863100292,
+      1735171.5714803988,
+      38111712.72185946,
+      43876741.49687571,
+      2696179.2397868372,
+      2560589.358683861,
+      1939369.819031672,
+      2088505.9955160315,
+      16082620.383899588,
+      2917034.453758771,
+      6494071.023003182,
+      7454313.876624209,
+      3871754.731915979,
+      7854854.635370271,
+      4245428.212984304,
+      36047954.05907817,
+      37486225.72002364,
+      5867615.943927034,
+      5817641.126398437,
+      4412103.335786576,
+      8009541.6943737725,
+      1707685.376636499,
+      2200399.1549943807,
+      1957860.719112584,
+      2096770.4477353112,
+      3698958.1386688496,
+      1722220.3781545744,
+      3528491.1969012246,
+      999645.3158313243,
+      9234017.36111588,
+      3084101.5514733214,
+      11760610.861775221,
+      9141356.19078537,
+      287663159.27250016,
+      298053890.37780744,
+      99486037.2205587,
+      20467209.400363825,
+      13706436.430987746,
+      6253522.190368272,
+      1887540.9058106272
+    ],
+    "largest_basic_deformations": [
+      {
+        "element": 44,
+        "max_abs": 1.9520841491606926,
+        "values": [
+          0.018871106486817408,
+          -1.3663469533724377,
+          -1.9520841491606926,
+          -0.781640611452244,
+          -0.6626593166201176,
+          -8.764629926789067e-05
+        ]
+      },
+      {
+        "element": 120093,
+        "max_abs": 1.940171662536727,
+        "values": [
+          0.01122673617943426,
+          0.04773343468384996,
+          0.027632163230439693,
+          -1.2933534843023315,
+          -1.940171662536727,
+          -0.009207453802827847
+        ]
+      },
+      {
+        "element": 77,
+        "max_abs": 1.6594952348275225,
+        "values": [
+          0.09615910090216609,
+          -1.6594952348275225,
+          -1.187892064050996,
+          -0.04488624602032373,
+          -0.23942280847023706,
+          7.465036525458341e-05
+        ]
+      },
+      {
+        "element": 81,
+        "max_abs": 1.6092076700465836,
+        "values": [
+          0.09316706054507043,
+          -1.6092076700465836,
+          -0.9431751359108258,
+          -0.024661055190867583,
+          -0.011378520026351653,
+          7.465036525458341e-05
+        ]
+      },
+      {
+        "element": 73,
+        "max_abs": 1.409774543545155,
+        "values": [
+          -0.07050690976947616,
+          -1.409774543545155,
+          -0.6274848904448659,
+          0.14314383643681505,
+          0.042213032645026995,
+          7.465036525458341e-05
+        ]
+      },
+      {
+        "element": 120073,
+        "max_abs": 1.2598852009530528,
+        "values": [
+          -0.007505806789093669,
+          0.01855926179280129,
+          0.013770767607113762,
+          -0.566652956822947,
+          -1.2598852009530528,
+          0.001490034787788093
+        ]
+      },
+      {
+        "element": 40,
+        "max_abs": 1.2161937802080323,
+        "values": [
+          0.05028027107967054,
+          -0.5426415122844902,
+          -1.2161937802080323,
+          0.15213119676746595,
+          0.20770328864139612,
+          -8.764629926789067e-05
+        ]
+      },
+      {
+        "element": 48,
+        "max_abs": 1.1050239275942617,
+        "values": [
+          -0.09558711038729419,
+          -0.4390030459310996,
+          -1.1050239275942617,
+          0.1872794019676041,
+          0.16062651446578421,
+          -8.764629926789067e-05
+        ]
+      },
+      {
+        "element": 120113,
+        "max_abs": 0.8229675887777839,
+        "values": [
+          -0.005282875538211718,
+          0.011733412205089336,
+          0.011240452421816137,
+          -0.1329163650702401,
+          -0.8229675887777839,
+          0.023306679746731035
+        ]
+      },
+      {
+        "element": 76,
+        "max_abs": 0.6550555885437408,
+        "values": [
+          0.15831386362323344,
+          -0.059103157128689784,
+          -0.09488149662163602,
+          -0.3379600731726818,
+          -0.6550555885437408,
+          2.058902465325264e-05
+        ]
+      },
+      {
+        "element": 120090,
+        "max_abs": 0.5904671888149418,
+        "values": [
+          -0.008030574774135851,
+          -0.017934316865608275,
+          -0.0190746225069063,
+          0.5904671888149418,
+          0.2814785148146888,
+          0.006060047550346259
+        ]
+      },
+      {
+        "element": 120050,
+        "max_abs": 0.5013089198713275,
+        "values": [
+          0.0006215594062191638,
+          -0.0031027141674511067,
+          -0.00412408743977794,
+          0.4774447421223378,
+          0.5013089198713275,
+          0.2813236490859848
+        ]
+      }
+    ],
+    "largest_section_deformations": [
+      {
+        "element": 44,
+        "section": 1,
+        "max_abs": 21.299006303879587,
+        "values": [
+          0.05032295063151308,
+          21.299006303879587,
+          10.267196356051985,
+          -0.0002337234647143751
+        ]
+      },
+      {
+        "element": 77,
+        "section": 1,
+        "max_abs": 20.873517225292076,
+        "values": [
+          0.25642426907244287,
+          20.873517225292076,
+          1.4398666377612508,
+          0.0001990676406788891
+        ]
+      },
+      {
+        "element": 81,
+        "section": 1,
+        "max_abs": 19.359682880081298,
+        "values": [
+          0.24844549478685446,
+          19.359682880081298,
+          0.2836999887638234,
+          0.0001990676406788891
+        ]
+      },
+      {
+        "element": 73,
+        "section": 1,
+        "max_abs": 16.120970339571606,
+        "values": [
+          -0.18801842605193642,
+          16.120970339571606,
+          -1.5460890546695085,
+          0.0001990676406788891
+        ]
+      },
+      {
+        "element": 120093,
+        "section": 1,
+        "max_abs": 13.700799247915416,
+        "values": [
+          0.019958642096772016,
+          -0.3818692097429081,
+          13.700799247915416,
+          -0.01636880676058284
+        ]
+      },
+      {
+        "element": 40,
+        "section": 1,
+        "max_abs": 10.32063611069822,
+        "values": [
+          0.13408072287912143,
+          10.32063611069822,
+          -2.3307400873975053,
+          -0.0002337234647143751
+        ]
+      },
+      {
+        "element": 77,
+        "section": 2,
+        "max_abs": 9.002070098307936,
+        "values": [
+          0.25642426907244287,
+          9.002070098307936,
+          0.25451334583749424,
+          0.0001990676406788891
+        ]
+      },
+      {
+        "element": 48,
+        "section": 1,
+        "max_abs": 8.860885859431768,
+        "values": [
+          -0.2548989610327845,
+          8.860885859431768,
+          -2.4678297079450946,
+          -0.0002337234647143751
+        ]
+      },
+      {
+        "element": 81,
+        "section": 2,
+        "max_abs": 8.7181809176749,
+        "values": [
+          0.24844549478685446,
+          8.7181809176749,
+          0.13344227291368338,
+          0.0001990676406788891
+        ]
+      },
+      {
+        "element": 73,
+        "section": 2,
+        "max_abs": 7.627142448968934,
+        "values": [
+          -0.18801842605193642,
+          7.627142448968934,
+          -0.7732913843999644,
+          0.0001990676406788891
+        ]
+      },
+      {
+        "element": 44,
+        "section": 2,
+        "max_abs": 7.463663498993918,
+        "values": [
+          0.05032295063151308,
+          7.463663498993918,
+          4.245560227250262,
+          -0.0002337234647143751
+        ]
+      },
+      {
+        "element": 120073,
+        "section": 1,
+        "max_abs": 7.156378226469258,
+        "values": [
+          -0.0133436565139443,
+          -0.15699587733190748,
+          7.156378226469258,
+          0.0026489507338454984
+        ]
+      }
+    ]
+  }
+}
+Process 0 Terminating

@@ -94,6 +94,22 @@ blocked pending mesh/element/material objectivity checks. The earlier
 engineering acceptance remains applicable to the modal and pushover benchmark;
 it does not establish NLTHA robustness.
 
+## NLTHA formulation sensitivity — 2026-11-02
+
+Controlled tests of P-Delta removal, force-based columns and two/four-point
+column/beam integration are documented in
+`validation/SPEAR_NLTHA_FORMULATION_SENSITIVITY_2026-11-02.md`. Removing
+P-Delta and using force-based columns resolved none of the low-drift failures.
+Four-point column integration completed RSN 900-X and RSN 1633-X, but every
+tested formulation still stopped for RSN 1633-Y at essentially the same part
+of the record. This is formulation sensitivity, not a validated correction.
+
+Modal periods are invariant to the tested integration orders: the largest
+pre-gravity spread across 2/2, 4/2, 2/4, 4/4 and 6/6 column/beam integration is
+below 1e-8 s; post-gravity spreads are below 0.04%. The baseline remains the
+source-led two-point formulation and the production NLTHA/FVD/PBEE gate stays
+closed pending source-backed material and mesh-objectivity work.
+
 ## Actions completed in this pass
 
 - Audited the Jeong-Elnashai pushover driver and identified an inadmissible

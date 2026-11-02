@@ -91,7 +91,10 @@ def run(args) -> int:
             raise ValueError("command-line/header DT mismatch")
     else:
         motion = read_ground_motion(args.record, args.record_dt, args.record_unit, args.scale)
-    names, nt, masters = m0.build()
+    names, nt, masters = m0.build(column_element=args.column_element,
+                                  column_integration_points=args.column_integration_points,
+                                  beam_integration_points=args.beam_integration_points,
+                                  use_pdelta=not args.no_pdelta)
     periods_pre, _ = m0.first_mode_for_direction(masters, args.direction)
     if m0.gravity(names, nt) != 0:
         raise RuntimeError("gravity analysis failed")
@@ -154,6 +157,10 @@ def run(args) -> int:
     summary = {
         "status": "COMPLETE" if ok == 0 and len(rows) == len(motion.values_m_s2) else "INCOMPLETE",
         "model": "SPEAR-M0-engineering-accepted-2026-10-29",
+        "column_element": args.column_element,
+        "column_integration_points": args.column_integration_points,
+        "beam_integration_points": args.beam_integration_points,
+        "use_pdelta": not args.no_pdelta,
         "record": motion.source,
         "record_dt_s": motion.dt_s,
         "record_unit": motion.original_unit,
@@ -197,6 +204,11 @@ def parser() -> argparse.ArgumentParser:
     p.add_argument("--max-iterations", type=int, default=100)
     p.add_argument("--test-type", choices=("NormDispIncr", "EnergyIncr", "NormUnbalance"),
                    default="NormDispIncr")
+    p.add_argument("--column-element", choices=("dispBeamColumn", "forceBeamColumn"),
+                   default="dispBeamColumn")
+    p.add_argument("--column-integration-points", type=int, default=2)
+    p.add_argument("--beam-integration-points", type=int, default=2)
+    p.add_argument("--no-pdelta", action="store_true")
     p.add_argument("--output", type=Path, required=True)
     return p
 

@@ -1,0 +1,12 @@
+{
+  "status": "DIAGNOSTIC_ONLY",
+  "published_periods_s": [0.51, 0.46, 0.40, 0.18],
+  "variants": {
+    "columns_2_beams_2": {"pre_gravity_s": [0.4903477646, 0.4298942901, 0.3606919486, 0.1696410419], "post_gravity_s": [0.5444795135, 0.4868289460, 0.4013860916, 0.1832604246]},
+    "columns_4_beams_2": {"pre_gravity_s": [0.4903477592, 0.4298942834, 0.3606919513, 0.1696410422], "post_gravity_s": [0.5444688210, 0.4868319356, 0.4013794010, 0.1832276921]},
+    "columns_2_beams_4": {"pre_gravity_s": [0.4903477661, 0.4298942900, 0.3606919476, 0.1696410418], "post_gravity_s": [0.5446535485, 0.4867995631, 0.4011600213, 0.1832547186]},
+    "columns_4_beams_4": {"pre_gravity_s": [0.4903477625, 0.4298942932, 0.3606919499, 0.1696410419], "post_gravity_s": [0.5446461204, 0.4868040429, 0.4011584501, 0.1832261200]},
+    "columns_6_beams_6": {"pre_gravity_s": [0.4903477604, 0.4298942843, 0.3606919534, 0.1696410422], "post_gravity_s": [0.5446541897, 0.4868829452, 0.4012949640, 0.1832545798]}
+  },
+  "interpretation": "Integration order is immaterial to the initial modal state, but it changes nonlinear transient convergence. No higher-order variant is accepted merely because it completes a record."
+}

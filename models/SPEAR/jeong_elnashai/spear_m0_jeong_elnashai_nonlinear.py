@@ -88,7 +88,14 @@ def fiber_t_beam(sec, conc, steel, beff, top_bars, bottom_bars, gj):
     bar_row(bottom_bars, -depth / 2 + centroid_cover)
 
 
-def build():
+def build(column_element="dispBeamColumn", column_integration_points=2,
+          beam_integration_points=2, use_pdelta=True):
+    if column_element not in ("dispBeamColumn", "forceBeamColumn"):
+        raise ValueError("column_element must be dispBeamColumn or forceBeamColumn")
+    if column_integration_points < 2:
+        raise ValueError("column_integration_points must be at least 2")
+    if beam_integration_points < 2:
+        raise ValueError("beam_integration_points must be at least 2")
     ops.wipe()
     ops.model("basic", "-ndm", 3, "-ndf", 6)
     fc = 25e6
@@ -120,8 +127,8 @@ def build():
     # MAE 04-03 Sec. 2.1.2 and Fig. 2.4: every physical member is divided
     # 0.15L/0.35L/0.35L/0.15L and each subelement uses second-order Gaussian
     # quadrature.  A two-point Legendre rule is the OpenSees equivalent.
-    ops.beamIntegration("Legendre", 201, 101, 2)
-    ops.beamIntegration("Legendre", 202, 102, 2)
+    ops.beamIntegration("Legendre", 201, 101, column_integration_points)
+    ops.beamIntegration("Legendre", 202, 102, column_integration_points)
 
     beam_integrations = {}
     for j, (bn, _a, _b) in enumerate(BEAMS):
@@ -135,8 +142,8 @@ def build():
         fiber_t_beam(sec_mid, 1, 2, beff, top_bars=2, bottom_bars=4, gj=gmod * jtors)
         integ_end = 300 + 2 * j
         integ_mid = integ_end + 1
-        ops.beamIntegration("Legendre", integ_end, sec_end, 2)
-        ops.beamIntegration("Legendre", integ_mid, sec_mid, 2)
+        ops.beamIntegration("Legendre", integ_end, sec_end, beam_integration_points)
+        ops.beamIntegration("Legendre", integ_mid, sec_mid, beam_integration_points)
         beam_integrations[bn] = (integ_end, integ_mid)
 
     er = ec * 1e4
@@ -166,13 +173,14 @@ def build():
             chain = [nt(k - 1, n), *internal, nt(k, n)]
             for q, (ni, nj) in enumerate(zip(chain[:-1], chain[1:])):
                 tr = 50000 + k * 1000 + ix[n] * 10 + q
+                transf = "PDelta" if use_pdelta else "Linear"
                 if q == 0:
-                    ops.geomTransf("PDelta", tr, 1, 0, 0, "-jntOffset", 0, 0, 0.25, 0, 0, 0)
+                    ops.geomTransf(transf, tr, 1, 0, 0, "-jntOffset", 0, 0, 0.25, 0, 0, 0)
                 elif q == 3:
-                    ops.geomTransf("PDelta", tr, 1, 0, 0, "-jntOffset", 0, 0, 0, 0, 0, -0.25)
+                    ops.geomTransf(transf, tr, 1, 0, 0, "-jntOffset", 0, 0, 0, 0, 0, -0.25)
                 else:
-                    ops.geomTransf("PDelta", tr, 1, 0, 0)
-                ops.element("dispBeamColumn", et, ni, nj, tr, 202 if n == "C6" else 201)
+                    ops.geomTransf(transf, tr, 1, 0, 0)
+                ops.element(column_element, et, ni, nj, tr, 202 if n == "C6" else 201)
                 et += 1
 
     for k in range(1, 4):
