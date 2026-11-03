@@ -125,6 +125,20 @@ The result and source check are documented in
 `validation/SPEAR_NLTHA_MESH_OBJECTIVITY_2026-11-02.md`. No mesh variant is
 accepted, and the production NLTHA/FVD/PBEE gate remains closed.
 
+## Source recovery update — 2026-11-03
+
+The missing Ljubljana OpenSees package was identified exactly as
+`SPEAR-Post-Test-Model.zip`. The live URL is now 404; Wayback has no capture of
+the ZIP and preserves only the IKPIR project error page and workshop PDF;
+GitHub global code search found no copy. This different post-test model would
+have served only as a common-input cross-check, not as a substitute for UIUC
+ZEUS-NL.
+
+An independent SPEAR paper confirms that the bent beam bars are inclined at 45
+degrees. Their start/end coordinates remain unrecovered, so the bar transition
+still cannot be reconstructed uniquely. No model value was changed. The audit
+is documented in `validation/SPEAR_SOURCE_RECOVERY_UPDATE_2026-11-03.md`.
+
 ## Actions completed in this pass
 
 - Audited the Jeong-Elnashai pushover driver and identified an inadmissible

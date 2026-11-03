@@ -1,0 +1,23 @@
+{
+  "status": "PARTIAL_RECOVERY",
+  "recovered": {
+    "bent_bar_inclination_deg": 45,
+    "source": "Negro et al., 13WCEE paper 3304"
+  },
+  "not_recovered": [
+    "bent-bar start and end coordinates",
+    "Fardis 2002 primary design report file",
+    "Ljubljana SPEAR-Post-Test-Model.zip",
+    "UIUC ZEUS-NL SPEAR input deck",
+    "SPEAR-specific ZEUS-NL con2 tensile input and implementation"
+  ],
+  "archive_checks": {
+    "ikpir_successful_cdx_resources": [
+      "http://www.ikpir.com/projects/spear/",
+      "http://www.ikpir.com/projects/spear/SPEARinternationalWorkshopPaper.pdf"
+    ],
+    "marin_grubisic_exact_zip_cdx_capture_count": 0,
+    "github_exact_name_matches": 0
+  },
+  "production_model_changed": false
+}

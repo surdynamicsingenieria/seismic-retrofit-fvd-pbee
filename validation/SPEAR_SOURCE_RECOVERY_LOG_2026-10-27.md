@@ -78,3 +78,14 @@ transition.
 Until one of these sources is recovered, the unresolved values will not be
 inferred by fitting Fig. 2.8.  SPEAR-M0 remains **NOT VALIDATED** and downstream
 FVD, optimization, NLTHA/MSA and FEMA P-58 work remains blocked.
+
+## Update — 2026-11-03
+
+The historical Ljubljana package was identified exactly as
+`SPEAR-Post-Test-Model.zip`, but the live link is HTTP 404, neither Wayback nor
+GitHub preserves a copy, and the archived IKPIR project path contains only an
+error page and the workshop PDF. Negro et al. independently recover a
+45-degree inclination for the bent beam bars, but not their longitudinal bend
+coordinates. Details and machine-readable evidence are in
+`validation/SPEAR_SOURCE_RECOVERY_UPDATE_2026-11-03.md` and
+`results/SPEAR/jeong_elnashai/source_recovery_2026-11-03.json`.

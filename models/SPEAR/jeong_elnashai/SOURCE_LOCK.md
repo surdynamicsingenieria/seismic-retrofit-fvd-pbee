@@ -44,6 +44,10 @@ Concrete:
 Steel (Table 2.2):
 - Phi8: fy 467 MPa, fu 583.67 MPa, Es 206000 MPa, E2/E1 0.0044.
 - Phi12: fy 458.67 MPa, fu 570.33 MPa, Es 206000 MPa, E2/E1 0.0032.
+- A separate published SPEAR description (Negro et al., 13WCEE paper 3304)
+  confirms that bent beam bars are inclined at 45 degrees. Their bend
+  start/end coordinates remain unpublished; the angle alone does not define
+  the transition and is not used to fit the production model.
 - Phi20: fy 376.67 MPa, fu 567.33 MPa, Es 206000 MPa, E2/E1 0.0056.
 
 ## Loads / mass
