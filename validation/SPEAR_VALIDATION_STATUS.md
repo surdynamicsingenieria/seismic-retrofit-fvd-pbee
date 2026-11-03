@@ -110,6 +110,21 @@ below 1e-8 s; post-gravity spreads are below 0.04%. The baseline remains the
 source-led two-point formulation and the production NLTHA/FVD/PBEE gate stays
 closed pending source-backed material and mesh-objectivity work.
 
+## NLTHA mesh-objectivity audit — 2026-11-02
+
+Every published 0.15L/0.35L/0.35L/0.15L subelement was split in half without
+changing sections, materials or integration order. Elastic periods changed by
+less than 0.0004%, but all three low-drift records failed earlier: RSN 900-X at
+step 821 instead of 825, RSN 1633-X at 571 instead of 598, and RSN 1633-Y at
+511 instead of 533. Refined-mesh maximum CM drifts were only 0.744%, 0.973%
+and 0.949%, while the largest section components reached 7.060, 41.406 and
+12.896 1/m respectively.
+
+This demonstrates spatial non-objectivity of the current local fibre model.
+The result and source check are documented in
+`validation/SPEAR_NLTHA_MESH_OBJECTIVITY_2026-11-02.md`. No mesh variant is
+accepted, and the production NLTHA/FVD/PBEE gate remains closed.
+
 ## Actions completed in this pass
 
 - Audited the Jeong-Elnashai pushover driver and identified an inadmissible

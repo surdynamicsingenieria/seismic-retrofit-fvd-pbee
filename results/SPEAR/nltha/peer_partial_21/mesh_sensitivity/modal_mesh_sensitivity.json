@@ -1,0 +1,14 @@
+{
+  "status": "DIAGNOSTIC_ONLY",
+  "baseline_source_subelements_per_member": 4,
+  "refined_subelements_per_member": 8,
+  "baseline": {
+    "pre_gravity_periods_s": [0.4903477172, 0.4298942949, 0.3606918976, 0.1696410432],
+    "post_gravity_periods_s": [0.5444795051, 0.4868289520, 0.4013860826, 0.1832604248]
+  },
+  "refined": {
+    "pre_gravity_periods_s": [0.4903484601, 0.4298955967, 0.3606929174, 0.1696412662],
+    "post_gravity_periods_s": [0.5453074297, 0.4881164263, 0.4022044876, 0.1835275915]
+  },
+  "interpretation": "Elastic periods are mesh invariant, while the gravity-damaged tangent has a small mesh sensitivity."
+}

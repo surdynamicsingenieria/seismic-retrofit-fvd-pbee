@@ -89,13 +89,16 @@ def fiber_t_beam(sec, conc, steel, beff, top_bars, bottom_bars, gj):
 
 
 def build(column_element="dispBeamColumn", column_integration_points=2,
-          beam_integration_points=2, use_pdelta=True):
+          beam_integration_points=2, use_pdelta=True,
+          member_subdivision_factor=1):
     if column_element not in ("dispBeamColumn", "forceBeamColumn"):
         raise ValueError("column_element must be dispBeamColumn or forceBeamColumn")
     if column_integration_points < 2:
         raise ValueError("column_integration_points must be at least 2")
     if beam_integration_points < 2:
         raise ValueError("beam_integration_points must be at least 2")
+    if member_subdivision_factor not in (1, 2):
+        raise ValueError("member_subdivision_factor must be 1 or 2")
     ops.wipe()
     ops.model("basic", "-ndm", 3, "-ndf", 6)
     fc = 25e6
@@ -155,7 +158,13 @@ def build(column_element="dispBeamColumn", column_integration_points=2,
             ops.element("elasticBeamColumn", 60000 + k * 10 + q, nt(k, "C6"), 8000 + k * 10 + q, 1.0, er, gr, 1.0, 1.0, 1.0, tr)
 
     et = 1
-    mesh_fractions = (0.15, 0.35, 0.35, 0.15)
+    source_mesh_fractions = (0.15, 0.35, 0.35, 0.15)
+    mesh_fractions = tuple(
+        fraction / member_subdivision_factor
+        for fraction in source_mesh_fractions
+        for _ in range(member_subdivision_factor)
+    )
+    cumulative = tuple(sum(mesh_fractions[:q]) for q in range(1, len(mesh_fractions)))
     for k in range(1, 4):
         for n in names:
             # Fig. 2.2/Fig. 2.4: 2.50 m deformable height, split into four
@@ -163,7 +172,6 @@ def build(column_element="dispBeamColumn", column_integration_points=2,
             z0 = Z[k - 1]
             clear0 = z0 + 0.25
             clear_length = 2.50
-            cumulative = (mesh_fractions[0], sum(mesh_fractions[:2]), sum(mesh_fractions[:3]))
             internal = []
             for q, fraction in enumerate(cumulative, start=1):
                 tag = 200000 + k * 1000 + ix[n] * 10 + q
@@ -176,7 +184,7 @@ def build(column_element="dispBeamColumn", column_integration_points=2,
                 transf = "PDelta" if use_pdelta else "Linear"
                 if q == 0:
                     ops.geomTransf(transf, tr, 1, 0, 0, "-jntOffset", 0, 0, 0.25, 0, 0, 0)
-                elif q == 3:
+                elif q == len(mesh_fractions) - 1:
                     ops.geomTransf(transf, tr, 1, 0, 0, "-jntOffset", 0, 0, 0, 0, 0, -0.25)
                 else:
                     ops.geomTransf(transf, tr, 1, 0, 0)
@@ -200,7 +208,6 @@ def build(column_element="dispBeamColumn", column_integration_points=2,
             off_j = 0.375 if bn == "B10" and b == "C6" else 0.125
             clear_length = length - off_i - off_j
             clear_xa, clear_ya = xa + off_i * ux, ya + off_i * uy
-            cumulative = (mesh_fractions[0], sum(mesh_fractions[:2]), sum(mesh_fractions[:3]))
             internal = []
             for q, fraction in enumerate(cumulative, start=1):
                 tag = 300000 + k * 10000 + j * 10 + q
@@ -213,10 +220,11 @@ def build(column_element="dispBeamColumn", column_integration_points=2,
                 args = []
                 if q == 0:
                     args = ["-jntOffset", off_i * ux, off_i * uy, 0, 0, 0, 0]
-                elif q == 3:
+                elif q == len(mesh_fractions) - 1:
                     args = ["-jntOffset", 0, 0, 0, -off_j * ux, -off_j * uy, 0]
                 ops.geomTransf("Linear", tr, 0, 0, 1, *args)
-                integration = integ_end if q in (0, 3) else integ_mid
+                source_segment = q // member_subdivision_factor
+                integration = integ_end if source_segment in (0, 3) else integ_mid
                 ops.element("dispBeamColumn", 100000 + k * 10000 + j * 10 + q, seg_i, seg_j, tr, integration)
 
     masters = []
