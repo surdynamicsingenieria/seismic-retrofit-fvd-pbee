@@ -79,6 +79,26 @@ Until one of these sources is recovered, the unresolved values will not be
 inferred by fitting Fig. 2.8.  SPEAR-M0 remains **NOT VALIDATED** and downstream
 FVD, optimization, NLTHA/MSA and FEMA P-58 work remains blocked.
 
+## Mechanism source recovery — 2026-11-04
+
+The official MAE 04-03 PDF text following Fig. 2.8 was recovered as a direct
+mechanism benchmark. Figure 2.10 and its discussion state that X response
+localizes at the first storey after peak, while in Y the large C6 column keeps
+first- and second-storey drifts close and prevents a weak-storey mechanism.
+The report conclusions further distinguish models with rigid links (weak first
+storey) from models without rigid links/fixed-end rotation (weak second
+storey). This removes ambiguity created by the shorter WCEE paper, which calls
+the second storey critical without carrying that modeling qualification.
+
+Comparison with the new OpenSees member recorders passes for +/-X and -Y but
+fails for +Y. The latter concentrates drift and the nine largest plastic
+rotations in first-storey columns. This makes C6 positive-Y section response
+and the unresolved `con2` tensile input higher-priority source blockers.
+
+Primary source: Jeong and Elnashai, MAE Report 04-03, pp. 13--14 (Figs. 2.8 and
+2.10), pp. 93--95 and conclusions; official UIUC PDF:
+`https://mae.cee.illinois.edu/publications/reports/Report04-03.pdf`.
+
 ## Update — 2026-11-03
 
 The historical Ljubljana package was identified exactly as

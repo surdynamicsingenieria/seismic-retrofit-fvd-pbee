@@ -359,6 +359,14 @@ directions. It does not close physical acceptance because a numerical
 member-by-member ZEUS-NL or experimental hinge sequence has not been recovered,
 and the hinge-quadrature sensitivity gate remains failed.
 
+MAE 04-03 Fig. 2.10 provides a qualitative mechanism gate: X should localize
+in the first storey after peak, whereas C6 should keep first- and second-storey
+drifts close in Y. The candidate passes this comparison for both X directions
+and for -Y, but fails it for +Y (4.798% versus 1.242% drift in storeys 1 and 2).
+The +Y strength error is therefore accompanied by the wrong damage
+distribution. This is now the principal physical blocker, with C6 strong-axis
+response and the missing ZeusNL concrete tensile law as direct audit targets.
+
 
 ## Spatial Fig. 2.7 correction and global mass closure — 2026-10-17
 

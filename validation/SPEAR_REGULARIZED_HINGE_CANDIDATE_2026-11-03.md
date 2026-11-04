@@ -168,6 +168,37 @@ sensitivity remains. The earlier sentence requiring recorders is superseded by
 this recorded audit; comparison to recoverable experimental/ZEUS-NL mechanism
 data is still pending.
 
+### Direct comparison with MAE 04-03 Figure 2.10
+
+A renewed source check recovered the qualitative acceptance target immediately
+following Fig. 2.8. MAE 04-03 states that, after peak in X, the first storey
+becomes much weaker and top displacement is governed mainly by first-storey
+drift. It also states that in Y the first- and second-storey drifts are close,
+because C6 distributes damage and prevents a weak-storey mechanism.
+
+The recorded candidate therefore has a mixed mechanism result:
+
+- **+X and -X: consistent.** First-storey drift is about 9--19 times the upper
+  storey drifts and all nine S1 columns lead the plastic-rotation ranking.
+- **-Y: qualitatively consistent.** Storey 1 and 2 drifts are 3.291% and
+  2.971%, and the mechanism extends into S2 columns and beam B10.
+- **+Y: inconsistent.** Storey 1 drift is 4.798% versus 1.242% at storey 2,
+  and all nine S1 columns lead the ranking. The model produces a first-storey
+  concentration that the report says C6 should prevent in Y.
+
+This source comparison identifies +Y as a physical mechanism error, not merely
+a +13.98% peak-strength error. No parameter is changed to hide it. The leading
+source-locked items to audit are C6 strong-axis section response, concrete
+tension in C6 under +Y, and the exact beam reinforcement transition; the
+unrecovered ZeusNL `con2` tensile input remains directly relevant.
+
+The report also resolves an apparent contradiction in secondary literature:
+with rigid links the pre-test analytical model develops the weak mechanism at
+the first storey, while models without rigid links and significant fixed-end
+rotation move it to the second storey (MAE 04-03, Sec. 7.2.2.3 and conclusions).
+The present candidate includes rigid links, so a first-storey X mechanism is
+the correct comparison target.
+
 Production FVD/PBEE remains closed until these candidate-level checks finish.
 
 ## Technical sources
