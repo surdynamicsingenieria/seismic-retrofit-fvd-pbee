@@ -91,7 +91,8 @@ are under
 
 Remaining work:
 
-1. compare complete pushover curve shape and mechanism, especially +Y;
+1. compare the recorded member mechanism with any recoverable published
+   member-by-member hinge sequence, especially +Y;
 2. resolve the failed admissible hinge-integration sensitivity gate;
 3. retain the unrecovered ZEUS-NL `con2` and bent-bar coordinates as explicit
    epistemic limitations.
@@ -136,7 +137,36 @@ nonlinear integration sensitivity rather than an initial-stiffness change.
 admissible plastic-hinge quadrature. `HingeMidpoint` remains the numerically
 robust candidate for continued diagnostics, but is not promoted to a final,
 formulation-independent physical validation. Member-level curvature/plastic
-rotation recorders and a mechanism comparison remain required.
+rotation recording and a mechanism comparison are addressed in the following
+section.
+
+## Recorded deformation mechanism — 2026-11-04
+
+The pushover driver now records peak storey drifts and, for regularized
+force-based members, the maximum absolute rotational components returned by
+OpenSees `plasticDeformation`. Complete member rankings are stored in the four
+`*_mechanism.json` files.
+
+| Case | Storey 1 drift | Storey 2 drift | Storey 3 drift | Governing member / plastic rotation |
+|---|---:|---:|---:|---|
+| +X | 5.864% | 0.615% | 0.352% | S1 C2 / 0.0706 rad |
+| -X | 6.450% | 0.628% | 0.332% | S1 C1 / 0.0788 rad |
+| +Y | 4.798% | 1.242% | 0.664% | S1 C4 / 0.0584 rad |
+| -Y | 3.291% | 2.971% | 0.462% | S1 C4 / 0.0411 rad |
+
+Both X cases and +Y form a pronounced first-storey column mechanism: all nine
+first-storey columns occupy the first nine positions in the plastic-rotation
+ranking. The -Y response spreads into the second storey and beam B10; this is
+also the only direction whose first- and second-storey drifts are comparable.
+Therefore the global softening is no longer inferred only from the roof curve:
+it is traced directly to member and storey responses.
+
+This closes the recorder implementation task, but not the physical mechanism
+gate. MAE 04-03 does not provide a numerical member-by-member hinge sequence
+against which these rotations can be accepted, and the failed quadrature
+sensitivity remains. The earlier sentence requiring recorders is superseded by
+this recorded audit; comparison to recoverable experimental/ZEUS-NL mechanism
+data is still pending.
 
 Production FVD/PBEE remains closed until these candidate-level checks finish.
 

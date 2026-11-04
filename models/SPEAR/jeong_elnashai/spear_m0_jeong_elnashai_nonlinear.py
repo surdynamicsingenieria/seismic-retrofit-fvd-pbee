@@ -366,6 +366,20 @@ def run(case_name="xp100", target_mm=200.0, du_mm=0.5,
     ops.analysis("Static")
 
     output = [(0.0, 0.0)]
+    initial_floor_displacements = [ops.nodeDisp(node, dof) for node in masters]
+    peak_story_drifts = [0.0, 0.0, 0.0]
+    mechanism_elements = {}
+    if member_formulation != "source_mesh":
+        column_tag = 1
+        for story in range(1, 4):
+            for joint in names:
+                mechanism_elements[column_tag] = f"column:S{story}:{joint}"
+                column_tag += 1
+        for story in range(1, 4):
+            for beam_index, (beam_name, _a, _b) in enumerate(BEAMS):
+                tag = 100000 + story * 10000 + beam_index * 10
+                mechanism_elements[tag] = f"beam:S{story}:{beam_name}"
+    max_plastic_rotations = {label: 0.0 for label in mechanism_elements.values()}
     base_nodes = [nt(0, n) for n in names]
     initial_disp = ops.nodeDisp(masters[-1], dof)
     ops.reactions()
@@ -408,6 +422,18 @@ def run(case_name="xp100", target_mm=200.0, du_mm=0.5,
         disp_mm = 1000.0 * (ops.nodeDisp(masters[-1], dof) - initial_disp)
         base_shear_kn = -sum(ops.nodeReaction(n, dof) for n in base_nodes) / 1000.0 - initial_base_shear
         output.append((disp_mm, base_shear_kn))
+        floor_displacements = [ops.nodeDisp(node, dof) - initial
+                               for node, initial in zip(masters, initial_floor_displacements)]
+        lower = 0.0
+        for story, displacement in enumerate(floor_displacements):
+            drift = abs(displacement - lower) / (Z[story + 1] - Z[story])
+            peak_story_drifts[story] = max(peak_story_drifts[story], drift)
+            lower = displacement
+        for tag, label in mechanism_elements.items():
+            deformation = ops.eleResponse(tag, "plasticDeformation")
+            if len(deformation) >= 5:
+                rotation = max(abs(value) for value in deformation[1:5])
+                max_plastic_rotations[label] = max(max_plastic_rotations[label], rotation)
 
     output_dir.mkdir(parents=True, exist_ok=True)
     out_csv = output_dir / f"{case_name}.csv"
@@ -435,10 +461,25 @@ def run(case_name="xp100", target_mm=200.0, du_mm=0.5,
         "initial_gravity_lateral_drift_mm_removed": 1000.0 * initial_disp,
         "analysis_exit_code": ok,
         "peak_abs_base_shear_kN": max(abs(v) for _, v in output),
+        "peak_abs_story_drift_ratio": peak_story_drifts,
         "pending_source_data": PENDING_SOURCE_DATA,
         "acceptance": "ENGINEERING_BASELINE; exact ZeusNL/Fig. 2.8 reproduction not claimed",
     }
     (output_dir / f"{case_name}_summary.json").write_text(json.dumps(summary, indent=2))
+    if mechanism_elements:
+        ranked_mechanism = sorted(
+            ({"member": label, "max_abs_plastic_rotation_rad": rotation}
+             for label, rotation in max_plastic_rotations.items()),
+            key=lambda item: item["max_abs_plastic_rotation_rad"], reverse=True,
+        )
+        mechanism = {
+            "case": case_name,
+            "member_formulation": member_formulation,
+            "response": "OpenSees forceBeamColumn plasticDeformation; maximum absolute end rotation components 1:5",
+            "peak_abs_story_drift_ratio": peak_story_drifts,
+            "members_ranked": ranked_mechanism,
+        }
+        (output_dir / f"{case_name}_mechanism.json").write_text(json.dumps(mechanism, indent=2) + "\n")
     print("JEONG_ELNASHAI_PUSHOVER", json.dumps(summary))
     ops.wipe()
     return 0 if ok == 0 else 3

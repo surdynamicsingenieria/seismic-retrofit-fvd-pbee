@@ -345,6 +345,20 @@ integration-sensitivity gate therefore **fails**: the candidate is not yet a
 formulation-independent physical validation. FVD/PBEE remains closed pending
 member-level mechanism recording and resolution of source-data limitations.
 
+### Member-level mechanism recorders — 2026-11-04
+
+Regularized pushovers now retain peak storey drifts and ranked member plastic
+rotations. +X, -X and +Y are dominated by all nine first-storey columns; their
+peak first-storey drifts are 5.864%, 6.450% and 4.798%, respectively. -Y spreads
+response between storeys 1 and 2 (3.291% and 2.971%) and includes first-storey
+beam B10 among the ten largest plastic rotations. Full rankings are stored as
+machine-readable `*_mechanism.json` files.
+
+This demonstrates rather than assumes the first-storey mechanism in three
+directions. It does not close physical acceptance because a numerical
+member-by-member ZEUS-NL or experimental hinge sequence has not been recovered,
+and the hinge-quadrature sensitivity gate remains failed.
+
 
 ## Spatial Fig. 2.7 correction and global mass closure — 2026-10-17
 

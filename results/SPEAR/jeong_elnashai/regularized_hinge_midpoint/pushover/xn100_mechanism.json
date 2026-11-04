@@ -1,0 +1,264 @@
+{
+  "case": "xn100",
+  "member_formulation": "hinge_midpoint",
+  "response": "OpenSees forceBeamColumn plasticDeformation; maximum absolute end rotation components 1:5",
+  "peak_abs_story_drift_ratio": [
+    0.06449696563836581,
+    0.006277278486168746,
+    0.003315744801433776
+  ],
+  "members_ranked": [
+    {
+      "member": "column:S1:C1",
+      "max_abs_plastic_rotation_rad": 0.07884187088061254
+    },
+    {
+      "member": "column:S1:C5",
+      "max_abs_plastic_rotation_rad": 0.0777912925947156
+    },
+    {
+      "member": "column:S1:C2",
+      "max_abs_plastic_rotation_rad": 0.07754439017424884
+    },
+    {
+      "member": "column:S1:C3",
+      "max_abs_plastic_rotation_rad": 0.07630146502152482
+    },
+    {
+      "member": "column:S1:C9",
+      "max_abs_plastic_rotation_rad": 0.07589418080705455
+    },
+    {
+      "member": "column:S1:C4",
+      "max_abs_plastic_rotation_rad": 0.07537026054152188
+    },
+    {
+      "member": "column:S1:C6",
+      "max_abs_plastic_rotation_rad": 0.0741213104781427
+    },
+    {
+      "member": "column:S1:C7",
+      "max_abs_plastic_rotation_rad": 0.07396237643864866
+    },
+    {
+      "member": "column:S1:C8",
+      "max_abs_plastic_rotation_rad": 0.07389222957372875
+    },
+    {
+      "member": "column:S2:C1",
+      "max_abs_plastic_rotation_rad": 0.006136482416718367
+    },
+    {
+      "member": "column:S2:C3",
+      "max_abs_plastic_rotation_rad": 0.005213733850005663
+    },
+    {
+      "member": "column:S2:C5",
+      "max_abs_plastic_rotation_rad": 0.004903184454534939
+    },
+    {
+      "member": "column:S2:C6",
+      "max_abs_plastic_rotation_rad": 0.0047179947495694825
+    },
+    {
+      "member": "column:S2:C8",
+      "max_abs_plastic_rotation_rad": 0.004598071588555665
+    },
+    {
+      "member": "column:S2:C9",
+      "max_abs_plastic_rotation_rad": 0.0043903927385350126
+    },
+    {
+      "member": "column:S2:C7",
+      "max_abs_plastic_rotation_rad": 0.0041642664051390645
+    },
+    {
+      "member": "column:S2:C2",
+      "max_abs_plastic_rotation_rad": 0.0037902509279242147
+    },
+    {
+      "member": "column:S2:C4",
+      "max_abs_plastic_rotation_rad": 0.0031269592449232257
+    },
+    {
+      "member": "column:S3:C1",
+      "max_abs_plastic_rotation_rad": 0.0029346641773559503
+    },
+    {
+      "member": "beam:S1:B4",
+      "max_abs_plastic_rotation_rad": 0.002732462362112713
+    },
+    {
+      "member": "column:S3:C5",
+      "max_abs_plastic_rotation_rad": 0.0026657777510753983
+    },
+    {
+      "member": "column:S3:C3",
+      "max_abs_plastic_rotation_rad": 0.002539094349781609
+    },
+    {
+      "member": "column:S3:C6",
+      "max_abs_plastic_rotation_rad": 0.002535061043109425
+    },
+    {
+      "member": "column:S3:C7",
+      "max_abs_plastic_rotation_rad": 0.002534156522795594
+    },
+    {
+      "member": "column:S3:C9",
+      "max_abs_plastic_rotation_rad": 0.0024886015647172625
+    },
+    {
+      "member": "column:S3:C2",
+      "max_abs_plastic_rotation_rad": 0.00237703047010519
+    },
+    {
+      "member": "column:S3:C8",
+      "max_abs_plastic_rotation_rad": 0.0023740088038023462
+    },
+    {
+      "member": "beam:S1:B2",
+      "max_abs_plastic_rotation_rad": 0.0023509661760560095
+    },
+    {
+      "member": "column:S3:C4",
+      "max_abs_plastic_rotation_rad": 0.0019700332276380824
+    },
+    {
+      "member": "beam:S1:B6",
+      "max_abs_plastic_rotation_rad": 0.0017639980194879342
+    },
+    {
+      "member": "beam:S2:B4",
+      "max_abs_plastic_rotation_rad": 0.0016287780051718159
+    },
+    {
+      "member": "beam:S2:B9",
+      "max_abs_plastic_rotation_rad": 0.0015606990777185547
+    },
+    {
+      "member": "beam:S3:B9",
+      "max_abs_plastic_rotation_rad": 0.0014897279151765228
+    },
+    {
+      "member": "beam:S2:B2",
+      "max_abs_plastic_rotation_rad": 0.001417640261534007
+    },
+    {
+      "member": "beam:S1:B9",
+      "max_abs_plastic_rotation_rad": 0.001407895996462495
+    },
+    {
+      "member": "beam:S1:B7",
+      "max_abs_plastic_rotation_rad": 0.0012982458937692651
+    },
+    {
+      "member": "beam:S2:B7",
+      "max_abs_plastic_rotation_rad": 0.0012625366522531001
+    },
+    {
+      "member": "beam:S3:B7",
+      "max_abs_plastic_rotation_rad": 0.0011889707157057062
+    },
+    {
+      "member": "beam:S2:B6",
+      "max_abs_plastic_rotation_rad": 0.0010501463003267562
+    },
+    {
+      "member": "beam:S2:B11",
+      "max_abs_plastic_rotation_rad": 0.0010169038430342424
+    },
+    {
+      "member": "beam:S3:B11",
+      "max_abs_plastic_rotation_rad": 0.0009622110390658234
+    },
+    {
+      "member": "beam:S1:B1",
+      "max_abs_plastic_rotation_rad": 0.0009069246359441987
+    },
+    {
+      "member": "beam:S1:B11",
+      "max_abs_plastic_rotation_rad": 0.0008593979149535947
+    },
+    {
+      "member": "beam:S1:B10",
+      "max_abs_plastic_rotation_rad": 0.0007951408342249576
+    },
+    {
+      "member": "beam:S1:B3",
+      "max_abs_plastic_rotation_rad": 0.0007945276805996138
+    },
+    {
+      "member": "beam:S2:B8",
+      "max_abs_plastic_rotation_rad": 0.0007871235167672337
+    },
+    {
+      "member": "beam:S3:B10",
+      "max_abs_plastic_rotation_rad": 0.0007801765305426342
+    },
+    {
+      "member": "beam:S1:B5",
+      "max_abs_plastic_rotation_rad": 0.0007545523610882444
+    },
+    {
+      "member": "beam:S1:B8",
+      "max_abs_plastic_rotation_rad": 0.0007528082000513032
+    },
+    {
+      "member": "beam:S2:B10",
+      "max_abs_plastic_rotation_rad": 0.0007502875955636241
+    },
+    {
+      "member": "beam:S3:B8",
+      "max_abs_plastic_rotation_rad": 0.0007479952129244593
+    },
+    {
+      "member": "beam:S1:B12",
+      "max_abs_plastic_rotation_rad": 0.0006171581421144237
+    },
+    {
+      "member": "beam:S2:B1",
+      "max_abs_plastic_rotation_rad": 0.0005568918456466823
+    },
+    {
+      "member": "beam:S3:B4",
+      "max_abs_plastic_rotation_rad": 0.000542455744597002
+    },
+    {
+      "member": "beam:S3:B12",
+      "max_abs_plastic_rotation_rad": 0.000539134268975217
+    },
+    {
+      "member": "beam:S2:B12",
+      "max_abs_plastic_rotation_rad": 0.0005190414103932737
+    },
+    {
+      "member": "beam:S2:B5",
+      "max_abs_plastic_rotation_rad": 0.0005180066348932403
+    },
+    {
+      "member": "beam:S2:B3",
+      "max_abs_plastic_rotation_rad": 0.0004610193794954438
+    },
+    {
+      "member": "beam:S3:B2",
+      "max_abs_plastic_rotation_rad": 0.00045229536041247246
+    },
+    {
+      "member": "beam:S3:B3",
+      "max_abs_plastic_rotation_rad": 0.0003490339329196073
+    },
+    {
+      "member": "beam:S3:B6",
+      "max_abs_plastic_rotation_rad": 0.00034147772165941346
+    },
+    {
+      "member": "beam:S3:B1",
+      "max_abs_plastic_rotation_rad": 0.00020611599107046443
+    },
+    {
+      "member": "beam:S3:B5",
+      "max_abs_plastic_rotation_rad": 0.00013734014796673927
+    }
+  ]
+}

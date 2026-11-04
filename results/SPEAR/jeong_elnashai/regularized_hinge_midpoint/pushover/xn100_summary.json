@@ -52,6 +52,11 @@
   "initial_gravity_lateral_drift_mm_removed": 0.3798855558806436,
   "analysis_exit_code": 0,
   "peak_abs_base_shear_kN": 353.40979139334985,
+  "peak_abs_story_drift_ratio": [
+    0.06449696563836581,
+    0.006277278486168746,
+    0.003315744801433776
+  ],
   "pending_source_data": [
     "dimensioned longitudinal transition location of the Fig 2.3 bent bars",
     "numerical concrete tensile strength used in the original ZeusNL con2 input",

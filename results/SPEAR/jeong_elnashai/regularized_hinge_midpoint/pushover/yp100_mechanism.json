@@ -1,0 +1,264 @@
+{
+  "case": "yp100",
+  "member_formulation": "hinge_midpoint",
+  "response": "OpenSees forceBeamColumn plasticDeformation; maximum absolute end rotation components 1:5",
+  "peak_abs_story_drift_ratio": [
+    0.04797910242052056,
+    0.01242325848753915,
+    0.00663703318941028
+  ],
+  "members_ranked": [
+    {
+      "member": "column:S1:C4",
+      "max_abs_plastic_rotation_rad": 0.058367883317799164
+    },
+    {
+      "member": "column:S1:C2",
+      "max_abs_plastic_rotation_rad": 0.05823240460506309
+    },
+    {
+      "member": "column:S1:C7",
+      "max_abs_plastic_rotation_rad": 0.05769547069851178
+    },
+    {
+      "member": "column:S1:C1",
+      "max_abs_plastic_rotation_rad": 0.055080553055809715
+    },
+    {
+      "member": "column:S1:C3",
+      "max_abs_plastic_rotation_rad": 0.05495928656955253
+    },
+    {
+      "member": "column:S1:C6",
+      "max_abs_plastic_rotation_rad": 0.05489824746427207
+    },
+    {
+      "member": "column:S1:C8",
+      "max_abs_plastic_rotation_rad": 0.05353120514934175
+    },
+    {
+      "member": "column:S1:C9",
+      "max_abs_plastic_rotation_rad": 0.05324819748761034
+    },
+    {
+      "member": "column:S1:C5",
+      "max_abs_plastic_rotation_rad": 0.05322363613132817
+    },
+    {
+      "member": "column:S2:C4",
+      "max_abs_plastic_rotation_rad": 0.012875064234000757
+    },
+    {
+      "member": "column:S2:C3",
+      "max_abs_plastic_rotation_rad": 0.012820702001620912
+    },
+    {
+      "member": "column:S2:C1",
+      "max_abs_plastic_rotation_rad": 0.01228675627528786
+    },
+    {
+      "member": "column:S2:C5",
+      "max_abs_plastic_rotation_rad": 0.012015735638227833
+    },
+    {
+      "member": "column:S2:C2",
+      "max_abs_plastic_rotation_rad": 0.011911355974346184
+    },
+    {
+      "member": "column:S2:C9",
+      "max_abs_plastic_rotation_rad": 0.011711276141668456
+    },
+    {
+      "member": "beam:S1:B10",
+      "max_abs_plastic_rotation_rad": 0.011157019009092778
+    },
+    {
+      "member": "column:S2:C7",
+      "max_abs_plastic_rotation_rad": 0.010445847789403443
+    },
+    {
+      "member": "column:S2:C8",
+      "max_abs_plastic_rotation_rad": 0.008707254227699721
+    },
+    {
+      "member": "column:S3:C5",
+      "max_abs_plastic_rotation_rad": 0.00734980632655745
+    },
+    {
+      "member": "column:S3:C1",
+      "max_abs_plastic_rotation_rad": 0.007211451196460773
+    },
+    {
+      "member": "column:S3:C2",
+      "max_abs_plastic_rotation_rad": 0.006349591508663752
+    },
+    {
+      "member": "column:S3:C3",
+      "max_abs_plastic_rotation_rad": 0.004802648770177963
+    },
+    {
+      "member": "column:S3:C9",
+      "max_abs_plastic_rotation_rad": 0.004753593416472159
+    },
+    {
+      "member": "column:S3:C4",
+      "max_abs_plastic_rotation_rad": 0.0047430037735994735
+    },
+    {
+      "member": "column:S2:C6",
+      "max_abs_plastic_rotation_rad": 0.00461473216442859
+    },
+    {
+      "member": "beam:S2:B10",
+      "max_abs_plastic_rotation_rad": 0.004320912880057641
+    },
+    {
+      "member": "column:S3:C7",
+      "max_abs_plastic_rotation_rad": 0.0038575217364810966
+    },
+    {
+      "member": "column:S3:C8",
+      "max_abs_plastic_rotation_rad": 0.0035562481422429177
+    },
+    {
+      "member": "beam:S1:B12",
+      "max_abs_plastic_rotation_rad": 0.0031183272424880303
+    },
+    {
+      "member": "beam:S2:B9",
+      "max_abs_plastic_rotation_rad": 0.0025597626060834705
+    },
+    {
+      "member": "beam:S1:B8",
+      "max_abs_plastic_rotation_rad": 0.002535123718619722
+    },
+    {
+      "member": "beam:S3:B9",
+      "max_abs_plastic_rotation_rad": 0.002373033780805855
+    },
+    {
+      "member": "beam:S2:B7",
+      "max_abs_plastic_rotation_rad": 0.002360895399734308
+    },
+    {
+      "member": "beam:S1:B7",
+      "max_abs_plastic_rotation_rad": 0.0021561980010752387
+    },
+    {
+      "member": "beam:S3:B7",
+      "max_abs_plastic_rotation_rad": 0.0020974769534478797
+    },
+    {
+      "member": "beam:S2:B12",
+      "max_abs_plastic_rotation_rad": 0.0018412118523034474
+    },
+    {
+      "member": "beam:S1:B9",
+      "max_abs_plastic_rotation_rad": 0.001834239963430299
+    },
+    {
+      "member": "column:S3:C6",
+      "max_abs_plastic_rotation_rad": 0.0017197929313625684
+    },
+    {
+      "member": "beam:S3:B10",
+      "max_abs_plastic_rotation_rad": 0.0016326382588219427
+    },
+    {
+      "member": "beam:S2:B11",
+      "max_abs_plastic_rotation_rad": 0.0016092452950367585
+    },
+    {
+      "member": "beam:S2:B8",
+      "max_abs_plastic_rotation_rad": 0.001596607073088027
+    },
+    {
+      "member": "beam:S3:B11",
+      "max_abs_plastic_rotation_rad": 0.0015368728636193309
+    },
+    {
+      "member": "beam:S1:B11",
+      "max_abs_plastic_rotation_rad": 0.0013577490171538874
+    },
+    {
+      "member": "beam:S1:B5",
+      "max_abs_plastic_rotation_rad": 0.001107235880226734
+    },
+    {
+      "member": "beam:S2:B5",
+      "max_abs_plastic_rotation_rad": 0.0009923821033307376
+    },
+    {
+      "member": "beam:S1:B6",
+      "max_abs_plastic_rotation_rad": 0.0008995546854070626
+    },
+    {
+      "member": "beam:S3:B12",
+      "max_abs_plastic_rotation_rad": 0.0008700585040085646
+    },
+    {
+      "member": "beam:S3:B8",
+      "max_abs_plastic_rotation_rad": 0.0008628655730841309
+    },
+    {
+      "member": "beam:S3:B4",
+      "max_abs_plastic_rotation_rad": 0.000795055977447269
+    },
+    {
+      "member": "beam:S3:B5",
+      "max_abs_plastic_rotation_rad": 0.000728909179003466
+    },
+    {
+      "member": "beam:S2:B4",
+      "max_abs_plastic_rotation_rad": 0.0007214709986059036
+    },
+    {
+      "member": "beam:S2:B3",
+      "max_abs_plastic_rotation_rad": 0.0006564403981517753
+    },
+    {
+      "member": "beam:S3:B6",
+      "max_abs_plastic_rotation_rad": 0.0006253492549514394
+    },
+    {
+      "member": "beam:S3:B3",
+      "max_abs_plastic_rotation_rad": 0.0006233239581217101
+    },
+    {
+      "member": "beam:S1:B4",
+      "max_abs_plastic_rotation_rad": 0.0006123915695853303
+    },
+    {
+      "member": "beam:S2:B6",
+      "max_abs_plastic_rotation_rad": 0.000588918183830291
+    },
+    {
+      "member": "beam:S1:B3",
+      "max_abs_plastic_rotation_rad": 0.0005406857477260934
+    },
+    {
+      "member": "beam:S3:B2",
+      "max_abs_plastic_rotation_rad": 0.0003989346602329788
+    },
+    {
+      "member": "beam:S1:B2",
+      "max_abs_plastic_rotation_rad": 0.00037849553512520263
+    },
+    {
+      "member": "beam:S2:B1",
+      "max_abs_plastic_rotation_rad": 0.00037526455991022326
+    },
+    {
+      "member": "beam:S2:B2",
+      "max_abs_plastic_rotation_rad": 0.00036272228211262254
+    },
+    {
+      "member": "beam:S1:B1",
+      "max_abs_plastic_rotation_rad": 0.0003398029489287319
+    },
+    {
+      "member": "beam:S3:B1",
+      "max_abs_plastic_rotation_rad": 0.00030860671086863317
+    }
+  ]
+}
