@@ -43,7 +43,7 @@ def run(args) -> int:
     x_values = _padded(x_motion.values_m_s2, sample_count)
     y_values = _padded(y_motion.values_m_s2, sample_count)
 
-    names, nt, masters = m0.build()
+    names, nt, masters = m0.build(member_formulation=args.member_formulation)
     periods, _ = m0.first_mode_for_direction(masters, 1)
     if m0.gravity(names, nt) != 0:
         raise RuntimeError("gravity analysis failed")
@@ -106,6 +106,7 @@ def run(args) -> int:
     summary = {
         "status": "COMPLETE" if ok == 0 and len(rows) == sample_count else "INCOMPLETE",
         "model": "SPEAR-M0-engineering-accepted-2026-10-29",
+        "member_formulation": args.member_formulation,
         "pair_id": args.pair_id,
         "record_ids": {"X": x_record["record_id"], "Y": y_record["record_id"]},
         "record_dt_s": x_motion.dt_s,
@@ -140,6 +141,8 @@ def parser() -> argparse.ArgumentParser:
     p.add_argument("--damping-mode-2", type=int, default=3)
     p.add_argument("--tolerance", type=float, default=1e-7)
     p.add_argument("--max-iterations", type=int, default=100)
+    p.add_argument("--member-formulation", choices=("source_mesh", "hinge_midpoint"),
+                   default="source_mesh")
     p.add_argument("--output", type=Path, required=True)
     return p
 

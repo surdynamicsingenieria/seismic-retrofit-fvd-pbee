@@ -1,0 +1,10 @@
+{
+  "status": "REGULARIZED_CANDIDATE",
+  "plastic_hinge_length": "Lp = 0.08 L + 0.022 fy db; L,db in m and fy in MPa",
+  "fy_MPa": 458.67,
+  "db_m": 0.012,
+  "baseline_pre_gravity_periods_s": [0.4903477172, 0.4298942949, 0.3606918976, 0.1696410432],
+  "regularized_pre_gravity_periods_s": [0.4893403127, 0.4290366146, 0.3600328196, 0.1692956275],
+  "regularized_post_gravity_periods_s": [0.5419011833, 0.4844330270, 0.3986952151, 0.1825207045],
+  "interpretation": "The regularization changes initial periods by approximately 0.2 percent without stiffness calibration."
+}

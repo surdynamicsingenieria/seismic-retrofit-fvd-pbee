@@ -90,7 +90,7 @@ def fiber_t_beam(sec, conc, steel, beff, top_bars, bottom_bars, gj):
 
 def build(column_element="dispBeamColumn", column_integration_points=2,
           beam_integration_points=2, use_pdelta=True,
-          member_subdivision_factor=1):
+          member_subdivision_factor=1, member_formulation="source_mesh"):
     if column_element not in ("dispBeamColumn", "forceBeamColumn"):
         raise ValueError("column_element must be dispBeamColumn or forceBeamColumn")
     if column_integration_points < 2:
@@ -99,6 +99,10 @@ def build(column_element="dispBeamColumn", column_integration_points=2,
         raise ValueError("beam_integration_points must be at least 2")
     if member_subdivision_factor not in (1, 2):
         raise ValueError("member_subdivision_factor must be 1 or 2")
+    if member_formulation not in ("source_mesh", "hinge_midpoint"):
+        raise ValueError("member_formulation must be source_mesh or hinge_midpoint")
+    if member_formulation != "source_mesh" and member_subdivision_factor != 1:
+        raise ValueError("member subdivision applies only to source_mesh")
     ops.wipe()
     ops.model("basic", "-ndm", 3, "-ndf", 6)
     fc = 25e6
@@ -165,6 +169,12 @@ def build(column_element="dispBeamColumn", column_integration_points=2,
         for _ in range(member_subdivision_factor)
     )
     cumulative = tuple(sum(mesh_fractions[:q]) for q in range(1, len(mesh_fractions)))
+    # Paulay-Priestley physical hinge length. Units: L and db in m, fy in MPa.
+    # The 12 mm bar is the longitudinal bar represented in the source-locked
+    # fibre sections. This is a diagnostic regularization, not curve fitting.
+    def plastic_hinge_length(length):
+        return 0.08 * length + 0.022 * (fy / 1e6) * 0.012
+
     for k in range(1, 4):
         for n in names:
             # Fig. 2.2/Fig. 2.4: 2.50 m deformable height, split into four
@@ -172,6 +182,20 @@ def build(column_element="dispBeamColumn", column_integration_points=2,
             z0 = Z[k - 1]
             clear0 = z0 + 0.25
             clear_length = 2.50
+            if member_formulation == "hinge_midpoint":
+                tr = 50000 + k * 1000 + ix[n] * 10
+                transf = "PDelta" if use_pdelta else "Linear"
+                ops.geomTransf(transf, tr, 1, 0, 0, "-jntOffset",
+                               0, 0, 0.25, 0, 0, -0.25)
+                section = 102 if n == "C6" else 101
+                integ = 800000 + k * 100 + ix[n]
+                lp = plastic_hinge_length(clear_length)
+                ops.beamIntegration("HingeMidpoint", integ, section, lp,
+                                    section, lp, section)
+                ops.element("forceBeamColumn", et, nt(k - 1, n), nt(k, n),
+                            tr, integ, "-iter", 30, 1e-10)
+                et += 1
+                continue
             internal = []
             for q, fraction in enumerate(cumulative, start=1):
                 tag = 200000 + k * 1000 + ix[n] * 10 + q
@@ -208,13 +232,27 @@ def build(column_element="dispBeamColumn", column_integration_points=2,
             off_j = 0.375 if bn == "B10" and b == "C6" else 0.125
             clear_length = length - off_i - off_j
             clear_xa, clear_ya = xa + off_i * ux, ya + off_i * uy
+            integ_end, integ_mid = beam_integrations[bn]
+            if member_formulation == "hinge_midpoint":
+                tr = 70000 + k * 10000 + j * 10
+                ops.geomTransf("Linear", tr, 0, 0, 1, "-jntOffset",
+                               off_i * ux, off_i * uy, 0,
+                               -off_j * ux, -off_j * uy, 0)
+                integ = 900000 + k * 100 + j
+                lp = plastic_hinge_length(clear_length)
+                sec_end = 3000 + 2 * j
+                sec_mid = sec_end + 1
+                ops.beamIntegration("HingeMidpoint", integ, sec_end, lp,
+                                    sec_end, lp, sec_mid)
+                ops.element("forceBeamColumn", 100000 + k * 10000 + j * 10,
+                            ni, nj, tr, integ, "-iter", 30, 1e-10)
+                continue
             internal = []
             for q, fraction in enumerate(cumulative, start=1):
                 tag = 300000 + k * 10000 + j * 10 + q
                 ops.node(tag, clear_xa + fraction * clear_length * ux, clear_ya + fraction * clear_length * uy, Z[k])
                 internal.append(tag)
             chain = [ni, *internal, nj]
-            integ_end, integ_mid = beam_integrations[bn]
             for q, (seg_i, seg_j) in enumerate(zip(chain[:-1], chain[1:])):
                 tr = 70000 + k * 10000 + j * 10 + q
                 args = []
@@ -297,8 +335,9 @@ def apply_pushover_loads(case_name, masters, nt, periods, phi):
     return periods, phi, rows
 
 
-def run(case_name="xp100", target_mm=200.0, du_mm=0.5):
-    names, nt, masters = build()
+def run(case_name="xp100", target_mm=200.0, du_mm=0.5,
+        member_formulation="source_mesh", output_dir=OUT):
+    names, nt, masters = build(member_formulation=member_formulation)
     dof = 1 if case_name[0] == "x" else 2
     periods_pre_gravity, phi_pre_gravity = first_mode_for_direction(masters, dof)
     if gravity(names, nt) != 0:
@@ -365,7 +404,8 @@ def run(case_name="xp100", target_mm=200.0, du_mm=0.5):
         base_shear_kn = -sum(ops.nodeReaction(n, dof) for n in base_nodes) / 1000.0 - initial_base_shear
         output.append((disp_mm, base_shear_kn))
 
-    out_csv = OUT / f"{case_name}.csv"
+    output_dir.mkdir(parents=True, exist_ok=True)
+    out_csv = output_dir / f"{case_name}.csv"
     out_csv.write_text(
         "top_displacement_mm,base_shear_kN\n"
         + "\n".join(f"{u:.6f},{v:.6f}" for u, v in output)
@@ -374,6 +414,7 @@ def run(case_name="xp100", target_mm=200.0, du_mm=0.5):
     summary = {
         "status": "DIAGNOSTIC_ONLY",
         "case": case_name,
+        "member_formulation": member_formulation,
         "periods_s": periods_post_gravity,
         "periods_pre_gravity_s": periods_pre_gravity,
         "periods_post_gravity_s": periods_post_gravity,
@@ -392,16 +433,17 @@ def run(case_name="xp100", target_mm=200.0, du_mm=0.5):
         "pending_source_data": PENDING_SOURCE_DATA,
         "acceptance": "ENGINEERING_BASELINE; exact ZeusNL/Fig. 2.8 reproduction not claimed",
     }
-    (OUT / f"{case_name}_summary.json").write_text(json.dumps(summary, indent=2))
+    (output_dir / f"{case_name}_summary.json").write_text(json.dumps(summary, indent=2))
     print("JEONG_ELNASHAI_PUSHOVER", json.dumps(summary))
     ops.wipe()
     return 0 if ok == 0 else 3
 
 
-def run_all():
+def run_all(member_formulation="source_mesh", output_dir=OUT):
     exit_codes = {}
     for case_name in ("xp100", "xn100", "yp100", "yn100"):
-        exit_codes[case_name] = run(case_name)
+        exit_codes[case_name] = run(case_name, member_formulation=member_formulation,
+                                    output_dir=output_dir)
     return 0 if all(code == 0 for code in exit_codes.values()) else 3
 
 

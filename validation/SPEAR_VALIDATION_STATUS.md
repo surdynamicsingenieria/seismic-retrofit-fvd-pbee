@@ -139,6 +139,24 @@ degrees. Their start/end coordinates remain unrecovered, so the bar transition
 still cannot be reconstructed uniquely. No model value was changed. The audit
 is documented in `validation/SPEAR_SOURCE_RECOVERY_UPDATE_2026-11-03.md`.
 
+## Regularized hinge candidate — 2026-11-03
+
+A non-calibrated `HingeMidpoint` candidate now uses one force-based element per
+physical member and `Lp=0.08L+0.022fydb`, with published `fy=458.67 MPa` and
+`db=12 mm`. Existing fibre sections, geometry, masses, gravity, P-Delta and
+materials are unchanged. Initial periods differ from the distributed baseline
+by only 0.18--0.21%.
+
+All four pushover directions were executed. Peak errors are -2.28% (+X),
+-3.79% (-X), +13.98% (+Y) and +3.51% (-Y); three reach 200 mm and +Y reaches
+197 mm. The three low-drift NLTHA failures all disappear: RSN 900-X, RSN
+1633-X and RSN 1633-Y complete every step with zero solver fallback.
+
+This is a **REGULARIZED CANDIDATE**, not final validation. The full partial-21
+suite, curve/mechanism comparison and hinge-integration sensitivity remain
+required before reopening FVD/PBEE. Full evidence is in
+`validation/SPEAR_REGULARIZED_HINGE_CANDIDATE_2026-11-03.md`.
+
 ## Actions completed in this pass
 
 - Audited the Jeong-Elnashai pushover driver and identified an inadmissible
@@ -285,6 +303,32 @@ python validation/compare_pushover_to_fig_2_8.py
 
 Without that environment variable, MPI initialization fails before model
 construction.
+
+## Regularized hinge candidate and 21-pair robustness gate — 2026-11-04
+
+The spatially non-objective distributed-fibre mesh has been supplemented by a
+non-calibrated regularized candidate: one force-based member per physical
+member with `HingeMidpoint` integration and physical hinge length
+`Lp = 0.08 L + 0.022 fy db`. Existing fibre sections, geometry, offsets,
+materials, mass, gravity and damping are unchanged.
+
+Initial periods change by only -0.18% to -0.21% relative to the distributed
+model. Four-direction pushover peak errors against Fig. 2.8 are -2.28%,
+-3.79%, +13.98% and +3.51% for +X, -X, +Y and -Y, respectively; +Y remains an
+open physical discrepancy and was not calibrated away.
+
+The full available 21-pair bidirectional suite completed 18 records (85.7%).
+The maximum drift among complete records was 3.773%, with zero solver fallback
+attempts in all 18. RSN953, RSN1244 and RSN1602 stopped only after reaching
+last-converged maximum drifts of 69.47%, 70.55% and 67.65%, respectively, and
+are classified conservatively as instability-compatible nonconvergence rather
+than confirmed collapse. This closes the prior low-drift numerical-localization
+blocker for the candidate but does not constitute final physical validation.
+
+Remaining gates are full pushover curve/mechanism comparison (especially +Y),
+admissible hinge-integration sensitivity, and explicit treatment of the
+unrecovered ZEUS-NL `con2` tensile input and exact bent-bar transition data.
+FVD/PBEE production work remains closed.
 
 
 ## Spatial Fig. 2.7 correction and global mass closure — 2026-10-17

@@ -1,0 +1,48 @@
+{
+  "status": "COMPLETE",
+  "model": "SPEAR-M0-engineering-accepted-2026-10-29",
+  "column_element": "dispBeamColumn",
+  "column_integration_points": 2,
+  "beam_integration_points": 2,
+  "member_subdivision_factor": 1,
+  "member_formulation": "hinge_midpoint",
+  "use_pdelta": true,
+  "record": "ground_motions/peer_fema_p695/RSN1633_MANJIL_ABBAR--T.AT2",
+  "record_dt_s": 0.02,
+  "record_unit": "g",
+  "scale_factor": 1.0,
+  "pga_m_s2": 4.872609591534999,
+  "direction_dof": 2,
+  "damping_ratio": 0.05,
+  "damping_modes": [
+    1,
+    3
+  ],
+  "rayleigh_alpha_m": 0.7397438270696661,
+  "rayleigh_beta_k_current": 0.003301221759534603,
+  "completed_steps": 2299,
+  "requested_steps": 2299,
+  "analysis_exit_code": 0,
+  "convergence_test": "NormDispIncr",
+  "fallback_counts": {
+    "KrylovNewton": 0,
+    "NewtonLineSearch": 0,
+    "substep-1/2": 0,
+    "substep-1/4": 0,
+    "substep-1/8": 0,
+    "substep-1/16": 0
+  },
+  "initial_gravity_roof_displacement_m_removed": 0.0004497962231971655,
+  "peak_abs_roof_displacement_m": 0.10039485153822986,
+  "peak_abs_story_drift_ratio": [
+    0.017144021009453426,
+    0.013324662190012576,
+    0.006862506313896381
+  ],
+  "peak_abs_floor_acceleration_m_s2": [
+    4.021056031938254,
+    4.031163854556368,
+    4.940196255972717
+  ],
+  "peak_abs_base_shear_kN": 486.65171308825563
+}

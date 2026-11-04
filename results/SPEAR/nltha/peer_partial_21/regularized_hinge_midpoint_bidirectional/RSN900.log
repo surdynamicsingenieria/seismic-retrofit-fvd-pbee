@@ -1,0 +1,87 @@
+WARNING - the 'fullGenLapack' eigen solver is VERY SLOW. Consider using the default eigen solver.WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 110060(dW: << 5.07266e+06, dW0: 1.62275e+09)
+Domain::update - domain failed in update
+Newmark::update() - failed to update the domain
+WARNING NewtonRaphson::solveCurrentStep() -the Integrator failed in update()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 21.14
+OpenSees > analyze failed, returned: -3 error flag
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 120010(dW: << 468459, dW0: 8.63206e+06)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 130010(dW: << 896715, dW0: 2.52804e+06)
+Domain::update - domain failed in update
+Newmark::update() - failed to update the domain
+WARNING AcceleratedNewton::solveCurrentStep() -the Integrator failed in update()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 21.14
+OpenSees > analyze failed, returned: -3 error flag
+{
+  "status": "COMPLETE",
+  "model": "SPEAR-M0-engineering-accepted-2026-10-29",
+  "member_formulation": "hinge_midpoint",
+  "pair_id": "RSN900",
+  "record_ids": {
+    "X": "RSN900-X",
+    "Y": "RSN900-Y"
+  },
+  "record_dt_s": 0.02,
+  "component_sample_counts": {
+    "X": 2200,
+    "Y": 2200
+  },
+  "zero_padding_samples": {
+    "X": 0,
+    "Y": 0
+  },
+  "pga_m_s2": {
+    "X": 2.397942651965,
+    "Y": 1.4882169967349999
+  },
+  "damping_ratio": 0.05,
+  "damping_modes": [
+    1,
+    3
+  ],
+  "rayleigh_alpha_m": 0.7397438270696661,
+  "rayleigh_beta_k_current": 0.003301221759534603,
+  "completed_steps": 2199,
+  "requested_steps": 2199,
+  "analysis_exit_code": 0,
+  "fallback_counts": {
+    "KrylovNewton": 0,
+    "NewtonLineSearch": 1,
+    "substep-1/2": 0,
+    "substep-1/4": 0,
+    "substep-1/8": 0,
+    "substep-1/16": 0
+  },
+  "peak_abs_roof_displacement_m": {
+    "X": 0.12249382201979651,
+    "Y": 0.035235771966146676
+  },
+  "peak_abs_story_drift_ratio": {
+    "X": [
+      0.03426282784763007,
+      0.007679473851112418,
+      0.004140330572890413
+    ],
+    "Y": [
+      0.005452954957609238,
+      0.004220029756647712,
+      0.0030718104677473455
+    ]
+  },
+  "peak_abs_floor_acceleration_m_s2": {
+    "X": [
+      2.095047818608098,
+      2.3050560535960862,
+      2.8414414026988193
+    ],
+    "Y": [
+      2.064961524897694,
+      1.9066617896283333,
+      2.5967314045591046
+    ]
+  },
+  "peak_abs_base_shear_kN": {
+    "X": 343.37843948361495,
+    "Y": 320.8656491464339
+  }
+}
+Process 0 Terminating

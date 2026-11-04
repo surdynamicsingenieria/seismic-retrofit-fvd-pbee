@@ -12,3 +12,6 @@ results/SPEAR/nltha/peer_partial_21/convergence_test_audit/*.csv
 results/SPEAR/nltha/peer_partial_21/failure_localization/*.csv
 results/SPEAR/nltha/peer_partial_21/formulation_sensitivity/*.csv
 results/SPEAR/nltha/peer_partial_21/mesh_sensitivity/*.csv
+results/SPEAR/nltha/peer_partial_21/regularized_hinge_midpoint/*.csv
+results/SPEAR/nltha/peer_partial_21/regularized_hinge_midpoint_bidirectional/*.csv
+!results/SPEAR/nltha/peer_partial_21/regularized_hinge_midpoint_bidirectional/edp_status_summary.csv

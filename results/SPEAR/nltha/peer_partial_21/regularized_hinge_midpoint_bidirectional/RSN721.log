@@ -1,0 +1,74 @@
+WARNING - the 'fullGenLapack' eigen solver is VERY SLOW. Consider using the default eigen solver.{
+  "status": "COMPLETE",
+  "model": "SPEAR-M0-engineering-accepted-2026-10-29",
+  "member_formulation": "hinge_midpoint",
+  "pair_id": "RSN721",
+  "record_ids": {
+    "X": "RSN721-X",
+    "Y": "RSN721-Y"
+  },
+  "record_dt_s": 0.005,
+  "component_sample_counts": {
+    "X": 11999,
+    "Y": 11999
+  },
+  "zero_padding_samples": {
+    "X": 0,
+    "Y": 0
+  },
+  "pga_m_s2": {
+    "X": 3.50353554698,
+    "Y": 2.54448440358
+  },
+  "damping_ratio": 0.05,
+  "damping_modes": [
+    1,
+    3
+  ],
+  "rayleigh_alpha_m": 0.7397438270696661,
+  "rayleigh_beta_k_current": 0.003301221759534603,
+  "completed_steps": 11998,
+  "requested_steps": 11998,
+  "analysis_exit_code": 0,
+  "fallback_counts": {
+    "KrylovNewton": 0,
+    "NewtonLineSearch": 0,
+    "substep-1/2": 0,
+    "substep-1/4": 0,
+    "substep-1/8": 0,
+    "substep-1/16": 0
+  },
+  "peak_abs_roof_displacement_m": {
+    "X": 0.12006125510863135,
+    "Y": 0.0628150501777729
+  },
+  "peak_abs_story_drift_ratio": {
+    "X": [
+      0.03494635800513096,
+      0.008752426444476965,
+      0.004380048840019302
+    ],
+    "Y": [
+      0.012680729677082647,
+      0.004865110161673164,
+      0.003228307766427891
+    ]
+  },
+  "peak_abs_floor_acceleration_m_s2": {
+    "X": [
+      2.2785529610326654,
+      2.4190367187878747,
+      3.2018160915345204
+    ],
+    "Y": [
+      1.747798902700202,
+      1.6821592500471865,
+      1.9986549259436321
+    ]
+  },
+  "peak_abs_base_shear_kN": {
+    "X": 342.39868811252757,
+    "Y": 256.3567384350717
+  }
+}
+Process 0 Terminating

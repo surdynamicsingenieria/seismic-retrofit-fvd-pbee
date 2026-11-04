@@ -1,0 +1,271 @@
+WARNING - the 'fullGenLapack' eigen solver is VERY SLOW. Consider using the default eigen solver.WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 1(dW: << 131541, dW0: 1.90064e+06)
+Domain::update - domain failed in update
+Newmark::update() - failed to update the domain
+WARNING NewtonRaphson::solveCurrentStep() -the Integrator failed in update()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 14.09
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestNormDispIncr::test() - failed to converge
+after: 100 iterations  current Norm: 0.000159608 (max: 1e-07, Norm deltaR: 3486.08)
+NewtonRaphson::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 14.21
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestNormDispIncr::test() - failed to converge
+after: 100 iterations  current Norm: 0.000707584 (max: 1e-07, Norm deltaR: 9103.95)
+NewtonRaphson::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 14.48
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestNormDispIncr::test() - failed to converge
+after: 100 iterations  current Norm: 0.00031594 (max: 1e-07, Norm deltaR: 1694.88)
+NewtonRaphson::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 14.55
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestNormDispIncr::test() - failed to converge
+after: 100 iterations  current Norm: 0.000120871 (max: 1e-07, Norm deltaR: 8960.09)
+NewtonRaphson::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 14.59
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestNormDispIncr::test() - failed to converge
+after: 100 iterations  current Norm: 0.000204951 (max: 1e-07, Norm deltaR: 3725.78)
+NewtonRaphson::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 14.7
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestNormDispIncr::test() - failed to converge
+after: 100 iterations  current Norm: 0.000308962 (max: 1e-07, Norm deltaR: 6510.67)
+NewtonRaphson::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 14.82
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestNormDispIncr::test() - failed to converge
+after: 100 iterations  current Norm: 0.000312395 (max: 1e-07, Norm deltaR: 17020.2)
+NewtonRaphson::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 14.86
+OpenSees > analyze failed, returned: -3 error flag
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 13(dW: << 123.166, dW0: 10.6495)
+Domain::update - domain failed in update
+Newmark::update() - failed to update the domain
+WARNING AcceleratedNewton::solveCurrentStep() -the Integrator failed in update()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 14.86
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestNormDispIncr::test() - failed to converge
+after: 100 iterations  current Norm: 0.00215302 (max: 1e-07, Norm deltaR: 33157.2)
+NewtonRaphson::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 14.88
+OpenSees > analyze failed, returned: -3 error flag
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 18(dW: << 1.04556e+06, dW0: 1.21996e+06)
+Domain::update - domain failed in update
+Newmark::update() - failed to update the domain
+WARNING AcceleratedNewton::solveCurrentStep() -the Integrator failed in update()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 14.88
+OpenSees > analyze failed, returned: -3 error flag
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 1(dW: << 169528, dW0: 1.88472e+06)
+Domain::update - domain failed in update
+Newmark::update() - failed to update the domain
+WARNING NewtonLineSearch::solveCurrentStep() -the Integrator failed in update()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 14.88
+OpenSees > analyze failed, returned: -3 error flag
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 110010(dW: << 708307, dW0: 4.13913e+06)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 110040(dW: << 246699, dW0: -2.44282e+06)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 110050(dW: << 1.05423e+06, dW0: -307256)
+Domain::update - domain failed in update
+Newmark::update() - failed to update the domain
+WARNING NewtonRaphson::solveCurrentStep() -the Integrator failed in update()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 14.875
+OpenSees > analyze failed, returned: -3 error flag
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 1(dW: << 2.16653, dW0: 3.32058e+06)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 2(dW: << -4.92423, dW0: 7.90968e+06)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 110000(dW: << 1.25058e+06, dW0: 281012)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 110060(dW: << 2.84152e+06, dW0: 1.69096e+06)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 120000(dW: << 169381, dW0: 3.58356e+06)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 120010(dW: << 468499, dW0: 9397.42)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 120070(dW: << 720798, dW0: -103881)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 130010(dW: << 443234, dW0: 990676)
+Domain::update - domain failed in update
+Newmark::update() - failed to update the domain
+WARNING NewtonRaphson::solveCurrentStep() -the Integrator failed in update()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 14.88
+OpenSees > analyze failed, returned: -3 error flag
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 110000(dW: << 1.25058e+06, dW0: 866780)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 110060(dW: << 2.84152e+06, dW0: 1.6332e+06)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 120000(dW: << 169381, dW0: 3.3205e+06)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 120010(dW: << 468499, dW0: -21516.8)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 120070(dW: << 720798, dW0: -64593.5)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 130010(dW: << 443234, dW0: 70301.3)
+Domain::update - domain failed in update
+Newmark::update() - failed to update the domain
+WARNING AcceleratedNewton::solveCurrentStep() -the Integrator failed in update()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 14.88
+OpenSees > analyze failed, returned: -3 error flag
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 110000(dW: << 1.25058e+06, dW0: 873571)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 110060(dW: << 2.84152e+06, dW0: 3.08155e+06)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 120000(dW: << 169381, dW0: 3.58447e+06)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 120010(dW: << 468499, dW0: -36289.4)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 120070(dW: << 720798, dW0: -75572.4)
+Domain::update - domain failed in update
+Newmark::update() - failed to update the domain
+WARNING NewtonLineSearch::solveCurrentStep() -the Integrator failed in update()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 14.88
+OpenSees > analyze failed, returned: -3 error flag
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 110000(dW: << 156227, dW0: 160242)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 110060(dW: << 2.84152e+06, dW0: 1.12619e+06)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 120000(dW: << 169381, dW0: 3.32225e+06)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 120010(dW: << 468499, dW0: 394253)
+Domain::update - domain failed in update
+Newmark::update() - failed to update the domain
+WARNING NewtonRaphson::solveCurrentStep() -the Integrator failed in update()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 14.8775
+OpenSees > analyze failed, returned: -3 error flag
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 110000(dW: << 1.25058e+06, dW0: 852507)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 110060(dW: << 2.84152e+06, dW0: 3.54072e+06)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 120000(dW: << 169381, dW0: 3.31983e+06)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 120010(dW: << 468499, dW0: -28964.1)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 120070(dW: << 720798, dW0: -62860.2)
+Domain::update - domain failed in update
+Newmark::update() - failed to update the domain
+WARNING AcceleratedNewton::solveCurrentStep() -the Integrator failed in update()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 14.8775
+OpenSees > analyze failed, returned: -3 error flag
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 110000(dW: << 2.93105e+06, dW0: 584625)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 110060(dW: << 2.84152e+06, dW0: 1.53404e+06)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 120000(dW: << 169381, dW0: 3.3211e+06)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 120010(dW: << 468499, dW0: 6297.19)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 120070(dW: << 720798, dW0: -35549.8)
+Domain::update - domain failed in update
+Newmark::update() - failed to update the domain
+WARNING NewtonLineSearch::solveCurrentStep() -the Integrator failed in update()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 14.8775
+OpenSees > analyze failed, returned: -3 error flag
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 110000(dW: << 809360, dW0: 570735)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 110060(dW: << 2.84152e+06, dW0: 1.51756e+06)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 120000(dW: << 169381, dW0: 3.32118e+06)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 120010(dW: << 468499, dW0: 2900.66)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 120070(dW: << 720798, dW0: -38433.5)
+Domain::update - domain failed in update
+Newmark::update() - failed to update the domain
+WARNING NewtonRaphson::solveCurrentStep() -the Integrator failed in update()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 14.8762
+OpenSees > analyze failed, returned: -3 error flag
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 110000(dW: << 1.25058e+06, dW0: 891973)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 110060(dW: << 2.84152e+06, dW0: 1.84902e+06)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 120000(dW: << 169381, dW0: 3.32031e+06)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 120010(dW: << 468499, dW0: -8171.25)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 120070(dW: << 720798, dW0: -30211.8)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 130010(dW: << 443234, dW0: 65873.1)
+Domain::update - domain failed in update
+Newmark::update() - failed to update the domain
+WARNING AcceleratedNewton::solveCurrentStep() -the Integrator failed in update()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 14.8762
+OpenSees > analyze failed, returned: -3 error flag
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 110000(dW: << 1.25058e+06, dW0: 832935)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 110060(dW: << 2.84152e+06, dW0: 1.594e+06)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 120000(dW: << 169381, dW0: 3.32068e+06)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 120010(dW: << 468499, dW0: -15904.7)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 120070(dW: << 720798, dW0: -79883.1)
+Domain::update - domain failed in update
+Newmark::update() - failed to update the domain
+WARNING NewtonLineSearch::solveCurrentStep() -the Integrator failed in update()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 14.8762
+OpenSees > analyze failed, returned: -3 error flag
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 110000(dW: << 770369, dW0: 631866)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 110060(dW: << 2.84152e+06, dW0: 1.15219e+06)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 120000(dW: << 169381, dW0: 3.32093e+06)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 120010(dW: << 468499, dW0: 31941.6)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 120070(dW: << 720798, dW0: -80797)
+Domain::update - domain failed in update
+Newmark::update() - failed to update the domain
+WARNING NewtonRaphson::solveCurrentStep() -the Integrator failed in update()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 14.8756
+OpenSees > analyze failed, returned: -3 error flag
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 110000(dW: << 1.25058e+06, dW0: 874441)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 110060(dW: << 2.84152e+06, dW0: 1.86253e+06)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 120000(dW: << 169381, dW0: 3.32045e+06)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 120010(dW: << 468499, dW0: -36840.2)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 120070(dW: << 720798, dW0: -86453.7)
+Domain::update - domain failed in update
+Newmark::update() - failed to update the domain
+WARNING AcceleratedNewton::solveCurrentStep() -the Integrator failed in update()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 14.8756
+OpenSees > analyze failed, returned: -3 error flag
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 110000(dW: << 1.25058e+06, dW0: 858469)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 110060(dW: << 2.84152e+06, dW0: 1.58395e+06)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 120000(dW: << 169381, dW0: 3.32055e+06)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 120010(dW: << 468499, dW0: -17474.9)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 120070(dW: << 720798, dW0: -64819)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 130010(dW: << 443234, dW0: 71540.1)
+Domain::update - domain failed in update
+Newmark::update() - failed to update the domain
+WARNING NewtonLineSearch::solveCurrentStep() -the Integrator failed in update()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 14.8756
+OpenSees > analyze failed, returned: -3 error flag
+{
+  "status": "INCOMPLETE",
+  "model": "SPEAR-M0-engineering-accepted-2026-10-29",
+  "member_formulation": "hinge_midpoint",
+  "pair_id": "RSN953",
+  "record_ids": {
+    "X": "RSN953-X",
+    "Y": "RSN953-Y"
+  },
+  "record_dt_s": 0.01,
+  "component_sample_counts": {
+    "X": 2999,
+    "Y": 2999
+  },
+  "zero_padding_samples": {
+    "X": 0,
+    "Y": 0
+  },
+  "pga_m_s2": {
+    "X": 4.34840001911,
+    "Y": 4.7852960832599996
+  },
+  "damping_ratio": 0.05,
+  "damping_modes": [
+    1,
+    3
+  ],
+  "rayleigh_alpha_m": 0.7397438270696661,
+  "rayleigh_beta_k_current": 0.003301221759534603,
+  "completed_steps": 1487,
+  "requested_steps": 2998,
+  "analysis_exit_code": -3,
+  "fallback_counts": {
+    "KrylovNewton": 7,
+    "NewtonLineSearch": 1,
+    "substep-1/2": 0,
+    "substep-1/4": 0,
+    "substep-1/8": 0,
+    "substep-1/16": 0
+  },
+  "peak_abs_roof_displacement_m": {
+    "X": 1.5405800118790691,
+    "Y": 0.7272889664648536
+  },
+  "peak_abs_story_drift_ratio": {
+    "X": [
+      0.694701199084554,
+      0.21917208095176122,
+      0.010059109280901554
+    ],
+    "Y": [
+      0.2768294377494268,
+      0.05979445081139197,
+      0.013455960312520387
+    ]
+  },
+  "peak_abs_floor_acceleration_m_s2": {
+    "X": [
+      15.370163882945938,
+      3.2111364756581846,
+      3.866016793808307
+    ],
+    "Y": [
+      5.489894866139184,
+      3.7061858093571374,
+      4.959370944343824
+    ]
+  },
+  "peak_abs_base_shear_kN": {
+    "X": 1226.9353937366789,
+    "Y": 425.2586191658664
+  }
+}
+Process 0 Terminating

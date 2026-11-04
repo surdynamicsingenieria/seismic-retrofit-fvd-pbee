@@ -1,0 +1,73 @@
+{
+  "status": "COMPLETE",
+  "model": "SPEAR-M0-engineering-accepted-2026-10-29",
+  "member_formulation": "hinge_midpoint",
+  "pair_id": "RSN125",
+  "record_ids": {
+    "X": "RSN125-X",
+    "Y": "RSN125-Y"
+  },
+  "record_dt_s": 0.005,
+  "component_sample_counts": {
+    "X": 7277,
+    "Y": 7279
+  },
+  "zero_padding_samples": {
+    "X": 2,
+    "Y": 0
+  },
+  "pga_m_s2": {
+    "X": 3.5022194945499994,
+    "Y": 3.0902764513250003
+  },
+  "damping_ratio": 0.05,
+  "damping_modes": [
+    1,
+    3
+  ],
+  "rayleigh_alpha_m": 0.7397438270696661,
+  "rayleigh_beta_k_current": 0.003301221759534603,
+  "completed_steps": 7278,
+  "requested_steps": 7278,
+  "analysis_exit_code": 0,
+  "fallback_counts": {
+    "KrylovNewton": 0,
+    "NewtonLineSearch": 0,
+    "substep-1/2": 0,
+    "substep-1/4": 0,
+    "substep-1/8": 0,
+    "substep-1/16": 0
+  },
+  "peak_abs_roof_displacement_m": {
+    "X": 0.038581895471965784,
+    "Y": 0.08215487565129956
+  },
+  "peak_abs_story_drift_ratio": {
+    "X": [
+      0.00626152371777678,
+      0.0055234535966133405,
+      0.004206168661319243
+    ],
+    "Y": [
+      0.0103848654919963,
+      0.010551487827803204,
+      0.0054743763403383855
+    ]
+  },
+  "peak_abs_floor_acceleration_m_s2": {
+    "X": [
+      2.919416695408109,
+      2.0223699578898344,
+      2.593077781802875
+    ],
+    "Y": [
+      2.873396287786724,
+      3.4898926255753118,
+      3.6834412925818047
+    ]
+  },
+  "peak_abs_base_shear_kN": {
+    "X": 286.190687605057,
+    "Y": 463.9480124205971
+  }
+}

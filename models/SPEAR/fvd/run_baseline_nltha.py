@@ -95,7 +95,8 @@ def run(args) -> int:
                                   column_integration_points=args.column_integration_points,
                                   beam_integration_points=args.beam_integration_points,
                                   use_pdelta=not args.no_pdelta,
-                                  member_subdivision_factor=args.member_subdivision_factor)
+                                  member_subdivision_factor=args.member_subdivision_factor,
+                                  member_formulation=args.member_formulation)
     periods_pre, _ = m0.first_mode_for_direction(masters, args.direction)
     if m0.gravity(names, nt) != 0:
         raise RuntimeError("gravity analysis failed")
@@ -162,6 +163,7 @@ def run(args) -> int:
         "column_integration_points": args.column_integration_points,
         "beam_integration_points": args.beam_integration_points,
         "member_subdivision_factor": args.member_subdivision_factor,
+        "member_formulation": args.member_formulation,
         "use_pdelta": not args.no_pdelta,
         "record": motion.source,
         "record_dt_s": motion.dt_s,
@@ -211,6 +213,8 @@ def parser() -> argparse.ArgumentParser:
     p.add_argument("--column-integration-points", type=int, default=2)
     p.add_argument("--beam-integration-points", type=int, default=2)
     p.add_argument("--member-subdivision-factor", type=int, choices=(1, 2), default=1)
+    p.add_argument("--member-formulation", choices=("source_mesh", "hinge_midpoint"),
+                   default="source_mesh")
     p.add_argument("--no-pdelta", action="store_true")
     p.add_argument("--output", type=Path, required=True)
     return p
