@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import argparse
 import csv
 import json
 import math
@@ -45,8 +46,9 @@ def load_reference() -> dict[str, list[tuple[float, float]]]:
     return curves
 
 
-def compare_case(case: str, ref: list[tuple[float, float]]) -> dict[str, float | int | str]:
-    sim_path = PUSH / f"{case}.csv"
+def compare_case(case: str, ref: list[tuple[float, float]],
+                 push_dir: Path = PUSH) -> dict[str, float | int | str]:
+    sim_path = push_dir / f"{case}.csv"
     sim = read_curve(sim_path, "top_displacement_mm", "base_shear_kN")
     common = []
     for x, y_ref in ref:
@@ -86,14 +88,15 @@ def compare_case(case: str, ref: list[tuple[float, float]]) -> dict[str, float |
     return summary
 
 
-def write_plot(reference: dict[str, list[tuple[float, float]]]) -> None:
+def write_plot(reference: dict[str, list[tuple[float, float]]],
+               push_dir: Path = PUSH, output_dir: Path = OUT) -> None:
     if plt is None:
         return
 
     fig, axes = plt.subplots(2, 2, figsize=(9.0, 6.5), sharex=True, sharey=True)
     for ax, case in zip(axes.ravel(), ("xp100", "xn100", "yp100", "yn100")):
         ref = reference[case]
-        sim = read_curve(PUSH / f"{case}.csv", "top_displacement_mm", "base_shear_kN")
+        sim = read_curve(push_dir / f"{case}.csv", "top_displacement_mm", "base_shear_kN")
         ax.plot([x for x, _ in ref], [abs(y) for _, y in ref], label="Fig. 2.8 digitized", lw=2)
         ax.plot([x for x, _ in sim], [abs(y) for _, y in sim], label="OpenSees diagnostic", lw=1.5)
         ax.set_title(case)
@@ -103,24 +106,29 @@ def write_plot(reference: dict[str, list[tuple[float, float]]]) -> None:
     handles, labels = axes[0, 0].get_legend_handles_labels()
     fig.legend(handles, labels, loc="upper center", ncol=2, frameon=False)
     fig.tight_layout(rect=(0, 0, 1, 0.94))
-    fig.savefig(OUT / "fig_2_8_vs_diagnostic_pushover.svg")
-    fig.savefig(OUT / "fig_2_8_vs_diagnostic_pushover.png", dpi=180)
+    fig.savefig(output_dir / "fig_2_8_vs_diagnostic_pushover.svg")
+    fig.savefig(output_dir / "fig_2_8_vs_diagnostic_pushover.png", dpi=180)
     plt.close(fig)
 
 
-def main() -> int:
-    OUT.mkdir(parents=True, exist_ok=True)
+def main(push_dir: Path = PUSH, output_dir: Path = OUT) -> int:
+    output_dir.mkdir(parents=True, exist_ok=True)
     ref = load_reference()
-    summaries = [compare_case(case, ref[case]) for case in ("xp100", "xn100", "yp100", "yn100")]
-    (OUT / "fig_2_8_comparison_summary.json").write_text(json.dumps(summaries, indent=2) + "\n")
-    with (OUT / "fig_2_8_comparison_summary.csv").open("w", newline="") as f:
+    summaries = [compare_case(case, ref[case], push_dir)
+                 for case in ("xp100", "xn100", "yp100", "yn100")]
+    (output_dir / "fig_2_8_comparison_summary.json").write_text(json.dumps(summaries, indent=2) + "\n")
+    with (output_dir / "fig_2_8_comparison_summary.csv").open("w", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=list(summaries[0]), lineterminator="\n")
         writer.writeheader()
         writer.writerows(summaries)
-    write_plot(ref)
+    write_plot(ref, push_dir, output_dir)
     print(json.dumps(summaries, indent=2))
     return 0
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--push-dir", type=Path, default=PUSH)
+    parser.add_argument("--output-dir", type=Path, default=OUT)
+    args = parser.parse_args()
+    raise SystemExit(main(args.push_dir, args.output_dir))

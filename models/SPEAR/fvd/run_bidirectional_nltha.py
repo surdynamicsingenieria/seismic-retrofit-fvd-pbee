@@ -141,7 +141,7 @@ def parser() -> argparse.ArgumentParser:
     p.add_argument("--damping-mode-2", type=int, default=3)
     p.add_argument("--tolerance", type=float, default=1e-7)
     p.add_argument("--max-iterations", type=int, default=100)
-    p.add_argument("--member-formulation", choices=("source_mesh", "hinge_midpoint"),
+    p.add_argument("--member-formulation", choices=("source_mesh", "hinge_midpoint", "hinge_radau_two"),
                    default="source_mesh")
     p.add_argument("--output", type=Path, required=True)
     return p

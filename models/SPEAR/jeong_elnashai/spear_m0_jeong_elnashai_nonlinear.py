@@ -99,8 +99,8 @@ def build(column_element="dispBeamColumn", column_integration_points=2,
         raise ValueError("beam_integration_points must be at least 2")
     if member_subdivision_factor not in (1, 2):
         raise ValueError("member_subdivision_factor must be 1 or 2")
-    if member_formulation not in ("source_mesh", "hinge_midpoint"):
-        raise ValueError("member_formulation must be source_mesh or hinge_midpoint")
+    if member_formulation not in ("source_mesh", "hinge_midpoint", "hinge_radau_two"):
+        raise ValueError("member_formulation must be source_mesh, hinge_midpoint or hinge_radau_two")
     if member_formulation != "source_mesh" and member_subdivision_factor != 1:
         raise ValueError("member subdivision applies only to source_mesh")
     ops.wipe()
@@ -175,6 +175,13 @@ def build(column_element="dispBeamColumn", column_integration_points=2,
     def plastic_hinge_length(length):
         return 0.08 * length + 0.022 * (fy / 1e6) * 0.012
 
+    def plastic_hinge_integration(tag, sec_i, lp_i, sec_j, lp_j, sec_e):
+        integration = {
+            "hinge_midpoint": "HingeMidpoint",
+            "hinge_radau_two": "HingeRadauTwo",
+        }[member_formulation]
+        ops.beamIntegration(integration, tag, sec_i, lp_i, sec_j, lp_j, sec_e)
+
     for k in range(1, 4):
         for n in names:
             # Fig. 2.2/Fig. 2.4: 2.50 m deformable height, split into four
@@ -182,7 +189,7 @@ def build(column_element="dispBeamColumn", column_integration_points=2,
             z0 = Z[k - 1]
             clear0 = z0 + 0.25
             clear_length = 2.50
-            if member_formulation == "hinge_midpoint":
+            if member_formulation != "source_mesh":
                 tr = 50000 + k * 1000 + ix[n] * 10
                 transf = "PDelta" if use_pdelta else "Linear"
                 ops.geomTransf(transf, tr, 1, 0, 0, "-jntOffset",
@@ -190,8 +197,7 @@ def build(column_element="dispBeamColumn", column_integration_points=2,
                 section = 102 if n == "C6" else 101
                 integ = 800000 + k * 100 + ix[n]
                 lp = plastic_hinge_length(clear_length)
-                ops.beamIntegration("HingeMidpoint", integ, section, lp,
-                                    section, lp, section)
+                plastic_hinge_integration(integ, section, lp, section, lp, section)
                 ops.element("forceBeamColumn", et, nt(k - 1, n), nt(k, n),
                             tr, integ, "-iter", 30, 1e-10)
                 et += 1
@@ -233,7 +239,7 @@ def build(column_element="dispBeamColumn", column_integration_points=2,
             clear_length = length - off_i - off_j
             clear_xa, clear_ya = xa + off_i * ux, ya + off_i * uy
             integ_end, integ_mid = beam_integrations[bn]
-            if member_formulation == "hinge_midpoint":
+            if member_formulation != "source_mesh":
                 tr = 70000 + k * 10000 + j * 10
                 ops.geomTransf("Linear", tr, 0, 0, 1, "-jntOffset",
                                off_i * ux, off_i * uy, 0,
@@ -242,8 +248,7 @@ def build(column_element="dispBeamColumn", column_integration_points=2,
                 lp = plastic_hinge_length(clear_length)
                 sec_end = 3000 + 2 * j
                 sec_mid = sec_end + 1
-                ops.beamIntegration("HingeMidpoint", integ, sec_end, lp,
-                                    sec_end, lp, sec_mid)
+                plastic_hinge_integration(integ, sec_end, lp, sec_end, lp, sec_mid)
                 ops.element("forceBeamColumn", 100000 + k * 10000 + j * 10,
                             ni, nj, tr, integ, "-iter", 30, 1e-10)
                 continue

@@ -213,7 +213,7 @@ def parser() -> argparse.ArgumentParser:
     p.add_argument("--column-integration-points", type=int, default=2)
     p.add_argument("--beam-integration-points", type=int, default=2)
     p.add_argument("--member-subdivision-factor", type=int, choices=(1, 2), default=1)
-    p.add_argument("--member-formulation", choices=("source_mesh", "hinge_midpoint"),
+    p.add_argument("--member-formulation", choices=("source_mesh", "hinge_midpoint", "hinge_radau_two"),
                    default="source_mesh")
     p.add_argument("--no-pdelta", action="store_true")
     p.add_argument("--output", type=Path, required=True)

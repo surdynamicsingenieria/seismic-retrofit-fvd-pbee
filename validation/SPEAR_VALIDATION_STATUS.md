@@ -330,6 +330,21 @@ admissible hinge-integration sensitivity, and explicit treatment of the
 unrecovered ZEUS-NL `con2` tensile input and exact bent-bar transition data.
 FVD/PBEE production work remains closed.
 
+### Hinge quadrature sensitivity — 2026-11-04
+
+The full `HingeMidpoint` curves have MAE values of 42.10, 50.57, 43.60 and
+33.87 kN for +X, -X, +Y and -Y. Secant stiffness at 20 mm is overpredicted by
+22.63--28.67%, and at 40 mm by 18.94--24.39%; therefore good peak-strength
+agreement does not imply full curve-shape agreement.
+
+Replacing only `HingeMidpoint` by `HingeRadauTwo` while preserving physical
+hinge lengths and every model input produced stops at +51.5, -48.5, +103.5 and
+-80.0 mm. Peak errors became -13.70%, -14.99%, -6.19% and -13.17%, with 31--56
+fallback attempts. Initial periods changed negligibly. The admissible
+integration-sensitivity gate therefore **fails**: the candidate is not yet a
+formulation-independent physical validation. FVD/PBEE remains closed pending
+member-level mechanism recording and resolution of source-data limitations.
+
 
 ## Spatial Fig. 2.7 correction and global mass closure — 2026-10-17
 

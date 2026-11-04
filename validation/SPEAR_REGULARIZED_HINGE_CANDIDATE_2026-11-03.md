@@ -92,9 +92,51 @@ are under
 Remaining work:
 
 1. compare complete pushover curve shape and mechanism, especially +Y;
-2. verify that response is insensitive to admissible hinge-integration choice;
+2. resolve the failed admissible hinge-integration sensitivity gate;
 3. retain the unrecovered ZEUS-NL `con2` and bent-bar coordinates as explicit
    epistemic limitations.
+
+## Pointwise curve audit and hinge-integration sensitivity — 2026-11-04
+
+The comparison utility now accepts explicit input and output directories, so
+candidate curves can be audited without overwriting the production comparison.
+For `HingeMidpoint`, the full common-range comparison gives:
+
+| Case | Curve MAE (kN) | RMSE (kN) | 20 mm secant error | 40 mm secant error |
+|---|---:|---:|---:|---:|
+| +X | 42.10 | 45.80 | +22.63% | +19.14% |
+| -X | 50.57 | 55.15 | +27.12% | +18.94% |
+| +Y | 43.60 | 46.72 | +24.88% | +22.91% |
+| -Y | 33.87 | 40.72 | +28.67% | +24.39% |
+
+Thus the candidate matches peak strength substantially better than complete
+curve shape: it is consistently too stiff over the first 20--40 mm, and its
+peak occurs earlier than the digitized Fig. 2.8 peak in every direction. The
++Y peak-strength discrepancy remains +13.98%.
+
+An independent quadrature sensitivity replaced only `HingeMidpoint` with
+`HingeRadauTwo`, retaining the same Paulay--Priestley hinge lengths, sections,
+materials, geometry, mass, gravity, load patterns and solver recovery sequence.
+
+| Case | Reached displacement | Peak (kN) | Peak error | Fallback attempts |
+|---|---:|---:|---:|---:|
+| +X | +51.5 mm | 305.82 | -13.70% | 31 |
+| -X | -48.5 mm | 312.29 | -14.99% | 31 |
+| +Y | +103.5 mm | 368.38 | -6.19% | 33 |
+| -Y | -80.0 mm | 394.23 | -13.17% | 56 |
+
+All four `HingeRadauTwo` analyses exhausted adaptive recovery before the
+nominal 200 mm target. Their pointwise errors are reported only over the
+truncated common displacement range and must not be compared as if they were
+complete curves. Pre-gravity periods remain close to `HingeMidpoint`
+(0.49025, 0.42975, 0.36059 and 0.16962 s), confirming that the divergence is a
+nonlinear integration sensitivity rather than an initial-stiffness change.
+
+**Gate result: FAILED.** The nonlinear response is materially sensitive to an
+admissible plastic-hinge quadrature. `HingeMidpoint` remains the numerically
+robust candidate for continued diagnostics, but is not promoted to a final,
+formulation-independent physical validation. Member-level curvature/plastic
+rotation recorders and a mechanism comparison remain required.
 
 Production FVD/PBEE remains closed until these candidate-level checks finish.
 

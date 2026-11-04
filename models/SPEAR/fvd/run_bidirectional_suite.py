@@ -79,7 +79,7 @@ def parser() -> argparse.ArgumentParser:
     p.add_argument("--output-dir", type=Path, required=True)
     p.add_argument("--suite-label", default="FEMA-P695-partial-21")
     p.add_argument("--damping-ratio", type=float, default=0.05)
-    p.add_argument("--member-formulation", choices=("source_mesh", "hinge_midpoint"),
+    p.add_argument("--member-formulation", choices=("source_mesh", "hinge_midpoint", "hinge_radau_two"),
                    default="source_mesh")
     p.add_argument("--workers", type=int, default=2)
     p.add_argument("--retry-incomplete", action="store_true",
