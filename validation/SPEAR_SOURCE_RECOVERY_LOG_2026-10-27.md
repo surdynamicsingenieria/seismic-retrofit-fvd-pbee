@@ -109,3 +109,21 @@ error page and the workshop PDF. Negro et al. independently recover a
 coordinates. Details and machine-readable evidence are in
 `validation/SPEAR_SOURCE_RECOVERY_UPDATE_2026-11-03.md` and
 `results/SPEAR/jeong_elnashai/source_recovery_2026-11-03.json`.
+
+## Recheck after Section 2 diaphragm correction — 2026-11-05
+
+The regularized Section 2 model was rerun without a rigid diaphragm. This
+corrects the previously failed +Y deformation mechanism: first- and
+second-storey drift become 1.645% and 1.608%, respectively. Consequently, C6
+orientation or diaphragm constraints are no longer candidates for adjustment.
+
+The ZeusNL 1.8.9 manual and the 2022 SPEAR case-study were searched again.
+Both confirm that `con2` requires `fc`, `ft`, `eco` and `k`; the manual's
+`20, 2.2, 0.002, 1.2` row is explicitly a typical-value example. The later
+study confirms the SPEAR values `fc=25 MPa` and `k=1.01`, but does not expose
+the SPEAR-specific `ft`, `eco`, input deck, or tensile/unloading equations.
+Therefore `ft=2.2 MPa` remains inadmissible as a production input. No verified
+public source found in this recheck removes the material-law blocker.
+
+Sources: ZeusNL User Manual v1.8.9, Appendix A (`con2`); Oyguc (2022),
+doi:10.3389/fbuil.2022.1058983, modelling assumptions and Fig. 5.
