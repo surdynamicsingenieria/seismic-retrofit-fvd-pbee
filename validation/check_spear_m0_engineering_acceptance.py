@@ -11,11 +11,23 @@ import hashlib
 from pathlib import Path
 
 ROOT = Path("results/SPEAR/jeong_elnashai")
+BASELINE = ROOT / "regularized_hinge_midpoint_no_diaphragm"
 MODAL_LIMIT_PCT = 10.0
 PEAK_LIMIT_PCT = 15.0
 
-modal = json.loads((ROOT / "modal_baseline.json").read_text())
-curves = json.loads((ROOT / "comparison/fig_2_8_comparison_summary.json").read_text())
+summaries = {
+    case: json.loads((BASELINE / "pushover" / f"{case}_summary.json").read_text())
+    for case in ("xp100", "xn100", "yp100", "yn100")
+}
+modal = {
+    "targets_s": [0.51, 0.46, 0.40, 0.18],
+    "periods_s": summaries["xp100"]["periods_pre_gravity_s"],
+}
+modal["errors_pct"] = [
+    100.0 * (model - target) / target
+    for model, target in zip(modal["periods_s"], modal["targets_s"])
+]
+curves = json.loads((BASELINE / "comparison" / "fig_2_8_comparison_summary.json").read_text())
 patterns = json.loads((ROOT / "pushover_pattern_audit.json").read_text())
 model_root = Path("models/SPEAR/jeong_elnashai")
 lock = json.loads((model_root / "SPEAR_M0_BASELINE_LOCK.json").read_text())
@@ -31,7 +43,17 @@ qualitative = {
     "yn_stronger_than_yp": peaks["yn100"] > peaks["yp100"],
     "mean_y_stronger_than_mean_x": (peaks["yp100"] + peaks["yn100"]) > (peaks["xp100"] + peaks["xn100"]),
     "four_spatial_patterns_pass": patterns["status"] == "PASS" and len(patterns["cases"]) == 4,
+    "section_2_has_no_rigid_diaphragm": all(not row["rigid_diaphragm"] for row in summaries.values()),
 }
+
+mechanisms = {
+    case: json.loads((BASELINE / "pushover" / f"{case}_mechanism.json").read_text())
+    for case in summaries
+}
+y_drifts = mechanisms["yp100"]["peak_abs_story_drift_ratio"]
+qualitative["positive_y_storeys_1_and_2_close"] = (
+    abs(y_drifts[0] - y_drifts[1]) / max(y_drifts[0], y_drifts[1]) <= 0.20
+)
 
 passed = (all(modal_checks) and all(peak_checks.values())
           and all(qualitative.values()) and all(hash_checks.values()))
@@ -41,7 +63,8 @@ result = {
     "limitations": [
         "not an exact reconstruction of the unavailable UIUC ZeusNL input deck",
         "Fig. 2.8 pointwise curve shape and post-peak response are not acceptance gates",
-        "pre-peak secant stiffness is overestimated by approximately 18-27 percent",
+        "the exact ZeusNL con2 tensile input and original gravity load-point ledger remain unavailable",
+        "the negative-Y peak-strength error exceeds the engineering acceptance limit",
     ],
     "criteria": {
         "modal_period_absolute_error_limit_pct": MODAL_LIMIT_PCT,

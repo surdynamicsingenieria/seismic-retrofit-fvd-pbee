@@ -1,10 +1,11 @@
 {
-  "status": "PASS",
+  "status": "FAIL",
   "scope": "engineering benchmark validation for FVD/PBEE research",
   "limitations": [
     "not an exact reconstruction of the unavailable UIUC ZeusNL input deck",
     "Fig. 2.8 pointwise curve shape and post-peak response are not acceptance gates",
-    "pre-peak secant stiffness is overestimated by approximately 18-27 percent"
+    "the exact ZeusNL con2 tensile input and original gravity load-point ledger remain unavailable",
+    "the negative-Y peak-strength error exceeds the engineering acceptance limit"
   ],
   "criteria": {
     "modal_period_absolute_error_limit_pct": 10.0,
@@ -19,16 +20,16 @@
       0.18
     ],
     "model_s": [
-      0.5144593563262534,
-      0.4477538855073795,
-      0.37303900115748984,
-      0.17796857392352722
+      0.4903761534434248,
+      0.4332339005010419,
+      0.3619934019164644,
+      0.1718319526108492
     ],
     "errors_pct": [
-      0.8743835933830163,
-      -2.6621988027435934,
-      -6.740249710627546,
-      -1.1285700424848752
+      -3.8478130503088686,
+      -5.818717282382204,
+      -9.501649520883905,
+      -4.537804105083781
     ],
     "checks": [
       true,
@@ -41,12 +42,14 @@
     "xp100": true,
     "xn100": true,
     "yp100": true,
-    "yn100": true
+    "yn100": false
   },
   "qualitative_checks": {
     "yn_stronger_than_yp": true,
     "mean_y_stronger_than_mean_x": true,
-    "four_spatial_patterns_pass": true
+    "four_spatial_patterns_pass": true,
+    "section_2_has_no_rigid_diaphragm": true,
+    "positive_y_storeys_1_and_2_close": true
   },
   "baseline_file_hash_checks": {
     "spear_m0_jeong_elnashai.py": true,
@@ -56,5 +59,5 @@
     "pushover_patterns.py": true,
     "reinforcement_source.py": true
   },
-  "downstream_authorization": "FVD model development and baseline NLTHA authorized"
+  "downstream_authorization": "blocked"
 }

@@ -2,6 +2,7 @@
   "status": "DIAGNOSTIC_ONLY",
   "case": "xn100",
   "member_formulation": "hinge_midpoint",
+  "rigid_diaphragm": false,
   "periods_s": [
     0.7211630732800334,
     0.6800810264717471,
