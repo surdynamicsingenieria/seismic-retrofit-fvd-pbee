@@ -384,6 +384,23 @@ validation. The 18/21 NLTHA completion result obtained with a rigid diaphragm
 is retained as a numerical experiment only and is not transferable to the
 source-correct baseline. Downstream FVD/PBEE remains closed.
 
+### Corrected executable acceptance gate and Y-asymmetry audit — 2026-11-05
+
+The executable acceptance gate previously read the superseded
+rigid-diaphragm result and incorrectly authorized downstream NLTHA/FVD. It now
+reads only `regularized_hinge_midpoint_no_diaphragm`, checks the no-diaphragm
+metadata and the published +Y first/second-storey mechanism, and returns
+`FAIL`. All four modal errors are within 10%; +X, -X and +Y peak errors are
+within 15%; -Y fails at -19.05%. Downstream work is therefore blocked.
+
+At the +Y peak, C6 supplies 96.04 kN of 351.82 kN and its first-storey basic
+axial force is -169.40 kN. At the -Y peak, C6 supplies -135.84 kN of
+-367.54 kN and its axial force is -344.03 kN. The model's total Y-direction
+strength asymmetry is only 15.72 kN, versus 61.32 kN in Fig. 2.8. Thus the
+remaining peak failure is concentrated in the compression-favoured -Y branch
+and is consistent with the unresolved `con2` axial-flexural material mapping;
+it is not evidence for rotating C6 or restoring a rigid diaphragm.
+
 
 ## Spatial Fig. 2.7 correction and global mass closure — 2026-10-17
 
