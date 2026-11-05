@@ -6,6 +6,7 @@ on:
     paths:
       - '.github/workflows/spear-concretecm-sensitivity.yml'
       - 'validation/run_concretecm_source_envelope_sensitivity.py'
+      - 'validation/run_section_2_concretecm_sensitivity.py'
   workflow_dispatch:
 
 jobs:
@@ -90,4 +91,30 @@ jobs:
         with:
           name: spear-concretecm-source-envelope-sensitivity
           path: results/SPEAR/jeong_elnashai/sensitivity/concretecm_zero_tension
+          if-no-files-found: error
+
+  section2-sensitivity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      MPICH_INTERFACE_HOSTNAME: 127.0.0.1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned solver and plotting dependencies
+        run: python -m pip install openseespy==3.8.0.0 matplotlib
+      - name: Run Section 2 source-envelope sensitivity
+        run: python validation/run_section_2_concretecm_sensitivity.py || test $? -eq 3
+      - name: Compare Section 2 sensitivity with Fig. 2.8
+        run: |
+          python validation/compare_pushover_to_fig_2_8.py \
+            --push-dir results/SPEAR/jeong_elnashai/sensitivity/section_2_concretecm_hinge_midpoint/pushover \
+            --output-dir results/SPEAR/jeong_elnashai/sensitivity/section_2_concretecm_hinge_midpoint/comparison
+      - name: Upload Section 2 sensitivity evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: spear-section-2-concretecm-hinge-midpoint
+          path: results/SPEAR/jeong_elnashai/sensitivity/section_2_concretecm_hinge_midpoint
           if-no-files-found: error
