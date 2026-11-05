@@ -367,6 +367,23 @@ The +Y strength error is therefore accompanied by the wrong damage
 distribution. This is now the principal physical blocker, with C6 strong-axis
 response and the missing ZeusNL concrete tensile law as direct audit targets.
 
+### Section 2 no-diaphragm regularized baseline — 2026-11-05
+
+The prior robust candidate retained a rigid diaphragm that is not part of the
+Section 2 model producing Fig. 2.8. The regularized model was rerun with this
+constraint removed and C3 displacement control. Peak errors are -7.42%,
+-11.80%, -10.41% and -19.05% for +X, -X, +Y and -Y; curve MAE values are
+21.62, 22.02, 36.68 and 72.77 kN. This is generally a much closer complete
+curve-shape result than the rigid-diaphragm candidate, despite conservative
+peak strengths.
+
+Crucially, +Y storey drifts become 1.645%, 1.608% and 0.927%, satisfying the
+published qualitative mechanism that C6 keeps the first two storeys close.
+The implementation default is therefore changed to no diaphragm for Fig. 2.8
+validation. The 18/21 NLTHA completion result obtained with a rigid diaphragm
+is retained as a numerical experiment only and is not transferable to the
+source-correct baseline. Downstream FVD/PBEE remains closed.
+
 
 ## Spatial Fig. 2.7 correction and global mass closure — 2026-10-17
 

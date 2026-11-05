@@ -27,7 +27,9 @@ from reinforcement_source import BAR_DIAMETER_M, COVER_M
 
 OUT = Path("results/SPEAR/jeong_elnashai/pushover")
 OUT.mkdir(parents=True, exist_ok=True)
-RIGID_DIAPHRAGM = True
+# MAE 04-03 Fig. 2.8 belongs to the Section 2 model, where slabs are omitted.
+# A rigid diaphragm is introduced only later in Section 5.2 as a refinement.
+RIGID_DIAPHRAGM = False
 Z = list(STORY_CENTERLINES)
 PENDING_SOURCE_DATA = [
     "dimensioned longitudinal transition location of the Fig 2.3 bent bars",
@@ -383,7 +385,10 @@ def run(case_name="xp100", target_mm=200.0, du_mm=0.5,
     base_nodes = [nt(0, n) for n in names]
     initial_disp = ops.nodeDisp(masters[-1], dof)
     ops.reactions()
-    initial_base_shear = -sum(ops.nodeReaction(n, dof) for n in base_nodes) / 1000.0
+    initial_base_reactions = {name: ops.nodeReaction(nt(0, name), dof) / 1000.0
+                              for name in names}
+    initial_base_shear = -sum(value for value in initial_base_reactions.values())
+    peak_base_shear_state = None
     ok = 0
     retries = 0
     min_step_mm = 0.005
@@ -434,6 +439,23 @@ def run(case_name="xp100", target_mm=200.0, du_mm=0.5,
             if len(deformation) >= 5:
                 rotation = max(abs(value) for value in deformation[1:5])
                 max_plastic_rotations[label] = max(max_plastic_rotations[label], rotation)
+        if (peak_base_shear_state is None or
+                abs(base_shear_kn) > abs(peak_base_shear_state["base_shear_kN"])):
+            base_contributions = {
+                name: -(ops.nodeReaction(nt(0, name), dof) / 1000.0 -
+                        initial_base_reactions[name])
+                for name in names
+            }
+            c6_tag = names.index("C6") + 1
+            peak_base_shear_state = {
+                "top_displacement_mm": disp_mm,
+                "base_shear_kN": base_shear_kn,
+                "base_shear_contribution_kN_by_column": base_contributions,
+                "base_shear_contribution_sum_kN": sum(base_contributions.values()),
+                "c6_story1_basic_force": ops.eleResponse(c6_tag, "basicForce"),
+                "c6_story1_local_force": ops.eleResponse(c6_tag, "localForce"),
+                "floor_displacements_mm": [1000.0 * value for value in floor_displacements],
+            }
 
     output_dir.mkdir(parents=True, exist_ok=True)
     out_csv = output_dir / f"{case_name}.csv"
@@ -446,6 +468,7 @@ def run(case_name="xp100", target_mm=200.0, du_mm=0.5,
         "status": "DIAGNOSTIC_ONLY",
         "case": case_name,
         "member_formulation": member_formulation,
+        "rigid_diaphragm": RIGID_DIAPHRAGM,
         "periods_s": periods_post_gravity,
         "periods_pre_gravity_s": periods_pre_gravity,
         "periods_post_gravity_s": periods_post_gravity,
@@ -477,6 +500,7 @@ def run(case_name="xp100", target_mm=200.0, du_mm=0.5,
             "member_formulation": member_formulation,
             "response": "OpenSees forceBeamColumn plasticDeformation; maximum absolute end rotation components 1:5",
             "peak_abs_story_drift_ratio": peak_story_drifts,
+            "peak_base_shear_state": peak_base_shear_state,
             "members_ranked": ranked_mechanism,
         }
         (output_dir / f"{case_name}_mechanism.json").write_text(json.dumps(mechanism, indent=2) + "\n")

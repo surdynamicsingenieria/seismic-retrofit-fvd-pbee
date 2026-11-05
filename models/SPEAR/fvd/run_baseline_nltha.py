@@ -164,6 +164,7 @@ def run(args) -> int:
         "beam_integration_points": args.beam_integration_points,
         "member_subdivision_factor": args.member_subdivision_factor,
         "member_formulation": args.member_formulation,
+        "rigid_diaphragm": m0.RIGID_DIAPHRAGM,
         "use_pdelta": not args.no_pdelta,
         "record": motion.source,
         "record_dt_s": motion.dt_s,

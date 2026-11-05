@@ -107,6 +107,7 @@ def run(args) -> int:
         "status": "COMPLETE" if ok == 0 and len(rows) == sample_count else "INCOMPLETE",
         "model": "SPEAR-M0-engineering-accepted-2026-10-29",
         "member_formulation": args.member_formulation,
+        "rigid_diaphragm": m0.RIGID_DIAPHRAGM,
         "pair_id": args.pair_id,
         "record_ids": {"X": x_record["record_id"], "Y": y_record["record_id"]},
         "record_dt_s": x_motion.dt_s,

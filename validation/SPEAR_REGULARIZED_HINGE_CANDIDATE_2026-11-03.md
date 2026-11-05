@@ -199,6 +199,40 @@ rotation move it to the second storey (MAE 04-03, Sec. 7.2.2.3 and conclusions).
 The present candidate includes rigid links, so a first-storey X mechanism is
 the correct comparison target.
 
+## Source-correct Section 2 floor model — 2026-11-05
+
+The robust hinge candidate was rerun without rigid-diaphragm constraints.
+This is not an optional calibration: MAE 04-03 Section 2.2 omits the slab and
+Section 5.2 explicitly introduces a rigid diaphragm only in a later refined
+model. Figure 2.8 is a result of the Section 2 model. Roof control and reported
+storey drifts use C3, consistent with Figs. 2.10, 2.17 and 4.3.
+
+| Case | Peak (kN) | Peak error | Curve MAE (kN) | 20 mm secant error | Reached |
+|---|---:|---:|---:|---:|---:|
+| +X | 328.07 | -7.42% | 21.62 | -9.74% | +200 mm |
+| -X | 324.00 | -11.80% | 22.02 | -2.08% | -189 mm |
+| +Y | 351.82 | -10.41% | 36.68 | -9.90% | +123.5 mm |
+| -Y | 367.54 | -19.05% | 72.77 | -11.43% | -200 mm |
+
+The +Y mechanism discrepancy is removed: peak recorded drifts are 1.645%,
+1.608% and 0.927% in storeys 1--3. The first two are nearly equal, as required
+by the report's description of C6 distributing damage in Y. In -Y the values
+are 2.244%, 3.103% and 1.334%, still distributed rather than a basal mechanism.
+Both X cases retain the expected first-storey concentration.
+
+Initial periods remain close to the published modal state at 0.49038, 0.43323,
+0.36199 and 0.17183 s. The excessive post-gravity period shift is retained as
+evidence that nodal gravity application is not equivalent to the original
+Fig. 2.6 beam loading state.
+
+**Baseline decision:** the no-diaphragm formulation supersedes the earlier
+rigid-diaphragm candidate for physical validation against Fig. 2.8. The code
+default is changed accordingly. The earlier 21-pair robustness suite is not a
+validation of this source-correct baseline and must not be used downstream.
+Remaining strength underprediction cannot be corrected by restoring an
+incompatible diaphragm; it remains tied to the unrecovered beam-gravity ledger,
+ZeusNL material equivalence and hinge-integration sensitivity.
+
 Production FVD/PBEE remains closed until these candidate-level checks finish.
 
 ## Technical sources
