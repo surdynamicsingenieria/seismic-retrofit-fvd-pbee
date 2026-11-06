@@ -1,0 +1,67 @@
+{
+  "status": "DIAGNOSTIC_ONLY",
+  "case": "xp100",
+  "member_formulation": "hinge_midpoint",
+  "rigid_diaphragm": false,
+  "periods_s": [
+    0.7124291855523572,
+    0.673701050874227,
+    0.5142710146825428,
+    0.32015571186011466
+  ],
+  "periods_pre_gravity_s": [
+    0.5038118148743214,
+    0.4452749658011484,
+    0.3712157893935158,
+    0.17657561275590092
+  ],
+  "periods_post_gravity_s": [
+    0.7124291855523572,
+    0.673701050874227,
+    0.5142710146825428,
+    0.32015571186011466
+  ],
+  "modal_state_used_for_eq_2_5": "pre-gravity eigenvalue state",
+  "first_mode_shape_used_for_eq_2_5": [
+    0.0009949212248138695,
+    0.00193162237664165,
+    0.0024686248612962587
+  ],
+  "fig_2_7_pattern_rows": [
+    [
+      0.045640449946787086,
+      0.0950842707224731,
+      0.04944382077568601
+    ],
+    [
+      0.08861417539804971,
+      0.18461286541260358,
+      0.09599869001455387
+    ],
+    [
+      0.1057453746551632,
+      0.22030286386492334,
+      0.11455748920976014
+    ]
+  ],
+  "fig_2_7_load_application": "three perimeter frame points per floor, not floor CM",
+  "reached_top_displacement_mm": 200.0,
+  "completed_steps": 400,
+  "requested_steps": 400,
+  "fallback_attempts": 0,
+  "minimum_adaptive_step_mm": 0.005,
+  "initial_gravity_lateral_drift_mm_removed": 0.4400465270231083,
+  "analysis_exit_code": 0,
+  "peak_abs_base_shear_kN": 333.41300704128076,
+  "peak_abs_story_drift_ratio": [
+    0.048992388330875956,
+    0.014788498633394856,
+    0.00544267140650138
+  ],
+  "pending_source_data": [
+    "dimensioned longitudinal transition location of the Fig 2.3 bent bars",
+    "numerical concrete tensile strength used in the original ZeusNL con2 input",
+    "exact Fig 2.6 beam gravity loading-point coordinates and magnitudes"
+  ],
+  "acceptance": "ENGINEERING_BASELINE; exact ZeusNL/Fig. 2.8 reproduction not claimed"
+}

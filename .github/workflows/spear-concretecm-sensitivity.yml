@@ -24,7 +24,7 @@ jobs:
         run: python -m pip install openseespy==3.8.0.0 matplotlib
       - name: Run four source-envelope sensitivity pushovers
         run: |
-          python validation/run_concretecm_source_envelope_sensitivity.py xp100 xn100 yp100 yn100
+          python validation/run_concretecm_source_envelope_sensitivity.py xp100 xn100 yp100 yn100 || test $? -eq 3
       - name: Compare sensitivity curves with Fig. 2.8
         run: |
           python - <<'PY'

@@ -401,6 +401,29 @@ remaining peak failure is concentrated in the compression-favoured -Y branch
 and is consistent with the unresolved `con2` axial-flexural material mapping;
 it is not evidence for rotating C6 or restoring a rigid diaphragm.
 
+### Section 2 continuous compression-envelope sensitivity — 2026-11-05
+
+The source-bounded `ConcreteCM` compression envelope was combined with the
+no-diaphragm `HingeMidpoint` model, retaining zero tension and changing no
+geometry, reinforcement, mass, gravity or load pattern. All four cases reached
++/-200 mm. Pre-gravity periods became 0.50381, 0.44527, 0.37122 and 0.17658 s.
+
+| Case | Peak (kN) | Peak error | Curve MAE (kN) |
+|---|---:|---:|---:|
+| +X | 333.413 | -5.91% | 35.55 |
+| -X | 325.940 | -11.27% | 31.07 |
+| +Y | 358.380 | -8.74% | 24.68 |
+| -Y | 375.144 | -17.37% | 62.22 |
+
+The Y peak difference is 16.76 kN, versus 15.72 kN for the candidate and
+61.32 kN in Fig. 2.8. C6 contributes 102.77 kN at +Y and -146.24 kN at -Y.
+Therefore the published-point continuous compression envelope improves
+convergence and modal periods but does not recover the missing directional
+asymmetry. It is retained as a rejected sensitivity, not a production update.
+The remaining source priorities are the original Fig. 2.3 bent-bar transition,
+the exact gravity load-point ledger controlling C6 axial force, and the full
+ZeusNL `con2` tension/unloading implementation.
+
 
 ## Spatial Fig. 2.7 correction and global mass closure — 2026-10-17
 
