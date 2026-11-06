@@ -92,7 +92,8 @@ def fiber_t_beam(sec, conc, steel, beff, top_bars, bottom_bars, gj):
 
 def build(column_element="dispBeamColumn", column_integration_points=2,
           beam_integration_points=2, use_pdelta=True,
-          member_subdivision_factor=1, member_formulation="source_mesh"):
+          member_subdivision_factor=1, member_formulation="source_mesh",
+          beam_hinge_length_m=None):
     if column_element not in ("dispBeamColumn", "forceBeamColumn"):
         raise ValueError("column_element must be dispBeamColumn or forceBeamColumn")
     if column_integration_points < 2:
@@ -105,6 +106,8 @@ def build(column_element="dispBeamColumn", column_integration_points=2,
         raise ValueError("member_formulation must be source_mesh, hinge_midpoint or hinge_radau_two")
     if member_formulation != "source_mesh" and member_subdivision_factor != 1:
         raise ValueError("member subdivision applies only to source_mesh")
+    if beam_hinge_length_m is not None and beam_hinge_length_m <= 0:
+        raise ValueError("beam_hinge_length_m must be positive")
     ops.wipe()
     ops.model("basic", "-ndm", 3, "-ndf", 6)
     fc = 25e6
@@ -247,7 +250,8 @@ def build(column_element="dispBeamColumn", column_integration_points=2,
                                off_i * ux, off_i * uy, 0,
                                -off_j * ux, -off_j * uy, 0)
                 integ = 900000 + k * 100 + j
-                lp = plastic_hinge_length(clear_length)
+                lp = (plastic_hinge_length(clear_length) if beam_hinge_length_m is None
+                      else beam_hinge_length_m)
                 sec_end = 3000 + 2 * j
                 sec_mid = sec_end + 1
                 plastic_hinge_integration(integ, sec_end, lp, sec_end, lp, sec_mid)
@@ -343,8 +347,10 @@ def apply_pushover_loads(case_name, masters, nt, periods, phi):
 
 
 def run(case_name="xp100", target_mm=200.0, du_mm=0.5,
-        member_formulation="source_mesh", output_dir=OUT):
-    names, nt, masters = build(member_formulation=member_formulation)
+        member_formulation="source_mesh", output_dir=OUT,
+        beam_hinge_length_m=None):
+    names, nt, masters = build(member_formulation=member_formulation,
+                               beam_hinge_length_m=beam_hinge_length_m)
     dof = 1 if case_name[0] == "x" else 2
     periods_pre_gravity, phi_pre_gravity = first_mode_for_direction(masters, dof)
     if gravity(names, nt) != 0:
@@ -468,6 +474,7 @@ def run(case_name="xp100", target_mm=200.0, du_mm=0.5,
         "status": "DIAGNOSTIC_ONLY",
         "case": case_name,
         "member_formulation": member_formulation,
+        "beam_hinge_length_m": beam_hinge_length_m,
         "rigid_diaphragm": RIGID_DIAPHRAGM,
         "periods_s": periods_post_gravity,
         "periods_pre_gravity_s": periods_pre_gravity,

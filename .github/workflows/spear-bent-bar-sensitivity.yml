@@ -1,0 +1,35 @@
+name: SPEAR Section 2 bent-bar sensitivity
+
+on:
+  push:
+    branches: [spear-jeong-elnashai-m0]
+    paths:
+      - '.github/workflows/spear-bent-bar-sensitivity.yml'
+      - 'validation/run_section_2_bent_bar_45deg_sensitivity.py'
+      - 'models/SPEAR/jeong_elnashai/spear_m0_jeong_elnashai_nonlinear.py'
+  workflow_dispatch:
+
+jobs:
+  bent-bar-45deg:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      MPICH_INTERFACE_HOSTNAME: 127.0.0.1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install openseespy==3.8.0.0 matplotlib
+      - name: Run 45-degree transition sensitivity
+        run: python validation/run_section_2_bent_bar_45deg_sensitivity.py || test $? -eq 3
+      - name: Compare with Fig. 2.8
+        run: |
+          python validation/compare_pushover_to_fig_2_8.py \
+            --push-dir results/SPEAR/jeong_elnashai/sensitivity/section_2_bent_bar_45deg/pushover \
+            --output-dir results/SPEAR/jeong_elnashai/sensitivity/section_2_bent_bar_45deg/comparison
+      - uses: actions/upload-artifact@v4
+        with:
+          name: spear-section-2-bent-bar-45deg
+          path: results/SPEAR/jeong_elnashai/sensitivity/section_2_bent_bar_45deg
+          if-no-files-found: error
