@@ -1,0 +1,2766 @@
+{
+  "suite_label": "FEMA-P695-partial-21",
+  "manifest": "models/SPEAR/fvd/manifests/fema_p695_peer_partial_21.json",
+  "damping_ratio": 0.05,
+  "member_formulation": "hinge_midpoint",
+  "requested_pairs": 21,
+  "complete_pairs": 18,
+  "incomplete_pairs": [
+    "RSN953",
+    "RSN1158",
+    "RSN1244"
+  ],
+  "results": [
+    {
+      "status": "COMPLETE",
+      "model": "SPEAR-M0-section-2-engineering-accepted-2026-11-05",
+      "member_formulation": "hinge_midpoint",
+      "rigid_diaphragm": false,
+      "pair_id": "RSN68",
+      "record_ids": {
+        "X": "RSN68-X",
+        "Y": "RSN68-Y"
+      },
+      "record_dt_s": 0.01,
+      "component_sample_counts": {
+        "X": 7945,
+        "Y": 7945
+      },
+      "zero_padding_samples": {
+        "X": 0,
+        "Y": 0
+      },
+      "pga_m_s2": {
+        "X": 2.204184822595,
+        "Y": 1.91159263253
+      },
+      "damping_ratio": 0.05,
+      "damping_modes": [
+        1,
+        3
+      ],
+      "rayleigh_alpha_m": 0.737143327993066,
+      "rayleigh_beta_k_current": 0.003314531873348644,
+      "completed_steps": 7944,
+      "requested_steps": 7944,
+      "analysis_exit_code": 0,
+      "fallback_counts": {
+        "KrylovNewton": 0,
+        "NewtonLineSearch": 0,
+        "substep-1/2": 0,
+        "substep-1/4": 0,
+        "substep-1/8": 0,
+        "substep-1/16": 0
+      },
+      "peak_abs_roof_displacement_m": {
+        "X": 0.05281856142634221,
+        "Y": 0.025849677224034494
+      },
+      "peak_abs_story_drift_ratio": {
+        "X": [
+          0.007686902537006858,
+          0.007342781709461525,
+          0.005249518373665674
+        ],
+        "Y": [
+          0.002207574018390507,
+          0.0035813699863627133,
+          0.003381161023344171
+        ]
+      },
+      "peak_abs_floor_acceleration_m_s2": {
+        "X": [
+          2.845420239333272,
+          3.2869917488437226,
+          3.8978893065124742
+        ],
+        "Y": [
+          2.2018714899697063,
+          1.7317419939845005,
+          1.9399625458919574
+        ]
+      },
+      "peak_abs_base_shear_kN": {
+        "X": 317.14597819061555,
+        "Y": 201.84933248692923
+      },
+      "process_return_code": 0,
+      "log": "RSN68.log"
+    },
+    {
+      "status": "COMPLETE",
+      "model": "SPEAR-M0-section-2-engineering-accepted-2026-11-05",
+      "member_formulation": "hinge_midpoint",
+      "rigid_diaphragm": false,
+      "pair_id": "RSN125",
+      "record_ids": {
+        "X": "RSN125-X",
+        "Y": "RSN125-Y"
+      },
+      "record_dt_s": 0.005,
+      "component_sample_counts": {
+        "X": 7277,
+        "Y": 7279
+      },
+      "zero_padding_samples": {
+        "X": 2,
+        "Y": 0
+      },
+      "pga_m_s2": {
+        "X": 3.5022194945499994,
+        "Y": 3.0902764513250003
+      },
+      "damping_ratio": 0.05,
+      "damping_modes": [
+        1,
+        3
+      ],
+      "rayleigh_alpha_m": 0.737143327993066,
+      "rayleigh_beta_k_current": 0.003314531873348644,
+      "completed_steps": 7278,
+      "requested_steps": 7278,
+      "analysis_exit_code": 0,
+      "fallback_counts": {
+        "KrylovNewton": 0,
+        "NewtonLineSearch": 0,
+        "substep-1/2": 0,
+        "substep-1/4": 0,
+        "substep-1/8": 0,
+        "substep-1/16": 0
+      },
+      "peak_abs_roof_displacement_m": {
+        "X": 0.053553915653161664,
+        "Y": 0.07945315055360475
+      },
+      "peak_abs_story_drift_ratio": {
+        "X": [
+          0.009111662858991796,
+          0.007427939333968767,
+          0.008791776174721568
+        ],
+        "Y": [
+          0.007529733631599047,
+          0.010845768588452242,
+          0.008891820980445534
+        ]
+      },
+      "peak_abs_floor_acceleration_m_s2": {
+        "X": [
+          4.6945477503820126,
+          3.7778218150739544,
+          3.5542840721752023
+        ],
+        "Y": [
+          4.946527785292834,
+          4.257542542596728,
+          3.8257821789738182
+        ]
+      },
+      "peak_abs_base_shear_kN": {
+        "X": 273.1642263671324,
+        "Y": 279.3024667565387
+      },
+      "process_return_code": 0,
+      "log": "RSN125.log"
+    },
+    {
+      "status": "COMPLETE",
+      "model": "SPEAR-M0-section-2-engineering-accepted-2026-11-05",
+      "member_formulation": "hinge_midpoint",
+      "rigid_diaphragm": false,
+      "pair_id": "RSN169",
+      "record_ids": {
+        "X": "RSN169-X",
+        "Y": "RSN169-Y"
+      },
+      "record_dt_s": 0.01,
+      "component_sample_counts": {
+        "X": 10015,
+        "Y": 10015
+      },
+      "zero_padding_samples": {
+        "X": 0,
+        "Y": 0
+      },
+      "pga_m_s2": {
+        "X": 2.3113813137449997,
+        "Y": 3.42937962101
+      },
+      "damping_ratio": 0.05,
+      "damping_modes": [
+        1,
+        3
+      ],
+      "rayleigh_alpha_m": 0.737143327993066,
+      "rayleigh_beta_k_current": 0.003314531873348644,
+      "completed_steps": 10014,
+      "requested_steps": 10014,
+      "analysis_exit_code": 0,
+      "fallback_counts": {
+        "KrylovNewton": 1,
+        "NewtonLineSearch": 0,
+        "substep-1/2": 0,
+        "substep-1/4": 0,
+        "substep-1/8": 0,
+        "substep-1/16": 0
+      },
+      "peak_abs_roof_displacement_m": {
+        "X": 0.060636306610263556,
+        "Y": 0.10266919659129214
+      },
+      "peak_abs_story_drift_ratio": {
+        "X": [
+          0.009275422210281329,
+          0.009267782645787773,
+          0.006484498736826221
+        ],
+        "Y": [
+          0.01460245084504526,
+          0.014867794579986382,
+          0.008150461328234567
+        ]
+      },
+      "peak_abs_floor_acceleration_m_s2": {
+        "X": [
+          16.92689766095104,
+          19.56608657708819,
+          4.321535700605072
+        ],
+        "Y": [
+          12.602838927888794,
+          9.865611172387393,
+          7.065558696071014
+        ]
+      },
+      "peak_abs_base_shear_kN": {
+        "X": 276.8334361719012,
+        "Y": 385.3535248219965
+      },
+      "process_return_code": 0,
+      "log": "RSN169.log"
+    },
+    {
+      "status": "COMPLETE",
+      "model": "SPEAR-M0-section-2-engineering-accepted-2026-11-05",
+      "member_formulation": "hinge_midpoint",
+      "rigid_diaphragm": false,
+      "pair_id": "RSN174",
+      "record_ids": {
+        "X": "RSN174-X",
+        "Y": "RSN174-Y"
+      },
+      "record_dt_s": 0.005,
+      "component_sample_counts": {
+        "X": 7815,
+        "Y": 7893
+      },
+      "zero_padding_samples": {
+        "X": 78,
+        "Y": 0
+      },
+      "pga_m_s2": {
+        "X": 3.5971723831749998,
+        "Y": 3.7202507439999994
+      },
+      "damping_ratio": 0.05,
+      "damping_modes": [
+        1,
+        3
+      ],
+      "rayleigh_alpha_m": 0.737143327993066,
+      "rayleigh_beta_k_current": 0.003314531873348644,
+      "completed_steps": 7892,
+      "requested_steps": 7892,
+      "analysis_exit_code": 0,
+      "fallback_counts": {
+        "KrylovNewton": 0,
+        "NewtonLineSearch": 0,
+        "substep-1/2": 0,
+        "substep-1/4": 0,
+        "substep-1/8": 0,
+        "substep-1/16": 0
+      },
+      "peak_abs_roof_displacement_m": {
+        "X": 0.07540057505796154,
+        "Y": 0.0703608423573234
+      },
+      "peak_abs_story_drift_ratio": {
+        "X": [
+          0.014210717326875425,
+          0.008468547741317318,
+          0.00717661169438772
+        ],
+        "Y": [
+          0.007407143967718594,
+          0.0098433370851414,
+          0.007353884197339175
+        ]
+      },
+      "peak_abs_floor_acceleration_m_s2": {
+        "X": [
+          3.5544686858481547,
+          4.241072722381432,
+          5.64681216070807
+        ],
+        "Y": [
+          4.693885601669045,
+          3.770314859912329,
+          4.286803850472039
+        ]
+      },
+      "peak_abs_base_shear_kN": {
+        "X": 312.33018848331085,
+        "Y": 349.91433501207996
+      },
+      "process_return_code": 0,
+      "log": "RSN174.log"
+    },
+    {
+      "status": "COMPLETE",
+      "model": "SPEAR-M0-section-2-engineering-accepted-2026-11-05",
+      "member_formulation": "hinge_midpoint",
+      "rigid_diaphragm": false,
+      "pair_id": "RSN721",
+      "record_ids": {
+        "X": "RSN721-X",
+        "Y": "RSN721-Y"
+      },
+      "record_dt_s": 0.005,
+      "component_sample_counts": {
+        "X": 11999,
+        "Y": 11999
+      },
+      "zero_padding_samples": {
+        "X": 0,
+        "Y": 0
+      },
+      "pga_m_s2": {
+        "X": 3.50353554698,
+        "Y": 2.54448440358
+      },
+      "damping_ratio": 0.05,
+      "damping_modes": [
+        1,
+        3
+      ],
+      "rayleigh_alpha_m": 0.737143327993066,
+      "rayleigh_beta_k_current": 0.003314531873348644,
+      "completed_steps": 11998,
+      "requested_steps": 11998,
+      "analysis_exit_code": 0,
+      "fallback_counts": {
+        "KrylovNewton": 0,
+        "NewtonLineSearch": 0,
+        "substep-1/2": 0,
+        "substep-1/4": 0,
+        "substep-1/8": 0,
+        "substep-1/16": 0
+      },
+      "peak_abs_roof_displacement_m": {
+        "X": 0.1181218934051495,
+        "Y": 0.04451908190940915
+      },
+      "peak_abs_story_drift_ratio": {
+        "X": [
+          0.018485743912886723,
+          0.016025345692403554,
+          0.005463540892390341
+        ],
+        "Y": [
+          0.005952208799407783,
+          0.005927001160737092,
+          0.0039283189929356045
+        ]
+      },
+      "peak_abs_floor_acceleration_m_s2": {
+        "X": [
+          2.0594769979881526,
+          2.584400777918002,
+          2.7149371199693295
+        ],
+        "Y": [
+          1.8079390542348586,
+          1.7898935060569747,
+          2.440647613741665
+        ]
+      },
+      "peak_abs_base_shear_kN": {
+        "X": 326.6019960177641,
+        "Y": 272.0585040806316
+      },
+      "process_return_code": 0,
+      "log": "RSN721.log"
+    },
+    {
+      "status": "COMPLETE",
+      "model": "SPEAR-M0-section-2-engineering-accepted-2026-11-05",
+      "member_formulation": "hinge_midpoint",
+      "rigid_diaphragm": false,
+      "pair_id": "RSN725",
+      "record_ids": {
+        "X": "RSN725-X",
+        "Y": "RSN725-Y"
+      },
+      "record_dt_s": 0.01,
+      "component_sample_counts": {
+        "X": 2230,
+        "Y": 2230
+      },
+      "zero_padding_samples": {
+        "X": 0,
+        "Y": 0
+      },
+      "pga_m_s2": {
+        "X": 4.657989094954999,
+        "Y": 2.806456309685
+      },
+      "damping_ratio": 0.05,
+      "damping_modes": [
+        1,
+        3
+      ],
+      "rayleigh_alpha_m": 0.737143327993066,
+      "rayleigh_beta_k_current": 0.003314531873348644,
+      "completed_steps": 2229,
+      "requested_steps": 2229,
+      "analysis_exit_code": 0,
+      "fallback_counts": {
+        "KrylovNewton": 0,
+        "NewtonLineSearch": 0,
+        "substep-1/2": 0,
+        "substep-1/4": 0,
+        "substep-1/8": 0,
+        "substep-1/16": 0
+      },
+      "peak_abs_roof_displacement_m": {
+        "X": 0.07499719562022512,
+        "Y": 0.06825435705595527
+      },
+      "peak_abs_story_drift_ratio": {
+        "X": [
+          0.009531946956047276,
+          0.010982745656168769,
+          0.008243919497830083
+        ],
+        "Y": [
+          0.008176741180412504,
+          0.009870474062998302,
+          0.008646764836361778
+        ]
+      },
+      "peak_abs_floor_acceleration_m_s2": {
+        "X": [
+          3.625385463427101,
+          3.150169690074063,
+          4.297027085650288
+        ],
+        "Y": [
+          4.419134641179393,
+          4.010847110435749,
+          3.722177231003873
+        ]
+      },
+      "peak_abs_base_shear_kN": {
+        "X": 299.2877807213219,
+        "Y": 344.1492949416726
+      },
+      "process_return_code": 0,
+      "log": "RSN725.log"
+    },
+    {
+      "status": "COMPLETE",
+      "model": "SPEAR-M0-section-2-engineering-accepted-2026-11-05",
+      "member_formulation": "hinge_midpoint",
+      "rigid_diaphragm": false,
+      "pair_id": "RSN752",
+      "record_ids": {
+        "X": "RSN752-X",
+        "Y": "RSN752-Y"
+      },
+      "record_dt_s": 0.005,
+      "component_sample_counts": {
+        "X": 7999,
+        "Y": 7999
+      },
+      "zero_padding_samples": {
+        "X": 0,
+        "Y": 0
+      },
+      "pga_m_s2": {
+        "X": 5.0124788984899995,
+        "Y": 4.3012359166
+      },
+      "damping_ratio": 0.05,
+      "damping_modes": [
+        1,
+        3
+      ],
+      "rayleigh_alpha_m": 0.737143327993066,
+      "rayleigh_beta_k_current": 0.003314531873348644,
+      "completed_steps": 7998,
+      "requested_steps": 7998,
+      "analysis_exit_code": 0,
+      "fallback_counts": {
+        "KrylovNewton": 0,
+        "NewtonLineSearch": 0,
+        "substep-1/2": 0,
+        "substep-1/4": 0,
+        "substep-1/8": 0,
+        "substep-1/16": 0
+      },
+      "peak_abs_roof_displacement_m": {
+        "X": 0.1526472247581199,
+        "Y": 0.0806892485596797
+      },
+      "peak_abs_story_drift_ratio": {
+        "X": [
+          0.026512087995319563,
+          0.022425449960872455,
+          0.01439516994455172
+        ],
+        "Y": [
+          0.009576574758692325,
+          0.010070627163793254,
+          0.008003496926266798
+        ]
+      },
+      "peak_abs_floor_acceleration_m_s2": {
+        "X": [
+          7.042825673464099,
+          6.057669821556742,
+          4.772374714156374
+        ],
+        "Y": [
+          4.1061074256386885,
+          3.197887540890022,
+          4.075347160229031
+        ]
+      },
+      "peak_abs_base_shear_kN": {
+        "X": 310.33942777229873,
+        "Y": 263.66090659201876
+      },
+      "process_return_code": 0,
+      "log": "RSN752.log"
+    },
+    {
+      "status": "COMPLETE",
+      "model": "SPEAR-M0-section-2-engineering-accepted-2026-11-05",
+      "member_formulation": "hinge_midpoint",
+      "rigid_diaphragm": false,
+      "pair_id": "RSN767",
+      "record_ids": {
+        "X": "RSN767-X",
+        "Y": "RSN767-Y"
+      },
+      "record_dt_s": 0.005,
+      "component_sample_counts": {
+        "X": 7997,
+        "Y": 7998
+      },
+      "zero_padding_samples": {
+        "X": 1,
+        "Y": 0
+      },
+      "pga_m_s2": {
+        "X": 5.483128471274999,
+        "Y": 3.6110654642299997
+      },
+      "damping_ratio": 0.05,
+      "damping_modes": [
+        1,
+        3
+      ],
+      "rayleigh_alpha_m": 0.737143327993066,
+      "rayleigh_beta_k_current": 0.003314531873348644,
+      "completed_steps": 7997,
+      "requested_steps": 7997,
+      "analysis_exit_code": 0,
+      "fallback_counts": {
+        "KrylovNewton": 0,
+        "NewtonLineSearch": 0,
+        "substep-1/2": 0,
+        "substep-1/4": 0,
+        "substep-1/8": 0,
+        "substep-1/16": 0
+      },
+      "peak_abs_roof_displacement_m": {
+        "X": 0.07926974544564099,
+        "Y": 0.1277201715922736
+      },
+      "peak_abs_story_drift_ratio": {
+        "X": [
+          0.009274005236520293,
+          0.009129318807686644,
+          0.009045528251955212
+        ],
+        "Y": [
+          0.018930211289605807,
+          0.016171739933886722,
+          0.008825752180757809
+        ]
+      },
+      "peak_abs_floor_acceleration_m_s2": {
+        "X": [
+          5.374491504421911,
+          3.218190588563484,
+          4.634480027059179
+        ],
+        "Y": [
+          5.519361782683652,
+          2.8234558959727454,
+          3.026873120035169
+        ]
+      },
+      "peak_abs_base_shear_kN": {
+        "X": 226.82261877388868,
+        "Y": 347.0713083180571
+      },
+      "process_return_code": 0,
+      "log": "RSN767.log"
+    },
+    {
+      "status": "COMPLETE",
+      "model": "SPEAR-M0-section-2-engineering-accepted-2026-11-05",
+      "member_formulation": "hinge_midpoint",
+      "rigid_diaphragm": false,
+      "pair_id": "RSN848",
+      "record_ids": {
+        "X": "RSN848-X",
+        "Y": "RSN848-Y"
+      },
+      "record_dt_s": 0.0039,
+      "component_sample_counts": {
+        "X": 7180,
+        "Y": 7180
+      },
+      "zero_padding_samples": {
+        "X": 0,
+        "Y": 0
+      },
+      "pga_m_s2": {
+        "X": 2.7819661626399994,
+        "Y": 4.09132261202
+      },
+      "damping_ratio": 0.05,
+      "damping_modes": [
+        1,
+        3
+      ],
+      "rayleigh_alpha_m": 0.737143327993066,
+      "rayleigh_beta_k_current": 0.003314531873348644,
+      "completed_steps": 7179,
+      "requested_steps": 7179,
+      "analysis_exit_code": 0,
+      "fallback_counts": {
+        "KrylovNewton": 0,
+        "NewtonLineSearch": 0,
+        "substep-1/2": 0,
+        "substep-1/4": 0,
+        "substep-1/8": 0,
+        "substep-1/16": 0
+      },
+      "peak_abs_roof_displacement_m": {
+        "X": 0.05814592858815907,
+        "Y": 0.12227026616841205
+      },
+      "peak_abs_story_drift_ratio": {
+        "X": [
+          0.0058671176534368236,
+          0.009240042889621936,
+          0.006919182479118174
+        ],
+        "Y": [
+          0.010874674215582107,
+          0.016285833792634846,
+          0.015445856139311528
+        ]
+      },
+      "peak_abs_floor_acceleration_m_s2": {
+        "X": [
+          4.091605800322196,
+          6.214408152760994,
+          3.6070458258710185
+        ],
+        "Y": [
+          4.442753047640037,
+          4.465522700302129,
+          3.931633926306272
+        ]
+      },
+      "peak_abs_base_shear_kN": {
+        "X": 235.30330152173326,
+        "Y": 342.3013322122032
+      },
+      "process_return_code": 0,
+      "log": "RSN848.log"
+    },
+    {
+      "status": "COMPLETE",
+      "model": "SPEAR-M0-section-2-engineering-accepted-2026-11-05",
+      "member_formulation": "hinge_midpoint",
+      "rigid_diaphragm": false,
+      "pair_id": "RSN900",
+      "record_ids": {
+        "X": "RSN900-X",
+        "Y": "RSN900-Y"
+      },
+      "record_dt_s": 0.02,
+      "component_sample_counts": {
+        "X": 2200,
+        "Y": 2200
+      },
+      "zero_padding_samples": {
+        "X": 0,
+        "Y": 0
+      },
+      "pga_m_s2": {
+        "X": 2.397942651965,
+        "Y": 1.4882169967349999
+      },
+      "damping_ratio": 0.05,
+      "damping_modes": [
+        1,
+        3
+      ],
+      "rayleigh_alpha_m": 0.737143327993066,
+      "rayleigh_beta_k_current": 0.003314531873348644,
+      "completed_steps": 2199,
+      "requested_steps": 2199,
+      "analysis_exit_code": 0,
+      "fallback_counts": {
+        "KrylovNewton": 0,
+        "NewtonLineSearch": 1,
+        "substep-1/2": 0,
+        "substep-1/4": 0,
+        "substep-1/8": 0,
+        "substep-1/16": 0
+      },
+      "peak_abs_roof_displacement_m": {
+        "X": 0.11444754473674656,
+        "Y": 0.0636844681502924
+      },
+      "peak_abs_story_drift_ratio": {
+        "X": [
+          0.025370356321513503,
+          0.013880677018090754,
+          0.006398733242654002
+        ],
+        "Y": [
+          0.0072954372516089725,
+          0.009334345491081345,
+          0.005844186393612905
+        ]
+      },
+      "peak_abs_floor_acceleration_m_s2": {
+        "X": [
+          2.449791587604689,
+          2.322893686487522,
+          2.88520562536371
+        ],
+        "Y": [
+          2.2098200941694777,
+          2.0940502200995335,
+          2.677178046048768
+        ]
+      },
+      "peak_abs_base_shear_kN": {
+        "X": 316.94399858170715,
+        "Y": 296.580045380072
+      },
+      "process_return_code": 0,
+      "log": "RSN900.log"
+    },
+    {
+      "status": "INCOMPLETE",
+      "model": "SPEAR-M0-section-2-engineering-accepted-2026-11-05",
+      "member_formulation": "hinge_midpoint",
+      "rigid_diaphragm": false,
+      "pair_id": "RSN953",
+      "record_ids": {
+        "X": "RSN953-X",
+        "Y": "RSN953-Y"
+      },
+      "record_dt_s": 0.01,
+      "component_sample_counts": {
+        "X": 2999,
+        "Y": 2999
+      },
+      "zero_padding_samples": {
+        "X": 0,
+        "Y": 0
+      },
+      "pga_m_s2": {
+        "X": 4.34840001911,
+        "Y": 4.7852960832599996
+      },
+      "damping_ratio": 0.05,
+      "damping_modes": [
+        1,
+        3
+      ],
+      "rayleigh_alpha_m": 0.737143327993066,
+      "rayleigh_beta_k_current": 0.003314531873348644,
+      "completed_steps": 1298,
+      "requested_steps": 2998,
+      "analysis_exit_code": -3,
+      "fallback_counts": {
+        "KrylovNewton": 5,
+        "NewtonLineSearch": 0,
+        "substep-1/2": 0,
+        "substep-1/4": 0,
+        "substep-1/8": 0,
+        "substep-1/16": 0
+      },
+      "peak_abs_roof_displacement_m": {
+        "X": 1.2525957374954766,
+        "Y": 0.5598465279753807
+      },
+      "peak_abs_story_drift_ratio": {
+        "X": [
+          0.46556572498879417,
+          0.04506002989981036,
+          0.014880071235719708
+        ],
+        "Y": [
+          0.18153963822966288,
+          0.02615274547589956,
+          0.01447625744964745
+        ]
+      },
+      "peak_abs_floor_acceleration_m_s2": {
+        "X": [
+          7.313112407787795,
+          3.5218929832162775,
+          5.239430608085764
+        ],
+        "Y": [
+          5.061975165430676,
+          4.888260485435804,
+          4.724074044887043
+        ]
+      },
+      "peak_abs_base_shear_kN": {
+        "X": 769.5911510861672,
+        "Y": 374.23480147741776
+      },
+      "failure_time_s": 12.979999999999768,
+      "failure_diagnostics": {
+        "test_norms": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "largest_basic_deformations": [
+          {
+            "element": 9,
+            "max_abs": 0.5675843155936332,
+            "values": [
+              -0.0691778096936186,
+              0.23200867188151683,
+              0.23661405157802498,
+              0.5675843155936332,
+              0.5608915483866092,
+              -0.0008695526604034289
+            ]
+          },
+          {
+            "element": 8,
+            "max_abs": 0.5658566825908653,
+            "values": [
+              -0.04710377501055726,
+              0.22017164116841437,
+              0.2239119179925666,
+              0.5658566825908653,
+              0.5609580877324322,
+              -0.00039770521017250954
+            ]
+          },
+          {
+            "element": 7,
+            "max_abs": 0.5646222254119774,
+            "values": [
+              -0.029053101857970567,
+              0.22409187952108864,
+              0.22775426920945027,
+              0.5646222254119774,
+              0.5554781498031053,
+              -0.000754010997809638
+            ]
+          },
+          {
+            "element": 3,
+            "max_abs": 0.5614696959832268,
+            "values": [
+              -0.012957253317151689,
+              0.2232176518610634,
+              0.20037171508962867,
+              0.5614696959832268,
+              0.5556624959049276,
+              0.0008935197029039399
+            ]
+          },
+          {
+            "element": 6,
+            "max_abs": 0.5608039248788206,
+            "values": [
+              -0.06816694190929336,
+              0.22830263211278432,
+              0.22322720324610154,
+              0.5608039248788206,
+              0.5566745353970044,
+              0.0001528932770132144
+            ]
+          },
+          {
+            "element": 2,
+            "max_abs": 0.5594085310726404,
+            "values": [
+              0.022266434623640814,
+              0.20746201662929506,
+              0.1833742874692657,
+              0.5594085310726404,
+              0.5547408995967379,
+              -0.00016088718430381865
+            ]
+          },
+          {
+            "element": 5,
+            "max_abs": 0.5581935914689401,
+            "values": [
+              -0.048280798787583665,
+              0.21753266562100115,
+              0.2140552922252855,
+              0.5581935914689401,
+              0.553139636764339,
+              -0.00019800791270182226
+            ]
+          },
+          {
+            "element": 4,
+            "max_abs": 0.5574572027229513,
+            "values": [
+              -0.029620447536727743,
+              0.22241840565465695,
+              0.21910505799009103,
+              0.5574572027229513,
+              0.5491497623849981,
+              -0.0007860257747361338
+            ]
+          },
+          {
+            "element": 1,
+            "max_abs": 0.5567004470770822,
+            "values": [
+              0.025004893267025687,
+              0.21662522588309585,
+              0.19248308321225743,
+              0.5567004470770822,
+              0.5519032719497227,
+              -0.0008945213550019742
+            ]
+          },
+          {
+            "element": 17,
+            "max_abs": 0.07704291122812999,
+            "values": [
+              -0.012275604353262602,
+              0.0011561074024571028,
+              -0.006015613207585308,
+              -0.06906961254942111,
+              -0.07704291122812999,
+              0.00021711390744082507
+            ]
+          },
+          {
+            "element": 16,
+            "max_abs": 0.07308461031440168,
+            "values": [
+              0.007783327152104443,
+              -0.002581162646706307,
+              -0.007307868363130432,
+              -0.07308461031440168,
+              -0.07120273895465304,
+              0.0002841942369139528
+            ]
+          },
+          {
+            "element": 18,
+            "max_abs": 0.07024664291371154,
+            "values": [
+              -0.06205904839998223,
+              -0.01147748203461366,
+              -0.022354836935938552,
+              -0.07024664291371154,
+              -0.06310096915642201,
+              0.00023935806002494862
+            ]
+          }
+        ],
+        "largest_section_deformations": [
+          {
+            "element": 17,
+            "section": 1,
+            "max_abs": 12.319161890437668,
+            "values": [
+              -0.406031369007697,
+              0.31095513540409153,
+              12.319161890437668,
+              8.684556297633001e-05
+            ]
+          },
+          {
+            "element": 17,
+            "section": 2,
+            "max_abs": 11.242444611321584,
+            "values": [
+              -0.42010771108992734,
+              11.242444611321584,
+              8.32857615312488,
+              8.684556297633001e-05
+            ]
+          },
+          {
+            "element": 18,
+            "section": 1,
+            "max_abs": 2.31002026508531,
+            "values": [
+              0.12132599288934218,
+              0.4870291251924493,
+              2.31002026508531,
+              9.574322400997944e-05
+            ]
+          },
+          {
+            "element": 9,
+            "section": 1,
+            "max_abs": 2.0213243855238345,
+            "values": [
+              -0.11022486384223885,
+              -0.8295746025305383,
+              -2.0213243855238345,
+              -0.0003478210641613716
+            ]
+          },
+          {
+            "element": 8,
+            "section": 1,
+            "max_abs": 2.016984550335772,
+            "values": [
+              -0.07409892954426439,
+              -0.7869275762959622,
+              -2.016984550335772,
+              -0.00015908208406900383
+            ]
+          },
+          {
+            "element": 7,
+            "section": 1,
+            "max_abs": 2.011826132762733,
+            "values": [
+              -0.043592066610851056,
+              -0.8009394431989549,
+              -2.011826132762733,
+              -0.00030160439912385514
+            ]
+          },
+          {
+            "element": 6,
+            "section": 1,
+            "max_abs": 2.0003942234615546,
+            "values": [
+              -0.10807134571293965,
+              -0.8138505701106663,
+              -2.0003942234615546,
+              6.115731080528576e-05
+            ]
+          },
+          {
+            "element": 3,
+            "section": 1,
+            "max_abs": 1.9990253239109301,
+            "values": [
+              -0.022257023488375497,
+              -0.7915829223459039,
+              -1.9990253239109301,
+              0.00035740788116157596
+            ]
+          },
+          {
+            "element": 2,
+            "section": 1,
+            "max_abs": 1.994047485951407,
+            "values": [
+              0.03371364811481601,
+              -0.7344674490521103,
+              -1.994047485951407,
+              -6.435487372152745e-05
+            ]
+          },
+          {
+            "element": 5,
+            "section": 1,
+            "max_abs": 1.9893210452139014,
+            "values": [
+              -0.07588909483895814,
+              -0.7758041186683596,
+              -1.9893210452139014,
+              -7.92031650807289e-05
+            ]
+          },
+          {
+            "element": 4,
+            "section": 1,
+            "max_abs": 1.9853040861268787,
+            "values": [
+              -0.04630729282180733,
+              -0.7933757472998066,
+              -1.9853040861268787,
+              -0.0003144103098944535
+            ]
+          },
+          {
+            "element": 1,
+            "section": 1,
+            "max_abs": 1.9802133425672994,
+            "values": [
+              0.038657745809355805,
+              -0.7678521235907045,
+              -1.9802133425672994,
+              -0.00035780854200078967
+            ]
+          }
+        ]
+      },
+      "process_return_code": 3,
+      "log": "RSN953.log"
+    },
+    {
+      "status": "COMPLETE",
+      "model": "SPEAR-M0-section-2-engineering-accepted-2026-11-05",
+      "member_formulation": "hinge_midpoint",
+      "rigid_diaphragm": false,
+      "pair_id": "RSN960",
+      "record_ids": {
+        "X": "RSN960-X",
+        "Y": "RSN960-Y"
+      },
+      "record_dt_s": 0.01,
+      "component_sample_counts": {
+        "X": 1999,
+        "Y": 1999
+      },
+      "zero_padding_samples": {
+        "X": 0,
+        "Y": 0
+      },
+      "pga_m_s2": {
+        "X": 3.958039451205,
+        "Y": 4.625070132235
+      },
+      "damping_ratio": 0.05,
+      "damping_modes": [
+        1,
+        3
+      ],
+      "rayleigh_alpha_m": 0.737143327993066,
+      "rayleigh_beta_k_current": 0.003314531873348644,
+      "completed_steps": 1998,
+      "requested_steps": 1998,
+      "analysis_exit_code": 0,
+      "fallback_counts": {
+        "KrylovNewton": 0,
+        "NewtonLineSearch": 0,
+        "substep-1/2": 0,
+        "substep-1/4": 0,
+        "substep-1/8": 0,
+        "substep-1/16": 0
+      },
+      "peak_abs_roof_displacement_m": {
+        "X": 0.13362819276654864,
+        "Y": 0.12879444078926905
+      },
+      "peak_abs_story_drift_ratio": {
+        "X": [
+          0.01963028975834878,
+          0.01965807656797808,
+          0.010139873266778086
+        ],
+        "Y": [
+          0.016845509950123197,
+          0.016584046724024294,
+          0.011797019307163509
+        ]
+      },
+      "peak_abs_floor_acceleration_m_s2": {
+        "X": [
+          4.782198353192108,
+          4.093777716397499,
+          4.836320843523866
+        ],
+        "Y": [
+          3.3983260904020254,
+          3.724575047617928,
+          3.7519615639087993
+        ]
+      },
+      "peak_abs_base_shear_kN": {
+        "X": 283.58054596197854,
+        "Y": 299.68300036506565
+      },
+      "process_return_code": 0,
+      "log": "RSN960.log"
+    },
+    {
+      "status": "COMPLETE",
+      "model": "SPEAR-M0-section-2-engineering-accepted-2026-11-05",
+      "member_formulation": "hinge_midpoint",
+      "rigid_diaphragm": false,
+      "pair_id": "RSN1111",
+      "record_ids": {
+        "X": "RSN1111-X",
+        "Y": "RSN1111-Y"
+      },
+      "record_dt_s": 0.01,
+      "component_sample_counts": {
+        "X": 4096,
+        "Y": 4096
+      },
+      "zero_padding_samples": {
+        "X": 0,
+        "Y": 0
+      },
+      "pga_m_s2": {
+        "X": 4.73882040758,
+        "Y": 4.55340019204
+      },
+      "damping_ratio": 0.05,
+      "damping_modes": [
+        1,
+        3
+      ],
+      "rayleigh_alpha_m": 0.737143327993066,
+      "rayleigh_beta_k_current": 0.003314531873348644,
+      "completed_steps": 4095,
+      "requested_steps": 4095,
+      "analysis_exit_code": 0,
+      "fallback_counts": {
+        "KrylovNewton": 0,
+        "NewtonLineSearch": 0,
+        "substep-1/2": 0,
+        "substep-1/4": 0,
+        "substep-1/8": 0,
+        "substep-1/16": 0
+      },
+      "peak_abs_roof_displacement_m": {
+        "X": 0.08080461762813367,
+        "Y": 0.0685426059328224
+      },
+      "peak_abs_story_drift_ratio": {
+        "X": [
+          0.008918192947126313,
+          0.011318988793443308,
+          0.015432031511628244
+        ],
+        "Y": [
+          0.006471088209385784,
+          0.009004023811755682,
+          0.010671053273406256
+        ]
+      },
+      "peak_abs_floor_acceleration_m_s2": {
+        "X": [
+          6.119074864905777,
+          5.083417633274226,
+          4.586165371443394
+        ],
+        "Y": [
+          3.8673071723708308,
+          3.681563495293605,
+          5.102908656548997
+        ]
+      },
+      "peak_abs_base_shear_kN": {
+        "X": 298.1616062195534,
+        "Y": 307.2634617875656
+      },
+      "process_return_code": 0,
+      "log": "RSN1111.log"
+    },
+    {
+      "status": "COMPLETE",
+      "model": "SPEAR-M0-section-2-engineering-accepted-2026-11-05",
+      "member_formulation": "hinge_midpoint",
+      "rigid_diaphragm": false,
+      "pair_id": "RSN1116",
+      "record_ids": {
+        "X": "RSN1116-X",
+        "Y": "RSN1116-Y"
+      },
+      "record_dt_s": 0.01,
+      "component_sample_counts": {
+        "X": 4096,
+        "Y": 4096
+      },
+      "zero_padding_samples": {
+        "X": 0,
+        "Y": 0
+      },
+      "pga_m_s2": {
+        "X": 2.20653743793,
+        "Y": 2.28837981617
+      },
+      "damping_ratio": 0.05,
+      "damping_modes": [
+        1,
+        3
+      ],
+      "rayleigh_alpha_m": 0.737143327993066,
+      "rayleigh_beta_k_current": 0.003314531873348644,
+      "completed_steps": 4095,
+      "requested_steps": 4095,
+      "analysis_exit_code": 0,
+      "fallback_counts": {
+        "KrylovNewton": 0,
+        "NewtonLineSearch": 0,
+        "substep-1/2": 0,
+        "substep-1/4": 0,
+        "substep-1/8": 0,
+        "substep-1/16": 0
+      },
+      "peak_abs_roof_displacement_m": {
+        "X": 0.09213331155823026,
+        "Y": 0.061766309716065615
+      },
+      "peak_abs_story_drift_ratio": {
+        "X": [
+          0.014285565166906593,
+          0.011860855915346238,
+          0.005916165700179718
+        ],
+        "Y": [
+          0.007234216107719162,
+          0.008204141624773014,
+          0.0052694398496584555
+        ]
+      },
+      "peak_abs_floor_acceleration_m_s2": {
+        "X": [
+          2.410418701175373,
+          2.2715295184904196,
+          2.9446741313627736
+        ],
+        "Y": [
+          2.235789100591164,
+          2.1871768356850083,
+          3.7397120711261866
+        ]
+      },
+      "peak_abs_base_shear_kN": {
+        "X": 306.6230413401867,
+        "Y": 316.8377590600375
+      },
+      "process_return_code": 0,
+      "log": "RSN1116.log"
+    },
+    {
+      "status": "COMPLETE",
+      "model": "SPEAR-M0-section-2-engineering-accepted-2026-11-05",
+      "member_formulation": "hinge_midpoint",
+      "rigid_diaphragm": false,
+      "pair_id": "RSN1148",
+      "record_ids": {
+        "X": "RSN1148-X",
+        "Y": "RSN1148-Y"
+      },
+      "record_dt_s": 0.005,
+      "component_sample_counts": {
+        "X": 6000,
+        "Y": 6000
+      },
+      "zero_padding_samples": {
+        "X": 0,
+        "Y": 0
+      },
+      "pga_m_s2": {
+        "X": 2.06021437461,
+        "Y": 1.31602889404
+      },
+      "damping_ratio": 0.05,
+      "damping_modes": [
+        1,
+        3
+      ],
+      "rayleigh_alpha_m": 0.737143327993066,
+      "rayleigh_beta_k_current": 0.003314531873348644,
+      "completed_steps": 5999,
+      "requested_steps": 5999,
+      "analysis_exit_code": 0,
+      "fallback_counts": {
+        "KrylovNewton": 0,
+        "NewtonLineSearch": 0,
+        "substep-1/2": 0,
+        "substep-1/4": 0,
+        "substep-1/8": 0,
+        "substep-1/16": 0
+      },
+      "peak_abs_roof_displacement_m": {
+        "X": 0.03740360420852068,
+        "Y": 0.026270661668047986
+      },
+      "peak_abs_story_drift_ratio": {
+        "X": [
+          0.003952082554656952,
+          0.005577962523212978,
+          0.004461683148500283
+        ],
+        "Y": [
+          0.0023150698794304776,
+          0.0037432164422395975,
+          0.0029690184923301896
+        ]
+      },
+      "peak_abs_floor_acceleration_m_s2": {
+        "X": [
+          4.63004081772806,
+          3.2546778376299224,
+          2.696334506141267
+        ],
+        "Y": [
+          1.599530108451268,
+          1.7296340559592331,
+          1.6041096120185747
+        ]
+      },
+      "peak_abs_base_shear_kN": {
+        "X": 227.09629521127752,
+        "Y": 237.03373196384848
+      },
+      "process_return_code": 0,
+      "log": "RSN1148.log"
+    },
+    {
+      "status": "INCOMPLETE",
+      "model": "SPEAR-M0-section-2-engineering-accepted-2026-11-05",
+      "member_formulation": "hinge_midpoint",
+      "rigid_diaphragm": false,
+      "pair_id": "RSN1158",
+      "record_ids": {
+        "X": "RSN1158-X",
+        "Y": "RSN1158-Y"
+      },
+      "record_dt_s": 0.005,
+      "component_sample_counts": {
+        "X": 5437,
+        "Y": 5437
+      },
+      "zero_padding_samples": {
+        "X": 0,
+        "Y": 0
+      },
+      "pga_m_s2": {
+        "X": 3.05880396948,
+        "Y": 3.5714201202749996
+      },
+      "damping_ratio": 0.05,
+      "damping_modes": [
+        1,
+        3
+      ],
+      "rayleigh_alpha_m": 0.737143327993066,
+      "rayleigh_beta_k_current": 0.003314531873348644,
+      "completed_steps": 4187,
+      "requested_steps": 5436,
+      "analysis_exit_code": -3,
+      "fallback_counts": {
+        "KrylovNewton": 14,
+        "NewtonLineSearch": 1,
+        "substep-1/2": 5,
+        "substep-1/4": 0,
+        "substep-1/8": 0,
+        "substep-1/16": 0
+      },
+      "peak_abs_roof_displacement_m": {
+        "X": 1.56685132386152,
+        "Y": 0.22232301711922386
+      },
+      "peak_abs_story_drift_ratio": {
+        "X": [
+          1.1845463849766904,
+          0.6335071206678131,
+          0.02960289773901903
+        ],
+        "Y": [
+          0.21588828724064865,
+          0.1132281139374492,
+          0.030064707666819762
+        ]
+      },
+      "peak_abs_floor_acceleration_m_s2": {
+        "X": [
+          34.0364075806314,
+          26.29583041438148,
+          20.06599688155949
+        ],
+        "Y": [
+          11.924671046277167,
+          4.575837167266255,
+          21.12048397180475
+        ]
+      },
+      "peak_abs_base_shear_kN": {
+        "X": 2393.858007460627,
+        "Y": 405.7287760612014
+      },
+      "failure_time_s": 20.935000000000137,
+      "failure_diagnostics": {
+        "test_norms": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "largest_basic_deformations": [
+          {
+            "element": 7,
+            "max_abs": 1.5747306072614373,
+            "values": [
+              0.18928677816827708,
+              -0.25068209240534856,
+              -0.24478189173182585,
+              -1.5082681185252511,
+              -1.5747306072614373,
+              0.0004716135341690305
+            ]
+          },
+          {
+            "element": 8,
+            "max_abs": 1.5596376846649762,
+            "values": [
+              -0.013260236078501794,
+              -0.2486739493464851,
+              -0.24983088644564447,
+              -1.5059633122520983,
+              -1.5596376846649762,
+              0.000803115157100152
+            ]
+          },
+          {
+            "element": 9,
+            "max_abs": 1.5387277557388985,
+            "values": [
+              -0.20555731218355547,
+              -0.2657676593957991,
+              -0.275068122586412,
+              -1.502134173365632,
+              -1.5387277557388985,
+              0.000377587426782785
+            ]
+          },
+          {
+            "element": 1,
+            "max_abs": 1.4723823193128822,
+            "values": [
+              0.1269265331185859,
+              -0.2639580063020086,
+              -0.2758975036584581,
+              -1.444865096422162,
+              -1.4723823193128822,
+              -0.0014270831471195815
+            ]
+          },
+          {
+            "element": 4,
+            "max_abs": 1.4706624151125731,
+            "values": [
+              0.04155344991703103,
+              -0.26053544243535476,
+              -0.2781479037100048,
+              -1.426324910823039,
+              -1.4706624151125731,
+              -0.00028644681112489727
+            ]
+          },
+          {
+            "element": 2,
+            "max_abs": 1.470515309342472,
+            "values": [
+              0.04586119168998134,
+              -0.2663132483429356,
+              -0.2802969557865336,
+              -1.444510064445755,
+              -1.470515309342472,
+              -0.0015534061850818338
+            ]
+          },
+          {
+            "element": 3,
+            "max_abs": 1.46608276696069,
+            "values": [
+              -0.08527238827522651,
+              -0.27281317240686187,
+              -0.29136861329635727,
+              -1.4432814155003995,
+              -1.46608276696069,
+              -0.0014995656665850294
+            ]
+          },
+          {
+            "element": 5,
+            "max_abs": 1.4599272541175965,
+            "values": [
+              -0.07008653488272186,
+              -0.26134534163707435,
+              -0.2844676819698068,
+              -1.4249347913008554,
+              -1.4599272541175965,
+              -0.0012282197029119368
+            ]
+          },
+          {
+            "element": 6,
+            "max_abs": 1.4459793601454864,
+            "values": [
+              -0.19650943261595014,
+              -0.26795174030662283,
+              -0.29703201223599013,
+              -1.4227057992507375,
+              -1.4459793601454864,
+              -0.0009408835048350153
+            ]
+          },
+          {
+            "element": 18,
+            "max_abs": 0.806975322770074,
+            "values": [
+              -0.03309598212900827,
+              0.14315285116766746,
+              0.14871694068805175,
+              0.806975322770074,
+              0.8032181369815046,
+              -0.0009986258676197225
+            ]
+          },
+          {
+            "element": 17,
+            "max_abs": 0.7868507889386384,
+            "values": [
+              0.014536158391256021,
+              0.12884576438505418,
+              0.13806909825917832,
+              0.7868507889386384,
+              0.7798962513516216,
+              -0.001144908364167151
+            ]
+          },
+          {
+            "element": 16,
+            "max_abs": 0.7728555044595082,
+            "values": [
+              0.013305404700632212,
+              0.1411027160420483,
+              0.15366447370319627,
+              0.7728555044595082,
+              0.7724826095763575,
+              -0.0011158213232365425
+            ]
+          }
+        ],
+        "largest_section_deformations": [
+          {
+            "element": 9,
+            "section": 1,
+            "max_abs": 5.37068114445065,
+            "values": [
+              -0.31998712355639175,
+              0.9510698375885607,
+              5.37068114445065,
+              0.000151034970713114
+            ]
+          },
+          {
+            "element": 8,
+            "section": 1,
+            "max_abs": 5.166399705100684,
+            "values": [
+              -0.08399767381107555,
+              0.8838869120671743,
+              5.166399705100684,
+              0.00032124606284006076
+            ]
+          },
+          {
+            "element": 2,
+            "section": 1,
+            "max_abs": 5.158736301192466,
+            "values": [
+              0.06903928763679018,
+              0.9542296257918225,
+              5.158736301192466,
+              -0.0006213624740327336
+            ]
+          },
+          {
+            "element": 3,
+            "section": 1,
+            "max_abs": 5.156041023407864,
+            "values": [
+              -0.13157054725406958,
+              0.9785677173533122,
+              5.156041023407864,
+              -0.0005998262666340117
+            ]
+          },
+          {
+            "element": 1,
+            "section": 1,
+            "max_abs": 5.1523060042274516,
+            "values": [
+              0.1926888305718951,
+              0.9418862692985341,
+              5.1523060042274516,
+              -0.0005708332588478326
+            ]
+          },
+          {
+            "element": 5,
+            "section": 1,
+            "max_abs": 5.089978164961701,
+            "values": [
+              -0.11125213655497182,
+              0.9368874005333482,
+              5.089978164961701,
+              -0.0004912878811647748
+            ]
+          },
+          {
+            "element": 4,
+            "section": 1,
+            "max_abs": 5.0897629129602215,
+            "values": [
+              -0.0050175975421873934,
+              0.9355667372880683,
+              5.0897629129602215,
+              -0.00011457872444995891
+            ]
+          },
+          {
+            "element": 6,
+            "section": 1,
+            "max_abs": 5.085664407454195,
+            "values": [
+              -0.3046788460668276,
+              0.9636373296277896,
+              5.085664407454195,
+              -0.00037635340193400605
+            ]
+          },
+          {
+            "element": 7,
+            "section": 1,
+            "max_abs": 4.488530831694998,
+            "values": [
+              0.06780379086090119,
+              0.8911393568361279,
+              4.488530831694998,
+              0.00018864541366761224
+            ]
+          },
+          {
+            "element": 18,
+            "section": 1,
+            "max_abs": 2.8787499798447085,
+            "values": [
+              -0.051693977410175763,
+              -0.5099323195135066,
+              -2.8787499798447085,
+              -0.00039945034704788905
+            ]
+          },
+          {
+            "element": 17,
+            "section": 1,
+            "max_abs": 2.803305492543511,
+            "values": [
+              0.019152918280949102,
+              -0.4556365052688379,
+              -2.803305492543511,
+              -0.00045796334566686035
+            ]
+          },
+          {
+            "element": 16,
+            "section": 1,
+            "max_abs": 2.759871576970814,
+            "values": [
+              0.023516332916292595,
+              -0.506516401449437,
+              -2.759871576970814,
+              -0.000446328529294617
+            ]
+          }
+        ]
+      },
+      "process_return_code": 3,
+      "log": "RSN1158.log"
+    },
+    {
+      "status": "INCOMPLETE",
+      "model": "SPEAR-M0-section-2-engineering-accepted-2026-11-05",
+      "member_formulation": "hinge_midpoint",
+      "rigid_diaphragm": false,
+      "pair_id": "RSN1244",
+      "record_ids": {
+        "X": "RSN1244-X",
+        "Y": "RSN1244-Y"
+      },
+      "record_dt_s": 0.005,
+      "component_sample_counts": {
+        "X": 18000,
+        "Y": 18000
+      },
+      "zero_padding_samples": {
+        "X": 0,
+        "Y": 0
+      },
+      "pga_m_s2": {
+        "X": 3.3309071257,
+        "Y": 3.9035046705549994
+      },
+      "damping_ratio": 0.05,
+      "damping_modes": [
+        1,
+        3
+      ],
+      "rayleigh_alpha_m": 0.737143327993066,
+      "rayleigh_beta_k_current": 0.003314531873348644,
+      "completed_steps": 8755,
+      "requested_steps": 17999,
+      "analysis_exit_code": -3,
+      "fallback_counts": {
+        "KrylovNewton": 16,
+        "NewtonLineSearch": 1,
+        "substep-1/2": 2,
+        "substep-1/4": 0,
+        "substep-1/8": 0,
+        "substep-1/16": 0
+      },
+      "peak_abs_roof_displacement_m": {
+        "X": 1.7322036318282963,
+        "Y": 0.5027242992793496
+      },
+      "peak_abs_story_drift_ratio": {
+        "X": [
+          1.2856348331808787,
+          0.6846858444909456,
+          0.02717009769067043
+        ],
+        "Y": [
+          0.3371868201494051,
+          0.1265176876543694,
+          0.043094366068585854
+        ]
+      },
+      "peak_abs_floor_acceleration_m_s2": {
+        "X": [
+          459.3681747291915,
+          35.58152115035379,
+          25.280722282753484
+        ],
+        "Y": [
+          108.35881793937398,
+          25.865206568115724,
+          72.34583471952716
+        ]
+      },
+      "peak_abs_base_shear_kN": {
+        "X": 2620.4741795893133,
+        "Y": 671.7207326906736
+      },
+      "failure_time_s": 43.777500000003926,
+      "failure_diagnostics": {
+        "test_norms": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "largest_basic_deformations": [
+          {
+            "element": 9,
+            "max_abs": 1.703816718288863,
+            "values": [
+              -0.1938849753316243,
+              -0.4832100611051547,
+              -0.5035022881674391,
+              -1.622952800407514,
+              -1.703816718288863,
+              0.0012980075364614533
+            ]
+          },
+          {
+            "element": 7,
+            "max_abs": 1.6823904503036144,
+            "values": [
+              -0.08252046116956761,
+              -0.4099471117525469,
+              -0.42627648259161854,
+              -1.6177224809543143,
+              -1.6823904503036144,
+              0.0012894897128488184
+            ]
+          },
+          {
+            "element": 8,
+            "max_abs": 1.641813350963909,
+            "values": [
+              -0.0947855325727612,
+              -0.3983977428111668,
+              -0.41577489284311603,
+              -1.6185394764528316,
+              -1.641813350963909,
+              0.0013520215043525063
+            ]
+          },
+          {
+            "element": 3,
+            "max_abs": 1.6298904901145863,
+            "values": [
+              -0.09413900559631823,
+              -0.4877498823749422,
+              -0.514330863874354,
+              -1.5633610543827867,
+              -1.6298904901145863,
+              -0.0016936030253531522
+            ]
+          },
+          {
+            "element": 6,
+            "max_abs": 1.6241225787099676,
+            "values": [
+              -0.22680843561326397,
+              -0.48565691515511933,
+              -0.5224694047300452,
+              -1.5509704578949686,
+              -1.6241225787099676,
+              -0.0015086773739840394
+            ]
+          },
+          {
+            "element": 1,
+            "max_abs": 1.6159014487252834,
+            "values": [
+              0.10635331700546448,
+              -0.41819289630195694,
+              -0.43800816959407907,
+              -1.5726308699843505,
+              -1.6159014487252834,
+              3.265504599036804e-05
+            ]
+          },
+          {
+            "element": 4,
+            "max_abs": 1.612872534645793,
+            "values": [
+              -0.007515137196432329,
+              -0.41695741320745033,
+              -0.44413093317556845,
+              -1.5601308934875713,
+              -1.612872534645793,
+              0.00017955378384229881
+            ]
+          },
+          {
+            "element": 2,
+            "max_abs": 1.5776007983538372,
+            "values": [
+              0.03582775667170043,
+              -0.4131412043512064,
+              -0.43495293725740924,
+              -1.5666634389646248,
+              -1.5776007983538372,
+              -0.0013346908703366965
+            ]
+          },
+          {
+            "element": 5,
+            "max_abs": 1.571655289413006,
+            "values": [
+              -0.12445693521211564,
+              -0.4112527005008655,
+              -0.44876908287264516,
+              -1.5553477338427728,
+              -1.571655289413006,
+              -0.0013748676677129354
+            ]
+          },
+          {
+            "element": 17,
+            "max_abs": 0.8761616092899931,
+            "values": [
+              -0.11670187437705579,
+              0.12586015956099775,
+              0.13015327670295362,
+              0.8761616092899931,
+              0.8623426849252476,
+              -0.0014524893031436933
+            ]
+          },
+          {
+            "element": 18,
+            "max_abs": 0.8735173956656492,
+            "values": [
+              -0.03149747666981903,
+              0.21606582277240102,
+              0.23223613718751332,
+              0.819726162971185,
+              0.8735173956656492,
+              -0.0014720766985725857
+            ]
+          },
+          {
+            "element": 16,
+            "max_abs": 0.8319950564902201,
+            "values": [
+              0.027881385984808653,
+              0.14060877412587958,
+              0.14240985207280016,
+              0.8219761696304473,
+              0.8319950564902201,
+              -0.0009184993819374666
+            ]
+          }
+        ],
+        "largest_section_deformations": [
+          {
+            "element": 9,
+            "section": 1,
+            "max_abs": 5.812902976673029,
+            "values": [
+              -0.3006322092360794,
+              1.7305297577572183,
+              5.812902976673029,
+              0.0005192030145845814
+            ]
+          },
+          {
+            "element": 7,
+            "section": 1,
+            "max_abs": 5.784456257925884,
+            "values": [
+              -0.12690918169050108,
+              1.4669557263621107,
+              5.784456257925884,
+              0.0005157958851395274
+            ]
+          },
+          {
+            "element": 8,
+            "section": 1,
+            "max_abs": 5.769664497103457,
+            "values": [
+              -0.15044043710851637,
+              1.4261027914276727,
+              5.769664497103457,
+              0.0005408086017410024
+            ]
+          },
+          {
+            "element": 1,
+            "section": 1,
+            "max_abs": 5.626990048520432,
+            "values": [
+              0.1641831306803978,
+              1.4983020728795589,
+              5.626990048520432,
+              1.3062018396147217e-05
+            ]
+          },
+          {
+            "element": 3,
+            "section": 1,
+            "max_abs": 5.594917759856548,
+            "values": [
+              -0.14685318099375258,
+              1.747845802286664,
+              5.594917759856548,
+              -0.0006774412101412609
+            ]
+          },
+          {
+            "element": 2,
+            "section": 1,
+            "max_abs": 5.58582231042769,
+            "values": [
+              0.05208237065928577,
+              1.4793065627670445,
+              5.58582231042769,
+              -0.0005338763481346786
+            ]
+          },
+          {
+            "element": 4,
+            "section": 1,
+            "max_abs": 5.573598983484389,
+            "values": [
+              -0.013956263042319889,
+              1.4933294915398156,
+              5.573598983484389,
+              7.182151353691952e-05
+            ]
+          },
+          {
+            "element": 6,
+            "section": 1,
+            "max_abs": 5.555158254443233,
+            "values": [
+              -0.34646675849235475,
+              1.7429190210265688,
+              5.555158254443233,
+              -0.0006034709495936157
+            ]
+          },
+          {
+            "element": 5,
+            "section": 1,
+            "max_abs": 5.554386626083903,
+            "values": [
+              -0.18761400688126426,
+              1.4773388200835036,
+              5.554386626083903,
+              -0.0005499470670851741
+            ]
+          },
+          {
+            "element": 17,
+            "section": 1,
+            "max_abs": 3.122100498064785,
+            "values": [
+              -0.18100304931480235,
+              -0.45021812369699044,
+              -3.122100498064785,
+              -0.0005809957212574772
+            ]
+          },
+          {
+            "element": 18,
+            "section": 1,
+            "max_abs": 2.935400793930607,
+            "values": [
+              -0.053883127903574614,
+              -0.7751422475327258,
+              -2.935400793930607,
+              -0.0005888306794290344
+            ]
+          },
+          {
+            "element": 16,
+            "section": 1,
+            "max_abs": 2.930192487915279,
+            "values": [
+              0.039875418834331426,
+              -0.5029471071666901,
+              -2.930192487915279,
+              -0.0003673997527749866
+            ]
+          }
+        ]
+      },
+      "process_return_code": 3,
+      "log": "RSN1244.log"
+    },
+    {
+      "status": "COMPLETE",
+      "model": "SPEAR-M0-section-2-engineering-accepted-2026-11-05",
+      "member_formulation": "hinge_midpoint",
+      "rigid_diaphragm": false,
+      "pair_id": "RSN1485",
+      "record_ids": {
+        "X": "RSN1485-X",
+        "Y": "RSN1485-Y"
+      },
+      "record_dt_s": 0.005,
+      "component_sample_counts": {
+        "X": 18000,
+        "Y": 18000
+      },
+      "zero_padding_samples": {
+        "X": 0,
+        "Y": 0
+      },
+      "pga_m_s2": {
+        "X": 4.63933194333,
+        "Y": 4.970250482925
+      },
+      "damping_ratio": 0.05,
+      "damping_modes": [
+        1,
+        3
+      ],
+      "rayleigh_alpha_m": 0.737143327993066,
+      "rayleigh_beta_k_current": 0.003314531873348644,
+      "completed_steps": 17999,
+      "requested_steps": 17999,
+      "analysis_exit_code": 0,
+      "fallback_counts": {
+        "KrylovNewton": 0,
+        "NewtonLineSearch": 0,
+        "substep-1/2": 0,
+        "substep-1/4": 0,
+        "substep-1/8": 0,
+        "substep-1/16": 0
+      },
+      "peak_abs_roof_displacement_m": {
+        "X": 0.0631196509126322,
+        "Y": 0.10141944304853182
+      },
+      "peak_abs_story_drift_ratio": {
+        "X": [
+          0.006913391335025317,
+          0.009462275242777155,
+          0.009648757442050947
+        ],
+        "Y": [
+          0.009115624577631265,
+          0.014003978132004886,
+          0.012797566453524527
+        ]
+      },
+      "peak_abs_floor_acceleration_m_s2": {
+        "X": [
+          4.875792145613213,
+          3.5045158835196477,
+          4.388813003620087
+        ],
+        "Y": [
+          6.589928115357562,
+          6.968236092121011,
+          4.589972295554046
+        ]
+      },
+      "peak_abs_base_shear_kN": {
+        "X": 264.22413779611037,
+        "Y": 339.68078387022905
+      },
+      "process_return_code": 0,
+      "log": "RSN1485.log"
+    },
+    {
+      "status": "COMPLETE",
+      "model": "SPEAR-M0-section-2-engineering-accepted-2026-11-05",
+      "member_formulation": "hinge_midpoint",
+      "rigid_diaphragm": false,
+      "pair_id": "RSN1602",
+      "record_ids": {
+        "X": "RSN1602-X",
+        "Y": "RSN1602-Y"
+      },
+      "record_dt_s": 0.01,
+      "component_sample_counts": {
+        "X": 5590,
+        "Y": 5590
+      },
+      "zero_padding_samples": {
+        "X": 0,
+        "Y": 0
+      },
+      "pga_m_s2": {
+        "X": 7.249531689225,
+        "Y": 7.901022752665
+      },
+      "damping_ratio": 0.05,
+      "damping_modes": [
+        1,
+        3
+      ],
+      "rayleigh_alpha_m": 0.737143327993066,
+      "rayleigh_beta_k_current": 0.003314531873348644,
+      "completed_steps": 5589,
+      "requested_steps": 5589,
+      "analysis_exit_code": 0,
+      "fallback_counts": {
+        "KrylovNewton": 0,
+        "NewtonLineSearch": 0,
+        "substep-1/2": 0,
+        "substep-1/4": 0,
+        "substep-1/8": 0,
+        "substep-1/16": 0
+      },
+      "peak_abs_roof_displacement_m": {
+        "X": 0.17075357277822426,
+        "Y": 0.15623680317362504
+      },
+      "peak_abs_story_drift_ratio": {
+        "X": [
+          0.041748022527335754,
+          0.017137462128214945,
+          0.007599716136470698
+        ],
+        "Y": [
+          0.022140439367570344,
+          0.022235805938085305,
+          0.0087391401619039
+        ]
+      },
+      "peak_abs_floor_acceleration_m_s2": {
+        "X": [
+          3.856015377635488,
+          4.403457142553992,
+          4.042819047220112
+        ],
+        "Y": [
+          5.511587634231085,
+          3.2802281455157978,
+          3.110669776989625
+        ]
+      },
+      "peak_abs_base_shear_kN": {
+        "X": 325.2448581038021,
+        "Y": 327.3794368346304
+      },
+      "process_return_code": 0,
+      "log": "RSN1602.log"
+    },
+    {
+      "status": "COMPLETE",
+      "model": "SPEAR-M0-section-2-engineering-accepted-2026-11-05",
+      "member_formulation": "hinge_midpoint",
+      "rigid_diaphragm": false,
+      "pair_id": "RSN1633",
+      "record_ids": {
+        "X": "RSN1633-X",
+        "Y": "RSN1633-Y"
+      },
+      "record_dt_s": 0.02,
+      "component_sample_counts": {
+        "X": 2676,
+        "Y": 2300
+      },
+      "zero_padding_samples": {
+        "X": 0,
+        "Y": 376
+      },
+      "pga_m_s2": {
+        "X": 5.046150031264999,
+        "Y": 4.872609591534999
+      },
+      "damping_ratio": 0.05,
+      "damping_modes": [
+        1,
+        3
+      ],
+      "rayleigh_alpha_m": 0.737143327993066,
+      "rayleigh_beta_k_current": 0.003314531873348644,
+      "completed_steps": 2675,
+      "requested_steps": 2675,
+      "analysis_exit_code": 0,
+      "fallback_counts": {
+        "KrylovNewton": 0,
+        "NewtonLineSearch": 0,
+        "substep-1/2": 0,
+        "substep-1/4": 0,
+        "substep-1/8": 0,
+        "substep-1/16": 0
+      },
+      "peak_abs_roof_displacement_m": {
+        "X": 0.07395631963497445,
+        "Y": 0.13831136820274811
+      },
+      "peak_abs_story_drift_ratio": {
+        "X": [
+          0.01189135462163623,
+          0.008519516803230704,
+          0.008079409976911556
+        ],
+        "Y": [
+          0.014115830805199946,
+          0.019434903460345904,
+          0.015199977238620604
+        ]
+      },
+      "peak_abs_floor_acceleration_m_s2": {
+        "X": [
+          5.629768735305737,
+          5.073681038721003,
+          5.088854926368037
+        ],
+        "Y": [
+          5.342328976740452,
+          5.098154967839793,
+          4.311456148427949
+        ]
+      },
+      "peak_abs_base_shear_kN": {
+        "X": 270.8920215104705,
+        "Y": 403.3349051423293
+      },
+      "process_return_code": 0,
+      "log": "RSN1633.log"
+    },
+    {
+      "status": "COMPLETE",
+      "model": "SPEAR-M0-section-2-engineering-accepted-2026-11-05",
+      "member_formulation": "hinge_midpoint",
+      "rigid_diaphragm": false,
+      "pair_id": "RSN1787",
+      "record_ids": {
+        "X": "RSN1787-X",
+        "Y": "RSN1787-Y"
+      },
+      "record_dt_s": 0.01,
+      "component_sample_counts": {
+        "X": 4531,
+        "Y": 4531
+      },
+      "zero_padding_samples": {
+        "X": 0,
+        "Y": 0
+      },
+      "pga_m_s2": {
+        "X": 2.603335090895,
+        "Y": 3.21841112089
+      },
+      "damping_ratio": 0.05,
+      "damping_modes": [
+        1,
+        3
+      ],
+      "rayleigh_alpha_m": 0.737143327993066,
+      "rayleigh_beta_k_current": 0.003314531873348644,
+      "completed_steps": 4530,
+      "requested_steps": 4530,
+      "analysis_exit_code": 0,
+      "fallback_counts": {
+        "KrylovNewton": 0,
+        "NewtonLineSearch": 0,
+        "substep-1/2": 0,
+        "substep-1/4": 0,
+        "substep-1/8": 0,
+        "substep-1/16": 0
+      },
+      "peak_abs_roof_displacement_m": {
+        "X": 0.1276289306741975,
+        "Y": 0.094635050029052
+      },
+      "peak_abs_story_drift_ratio": {
+        "X": [
+          0.03567957913705167,
+          0.009599453454237452,
+          0.00491838997074049
+        ],
+        "Y": [
+          0.017295291971099008,
+          0.013319433072968878,
+          0.0068277521022661785
+        ]
+      },
+      "peak_abs_floor_acceleration_m_s2": {
+        "X": [
+          2.506310865648887,
+          2.332017041566718,
+          2.4178723423482924
+        ],
+        "Y": [
+          2.997600805337693,
+          2.5179415926582265,
+          2.724711730687619
+        ]
+      },
+      "peak_abs_base_shear_kN": {
+        "X": 287.8722423931421,
+        "Y": 334.0729656605173
+      },
+      "process_return_code": 0,
+      "log": "RSN1787.log"
+    }
+  ]
+}

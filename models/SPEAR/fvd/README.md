@@ -27,9 +27,12 @@ MPIR_CVAR_CH3_INTERFACE_HOSTNAME=127.0.0.1 python \
   --damping-ratio 0.02 --output results/SPEAR/nltha/m0/record_x.csv
 ```
 
-The next gate is selection and provenance documentation of the ground-motion
-set, followed by a baseline M0 NLTHA convergence and energy-balance campaign.
-The staged selection decision is documented in `GROUND_MOTION_PROTOCOL.md`.
+The available 21-pair PEER/FEMA-P695 subset and its provenance are documented
+in `GROUND_MOTION_PROTOCOL.md`. The accepted Section-2 M0 baseline campaign
+uses `HingeMidpoint`, no rigid diaphragm and 5% Rayleigh damping on modes 1
+and 3. Its compact results are under
+`results/SPEAR/fvd/baseline_section2_hinge_midpoint_partial21/`; full response
+histories remain local reproducible artifacts.
 
 Bidirectional manifest invocation:
 

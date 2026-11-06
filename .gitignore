@@ -15,3 +15,7 @@ results/SPEAR/nltha/peer_partial_21/mesh_sensitivity/*.csv
 results/SPEAR/nltha/peer_partial_21/regularized_hinge_midpoint/*.csv
 results/SPEAR/nltha/peer_partial_21/regularized_hinge_midpoint_bidirectional/*.csv
 !results/SPEAR/nltha/peer_partial_21/regularized_hinge_midpoint_bidirectional/edp_status_summary.csv
+
+# Section-2 accepted-model NLTHA histories are reproducible local artifacts.
+results/SPEAR/fvd/baseline_section2_hinge_midpoint_partial21/RSN*.csv
+!results/SPEAR/fvd/baseline_section2_hinge_midpoint_partial21/edp_status_summary.csv

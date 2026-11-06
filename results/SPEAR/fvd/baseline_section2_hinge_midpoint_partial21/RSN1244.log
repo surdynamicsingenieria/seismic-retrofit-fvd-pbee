@@ -1,0 +1,705 @@
+WARNING - the 'fullGenLapack' eigen solver is VERY SLOW. Consider using the default eigen solver.WARNING: CTestNormDispIncr::test() - failed to converge
+after: 100 iterations  current Norm: 0.0101545 (max: 1e-07, Norm deltaR: 343608)
+NewtonRaphson::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 37.32
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestNormDispIncr::test() - failed to converge
+after: 100 iterations  current Norm: 0.000418985 (max: 1e-07, Norm deltaR: 6614.64)
+NewtonRaphson::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 42.56
+OpenSees > analyze failed, returned: -3 error flag
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 14(dW: << -0.0158756, dW0: 243811)
+Domain::update - domain failed in update
+Newmark::update() - failed to update the domain
+WARNING NewtonRaphson::solveCurrentStep() -the Integrator failed in update()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 43.4
+OpenSees > analyze failed, returned: -3 error flag
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 14(dW: << 0.0172209, dW0: 32900.1)
+Domain::update - domain failed in update
+Newmark::update() - failed to update the domain
+WARNING AcceleratedNewton::solveCurrentStep() -the Integrator failed in update()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 43.4
+OpenSees > analyze failed, returned: -3 error flag
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 14(dW: << -0.00775657, dW0: 459584)
+Domain::update - domain failed in update
+Newmark::update() - failed to update the domain
+WARNInG InitialInterpolatedLineSearch::search() -the Integrator failed in update()
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 14(dW: << 292899, dW0: 1.116e+07)
+Domain::update - domain failed in update
+Newmark::update() - failed to update the domain
+WARNING NewtonLineSearch::solveCurrentStep() -the Integrator failed in update()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 43.4
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestNormDispIncr::test() - failed to converge
+after: 100 iterations  current Norm: 0.000145938 (max: 1e-07, Norm deltaR: 2028.9)
+NewtonRaphson::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 43.44
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestNormDispIncr::test() - failed to converge
+after: 100 iterations  current Norm: 0.000154235 (max: 1e-07, Norm deltaR: 3915.75)
+NewtonRaphson::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 43.48
+OpenSees > analyze failed, returned: -3 error flag
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 16(dW: << -0.00122802, dW0: -0.169981)
+Domain::update - domain failed in update
+Newmark::update() - failed to update the domain
+WARNING NewtonRaphson::solveCurrentStep() -the Integrator failed in update()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 43.505
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestNormDispIncr::test() - failed to converge
+after: 100 iterations  current Norm: 0.000124112 (max: 1e-07, Norm deltaR: 2291.41)
+NewtonRaphson::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 43.535
+OpenSees > analyze failed, returned: -3 error flag
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 8(dW: << 23.5191, dW0: 19012.8)
+Domain::update - domain failed in update
+Newmark::update() - failed to update the domain
+WARNING NewtonRaphson::solveCurrentStep() -the Integrator failed in update()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 43.545
+OpenSees > analyze failed, returned: -3 error flag
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 110020(dW: << 4.33566e-05, dW0: -9890.03)
+Domain::update - domain failed in update
+Newmark::update() - failed to update the domain
+WARNING NewtonRaphson::solveCurrentStep() -the Integrator failed in update()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 43.55
+OpenSees > analyze failed, returned: -3 error flag
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 110020(dW: << 4.39365e-05, dW0: -9890.02)
+Domain::update - domain failed in update
+Newmark::update() - failed to update the domain
+WARNING AcceleratedNewton::solveCurrentStep() -the Integrator failed in update()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 43.55
+OpenSees > analyze failed, returned: -3 error flag
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 110020(dW: << 4.39365e-05, dW0: -9890.02)
+Domain::update - domain failed in update
+Newmark::update() - failed to update the domain
+WARNING NewtonLineSearch::solveCurrentStep() -the Integrator failed in update()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 43.55
+OpenSees > analyze failed, returned: -3 error flag
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 130000(dW: << -0.241204, dW0: 2.14314e+07)
+Domain::update - domain failed in update
+Newmark::update() - failed to update the domain
+WARNING NewtonRaphson::solveCurrentStep() -the Integrator failed in update()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 43.5475
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestNormDispIncr::test() - failed to converge
+after: 100 iterations  current Norm: 0.00320131 (max: 1e-07, Norm deltaR: 226669)
+NewtonRaphson::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 43.55
+OpenSees > analyze failed, returned: -3 error flag
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 2(dW: << 18.8258, dW0: 3.7353e+06)
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 27(dW: << 263648, dW0: 540872)
+Domain::update - domain failed in update
+Newmark::update() - failed to update the domain
+WARNING NewtonRaphson::solveCurrentStep() -the Integrator failed in update()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 43.56
+OpenSees > analyze failed, returned: -3 error flag
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 10(dW: << 86895.4, dW0: 347742)
+Domain::update - domain failed in update
+Newmark::update() - failed to update the domain
+WARNING NewtonRaphson::solveCurrentStep() -the Integrator failed in update()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 43.655
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestNormDispIncr::test() - failed to converge
+after: 100 iterations  current Norm: 0.000568656 (max: 1e-07, Norm deltaR: 5364.79)
+NewtonRaphson::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 43.665
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestNormDispIncr::test() - failed to converge
+after: 100 iterations  current Norm: 0.00386513 (max: 1e-07, Norm deltaR: 37395.3)
+NewtonRaphson::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 43.675
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestNormDispIncr::test() - failed to converge
+after: 100 iterations  current Norm: 0.00133049 (max: 1e-07, Norm deltaR: 42144.5)
+NewtonRaphson::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 43.71
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestNormDispIncr::test() - failed to converge
+after: 100 iterations  current Norm: 0.000191853 (max: 1e-07, Norm deltaR: 3739.63)
+NewtonRaphson::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 43.715
+OpenSees > analyze failed, returned: -3 error flag
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 16(dW: << -0.00227239, dW0: -0.136097)
+Domain::update - domain failed in update
+Newmark::update() - failed to update the domain
+WARNING AcceleratedNewton::solveCurrentStep() -the Integrator failed in update()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 43.715
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestNormDispIncr::test() - failed to converge
+after: 100 iterations  current Norm: 0.00025725 (max: 1e-07, Norm deltaR: 3809.06)
+NewtonRaphson::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 43.725
+OpenSees > analyze failed, returned: -3 error flag
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 1(dW: << 1.04561e+06, dW0: 87495.7)
+Domain::update - domain failed in update
+Newmark::update() - failed to update the domain
+WARNING NewtonRaphson::solveCurrentStep() -the Integrator failed in update()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 43.74
+OpenSees > analyze failed, returned: -3 error flag
+WARNING: CTestNormDispIncr::test() - failed to converge
+after: 100 iterations  current Norm: 0.0027346 (max: 1e-07, Norm deltaR: 31559.3)
+NewtonRaphson::solveCurrentStep() -the ConvergenceTest object failed in test()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 43.76
+OpenSees > analyze failed, returned: -3 error flag
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 4(dW: << 227890, dW0: 298556)
+Domain::update - domain failed in update
+Newmark::update() - failed to update the domain
+WARNING NewtonRaphson::solveCurrentStep() -the Integrator failed in update()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 43.775
+OpenSees > analyze failed, returned: -3 error flag
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 10(dW: << 0.0003775, dW0: 171110)
+Domain::update - domain failed in update
+Newmark::update() - failed to update the domain
+WARNING NewtonRaphson::solveCurrentStep() -the Integrator failed in update()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 43.78
+OpenSees > analyze failed, returned: -3 error flag
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 13(dW: << 1.04562e+06, dW0: 1.37709e+07)
+Domain::update - domain failed in update
+Newmark::update() - failed to update the domain
+WARNING AcceleratedNewton::solveCurrentStep() -the Integrator failed in update()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 43.78
+OpenSees > analyze failed, returned: -3 error flag
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 10(dW: << 183950, dW0: 171110)
+Domain::update - domain failed in update
+Newmark::update() - failed to update the domain
+WARNING NewtonLineSearch::solveCurrentStep() -the Integrator failed in update()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 43.78
+OpenSees > analyze failed, returned: -3 error flag
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 10(dW: << 1.04559e+06, dW0: 173719)
+Domain::update - domain failed in update
+Newmark::update() - failed to update the domain
+WARNING NewtonRaphson::solveCurrentStep() -the Integrator failed in update()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 43.7775
+OpenSees > analyze failed, returned: -3 error flag
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 10(dW: << 0.0915698, dW0: 35271.9)
+Domain::update - domain failed in update
+Newmark::update() - failed to update the domain
+WARNING NewtonRaphson::solveCurrentStep() -the Integrator failed in update()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 43.78
+OpenSees > analyze failed, returned: -3 error flag
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 10(dW: << 0.0915698, dW0: 35271.9)
+Domain::update - domain failed in update
+Newmark::update() - failed to update the domain
+WARNING AcceleratedNewton::solveCurrentStep() -the Integrator failed in update()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 43.78
+OpenSees > analyze failed, returned: -3 error flag
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 10(dW: << 0.0915698, dW0: 35271.9)
+Domain::update - domain failed in update
+Newmark::update() - failed to update the domain
+WARNING NewtonLineSearch::solveCurrentStep() -the Integrator failed in update()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 43.78
+OpenSees > analyze failed, returned: -3 error flag
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 10(dW: << 245847, dW0: 40540.4)
+Domain::update - domain failed in update
+Newmark::update() - failed to update the domain
+WARNING NewtonRaphson::solveCurrentStep() -the Integrator failed in update()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 43.7788
+OpenSees > analyze failed, returned: -3 error flag
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 10(dW: << 245847, dW0: 40540.4)
+Domain::update - domain failed in update
+Newmark::update() - failed to update the domain
+WARNING AcceleratedNewton::solveCurrentStep() -the Integrator failed in update()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 43.7788
+OpenSees > analyze failed, returned: -3 error flag
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 10(dW: << 245847, dW0: 40540.4)
+Domain::update - domain failed in update
+Newmark::update() - failed to update the domain
+WARNING NewtonLineSearch::solveCurrentStep() -the Integrator failed in update()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 43.7788
+OpenSees > analyze failed, returned: -3 error flag
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 10(dW: << 1.04141e+06, dW0: 36452.2)
+Domain::update - domain failed in update
+Newmark::update() - failed to update the domain
+WARNING NewtonRaphson::solveCurrentStep() -the Integrator failed in update()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 43.7781
+OpenSees > analyze failed, returned: -3 error flag
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 10(dW: << 1.04141e+06, dW0: 36452.2)
+Domain::update - domain failed in update
+Newmark::update() - failed to update the domain
+WARNING AcceleratedNewton::solveCurrentStep() -the Integrator failed in update()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 43.7781
+OpenSees > analyze failed, returned: -3 error flag
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 10(dW: << 1.04141e+06, dW0: 36452.2)
+Domain::update - domain failed in update
+Newmark::update() - failed to update the domain
+WARNING NewtonLineSearch::solveCurrentStep() -the Integrator failed in update()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 43.7781
+OpenSees > analyze failed, returned: -3 error flag
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 10(dW: << 299498, dW0: 32133.2)
+Domain::update - domain failed in update
+Newmark::update() - failed to update the domain
+WARNING NewtonRaphson::solveCurrentStep() -the Integrator failed in update()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 43.7778
+OpenSees > analyze failed, returned: -3 error flag
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 10(dW: << 299498, dW0: 32133.2)
+Domain::update - domain failed in update
+Newmark::update() - failed to update the domain
+WARNING AcceleratedNewton::solveCurrentStep() -the Integrator failed in update()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 43.7778
+OpenSees > analyze failed, returned: -3 error flag
+WARNING - ForceBeamColumn3d::update - failed to get compatible element forces & deformations for element: 10(dW: << 299498, dW0: 32133.2)
+Domain::update - domain failed in update
+Newmark::update() - failed to update the domain
+WARNING NewtonLineSearch::solveCurrentStep() -the Integrator failed in update()
+DirectIntegrationAnalysis::analyze() - the Algorithm failed at time 43.7778
+OpenSees > analyze failed, returned: -3 error flag
+{
+  "status": "INCOMPLETE",
+  "model": "SPEAR-M0-section-2-engineering-accepted-2026-11-05",
+  "member_formulation": "hinge_midpoint",
+  "rigid_diaphragm": false,
+  "pair_id": "RSN1244",
+  "record_ids": {
+    "X": "RSN1244-X",
+    "Y": "RSN1244-Y"
+  },
+  "record_dt_s": 0.005,
+  "component_sample_counts": {
+    "X": 18000,
+    "Y": 18000
+  },
+  "zero_padding_samples": {
+    "X": 0,
+    "Y": 0
+  },
+  "pga_m_s2": {
+    "X": 3.3309071257,
+    "Y": 3.9035046705549994
+  },
+  "damping_ratio": 0.05,
+  "damping_modes": [
+    1,
+    3
+  ],
+  "rayleigh_alpha_m": 0.737143327993066,
+  "rayleigh_beta_k_current": 0.003314531873348644,
+  "completed_steps": 8755,
+  "requested_steps": 17999,
+  "analysis_exit_code": -3,
+  "fallback_counts": {
+    "KrylovNewton": 16,
+    "NewtonLineSearch": 1,
+    "substep-1/2": 2,
+    "substep-1/4": 0,
+    "substep-1/8": 0,
+    "substep-1/16": 0
+  },
+  "peak_abs_roof_displacement_m": {
+    "X": 1.7322036318282963,
+    "Y": 0.5027242992793496
+  },
+  "peak_abs_story_drift_ratio": {
+    "X": [
+      1.2856348331808787,
+      0.6846858444909456,
+      0.02717009769067043
+    ],
+    "Y": [
+      0.3371868201494051,
+      0.1265176876543694,
+      0.043094366068585854
+    ]
+  },
+  "peak_abs_floor_acceleration_m_s2": {
+    "X": [
+      459.3681747291915,
+      35.58152115035379,
+      25.280722282753484
+    ],
+    "Y": [
+      108.35881793937398,
+      25.865206568115724,
+      72.34583471952716
+    ]
+  },
+  "peak_abs_base_shear_kN": {
+    "X": 2620.4741795893133,
+    "Y": 671.7207326906736
+  },
+  "failure_time_s": 43.777500000003926,
+  "failure_diagnostics": {
+    "test_norms": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "largest_basic_deformations": [
+      {
+        "element": 9,
+        "max_abs": 1.703816718288863,
+        "values": [
+          -0.1938849753316243,
+          -0.4832100611051547,
+          -0.5035022881674391,
+          -1.622952800407514,
+          -1.703816718288863,
+          0.0012980075364614533
+        ]
+      },
+      {
+        "element": 7,
+        "max_abs": 1.6823904503036144,
+        "values": [
+          -0.08252046116956761,
+          -0.4099471117525469,
+          -0.42627648259161854,
+          -1.6177224809543143,
+          -1.6823904503036144,
+          0.0012894897128488184
+        ]
+      },
+      {
+        "element": 8,
+        "max_abs": 1.641813350963909,
+        "values": [
+          -0.0947855325727612,
+          -0.3983977428111668,
+          -0.41577489284311603,
+          -1.6185394764528316,
+          -1.641813350963909,
+          0.0013520215043525063
+        ]
+      },
+      {
+        "element": 3,
+        "max_abs": 1.6298904901145863,
+        "values": [
+          -0.09413900559631823,
+          -0.4877498823749422,
+          -0.514330863874354,
+          -1.5633610543827867,
+          -1.6298904901145863,
+          -0.0016936030253531522
+        ]
+      },
+      {
+        "element": 6,
+        "max_abs": 1.6241225787099676,
+        "values": [
+          -0.22680843561326397,
+          -0.48565691515511933,
+          -0.5224694047300452,
+          -1.5509704578949686,
+          -1.6241225787099676,
+          -0.0015086773739840394
+        ]
+      },
+      {
+        "element": 1,
+        "max_abs": 1.6159014487252834,
+        "values": [
+          0.10635331700546448,
+          -0.41819289630195694,
+          -0.43800816959407907,
+          -1.5726308699843505,
+          -1.6159014487252834,
+          3.265504599036804e-05
+        ]
+      },
+      {
+        "element": 4,
+        "max_abs": 1.612872534645793,
+        "values": [
+          -0.007515137196432329,
+          -0.41695741320745033,
+          -0.44413093317556845,
+          -1.5601308934875713,
+          -1.612872534645793,
+          0.00017955378384229881
+        ]
+      },
+      {
+        "element": 2,
+        "max_abs": 1.5776007983538372,
+        "values": [
+          0.03582775667170043,
+          -0.4131412043512064,
+          -0.43495293725740924,
+          -1.5666634389646248,
+          -1.5776007983538372,
+          -0.0013346908703366965
+        ]
+      },
+      {
+        "element": 5,
+        "max_abs": 1.571655289413006,
+        "values": [
+          -0.12445693521211564,
+          -0.4112527005008655,
+          -0.44876908287264516,
+          -1.5553477338427728,
+          -1.571655289413006,
+          -0.0013748676677129354
+        ]
+      },
+      {
+        "element": 17,
+        "max_abs": 0.8761616092899931,
+        "values": [
+          -0.11670187437705579,
+          0.12586015956099775,
+          0.13015327670295362,
+          0.8761616092899931,
+          0.8623426849252476,
+          -0.0014524893031436933
+        ]
+      },
+      {
+        "element": 18,
+        "max_abs": 0.8735173956656492,
+        "values": [
+          -0.03149747666981903,
+          0.21606582277240102,
+          0.23223613718751332,
+          0.819726162971185,
+          0.8735173956656492,
+          -0.0014720766985725857
+        ]
+      },
+      {
+        "element": 16,
+        "max_abs": 0.8319950564902201,
+        "values": [
+          0.027881385984808653,
+          0.14060877412587958,
+          0.14240985207280016,
+          0.8219761696304473,
+          0.8319950564902201,
+          -0.0009184993819374666
+        ]
+      }
+    ],
+    "largest_section_deformations": [
+      {
+        "element": 9,
+        "section": 1,
+        "max_abs": 5.812902976673029,
+        "values": [
+          -0.3006322092360794,
+          1.7305297577572183,
+          5.812902976673029,
+          0.0005192030145845814
+        ]
+      },
+      {
+        "element": 7,
+        "section": 1,
+        "max_abs": 5.784456257925884,
+        "values": [
+          -0.12690918169050108,
+          1.4669557263621107,
+          5.784456257925884,
+          0.0005157958851395274
+        ]
+      },
+      {
+        "element": 8,
+        "section": 1,
+        "max_abs": 5.769664497103457,
+        "values": [
+          -0.15044043710851637,
+          1.4261027914276727,
+          5.769664497103457,
+          0.0005408086017410024
+        ]
+      },
+      {
+        "element": 1,
+        "section": 1,
+        "max_abs": 5.626990048520432,
+        "values": [
+          0.1641831306803978,
+          1.4983020728795589,
+          5.626990048520432,
+          1.3062018396147217e-05
+        ]
+      },
+      {
+        "element": 3,
+        "section": 1,
+        "max_abs": 5.594917759856548,
+        "values": [
+          -0.14685318099375258,
+          1.747845802286664,
+          5.594917759856548,
+          -0.0006774412101412609
+        ]
+      },
+      {
+        "element": 2,
+        "section": 1,
+        "max_abs": 5.58582231042769,
+        "values": [
+          0.05208237065928577,
+          1.4793065627670445,
+          5.58582231042769,
+          -0.0005338763481346786
+        ]
+      },
+      {
+        "element": 4,
+        "section": 1,
+        "max_abs": 5.573598983484389,
+        "values": [
+          -0.013956263042319889,
+          1.4933294915398156,
+          5.573598983484389,
+          7.182151353691952e-05
+        ]
+      },
+      {
+        "element": 6,
+        "section": 1,
+        "max_abs": 5.555158254443233,
+        "values": [
+          -0.34646675849235475,
+          1.7429190210265688,
+          5.555158254443233,
+          -0.0006034709495936157
+        ]
+      },
+      {
+        "element": 5,
+        "section": 1,
+        "max_abs": 5.554386626083903,
+        "values": [
+          -0.18761400688126426,
+          1.4773388200835036,
+          5.554386626083903,
+          -0.0005499470670851741
+        ]
+      },
+      {
+        "element": 17,
+        "section": 1,
+        "max_abs": 3.122100498064785,
+        "values": [
+          -0.18100304931480235,
+          -0.45021812369699044,
+          -3.122100498064785,
+          -0.0005809957212574772
+        ]
+      },
+      {
+        "element": 18,
+        "section": 1,
+        "max_abs": 2.935400793930607,
+        "values": [
+          -0.053883127903574614,
+          -0.7751422475327258,
+          -2.935400793930607,
+          -0.0005888306794290344
+        ]
+      },
+      {
+        "element": 16,
+        "section": 1,
+        "max_abs": 2.930192487915279,
+        "values": [
+          0.039875418834331426,
+          -0.5029471071666901,
+          -2.930192487915279,
+          -0.0003673997527749866
+        ]
+      }
+    ]
+  }
+}
+Process 0 Terminating

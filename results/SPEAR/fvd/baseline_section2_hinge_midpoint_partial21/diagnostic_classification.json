@@ -1,0 +1,8 @@
+{
+  "pair_count": 21,
+  "class_counts": {
+    "complete": 18,
+    "nonconvergence_drift_ge_10pct_instability_compatible": 3
+  },
+  "warning": "Incomplete-case EDPs are last-converged-state diagnostics, not final peaks."
+}

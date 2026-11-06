@@ -158,7 +158,7 @@ def run(args) -> int:
         writer.writerows(rows)
     summary = {
         "status": "COMPLETE" if ok == 0 and len(rows) == len(motion.values_m_s2) else "INCOMPLETE",
-        "model": "SPEAR-M0-engineering-accepted-2026-10-29",
+        "model": "SPEAR-M0-section-2-engineering-accepted-2026-11-05",
         "column_element": args.column_element,
         "column_integration_points": args.column_integration_points,
         "beam_integration_points": args.beam_integration_points,

@@ -15,7 +15,7 @@ import openseespy.opensees as ops  # noqa: E402
 import spear_m0_jeong_elnashai_nonlinear as m0  # noqa: E402
 from ground_motion import GroundMotion, read_ground_motion, read_peer_at2  # noqa: E402
 from record_manifest import validated_horizontal_pairs  # noqa: E402
-from run_baseline_nltha import analyze_interval, rayleigh_coefficients  # noqa: E402
+from run_baseline_nltha import analyze_interval, failure_diagnostics, rayleigh_coefficients  # noqa: E402
 
 
 def _motion(manifest: Path, record: dict) -> GroundMotion:
@@ -105,7 +105,7 @@ def run(args) -> int:
 
     summary = {
         "status": "COMPLETE" if ok == 0 and len(rows) == sample_count else "INCOMPLETE",
-        "model": "SPEAR-M0-engineering-accepted-2026-10-29",
+        "model": "SPEAR-M0-section-2-engineering-accepted-2026-11-05",
         "member_formulation": args.member_formulation,
         "rigid_diaphragm": m0.RIGID_DIAPHRAGM,
         "pair_id": args.pair_id,
@@ -127,6 +127,9 @@ def run(args) -> int:
         "peak_abs_floor_acceleration_m_s2": {"X": peaks((5, 6, 7)), "Y": peaks((13, 14, 15))},
         "peak_abs_base_shear_kN": {"X": peaks((8,))[0], "Y": peaks((16,))[0]},
     }
+    if summary["status"] != "COMPLETE":
+        summary["failure_time_s"] = ops.getTime()
+        summary["failure_diagnostics"] = failure_diagnostics()
     args.output.with_suffix(".json").write_text(json.dumps(summary, indent=2) + "\n")
     print(json.dumps(summary, indent=2))
     ops.wipe()

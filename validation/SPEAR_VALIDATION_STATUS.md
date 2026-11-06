@@ -793,3 +793,25 @@ the final Fig. 2.8 reconstruction to omit a rigid diaphragm; the remaining
 underprediction must be resolved through the exact ZeusNL concrete tensile
 law and original beam-gravity loading ledger, not by restoring an incompatible
 constraint or fitting strength. Production remains unchanged.
+
+## Accepted Section-2 baseline NLTHA — 2026-11-06
+
+The accepted no-diaphragm Section-2 model was run bidirectionally for all 21
+available FEMA-P695 pairs at unscaled as-recorded intensity. The formulation
+was `HingeMidpoint`; damping was 5% Rayleigh damping anchored to initial modes
+1 and 3. No structural, record or damping parameter was calibrated.
+
+Eighteen pairs completed every requested step. Their median maximum storey
+drift was 1.586%; the maximum was 4.175% for RSN1602. RSN953, RSN1158 and
+RSN1244 stopped after last-converged maximum drifts of 46.56%, 118.45% and
+128.56%, respectively. Repetition with element diagnostics reproduced all
+three stops. They are classified conservatively as instability-compatible
+nonconvergence, not as complete EDP histories or formally proven collapse.
+
+This closes the moderate-drift numerical-convergence concern for the accepted
+baseline: no incomplete case stopped below 10% drift. Compact per-pair JSON,
+logs, the aggregate summary and EDP table are in
+`results/SPEAR/fvd/baseline_section2_hinge_midpoint_partial21/`. Raw response
+CSV histories are excluded from Git but are reproducible from the licensed
+PEER traces and committed manifest. The detailed audit is
+`validation/SPEAR_SECTION2_BASELINE_NLTHA_2026-11-06.md`.
