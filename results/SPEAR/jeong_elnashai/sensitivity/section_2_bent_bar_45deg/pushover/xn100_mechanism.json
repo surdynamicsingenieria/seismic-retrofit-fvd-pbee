@@ -1,0 +1,307 @@
+{
+  "case": "xn100",
+  "member_formulation": "hinge_midpoint",
+  "response": "OpenSees forceBeamColumn plasticDeformation; maximum absolute end rotation components 1:5",
+  "peak_abs_story_drift_ratio": [
+    0.055859682707154266,
+    0.013378556522503878,
+    0.003939805711421292
+  ],
+  "peak_base_shear_state": {
+    "top_displacement_mm": -86.00000000000006,
+    "base_shear_kN": -324.8294683486879,
+    "base_shear_contribution_kN_by_column": {
+      "C8": -33.59203514475158,
+      "C6": -63.10497742565535,
+      "C7": -22.87352672154489,
+      "C9": -38.265116830298275,
+      "C3": -40.813894802368495,
+      "C4": -30.727162005202374,
+      "C5": -32.97011387004497,
+      "C1": -33.89476228504346,
+      "C2": -28.587879263778508
+    },
+    "base_shear_contribution_sum_kN": -324.8294683486879,
+    "c6_story1_basic_force": [
+      -167721.1798022462,
+      -11047.976047445778,
+      -14460.34760523373,
+      -82683.99981571022,
+      -80646.39536924695,
+      14438.025165942678
+    ],
+    "c6_story1_local_force": [
+      167721.1798022462,
+      -10203.329461071804,
+      65332.15807398288,
+      -14438.025165942678,
+      -82683.99981571022,
+      -11047.976047445778,
+      -167721.1798022462,
+      10203.329461071804,
+      -65332.15807398288,
+      14438.025165942678,
+      -80646.39536924695,
+      -14460.34760523373
+    ],
+    "floor_displacements_mm": [
+      -41.956953412766275,
+      -74.18073037712352,
+      -86.00000000000006
+    ]
+  },
+  "members_ranked": [
+    {
+      "member": "column:S1:C5",
+      "max_abs_plastic_rotation_rad": 0.06886206963010733
+    },
+    {
+      "member": "column:S1:C1",
+      "max_abs_plastic_rotation_rad": 0.06795156000656778
+    },
+    {
+      "member": "column:S1:C9",
+      "max_abs_plastic_rotation_rad": 0.06678279806169021
+    },
+    {
+      "member": "column:S1:C3",
+      "max_abs_plastic_rotation_rad": 0.06492832383394503
+    },
+    {
+      "member": "column:S1:C2",
+      "max_abs_plastic_rotation_rad": 0.06477138279133497
+    },
+    {
+      "member": "column:S1:C8",
+      "max_abs_plastic_rotation_rad": 0.06289157568032949
+    },
+    {
+      "member": "column:S1:C4",
+      "max_abs_plastic_rotation_rad": 0.06187198393925349
+    },
+    {
+      "member": "column:S1:C6",
+      "max_abs_plastic_rotation_rad": 0.06102819459674724
+    },
+    {
+      "member": "column:S1:C7",
+      "max_abs_plastic_rotation_rad": 0.057198704888783335
+    },
+    {
+      "member": "beam:S1:B2",
+      "max_abs_plastic_rotation_rad": 0.020251955910890778
+    },
+    {
+      "member": "beam:S1:B4",
+      "max_abs_plastic_rotation_rad": 0.01944188964526299
+    },
+    {
+      "member": "beam:S1:B6",
+      "max_abs_plastic_rotation_rad": 0.01914100423162941
+    },
+    {
+      "member": "column:S2:C1",
+      "max_abs_plastic_rotation_rad": 0.013720296525732012
+    },
+    {
+      "member": "column:S2:C3",
+      "max_abs_plastic_rotation_rad": 0.011811177338043844
+    },
+    {
+      "member": "beam:S1:B5",
+      "max_abs_plastic_rotation_rad": 0.010648751415385873
+    },
+    {
+      "member": "column:S2:C5",
+      "max_abs_plastic_rotation_rad": 0.010314555814668686
+    },
+    {
+      "member": "column:S2:C7",
+      "max_abs_plastic_rotation_rad": 0.009616028546481303
+    },
+    {
+      "member": "column:S2:C6",
+      "max_abs_plastic_rotation_rad": 0.009452971232238573
+    },
+    {
+      "member": "column:S2:C2",
+      "max_abs_plastic_rotation_rad": 0.009425733345252488
+    },
+    {
+      "member": "column:S2:C9",
+      "max_abs_plastic_rotation_rad": 0.008813156805251875
+    },
+    {
+      "member": "column:S2:C8",
+      "max_abs_plastic_rotation_rad": 0.008580191828081452
+    },
+    {
+      "member": "column:S2:C4",
+      "max_abs_plastic_rotation_rad": 0.008325971992553418
+    },
+    {
+      "member": "beam:S1:B3",
+      "max_abs_plastic_rotation_rad": 0.008118341501181974
+    },
+    {
+      "member": "beam:S1:B1",
+      "max_abs_plastic_rotation_rad": 0.006722376631288522
+    },
+    {
+      "member": "beam:S2:B2",
+      "max_abs_plastic_rotation_rad": 0.004042260921997053
+    },
+    {
+      "member": "beam:S2:B4",
+      "max_abs_plastic_rotation_rad": 0.0038188641350482893
+    },
+    {
+      "member": "beam:S2:B6",
+      "max_abs_plastic_rotation_rad": 0.003259550916364631
+    },
+    {
+      "member": "beam:S1:B7",
+      "max_abs_plastic_rotation_rad": 0.0032342561511093954
+    },
+    {
+      "member": "column:S3:C1",
+      "max_abs_plastic_rotation_rad": 0.0031589819873115463
+    },
+    {
+      "member": "column:S3:C7",
+      "max_abs_plastic_rotation_rad": 0.003157899948012785
+    },
+    {
+      "member": "column:S3:C2",
+      "max_abs_plastic_rotation_rad": 0.002939178740349913
+    },
+    {
+      "member": "column:S3:C3",
+      "max_abs_plastic_rotation_rad": 0.0029177663785378374
+    },
+    {
+      "member": "column:S3:C6",
+      "max_abs_plastic_rotation_rad": 0.0028991933136730324
+    },
+    {
+      "member": "column:S3:C4",
+      "max_abs_plastic_rotation_rad": 0.002540047015445838
+    },
+    {
+      "member": "beam:S2:B5",
+      "max_abs_plastic_rotation_rad": 0.0025173165157950142
+    },
+    {
+      "member": "column:S3:C8",
+      "max_abs_plastic_rotation_rad": 0.0025074798389548344
+    },
+    {
+      "member": "beam:S2:B3",
+      "max_abs_plastic_rotation_rad": 0.0024897329554087687
+    },
+    {
+      "member": "beam:S3:B9",
+      "max_abs_plastic_rotation_rad": 0.002433805622280131
+    },
+    {
+      "member": "beam:S2:B1",
+      "max_abs_plastic_rotation_rad": 0.0022826673300784858
+    },
+    {
+      "member": "column:S3:C5",
+      "max_abs_plastic_rotation_rad": 0.002280741465153951
+    },
+    {
+      "member": "column:S3:C9",
+      "max_abs_plastic_rotation_rad": 0.0022618131943609294
+    },
+    {
+      "member": "beam:S2:B9",
+      "max_abs_plastic_rotation_rad": 0.0021479231362983918
+    },
+    {
+      "member": "beam:S1:B9",
+      "max_abs_plastic_rotation_rad": 0.0021146718975327155
+    },
+    {
+      "member": "beam:S2:B10",
+      "max_abs_plastic_rotation_rad": 0.0019194528067096913
+    },
+    {
+      "member": "beam:S1:B10",
+      "max_abs_plastic_rotation_rad": 0.0017953499011160202
+    },
+    {
+      "member": "beam:S3:B11",
+      "max_abs_plastic_rotation_rad": 0.0017866537515068793
+    },
+    {
+      "member": "beam:S2:B7",
+      "max_abs_plastic_rotation_rad": 0.0017428512635895338
+    },
+    {
+      "member": "beam:S2:B11",
+      "max_abs_plastic_rotation_rad": 0.0017099026503108686
+    },
+    {
+      "member": "beam:S1:B8",
+      "max_abs_plastic_rotation_rad": 0.0016400555373131361
+    },
+    {
+      "member": "beam:S3:B7",
+      "max_abs_plastic_rotation_rad": 0.0016332588740016105
+    },
+    {
+      "member": "beam:S3:B10",
+      "max_abs_plastic_rotation_rad": 0.001632563016846291
+    },
+    {
+      "member": "beam:S1:B11",
+      "max_abs_plastic_rotation_rad": 0.001512409188576879
+    },
+    {
+      "member": "beam:S1:B12",
+      "max_abs_plastic_rotation_rad": 0.0014365144956732623
+    },
+    {
+      "member": "beam:S2:B12",
+      "max_abs_plastic_rotation_rad": 0.0011420118020812086
+    },
+    {
+      "member": "beam:S2:B8",
+      "max_abs_plastic_rotation_rad": 0.0011153630346896167
+    },
+    {
+      "member": "beam:S3:B12",
+      "max_abs_plastic_rotation_rad": 0.00105837048172835
+    },
+    {
+      "member": "beam:S3:B8",
+      "max_abs_plastic_rotation_rad": 0.0010470871100719068
+    },
+    {
+      "member": "beam:S3:B6",
+      "max_abs_plastic_rotation_rad": 0.0010136263967666405
+    },
+    {
+      "member": "beam:S3:B2",
+      "max_abs_plastic_rotation_rad": 0.0010052356477709677
+    },
+    {
+      "member": "beam:S3:B3",
+      "max_abs_plastic_rotation_rad": 0.0009361927131511178
+    },
+    {
+      "member": "beam:S3:B4",
+      "max_abs_plastic_rotation_rad": 0.0009227731089389601
+    },
+    {
+      "member": "beam:S3:B1",
+      "max_abs_plastic_rotation_rad": 0.0006327115295635583
+    },
+    {
+      "member": "beam:S3:B5",
+      "max_abs_plastic_rotation_rad": 0.0005154882565974576
+    }
+  ]
+}

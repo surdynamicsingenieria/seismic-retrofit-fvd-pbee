@@ -424,6 +424,29 @@ The remaining source priorities are the original Fig. 2.3 bent-bar transition,
 the exact gravity load-point ledger controlling C6 axial force, and the full
 ZeusNL `con2` tension/unloading implementation.
 
+### Source-bounded 45-degree bent-bar sensitivity — 2026-11-05
+
+The independently documented 45-degree bar inclination was converted to a
+geometric 0.442 m horizontal transition using the 0.500 m beam depth and the
+published cover/stirrup/bar diameters. This value replaced only the beam hinge
+length; column regularization and every physical input remained unchanged.
+All four cases reached +/-200 mm.
+
+| Case | Peak (kN) | Peak error | Curve MAE (kN) |
+|---|---:|---:|---:|
+| +X | 327.147 | -7.68% | 20.66 |
+| -X | 324.829 | -11.57% | 22.67 |
+| +Y | 350.012 | -10.87% | 43.48 |
+| -Y | 366.601 | -19.25% | 72.85 |
+
+The Y-direction peak difference is 16.59 kN, again far below the published
+61.32 kN and essentially unchanged from the candidate's 15.72 kN. The +Y
+first/second-storey drifts remain close (3.006% and 2.594%). Therefore the
+source-bounded 45-degree transition does not explain the missing asymmetry and
+is rejected as a production replacement. A dimensioned original transition
+would still improve exact reconstruction, but its plausible geometric proxy
+is no longer a leading explanation for the -Y strength deficit.
+
 
 ## Spatial Fig. 2.7 correction and global mass closure — 2026-10-17
 

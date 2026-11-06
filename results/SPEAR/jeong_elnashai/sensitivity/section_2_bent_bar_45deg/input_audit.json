@@ -1,0 +1,9 @@
+{
+  "status": "SENSITIVITY_ONLY_NOT_ACCEPTED",
+  "source_inclination_deg": 45.0,
+  "beam_depth_m": 0.5,
+  "longitudinal_bar_centroid_cover_m": 0.028999999999999998,
+  "vertical_bar_row_separation_m": 0.442,
+  "beam_hinge_length_m": 0.442,
+  "note": "Abrupt section transition is only a proxy for the undimensioned bent-bar zone."
+}
