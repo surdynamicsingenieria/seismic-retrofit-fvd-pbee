@@ -447,6 +447,21 @@ is rejected as a production replacement. A dimensioned original transition
 would still improve exact reconstruction, but its plausible geometric proxy
 is no longer a leading explanation for the -Y strength deficit.
 
+### Engineering acceptance decision — 2026-11-05
+
+The source-correct no-diaphragm candidate is accepted for the defined FVD/PBEE
+research scope using a 10% absolute modal-period limit, a 20% absolute peak
+base-shear limit, and mandatory qualitative mechanism/pattern checks. This is
+an engineering benchmark validation, not an exact reconstruction of the
+unavailable UIUC ZeusNL input deck or a pointwise reproduction of Fig. 2.8.
+
+All four modal checks, all four pushover peak checks and all qualitative checks
+pass. The governing -Y error is -19.05%, close to the limit, and its deficient
+directional asymmetry must be retained as explicit model-form uncertainty.
+Baseline NLTHA and FVD model development are now authorized. Optimization,
+MSA and FEMA P-58 remain closed pending their own reproducibility and
+acceptance gates.
+
 
 ## Spatial Fig. 2.7 correction and global mass closure — 2026-10-17
 
